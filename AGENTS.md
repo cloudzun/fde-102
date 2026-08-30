@@ -128,6 +128,7 @@
 | 四阶段 | Discovery → Prototype → Build → Scale（教材提炼） |
 | PPT 框架 | People–Process–Technology（人员流程技术），与演示文稿无关 |
 | 能力回注 | 识别 → 抽象 → 集成 → 验证（四步法） |
+| 本体建模 / 业务语义回注 | 把业务对象、属性、关系、状态、动作与治理约束沉淀为可复用业务语言（教材提炼；Palantir Ontology 为代表实现而非唯一标准） |
 | 角色 | 三角色（Delta / Echo / Engineering）；Echo 靠想、Delta 靠做 |
 | 三个脚手架 | 四类失败模式 / 四层决策链 / LLM 能力金字塔 |
 | 三个 SOP | 干系人地图（SOP1）/ 数据资产盘点（SOP2）/ 快赢筛选（SOP3） |
