@@ -348,5 +348,5 @@ xychart-beta
 
 ## 延伸阅读
 
-- 想读"卖人力→卖能力"更完整的经济学论证、中国云厂商"类 FDE"实践与转型路线图，见 FDE 101 **https://www.cloudzun.com/fde-course/**。
+- 想读"卖人力→卖能力"更完整的经济学论证、中国云厂商"类 FDE"实践与转型路线图，见 **FDE-101** **https://www.cloudzun.com/fde-course/**。
 - 本章可延伸的章节：第 2 章（为什么需要 FDE）、第 13 章（中国云服务商的 FDE 实践图谱）、第 14 章（中国区 FDE 转型的五大挑战与应对）。

@@ -470,6 +470,6 @@ flowchart TB
 
 ## 延伸阅读
 
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（Phase 4 Scale 与能力回注方法论）——业务 Scale、变革管理与价值量化的完整展开。
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（AI FDE 落地 · Echo 共识与对齐）——AI 能力与判断力边界如何对齐的扩展。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（Phase 4 Scale 与能力回注方法论）——业务 Scale、变革管理与价值量化的完整展开。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（AI FDE 落地 · Echo 共识与对齐）——AI 能力与判断力边界如何对齐的扩展。
 - 下一章：**本书第 16 章实操五 · 全团队交付与决策层汇报**——用本章的业务证据 + 第 14 章的工程证据，对三个场景作出 Go / Conditional Go / Continue Pilot / No-Go 决策。

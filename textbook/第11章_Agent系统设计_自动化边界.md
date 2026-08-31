@@ -516,6 +516,6 @@ MCP（Model Context Protocol，模型上下文协议）是为了解决"每个工
 
 ## 延伸阅读
 
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（第 15 章 AI FDE 落地 · Echo 共识与对齐）——AI 能力与判断力边界如何对齐的扩展。
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（第 16 章 AI FDE 落地 · Delta 技术与场景）——国产智能体平台（Dify / Coze / 阿里云百炼）等的落地选型。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（第 15 章 AI FDE 落地 · Echo 共识与对齐）——AI 能力与判断力边界如何对齐的扩展。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（第 16 章 AI FDE 落地 · Delta 技术与场景）——国产智能体平台（Dify / Coze / 阿里云百炼）等的落地选型。
 - 下一章：**本书第 12 章实操四 · 工单智能分级路由工作流**——把 Routing（Agentic Workflow）模式 + 敏感件零漏判当场做出来；真正的受控 Agent 见**无编号实操四B（Lab4B）**。

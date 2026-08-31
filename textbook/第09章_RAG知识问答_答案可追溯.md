@@ -457,6 +457,6 @@ RAGAS 是目前常用的开源 RAG 评估框架（截至 2026-08，[版本以官
 
 ## 延伸阅读
 
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（第 16 章 AI FDE 落地 · Delta 技术与场景）——RAG 检索与向量库的落地选型深读。
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（第 15 章 AI FDE 落地 · Echo 共识与对齐）——AI 能力如何与 FDE 判断力对齐的扩展。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（第 16 章 AI FDE 落地 · Delta 技术与场景）——RAG 检索与向量库的落地选型深读。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（第 15 章 AI FDE 落地 · Echo 共识与对齐）——AI 能力如何与 FDE 判断力对齐的扩展。
 - 下一章：**本书第 10 章实操三 · 政策法规 RAG 问答系统**——把本章当场做出来，练"答案可追溯"双指标。

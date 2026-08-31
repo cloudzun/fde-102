@@ -197,7 +197,7 @@ flowchart TB
 
 > **一句话记住四阶段的职能分工：** **Discovery 靠 Echo 找对问题，Prototype 靠 Delta 快速证明，Build 靠 Delta 做实做稳，Scale 靠全团队放大与回注。** 本书五个实操，正是把这条线浓缩着走一遍。
 
-> **延伸阅读：** 四阶段完整 SOP 0–9 与每阶段模板，见 FDE 101 https://www.cloudzun.com/fde-course/（第 5–9 章：Phase 1 Discovery 至 Phase 4 Scale 与能力回注方法论）。
+> **延伸阅读：** 四阶段完整 SOP 0–9 与每阶段模板，见 **FDE-101** https://www.cloudzun.com/fde-course/（第 5–9 章：Phase 1 Discovery 至 Phase 4 Scale 与能力回注方法论）。
 
 ### 3.3.2 四阶段 Stage Gate 总纲（教材提炼）
 
@@ -464,5 +464,5 @@ flowchart TB
 
 ## 延伸阅读
 
-- 想读四阶段全部 SOP 0–9、每阶段完整模板、Gate"未通过/回滚/止损"运行规则，见 FDE 101 **https://www.cloudzun.com/fde-course/**。
+- 想读四阶段全部 SOP 0–9、每阶段完整模板、Gate"未通过/回滚/止损"运行规则，见 **FDE-101** **https://www.cloudzun.com/fde-course/**。
 - 本章可延伸的章节：第 5 章（Phase 1 Discovery）、第 6 章（Phase 2 Prototype）、第 7 章（Phase 3 Build）、第 8 章（Phase 4 Scale）、第 9 章（能力回注方法论）。

@@ -475,8 +475,8 @@ office-hours → spec → autoplan → build → review → qa → ship → retr
 
 ## 延伸阅读
 
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（AI FDE 落地 · Delta 技术与场景）——AI 辅助四阶段、本土技术栈与私有化部署的完整展开。
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（AI FDE 落地 · Echo 共识与对齐）——"两种偏差"与 AI 重塑 FDE 的全景。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（AI FDE 落地 · Delta 技术与场景）——AI 辅助四阶段、本土技术栈与私有化部署的完整展开。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（AI FDE 落地 · Echo 共识与对齐）——"两种偏差"与 AI 重塑 FDE 的全景。
 - **下一章：** 本书 **第 8 章实操二 · 诉求智能分类器**（把本章方法第一次施工到西岭场景 A）。
 
 ---

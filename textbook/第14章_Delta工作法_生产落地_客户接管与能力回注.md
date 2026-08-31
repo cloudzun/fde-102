@@ -429,6 +429,6 @@ Demo 能跑 ≠ 进入客户业务
 
 ## 延伸阅读
 
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（Phase 4 Scale）——客户自运营、撤出交接、能力回注方法论的完整展开。
-- 见 FDE 101 https://www.cloudzun.com/fde-course/（AI FDE 落地 · Delta 技术与场景）——生产化与工程回注的落地扩展（含通用运维深水区相关主题）。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（Phase 4 Scale）——客户自运营、撤出交接、能力回注方法论的完整展开。
+- 见 **FDE-101** https://www.cloudzun.com/fde-course/（AI FDE 落地 · Delta 技术与场景）——生产化与工程回注的落地扩展（含通用运维深水区相关主题）。
 - 下一章：**本书第 15 章 Echo 工作法：价值落地、组织采纳与能力回注**（用本章的客户现场证据，回答"值不值得用、组织愿不愿意接"）。
