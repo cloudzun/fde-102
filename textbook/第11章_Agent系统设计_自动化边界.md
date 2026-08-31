@@ -364,7 +364,7 @@ LangGraph 是当前常用的智能体编排框架（截至 2026-08，版本以�
 | **幂等性 / 副作用防护** | **框架不自动保证幂等**：恢复不会自动重放已执行节点，但副作用节点（发消息、改数据、调外部工具）是否重复执行取决于你的实现——需要自己用**幂等键 / 事务 / 补偿机制**保证（工具侧见 11.8.3） |
 | **节点级 timeout / retry** | 为每个节点设超时与重试策略，避免在某个步骤卡死 |
 
-> [!WARNING]
+> [!CAUTION]
 > **课前环境避坑（LangGraph 版本核验）：** `langgraph` 包**没有 `__version__` 属性**，直接访问 `langgraph.__version__` 会报错；应改用 `importlib.metadata.version('langgraph')` 核验已装版本。另外 LangGraph 只依赖 `langchain-core`，**不自带** `openai` / `pandas` / `streamlit`——只装上它会在使用时抛 `ModuleNotFoundError`，需按实际任务一并安装。
 
 > **对第 12 章（路由工作流）：** 它是把"判断 → 查部门职责库 → 生成意见 → 转人工"编排成一张图；**固定转人工分支**即可承载敏感件兜底；`interrupt()` 的"暂停—接收人工输入—从断点恢复"在**实操四B（Lab4B）**真正实现（配合 `thread_id` 持久化，而非一次性输出）。

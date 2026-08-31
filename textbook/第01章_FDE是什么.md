@@ -64,9 +64,9 @@ flowchart LR
 > **一句箴言（Palantir 业界常见概括）：**
 > > **"FDEs are the glue between our products and our customers."**
 > > （FDE 是连接"我们的产品"与"我们的客户"之间的胶水。）
->
-> > [!NOTE]
-> > **归属说明：** 这句话是业界对 Palantir FDE 角色的**概括性描述**，非官方逐字引文。Palantir 官方 FDSE 招聘 JD 的可溯源表述是：*"embedding talented engineers directly with our customers to tackle their most pressing challenges head-on"*（把有才华的工程师直接派驻到客户身边，正面解决他们最紧迫的挑战）。引用请以官方 JD 口径为准。
+
+> [!NOTE]
+> **归属说明：** 这句话是业界对 Palantir FDE 角色的**概括性描述**，非官方逐字引文。Palantir 官方 FDSE 招聘 JD 的可溯源表述是：*"embedding talented engineers directly with our customers to tackle their most pressing challenges head-on"*（把有才华的工程师直接派驻到客户身边，正面解决他们最紧迫的挑战）。引用请以官方 JD 口径为准。
 
 **"胶水"比喻的关键：** 产品是标准化的，客户需求是按各自现场环境生长的——中间的缝隙、错位、接口，就是 FDE 的战场。FDE 不是坐在办公室写代码的人，也不是站在台上做演示的人，而是出现在客户现场、面对真实混乱的数据、和真实用户一起把系统做到能用的人。
 

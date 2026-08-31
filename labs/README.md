@@ -18,7 +18,7 @@
 | `lab5-review-and-report.md` | 实操五-实验手册-学员版 | 实操五 · 综合证据评审与决策层汇报 |
 | `migration-review-real-project.md` | 附加迁移实验-用FDE方法复盘真实项目-学员版 | **复盘真实项目**（无编号可选迁移实验） |
 | `gstack-standard-flow.md` | gstack标准开发流程 | gstack 八环节标准流程（各实操引用） |
-| `lab3-policy-docs/` | Lab3-policy-docs | 实操三政策文档素材 |
+| `lab3-policy-docs/` | Lab3-policy-docs | 实操三政策文档素材：**5 份**（社保 / 医保 / 保障性住房 .md + 户籍迁移政策.docx + 就业创业补贴政策.pdf） |
 
 ## 二、与教科书的错位分工（引用协议）
 
