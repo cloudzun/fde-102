@@ -26,7 +26,7 @@ flowchart TB
     ch7["第 7 章 Delta 工具底座<br/>用 AI 加速 · 驾驭 AI"]
     op2["第 8 章 实操二·分类器"]
     op3["第 10 章 实操三·RAG"]
-    op4["第 12 章 实操四·Agent"]
+    op4["第 12 章 实操四·路由工作流"]
     echo --> ch7
     ch7 --> op2
     ch7 --> op3
