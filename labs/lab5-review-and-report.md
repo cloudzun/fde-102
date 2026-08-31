@@ -184,6 +184,8 @@ flowchart TB
 
 #### 输出物 1：两层验收表
 
+> **同源提示：** 模板唯一权威为 `resources/templates/two-layer-acceptance.md`；本表与之同源。
+
 ```markdown
 # 两层验收表
 
@@ -442,6 +444,8 @@ flowchart TB
 
 ## 附录 A：能力回注四步法模板
 
+> **同源提示：** 模板唯一权威为 `resources/templates/capability-reinjection.md`；本附录与之同源。
+
 ```markdown
 # 能力回注 · 候选评估
 ## 候选：______（来源：______）
@@ -462,6 +466,8 @@ flowchart TB
 
 ## 附录 B：交付决策模板
 
+> **同源提示：** 模板唯一权威为 `resources/templates/decision-sheet.md`；本附录与之同源。
+
 ```markdown
 ## 场景/对象：______
 - 当前决策：Go / Conditional Go / Continue Pilot / No-Go
@@ -472,6 +478,8 @@ flowchart TB
 ```
 
 ## 附录 C：决策层汇报结构模板
+
+> **同源提示：** 模板唯一权威为 `resources/templates/client-report-outline.md`；本附录与之同源。
 
 ```markdown
 1. 封面
