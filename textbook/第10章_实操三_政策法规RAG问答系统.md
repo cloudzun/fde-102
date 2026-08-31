@@ -244,8 +244,8 @@ flowchart TB
 
 ---
 
-## 在线全书
+## 延伸阅读
 
-- 见在线全书 https://www.cloudzun.com/fde-course/（第 16 章 AI FDE 落地 · Delta 技术与场景）——向量库（Chroma/Milvus）、embedding（bge-m3）、本土 RAG 技术栈的落地方案。
+- 见 FDE 101 https://www.cloudzun.com/fde-course/（第 16 章 AI FDE 落地 · Delta 技术与场景）——向量库（Chroma/Milvus）、embedding（bge-m3）、本土 RAG 技术栈的落地方案。
 - **实验手册：** 政策文档（`labs/lab3-policy-docs/`）、Q&A 验证集、启动提示词参考答案见《实验手册》`labs/lab3-policy-rag.md`（与训练营"实操三"同源）。
 - **下一章：** 本书 **第 11 章 Agent 系统设计**（坡度第三级：决策循环 + 自动化边界）。

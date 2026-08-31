@@ -79,18 +79,18 @@ FDE 不是 Palantir 一家的冷门模式，而是正在成为整个 AI 行业�
 ```mermaid
 timeline
     title FDE 的演进
-    2003–2005 : Palantir 首创 FDE<br/>带核心平台驻场深度定制
-    2015 : Airbus 事件<br/>一个客户的问题 → 行业平台 Skywise
-    2020s : 行业验证<br/>航空制造、医疗等验证 FDE 模式
-    2025 : OpenAI 成立 DeployCo<br/>约 40 亿美元部署单元，向客户派驻工程师
-    2025 : Anthropic 组建企业服务团队<br/>Applied AI / 客户现场工程师
+    2003–2005 : Palantir 首创 FDE带核心平台驻场深度定制
+    2015 : Airbus 事件 一个客户的问题 → 行业平台 Skywise
+    2020s : 行业验证 航空制造、医疗等验证 FDE 模式
+    2025 : OpenAI 成立 DeployCo 向客户派驻工程师
+    2025 : Anthropic 组建企业服务团队Applied AI / 客户现场工程师
 ```
 *图 1-2：FDE 从 Palantir 走向 AI 行业共识*
 
 > [!NOTE]
 > **来源与时效性：** 本图为行业演进示意。Airbus 案例与 Skywise 平台见 [Palantir 官网案例页](https://www.palantir.com/impact/airbus/) 与 [Palantir–Airbus 合作概述 PDF](https://www.palantir.com/assets/xrfr7uokpv1b/7uEHPTEM0MkKtBFcx2zh63/9d75da5b76439717ac95135b5012479e/Palantir-Airbus-Partnership_Overview.pdf)；OpenAI DeployCo（约 40 亿美元部署单元）、Anthropic 企业服务等属行业快讯级事件（[36氪报道](https://www.36kr.com/p/3806126900191491)、[行业综述](https://tech.yahoo.com/ai/articles/why-big-ai-companies-embedding-153431936.html)），信息截至 2026 年，引用前请以最新官方新闻为准。本书对 Palantir 财务数据的引用另有专门声明（见第 2 章 2.4）。
 
-> **延伸阅读：** 想读 FDE 完整历史脉络、其三重角色与"工程师是内核"的更充分论证，见在线全书 https://www.cloudzun.com/fde-course/（第 1 章 FDE 是什么）。Palantir 平台体系（Gotham/Foundry/AIP）与本章关联较弱，见在线全书（第 3 章 Palantir 的平台与 FDE 体系）。
+> **延伸阅读：** 想读 FDE 完整历史脉络、其三重角色与"工程师是内核"的更充分论证，见 FDE 101 https://www.cloudzun.com/fde-course/（第 1 章 FDE 是什么）。Palantir 平台体系（Gotham/Foundry/AIP）与本章关联较弱，见 FDE 101（第 3 章 Palantir 的平台与 FDE 体系）。
 
 ---
 
@@ -185,7 +185,7 @@ flowchart LR
 > [!CAUTION]
 > **FDE 最危险的地方，是它极易"退化"回外包。** 二者在真实现场几乎肉眼难辨——都是派工程师驻场、都在写贴合客户的代码。差异不在"当下做什么"，而在"**做完之后往哪走**"：是把通用经验抽象、沉淀回平台（FDE），还是写完就留在客户那里（外包）。销售与交付压力（工期紧、急着签单）最容易让 FDE 悄悄退化成外包——**如果连续几个项目下来平台毫无增长、每个新项目仍重复造轮子，那它已经不是 FDE，而是一支昂贵的驻场外包队。** 第 2 章 2.5 会给一份"教材诊断量表"，用 8 条可勾选项帮你辨清。
 
-> **延伸阅读：** "卖人力→卖能力"的经济学模型、能力回注飞轮，见在线全书 https://www.cloudzun.com/fde-course/（第 2 章 为什么需要 FDE；第 13 章 中国云服务商的 FDE 实践图谱）。
+> **延伸阅读：** "卖人力→卖能力"的经济学模型、能力回注飞轮，见 FDE 101 https://www.cloudzun.com/fde-course/（第 2 章 为什么需要 FDE；第 13 章 中国云服务商的 FDE 实践图谱）。
 
 ---
 
@@ -222,13 +222,13 @@ flowchart TB
 > [!IMPORTANT]
 > **这五道鸿沟没有一道是"再多几层模型能力"能解决的——它们全是落地、连接、变革问题。** 这正是 FDE 为什么在 AI 时代反而更稀缺：**模型负责"写得快"，FDE 负责"知道该写什么、写了有没有人用、用起来有没有价值"。** AI 没有让 FDE 过时，反而放大了它最不可替代的价值——判断力与业务理解。
 
-> **延伸阅读：** AI 如何重塑 FDE、甲方共识与业务对齐，见在线全书 https://www.cloudzun.com/fde-course/（第 15 章 AI FDE 落地：Echo 共识与对齐）。
+> **延伸阅读：** AI 如何重塑 FDE、甲方共识与业务对齐，见 FDE 101 https://www.cloudzun.com/fde-course/（第 15 章 AI FDE 落地：Echo 共识与对齐）。
 
 ---
 
 ## 1.7 经典案例：FDE 到底做了什么
 
-> 下面用两个案例，把"FDE 做了什么"从抽象定义落到真实场景。完整案例集（含 BP、财富 500 强、美国陆军等）见在线全书 https://www.cloudzun.com/fde-course/（第 4 章 Palantir 经典案例集）。
+> 下面用两个案例，把"FDE 做了什么"从抽象定义落到真实场景。完整案例集（含 BP、财富 500 强、美国陆军等）见 FDE 101 https://www.cloudzun.com/fde-course/（第 4 章 Palantir 经典案例集）。
 
 ### 案例一：一个批次零件被卡住，受影响飞机如何瞬间浮出来？
 
@@ -296,7 +296,7 @@ Palantir 的 FDE 驻场后接入数据，建立制造全生命周期统一视图
 
 ---
 
-## 在线全书（延伸阅读）
+## 延伸阅读
 
-- 若想系统了解 FDE 的方法论全貌（四阶段 SOP、角色体系、中国落地），见在线全书 **https://www.cloudzun.com/fde-course/**，本书不再重复展开。
+- 若想系统了解 FDE 的方法论全貌（四阶段 SOP、角色体系、中国落地），见 FDE 101 **https://www.cloudzun.com/fde-course/**，本书不再重复展开。
 - 本章可延伸的章节：第 1 章（FDE 是什么）、第 3 章（Palantir 平台与 FDE 体系）、第 4 章（Palantir 经典案例集）、第 15 章（AI FDE 落地：Echo 共识与对齐）。

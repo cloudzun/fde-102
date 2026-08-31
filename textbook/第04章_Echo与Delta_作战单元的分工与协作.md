@@ -81,7 +81,7 @@ flowchart TB
 | **Engineering** | 基础设施工程师（SRE 等） | 保阵地 | 负责安全合规、网络配置、部署运维等脏活累活 |
 
 > [!NOTE]
-> **"三角色"与"五角色"：** 本书用**前线三角色**（Echo / Delta / Engineering）作教学主线，够用——其中 Engineering 在本书课程里主要由讲师环境兜底，重点是 Echo 与 Delta 这对双主角。若想了解更完整的编制（在三角色之外纳入"平台工程师 / FDE 负责人"），见在线全书 https://www.cloudzun.com/fde-course/（第 10 章 FDE 角色体系、第 12 章 FDE 人才培养与知识管理）。
+> **"三角色"与"五角色"：** 本书用**前线三角色**（Echo / Delta / Engineering）作教学主线，够用——其中 Engineering 在本书课程里主要由讲师环境兜底，重点是 Echo 与 Delta 这对双主角。若想了解更完整的编制（在三角色之外纳入"平台工程师 / FDE 负责人"），见 FDE 101 https://www.cloudzun.com/fde-course/（第 10 章 FDE 角色体系、第 12 章 FDE 人才培养与知识管理）。
 
 ### 4.2.1 战位职责 vs 个人能力：别把分工当标签
 
@@ -325,7 +325,7 @@ flowchart LR
 
 ---
 
-## 在线全书（延伸阅读）
+## 延伸阅读
 
-- 想读五角色完整编制、四阶段中的角色漂移、人才培养与 HR 落地（面试题、职级双轨、Playbook 沉淀），见在线全书 **https://www.cloudzun.com/fde-course/**。
+- 想读五角色完整编制、四阶段中的角色漂移、人才培养与 HR 落地（面试题、职级双轨、Playbook 沉淀），见 FDE 101 **https://www.cloudzun.com/fde-course/**。
 - 本章可延伸的章节：第 10 章（FDE 角色体系）、第 11 章（四阶段中的角色协作）、第 12 章（FDE 人才培养与知识管理）、第 15 章（AI FDE 落地：Echo 共识与对齐）。

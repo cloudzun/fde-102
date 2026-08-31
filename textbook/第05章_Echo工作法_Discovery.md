@@ -439,7 +439,7 @@ flowchart TD
 >
 > **完整成品样例不随正文公布**——它是第 6 章实操一的产出，公布出来等于直接给答案；讲师可在实操一验收后组织讲评对标。
 
-> **延伸阅读：** Discovery 更完整的 SOP 与工作底稿（访谈提纲、跟班记录、数据清单模板等），见在线全书 https://www.cloudzun.com/fde-course/（第 5 章 Phase 1 Discovery）。
+> **延伸阅读：** Discovery 更完整的 SOP 与工作底稿（访谈提纲、跟班记录、数据清单模板等），见 FDE 101 https://www.cloudzun.com/fde-course/（第 5 章 Phase 1 Discovery）。
 
 ---
 
@@ -502,7 +502,7 @@ AI 时代 Echo 也可以借力，但要守住一条铁律：
 
 ---
 
-## 在线全书（延伸阅读）
+## 延伸阅读
 
-- 想读 Discovery 的完整 SOP 与工作底稿、访谈提纲、数据清单模板，见在线全书 **https://www.cloudzun.com/fde-course/**。
+- 想读 Discovery 的完整 SOP 与工作底稿、访谈提纲、数据清单模板，见 FDE 101 **https://www.cloudzun.com/fde-course/**。
 - 本章直接相关章节：第 5 章（Phase 1 Discovery）；第 16 章（AI FDE 落地：Delta 技术与场景，含 AI 辅助四阶段）。
