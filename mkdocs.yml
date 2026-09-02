@@ -1,6 +1,6 @@
 # FDE-102 —— 文档站点配置
-site_name: FDE 实战：Echo 与 Delta 的交付之道 —— 把问题变成答案，把定制变成能力
-site_description: FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环；把问题变成答案，把定制变成能力
+site_name: FDE 实战：Echo 与 Delta 的交付之道
+site_description: FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环
 site_url: https://www.cloudzun.com/fde-102/
 repo_url: https://github.com/cloudzun/fde-102
 repo_name: cloudzun/fde-102
