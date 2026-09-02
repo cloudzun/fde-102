@@ -19,9 +19,12 @@ build/
 Thumbs.db
 *.log
 
-# PPT 生成物（.pptx 可由 compile.js 随时重编）
-ppt/**/output/
-ppt/**/preview/
+# ---- 内部资料：不随公开仓库分发（本地保留，仅从 Git 排除）----
+# ppt/ 课件源码、misc/ 过程文档（评审/修订/交接）、references/ 参考资料库、experiments/ 实验杂项
+ppt/
+misc/
+references/
+experiments/
 
 # MkDocs 构建产物
 docs/
