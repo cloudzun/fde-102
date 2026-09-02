@@ -1,0 +1,9 @@
+{
+  "name": "fde-course-ppt",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FDE 认证培训教科书配套 PPT（FDECore 靛蓝色系）",
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}

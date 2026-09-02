@@ -18,3 +18,15 @@ build/
 .DS_Store
 Thumbs.db
 *.log
+
+# PPT 生成物（.pptx 可由 compile.js 随时重编）
+ppt/**/output/
+ppt/**/preview/
+
+# MkDocs 构建产物
+docs/
+site/
+
+# Chroma 向量库残留（编辑器/实验临时产物）
+None/
+.pkl

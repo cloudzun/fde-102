@@ -1,0 +1,102 @@
+# FDE-102 —— 文档站点配置
+site_name: 人工智能工程师（高级）FDE 认证培训 · 教科书
+site_description: FDE（前沿部署工程师）能力培养的实战训练教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环
+site_url: https://www.cloudzun.com/fde-102/
+repo_url: https://github.com/cloudzun/fde-102
+repo_name: cloudzun/fde-102
+edit_uri: ""
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 切换深色模式
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 切换浅色模式
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+  - tables
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - assets/vendor/katex.min.js
+  - assets/vendor/auto-render.min.js
+  - javascripts/katex.js
+  - assets/vendor/mermaid.min.js
+
+extra_css:
+  - assets/vendor/katex.min.css
+  - assets/extra.css
+
+extra:
+  generator: false
+
+copyright: Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《人工智能工程师（高级）FDE 认证培训 · 教科书》
+
+plugins:
+  - search
+  - callouts
+
+nav:
+  - 首页: index.md
+  - 导读与体例: textbook/00_导读与体例说明.md
+  - 第一篇 · 方法与认知:
+      - 第1章 FDE 是什么: textbook/第01章_FDE是什么.md
+      - 第2章 为什么需要 FDE: textbook/第02章_为什么需要FDE.md
+      - 第3章 FDE 交付四阶段与能力回注: textbook/第03章_FDE交付四阶段与能力回注.md
+      - 第4章 Echo 与 Delta 作战单元: textbook/第04章_Echo与Delta_作战单元的分工与协作.md
+      - 第5章 Echo 工作法·定义问题: textbook/第05章_Echo工作法_定义问题.md
+  - 第二篇 · 实战演练:
+      - 第6章 实操一：需求调研与解决方案框架: textbook/第06章_实操一_西岭需求调研与解决方案框架.md
+      - 第7章 Delta 工作法·AI Coding 与工程纪律: textbook/第07章_Delta工作法_AI_Coding与工程纪律.md
+      - 第8章 实操二：诉求智能分类器: textbook/第08章_实操二_诉求智能分类器.md
+      - 第9章 RAG 方法·答案可追溯: textbook/第09章_RAG方法_答案可追溯.md
+      - 第10章 实操三：政策法规 RAG 问答系统: textbook/第10章_实操三_政策法规RAG问答系统.md
+      - 第11章 Agent 方法·自动化边界: textbook/第11章_Agent方法_自动化边界.md
+      - 第12章 实操四：工单智能分级路由工作流: textbook/第12章_实操四_工单智能分级路由工作流.md
+  - 第三篇 · 生产与价值化:
+      - 第13章 从公网到本地·私有化部署与模型微调: textbook/第13章_从公网到本地_私有化部署与模型微调.md
+      - 第14章 Delta 生产化·工程 Scale: textbook/第14章_Delta生产化_工程Scale_生产落地与客户接管.md
+      - 第15章 Echo 价值化·业务 Scale: textbook/第15章_Echo价值化_业务Scale_价值落地_组织采纳与能力回注.md
+      - 第16章 实操五：综合证据评审与决策层汇报: textbook/第16章_实操五_综合证据评审与决策层汇报.md

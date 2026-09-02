@@ -1,0 +1,102 @@
+/* ============================================================
+   AI 时代的 FDE —— 站点配色定制
+   主色：靛蓝 indigo（企业级信任 / 前沿部署）
+   强调：琥珀金 amber（平台飞轮沉淀的金子 / "卖能力"）
+   ============================================================ */
+
+/* ---- 首页 Hero ---- */
+.md-header {
+  background: linear-gradient(135deg, #1a237e 0%, #283593 55%, #3949ab 100%);
+}
+[data-md-color-scheme="slate"] .md-header {
+  background: linear-gradient(135deg, #0d1440 0%, #1a237e 60%, #283593 100%);
+}
+
+/* ---- 篇标题视觉（正文里 # 篇标题）---- */
+h1 {
+  color: #1a237e;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+[data-md-color-scheme="slate"] h1 {
+  color: #9fa8da;
+}
+
+/* ---- 强调：琥珀金点缀（关键字/链接 hover/强调色块）---- */
+.md-typeset a {
+  color: #b28704;
+}
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #ffca28;
+}
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* ---- 表格：表头用靛蓝、hover 用琥珀浅底 ---- */
+.md-typeset table:not([class]) th {
+  background-color: #3949ab;
+  color: #fff;
+  font-weight: 600;
+}
+.md-typeset table:not([class]) tr:hover {
+  background-color: rgba(255, 179, 0, 0.08);
+}
+
+/* ---- Admonition / GitHub-style 引用块：细边框 + 靛蓝左缘 ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-width: 4px;
+  border-radius: 4px;
+}
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: #5c6bc0;
+}
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #ffb300;
+}
+.md-typeset .admonition.important,
+.md-typeset details.important {
+  border-color: #3949ab;
+}
+.md-typeset .admonition.warning,
+.md-typeset details.warning,
+.md-typeset .admonition.caution,
+.md-typeset details.caution {
+  border-color: #e65100;
+}
+
+/* ---- 代码块：深靛蓝底，琥珀高亮 ---- */
+.md-typeset pre > code {
+  background-color: #101f4d;
+  color: #e8eaf6;
+  border-radius: 4px;
+}
+.md-typeset .highlight code {
+  background-color: #101f4d;
+}
+.md-typeset code {
+  color: #b28704;
+}
+[data-md-color-scheme="slate"] .md-typeset code {
+  color: #ffca28;
+}
+
+/* ---- 导航：当前页用琥珀标记 ---- */
+.md-nav__item--active > .md-nav__link {
+  color: #b28704;
+  font-weight: 600;
+}
+[data-md-color-scheme="slate"] .md-nav__item--active > .md-nav__link {
+  color: #ffca28;
+}
+
+/* ---- 版权区 ---- */
+.md-footer-meta {
+  background-color: #1a237e;
+}
+[data-md-color-scheme="slate"] .md-footer-meta {
+  background-color: #0d1440;
+}

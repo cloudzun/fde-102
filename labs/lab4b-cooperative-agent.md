@@ -135,7 +135,7 @@ flowchart TB
 
 ### 0.2 软件与账号
 
-- [ ] Python 3.10+
+- [ ] Python 3.11+
 - [ ] opencode Desktop 或兼容 Coding Agent
 - [ ] gstack 已安装
 - [ ] DeepSeek 或其他 OpenAI 兼容生成模型 API 已配置
