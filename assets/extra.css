@@ -100,3 +100,35 @@ h1 {
 [data-md-color-scheme="slate"] .md-footer-meta {
   background-color: #0d1440;
 }
+
+/* ============================================================
+   mermaid 深底节点文字对比度修复
+   Material 主题注入 themeCSS：.label{color;fill:var(--md-mermaid-label-fg-color)}
+   （深色常量，且不带 !important）。在深色填充节点上，会把源码里"白字"盖成深字，导致深浅不分明/看不清。
+   这里用页面级 !important 规则，按节点填充色（深色者为白字、浅色者为深字），
+   强制 .label 及其 foreignObject 内文本的 color 与 fill，压过 Material 那条不带 !important 的规则。
+   ============================================================ */
+/* 深色填充 → 白字（覆盖色与填充两处，mermaid 可能用任意其一渲染 foreignObject 文本） */
+.md-typeset .node:has(rect[style*="fill:#3949ab"]),
+.md-typeset .node:has(rect[style*="fill:#1a237e"]),
+.md-typeset .node:has(rect[style*="fill:#2e6ba8"]),
+.md-typeset .node:has(rect[style*="fill:#7b5ea7"]),
+.md-typeset .node:has(rect[style*="fill:#907bb5"]),
+.md-typeset .node:has(rect[style*="fill:#e45756"]) {
+  color: #fff !important;
+}
+.md-typeset .node:has(rect[style*="fill:#3949ab"]) .label,
+.md-typeset .node:has(rect[style*="fill:#1a237e"]) .label,
+.md-typeset .node:has(rect[style*="fill:#2e6ba8"]) .label,
+.md-typeset .node:has(rect[style*="fill:#7b5ea7"]) .label,
+.md-typeset .node:has(rect[style*="fill:#907bb5"]) .label,
+.md-typeset .node:has(rect[style*="fill:#e45756"]) .label,
+.md-typeset .node:has(rect[style*="fill:#3949ab"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#1a237e"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#2e6ba8"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#7b5ea7"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#907bb5"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#e45756"]) .label * {
+  color: #fff !important;
+  fill: #fff !important;
+}
