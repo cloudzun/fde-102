@@ -64,6 +64,7 @@ extra_javascript:
   - assets/vendor/auto-render.min.js
   - javascripts/katex.js
   - assets/vendor/mermaid.min.js
+  - javascripts/mermaid-contrast.js
 
 extra_css:
   - assets/vendor/katex.min.css

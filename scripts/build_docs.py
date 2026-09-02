@@ -42,14 +42,17 @@ if os.path.isdir(tb_assets):
 # 2. 首页
 shutil.copy2(os.path.join(ROOT, "index.md"), os.path.join(DOCS, "index.md"))
 
-# 3. 静态资源（自定义样式 / KaTeX 初始化 / 本地 vendor 库）
-for src, rel in [
-    (os.path.join(ROOT, "assets", "extra.css"), "assets/extra.css"),
-    (os.path.join(ROOT, "javascripts", "katex.js"), "javascripts/katex.js"),
-]:
-    dst = os.path.join(DOCS, rel)
-    os.makedirs(os.path.dirname(dst), exist_ok=True)
-    shutil.copy2(src, dst)
+# 3. 静态资源（自定义样式 / JS 初始化脚本 / 本地 vendor 库）
+# 3.0 复制 assets/extra.css
+_extra = os.path.join(ROOT, "assets", "extra.css")
+if os.path.isfile(_extra):
+    shutil.copy2(_extra, os.path.join(DOCS, "assets", "extra.css"))
+# 3.1 复制 javascripts/ 下所有脚本（katex.js、mermaid-contrast.js 等）
+_jsdir = os.path.join(ROOT, "javascripts")
+if os.path.isdir(_jsdir):
+    for _f in os.listdir(_jsdir):
+        if _f.endswith(".js"):
+            shutil.copy2(os.path.join(_jsdir, _f), os.path.join(DOCS, "javascripts", _f))
 
 # 3.1 本地 vendor（katex / mermaid，避免 CDN 不可达）
 vendor = os.path.join(ROOT, "assets", "vendor")
