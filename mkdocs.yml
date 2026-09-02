@@ -51,6 +51,8 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.magiclink:
+      hide_protocol: false
   - pymdownx.arithmatex:
       generic: true
   - toc:
