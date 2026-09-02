@@ -1,0 +1,2958 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第9章 RAG 方法·答案可追溯 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-rag" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第9章 RAG 方法·答案可追溯
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#91-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 RAG 是什么：检索外部资料补足模型语料
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.1 RAG 是什么：检索外部资料补足模型语料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#911-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.1 RAG 是什么：给大模型补上"它不知道的信息"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#912" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.2 三步工作原理与组件总览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#913-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.3 RAG 解决的三个问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#914" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.4 选型边界：这层工具该用哪一种
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 RAG 核心链路：从文档到可溯源的答案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 文档解析：把"纸"变成可检索的文字
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3 文档解析：把&#34;纸&#34;变成可检索的文字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#931" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.1 为什么要专门做解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#932" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.2 解析器选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#933" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.3 中文扫描件的注意点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 分块：决定检索命中精度的粒度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.4 分块：决定检索命中精度的粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#941" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.1 分块要"自包含、不过大不过小"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#942" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.2 固定长度分块的参数起点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#943" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.3 两条调整方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#944" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.4 进阶分块：语义分块 / 父子文档 / 上下文检索
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 向量化（Embedding）：把文字变成可比较的向量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.5 向量化（Embedding）：把文字变成可比较的向量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#951-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.1 什么是 Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#952-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.2 中文 Embedding 选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#953-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.3 选 embedding 模型的落地判读
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#96" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 向量库：存"向量 + 原文"，支持相似度检索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.6 向量库：存&#34;向量 + 原文&#34;，支持相似度检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#961" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.1 向量库要存三样东西
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#962" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.2 向量库选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#963" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.3 "从最简单开始"的取舍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#97-top-k-hyde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 检索与召回增强：从 top-K 到混合检索、重排、HyDE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.7 检索与召回增强：从 top-K 到混合检索、重排、HyDE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#971-top-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.1 基础：top-K 向量检索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#972" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.2 三段递进增强
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#98" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8 生成 + 来源引用：把"答案可追溯"做成硬指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.8 生成 + 来源引用：把&#34;答案可追溯&#34;做成硬指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#981" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8.1 提示词如何组装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#982" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8.2 引用格式与"检索不到不能编"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#983" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8.3 更新即重建索引，而不是重新训练
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#99" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9 评估与生产化：双指标验收
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.9 评估与生产化：双指标验收">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#991-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.1 为什么 RAG 要专门评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#992-ragas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.2 RAGAS 指标：每个指标只回答自己的问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#993" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.3 本书的双指标验收口径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#994" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.4 生产化要点：建索引三问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#995" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.5 评估怎么落地：检索与生成分开评估 + 固定配置 + 库外问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#910-rag-2030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.10 最小 RAG 预实验：可选动手 20–30 分钟
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#91-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 RAG 是什么：检索外部资料补足模型语料
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.1 RAG 是什么：检索外部资料补足模型语料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#911-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.1 RAG 是什么：给大模型补上"它不知道的信息"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#912" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.2 三步工作原理与组件总览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#913-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.3 RAG 解决的三个问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#914" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.4 选型边界：这层工具该用哪一种
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 RAG 核心链路：从文档到可溯源的答案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 文档解析：把"纸"变成可检索的文字
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3 文档解析：把&#34;纸&#34;变成可检索的文字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#931" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.1 为什么要专门做解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#932" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.2 解析器选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#933" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.3 中文扫描件的注意点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 分块：决定检索命中精度的粒度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.4 分块：决定检索命中精度的粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#941" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.1 分块要"自包含、不过大不过小"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#942" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.2 固定长度分块的参数起点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#943" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.3 两条调整方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#944" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4.4 进阶分块：语义分块 / 父子文档 / 上下文检索
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 向量化（Embedding）：把文字变成可比较的向量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.5 向量化（Embedding）：把文字变成可比较的向量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#951-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.1 什么是 Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#952-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.2 中文 Embedding 选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#953-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5.3 选 embedding 模型的落地判读
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#96" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 向量库：存"向量 + 原文"，支持相似度检索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.6 向量库：存&#34;向量 + 原文&#34;，支持相似度检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#961" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.1 向量库要存三样东西
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#962" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.2 向量库选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#963" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6.3 "从最简单开始"的取舍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#97-top-k-hyde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 检索与召回增强：从 top-K 到混合检索、重排、HyDE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.7 检索与召回增强：从 top-K 到混合检索、重排、HyDE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#971-top-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.1 基础：top-K 向量检索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#972" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.2 三段递进增强
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#98" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8 生成 + 来源引用：把"答案可追溯"做成硬指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.8 生成 + 来源引用：把&#34;答案可追溯&#34;做成硬指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#981" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8.1 提示词如何组装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#982" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8.2 引用格式与"检索不到不能编"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#983" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8.3 更新即重建索引，而不是重新训练
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#99" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9 评估与生产化：双指标验收
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.9 评估与生产化：双指标验收">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#991-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.1 为什么 RAG 要专门评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#992-ragas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.2 RAGAS 指标：每个指标只回答自己的问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#993" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.3 本书的双指标验收口径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#994" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.4 生产化要点：建索引三问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#995" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.9.5 评估怎么落地：检索与生成分开评估 + 固定配置 + 库外问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#910-rag-2030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.10 最小 RAG 预实验：可选动手 20–30 分钟
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-rag">第 9 章  RAG 方法 · 答案可追溯<a class="headerlink" href="#9-rag" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 知识单元 · Delta 技术方法（对准实操三），把第 7 章 LLM 四层级金字塔的第 2 层（RAG）讲透，并落地本书四条红线里的"<strong>答案可追溯</strong>"。</p>
+<p><strong>本章产出：</strong> 你能说清 RAG 是什么（检索外部资料补足模型语料）、RAG 与超长上下文 / 微调等方案怎么选；画出 RAG 核心链路并说出每步的输入/输出/常见坑；判断一个知识问答场景该用 RAG / 超长上下文 / 微调 / 纯关键词 / 提示词；掌握解析、分块、向量化、向量库、检索增强的选型与参数判读；理解"答案准确率 + 来源可追溯率"双指标为何是<strong>政务问答类项目常见的验收准入门槛</strong>（教材经验口径，非普遍法定要求），并会用<strong>检索与生成分开评估 + 固定评估配置 + 库外问题</strong>落地验收；完成 20–30 分钟<strong>最小 RAG 预实验</strong>。</p>
+<p><strong>建议读者：</strong> Delta（施工主力必读，直接用于实操三）与 Echo（选型判断需双角色共识）均适用。</p>
+<p><strong>前置：</strong> 第 7 章（四层级金字塔 7.2）、第 8 章（一次 LLM 调用 = 分类器）。</p>
+<p><strong>适配说明：</strong> 技术选型与数据信息截至 <strong>2026 年 8 月</strong>；技术栈迭代快，落地前按各家官方最新文档与定价页复核。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>说清 RAG 的核心思想（检索外部信息补足模型语料）；</li>
+<li>画出 RAG 核心链路（解析→分块→向量化→向量库→检索→生成 + 来源引用），说出每步输入、输出与常见坑；</li>
+<li>判断一个场景该用 RAG / 超长上下文 / 微调 / 纯关键词 / 提示词（对照第 7 章"从最简单开始"）；</li>
+<li>对文档解析、分块、Embedding、向量库、检索增强做除选型与参数判读；</li>
+<li>理解并会用"答案准确率 + 来源可追溯率"双指标验收 RAG 系统，并落地<strong>检索与生成分开评估、固定评估配置、外部给定库外问题</strong>；</li>
+<li>完成 20–30 分钟最小 RAG 预实验（9.10），把链路每一步亲手走一遍。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 7 章（四层级金字塔：RAG 在分类之上、微调之下，见图 7-2）、第 8 章（一次 LLM 调用能做什么）、第 5 章（能力金字塔与选型）。</li>
+<li><strong>章节地图：</strong> 第 8 章分类器是"一次 LLM 调用"，只是识别"属于哪类"；从本章起的 RAG 是"<strong>检索 + 生成</strong>"——先找到相关政策片段，再基于片段作答并标注来源。这是坡度的明显升级，也正好落在四层级金字塔第 2 层。</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    ch7["第 7 章 工具底座&lt;br/&gt;四层级金字塔 · 技术选型"]
+    ch8["第 8 章 实操二·分类器&lt;br/&gt;一次 LLM 调用 · 属于哪类"]
+    ch9["第 9 章 RAG 方法&lt;br/&gt;检索 + 生成 · 答案可追溯"]
+    ch10["第 10 章 实操三·政策 RAG&lt;br/&gt;当场把本章做出来"]
+    ch7 --&gt; ch8
+    ch7 --&gt; ch9
+    ch9 --&gt; ch10
+    style ch7 fill:#f5ece0,stroke:#a8895f
+    style ch8 fill:#dbe4f0,stroke:#3949ab
+    style ch9 fill:#3949ab,color:#fff,stroke:#1a237e
+    style ch10 fill:#dbe4f0,stroke:#3949ab</code></pre>
+<em>图 9-1：本章位置——RAG 是第 8 章"一次调用"到第 10 章"政策问答"之间的方法底座</em></p>
+<hr />
+<h2 id="91-rag">9.1 RAG 是什么：检索外部资料补足模型语料<a class="headerlink" href="#91-rag" title="Permanent link">&para;</a></h2>
+<h3 id="911-rag">9.1.1 RAG 是什么：给大模型补上"它不知道的信息"<a class="headerlink" href="#911-rag" title="Permanent link">&para;</a></h3>
+<p>大语言模型的知识来自训练语料——<strong>训练时没见过的信息，模型就"不知道"</strong>：要么答不出，要么凭印象编。RAG（Retrieval-Augmented Generation，检索增强生成）的思路是：<strong>不改变模型本身，在回答前先从外部资料库检索相关信息，让模型"看着资料作答"</strong>。</p>
+<p><strong>RAG 与微调是解决同一类问题（模型语料不全）的两条互补路径：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RAG（检索增强）</th>
+<th>微调（参数内化）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>怎么补信息</td>
+<td>回答时临时检索外部资料，拼进提示词</td>
+<td>把信息"学进"模型参数，之后凭参数作答</td>
+</tr>
+<tr>
+<td>适合</td>
+<td>资料常更新、答案需溯源（政策 / 法规 / 手册）</td>
+<td>行为 / 风格要固化、资料相对稳定</td>
+</tr>
+<tr>
+<td>更新方式</td>
+<td>重建索引，不动模型</td>
+<td>重新训练 / 微调</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>低（无需训练）</td>
+<td>高（要数据 + 算力，见第 13 章）</td>
+</tr>
+</tbody>
+</table>
+<p><pre class="mermaid"><code>flowchart TB
+    q["模型不知道的信息&lt;br/&gt;训练语料没覆盖 · 或已过时"]
+    rag["RAG · 开卷式&lt;br/&gt;回答时临时检索外部资料&lt;br/&gt;拼进提示词 · 答案带出处"]
+    ft["微调 · 背书式&lt;br/&gt;把信息学进模型参数&lt;br/&gt;之后凭参数作答"]
+    rag_ans["适用：资料常更新 · 需溯源&lt;br/&gt;更新 = 重建索引"]
+    ft_ans["适用：行为 / 风格要固化&lt;br/&gt;更新 = 重新训练（第 13 章）"]
+    q --&gt; rag
+    q --&gt; ft
+    rag --&gt; rag_ans
+    ft --&gt; ft_ans
+    style rag fill:#dbe4f0,stroke:#3949ab
+    style ft fill:#f5ece0,stroke:#a8895f</code></pre>
+<em>图 9-2：RAG 与微调是两条互补路径——开卷式检索 vs 背书式内化，各有所长（微调见第 13 章）</em></p>
+<blockquote>
+<p><strong>打个比方（帮助记忆，不是严格定义）：</strong> 可以想成"考试时翻开书找答案，而不是把书背进脑子"——开卷（RAG）适合资料总在变、要能指出依据的场景；背书（微调）适合要把能力"长在身上"的场景。<strong>两种方式没有优劣，只有适用场景不同</strong>（微调见第 13 章）。</p>
+</blockquote>
+<h3 id="912">9.1.2 三步工作原理与组件总览<a class="headerlink" href="#912" title="Permanent link">&para;</a></h3>
+<p>RAG 的工作落成三个动作的流水线——<strong>检索（Retrieval）→ 增强（Augmentation）→ 生成（Generation）</strong>：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    q["用户提问"]
+    ret["1 检索 Retrieval&lt;br/&gt;从知识库找出最相关片段"]
+    aug["2 增强 Augmentation&lt;br/&gt;片段 + 问题 → 组装提示词"]
+    gen["3 生成 Generation&lt;br/&gt;LLM 基于片段作答 · 标注出处"]
+    ans["可溯源答案"]
+    q --&gt; ret --&gt; aug --&gt; gen --&gt; ans
+    style ret fill:#dbe4f0,stroke:#3949ab
+    style aug fill:#f5ece0,stroke:#a8895f
+    style gen fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 9-3：RAG 的三步工作原理——检索 → 增强 → 生成</em></p>
+<ul>
+<li><strong>1 检索</strong>：把问题变成查询，去索引库找最相关的 K 个片段；</li>
+<li><strong>2 增强</strong>：把检索到的片段与原始问题拼成一段"带参考资料的提示词"；</li>
+<li><strong>3 生成</strong>：LLM 只基于片段作答并标注出处。</li>
+</ul>
+<p><strong>组件 → 本章地图：</strong> 一个完整 RAG 系统的四个组件阶段，正好对应 9.2–9.9 的展开顺序——<strong>先看总览，后面每一节都是其中一块</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>组件阶段</th>
+<th>干什么</th>
+<th>本章展开</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据准备与索引</strong>（离线一次）</td>
+<td>解析 → 分块 → 向量化 → 存向量库</td>
+<td>9.3 解析 · 9.4 分块 · 9.5 向量化 · 9.6 向量库</td>
+</tr>
+<tr>
+<td><strong>查询与检索</strong>（在线多次）</td>
+<td>问题向量化 → top-K 相似搜索 →（可选）混合检索 / 重排 / 改写</td>
+<td>9.7 检索与召回增强</td>
+</tr>
+<tr>
+<td><strong>增强与生成</strong></td>
+<td>片段 + 问题组装提示词 → LLM 生成 + 来源引用</td>
+<td>9.8 生成与来源引用</td>
+</tr>
+<tr>
+<td><strong>评估与监控</strong></td>
+<td>双指标验收、建索引三问、落地评估</td>
+<td>9.9 评估与生产化</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>典型场景</strong>：企业知识库问答、智能客服、政策 / 法规问答（政务）、文献综述与代码生成——"某个场景该不该用 RAG、还是超长上下文 / 微调 / 纯关键词"，判断方法见下文选型边界。</p>
+</blockquote>
+<h3 id="913-rag">9.1.3 RAG 解决的三个问题<a class="headerlink" href="#913-rag" title="Permanent link">&para;</a></h3>
+<p>RAG 同时解决三类问题：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题</th>
+<th style="text-align: left;">现象</th>
+<th style="text-align: left;">RAG 的解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>记忆漂移</strong></td>
+<td style="text-align: left;">政策一更新，模型凭旧记忆答错</td>
+<td style="text-align: left;">答案来自最新索引库的数据，更新内容只需重建索引，不用重新训练</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>成本</strong></td>
+<td style="text-align: left;">每次把整本手册塞进上下文，token 贵且响应慢</td>
+<td style="text-align: left;">只检索出与问题最相关的一小段放进提示词，成本与延迟可控</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>可追溯</strong></td>
+<td style="text-align: left;">答非所问或答错时，没人知道依据是什么</td>
+<td style="text-align: left;">答案强制带出处（文号 + 条款号），可核对、可免责</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>"答案可追溯"是政务 AI 的准入门槛。</strong> 市民问政策，AI 答错了，坐席和平台要负责。如果答案能做到"某政策 第X条"，市民可核对，坐席也能说"这是按文件规定来的"。来源引用不是锦上添花，而是政务 AI 上线的硬门槛。（呼应第 6 章李工"免得坐席背锅"。）</p>
+</div>
+<h3 id="914">9.1.4 选型边界：这层工具该用哪一种<a class="headerlink" href="#914" title="Permanent link">&para;</a></h3>
+<p>一个知识问答场景该用哪一层技术，对照第 7 章四层级金字塔"从最简单开始"来选：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方案</th>
+<th style="text-align: left;">核心机制</th>
+<th style="text-align: left;">何时适用</th>
+<th style="text-align: left;">政策问答为何这样选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RAG</strong></td>
+<td style="text-align: left;">检索相关片段 → 基于片段生成 + 引用</td>
+<td style="text-align: left;">文档常更新、答案需溯源</td>
+<td style="text-align: left;">✅ 政策常更新，RAG 只需重建索引；答案天生带引用</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>超长上下文</strong></td>
+<td style="text-align: left;">一次塞入全文，靠模型阅读</td>
+<td style="text-align: left;">单份长文档、要全局理解且不需逐条溯源</td>
+<td style="text-align: left;">❌ 每次带全文成本高、溯源弱、长文易失焦</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>微调</strong></td>
+<td style="text-align: left;">让模型"学会"固定领域知识</td>
+<td style="text-align: left;">模型需内化领域风格、且具备标注数据与算力</td>
+<td style="text-align: left;">❌ 政策一更新就要重训；答案仍无法溯源；易幻觉</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>纯关键词搜索</strong></td>
+<td style="text-align: left;">问句里的字面词去匹配文档</td>
+<td style="text-align: left;">查编号、查专有名词这种精确匹配</td>
+<td style="text-align: left;">❌ "外地户口能交社保吗"与"灵活就业人员参保条件"有语义鸿沟，字面匹配不上</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>提示词 / 一次调用</strong></td>
+<td style="text-align: left;">直接用模型现有能力</td>
+<td style="text-align: left;">只是判断类别、简答、摘要</td>
+<td style="text-align: left;">❌ 政策问答要输出"一段话 + 来源"，不是一句话分类</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>选型判读记一句话：</strong> 文档<strong>常更新 + 答案要溯源</strong> → 用 RAG；<strong>固定领域 + 有数据算力</strong> → 才考虑微调；<strong>精确词匹配</strong> → 关键词；<strong>单纯分类</strong> → 一次调用。先从最简单、最够用的那层起步（呼应 7.2"从最简单开始"）。</p>
+</div>
+<hr />
+<h2 id="92-rag">9.2 RAG 核心链路：从文档到可溯源的答案<a class="headerlink" href="#92-rag" title="Permanent link">&para;</a></h2>
+<p>一条完整的 RAG 链路分为<strong>离线建库</strong>与<strong>在线问答</strong>两段。</p>
+<ul>
+<li><strong>离线建库（做一次）</strong>：解析文档 → 分块 → 向量化 → 存入向量库。政策更新时，只需对更新部分重跑这一段（重建索引）。</li>
+<li><strong>在线问答（做多次）</strong>：问题向量化 → 检索最相关片段 → 组装提示词 → 模型生成答案并标注来源。</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    A1["政策文档"]
+    A2["1. 读取 / 解析&lt;br/&gt;（PDF / Word / 扫描件）"]
+    A3["2. 分块（chunk）"]
+    A4["3. 向量化（embedding）"]
+    A5["4. 存入向量库&lt;br/&gt;（向量 + 原文 + 来源）"]
+    DIV["—— 离线建库：做一次 ——"]
+    B1["用户提问"]
+    B2["5. 问题向量化"]
+    B3["6. 检索 top-K 最相关片段"]
+    B4["7. 生成答案 + 标注来源"]
+    A1 --&gt; A2 --&gt; A3 --&gt; A4 --&gt; A5 --&gt; DIV
+    B1 --&gt; B2 --&gt; B3 --&gt; B4
+    A5 -.-&gt; B3
+    style DIV fill:#f5ece0,stroke:#a8895f</code></pre>
+<em>图 9-4：RAG 核心链路——上半段离线建索引一次，下半段在线问答多次，虚线示离线库为线上检索提供底库</em></p>
+<p>链路每一步各有明确的输入、输出与常见坑（见下表），后面 9.3–9.9 逐段展开。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">步骤</th>
+<th style="text-align: left;">输入</th>
+<th style="text-align: left;">输出</th>
+<th style="text-align: left;">一句话作用</th>
+<th style="text-align: left;">常见坑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. 解析</td>
+<td style="text-align: left;">政策文档（PDF/Word/扫描件）</td>
+<td style="text-align: left;">可检索的纯文本 / 结构化内容</td>
+<td style="text-align: left;">把"纸"变成文字</td>
+<td style="text-align: left;">扫描件不出字、表格被切乱</td>
+</tr>
+<tr>
+<td style="text-align: left;">2. 分块</td>
+<td style="text-align: left;">长文本</td>
+<td style="text-align: left;">若干语义片段（chunk）</td>
+<td style="text-align: left;">决定"一个答案对应哪几段"</td>
+<td style="text-align: left;">块太小截断信息、太大检索不准</td>
+</tr>
+<tr>
+<td style="text-align: left;">3. 向量化</td>
+<td style="text-align: left;">片段文字</td>
+<td style="text-align: left;">片段向量</td>
+<td style="text-align: left;">让语义相近的文字在数字空间"靠近"</td>
+<td style="text-align: left;">中文用错 embedding 模型，语义鸿沟大</td>
+</tr>
+<tr>
+<td style="text-align: left;">4. 存库</td>
+<td style="text-align: left;">片段向量 + 原文 + 来源</td>
+<td style="text-align: left;">可检索向量库</td>
+<td style="text-align: left;">同时存"向量 + 原文"，溯源靠原文</td>
+<td style="text-align: left;">只存向量丢原文，来源就没了</td>
+</tr>
+<tr>
+<td style="text-align: left;">5. 问题向量化</td>
+<td style="text-align: left;">用户问题</td>
+<td style="text-align: left;">问题向量</td>
+<td style="text-align: left;">把问题放到与片段同维空间</td>
+<td style="text-align: left;">分词/语义与库不一致</td>
+</tr>
+<tr>
+<td style="text-align: left;">6. 检索</td>
+<td style="text-align: left;">问题向量</td>
+<td style="text-align: left;">top-K 最相关片段</td>
+<td style="text-align: left;">找出支撑答案的依据</td>
+<td style="text-align: left;">K 太小漏、K 太大噪</td>
+</tr>
+<tr>
+<td style="text-align: left;">7. 生成 + 引用</td>
+<td style="text-align: left;">系统提示 + 片段 + 问题</td>
+<td style="text-align: left;">答案 + 出处</td>
+<td style="text-align: left;">限定只用片段应答、并标来源</td>
+<td style="text-align: left;">模型越出片段自由发挥 = 幻觉</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>全章纪律：检索不到不能编。</strong> 如果检索到的片段不足以支撑答案，模型应明确说"未检索到、无法回答"，而不是凭空编一段。这条纪律会写进第 10 章实操三的 SPEC 与 DoD（呼应 7.4 gstack 的测试外部给定纪律），并在 9.9.5 里用<strong>外部给定的库外问题</strong>来验收。</p>
+</div>
+<hr />
+<h2 id="93">9.3 文档解析：把"纸"变成可检索的文字<a class="headerlink" href="#93" title="Permanent link">&para;</a></h2>
+<h3 id="931">9.3.1 为什么要专门做解析<a class="headerlink" href="#931" title="Permanent link">&para;</a></h3>
+<p>很多"文档"并非纯文本：PDF 有版式、有分段页眉页脚，Word 里有表格，纸质文件要 OCR（OCR, Optical Character Recognition，光学字符识别）转文字。直接硬切原文会得到"夹着版面噪声、表格错乱"的碎片，检索和问答都会受影响。所以 RAG 第一步是<strong>把各种格式归一到结构化、可检索的文字</strong>。</p>
+<h3 id="932">9.3.2 解析器选型<a class="headerlink" href="#932" title="Permanent link">&para;</a></h3>
+<p>截至 2026 年 8 月，主流开源/托管解析器如下（版本以官方发布为准）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">解析器</th>
+<th style="text-align: left;">定位</th>
+<th style="text-align: left;">版本 / 许可</th>
+<th style="text-align: left;">何时用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Docling</strong>（IBM）</td>
+<td style="text-align: left;">开源文档转换库，统一转为结构化文档（含布局 / 表格 / 阅读顺序，可导出 Markdown / JSON）</td>
+<td style="text-align: left;">现行主线 · MIT 许可（截至 2026-08，以官方仓库为准）</td>
+<td style="text-align: left;">混合格式、含表格与复杂版式的常用首选</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LlamaParse</strong>（LlamaIndex）</td>
+<td style="text-align: left;">托管式解析云服务（PDF/PPT/扫描件），面向索引即用</td>
+<td style="text-align: left;">闭源 API</td>
+<td style="text-align: left;">不想自建解析、接受托管时</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Unstructured</strong></td>
+<td style="text-align: left;">开源 + 托管，按元素（标题/段落/表格）切分，与 LangChain 生态耦合深</td>
+<td style="text-align: left;">Apache-2.0</td>
+<td style="text-align: left;">已在 LangChain 生态、要代码级控制分界时</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PyMuPDF</strong></td>
+<td style="text-align: left;">轻量底层 PDF 文字提取，无版面理解，速度快</td>
+<td style="text-align: left;">开源 + 商业双许可</td>
+<td style="text-align: left;">纯文本 PDF、作兜底预处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="933">9.3.3 中文扫描件的注意点<a class="headerlink" href="#933" title="Permanent link">&para;</a></h3>
+<p>纸质文件必须先 OCR。Docling 内置多套 OCR 引擎（如 Tesseract、EasyOCR），<strong>中文效果取决于所选引擎对中文的支持</strong>。落地前务必<strong>用自己那批扫描件实测</strong>，而不是只看宣传。混合格式场景常见做法：规范电子件用 Docling 直接解析，扫描件走 OCR 后再归一化。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>解析判读：</strong> 西岭场景是"5 份混合格式政策文档"（md / pdf / docx，含杂乱格式），这正好考验解析与分块（对应第 10 章）。归纳起来：<strong>混合格式+表格复杂 → Docling；扫图居多 → 先 OCR 实测；纯文本 → 轻量打底。</strong></p>
+</div>
+<hr />
+<h2 id="94">9.4 分块：决定检索命中精度的粒度<a class="headerlink" href="#94" title="Permanent link">&para;</a></h2>
+<h3 id="941">9.4.1 分块要"自包含、不过大不过小"<a class="headerlink" href="#941" title="Permanent link">&para;</a></h3>
+<p>分块（chunking）是把长文档切成语义完整的小段。切得好不好，直接影响"检索能否命中、命中后能否答全"：</p>
+<ul>
+<li><strong>块太小</strong>：关键信息被切断——检索到了，但片段不含完整答案；</li>
+<li><strong>块太大</strong>：一段里塞了太多无关内容——检索不精准，模型也容易跑偏。</li>
+</ul>
+<h3 id="942">9.4.2 固定长度分块的参数起点<a class="headerlink" href="#942" title="Permanent link">&para;</a></h3>
+<p>最常用的基线方案是固定长度 + 重叠：</p>
+<ul>
+<li><strong>chunk_size（块长）</strong>：常见起点 <strong>256–1024 token</strong>；中文场景实践经验常用 <strong>512–1024</strong>。</li>
+<li><strong>overlap（重叠）</strong>：相邻块之间重叠 <strong>10%–20%</strong>，避免语义正好被切断在边界上。</li>
+</ul>
+<blockquote>
+<p>这些是经验起点值，不是万能最优。最优值因语料与检索器而异，落地时在第 10 章用"建索引抽查"验证调参。</p>
+</blockquote>
+<h3 id="943">9.4.3 两条调整方向<a class="headerlink" href="#943" title="Permanent link">&para;</a></h3>
+<p>拿到实测结果后再微调：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">症状</th>
+<th style="text-align: left;">判定</th>
+<th style="text-align: left;">调整方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">检索命中但<strong>回答不完整</strong></td>
+<td style="text-align: left;">块太小，切断了完整答案</td>
+<td style="text-align: left;">增大 chunk_size / overlap</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>检索不精准</strong>、常带无关内容</td>
+<td style="text-align: left;">块太大，噪声多</td>
+<td style="text-align: left;">缩小 chunk_size</td>
+</tr>
+</tbody>
+</table>
+<h3 id="944">9.4.4 进阶分块：语义分块 / 父子文档 / 上下文检索<a class="headerlink" href="#944" title="Permanent link">&para;</a></h3>
+<p>当固定长度不够用时，可以按需升级（从简单到进阶）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">策略</th>
+<th style="text-align: left;">解决什么问题</th>
+<th style="text-align: left;">关键做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>语义分块</strong></td>
+<td style="text-align: left;">按主题/段落语义边界切，减少"一句话被拦腰斩断"</td>
+<td style="text-align: left;">依标题、主题、段落划分而非固定 token 数</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>父子文档</strong></td>
+<td style="text-align: left;">小片嵌入提高召回精度，命中后再取父级大块供模型读</td>
+<td style="text-align: left;">小片用来检索，命中后回取其所属大块给模型</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>上下文检索（Contextual Retrieval）</strong></td>
+<td style="text-align: left;">chunk 脱离文档语境导致召回失败，先给它补一段"在文档中的位置/主题"</td>
+<td style="text-align: left;">嵌入前用一个小模型为每块补写上下文（有成本），Anthropic 官方基准显示检索失败率显著下降</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>说明：</strong> 上下文检索的数据由厂商官方发布于 2024-09，年限较早，具体数字落地前以其官方工程博客最新版本为准（<a href="https://www.anthropic.com/engineering">https://www.anthropic.com/engineering</a>）。</p>
+</blockquote>
+<hr />
+<h2 id="95-embedding">9.5 向量化（Embedding）：把文字变成可比较的向量<a class="headerlink" href="#95-embedding" title="Permanent link">&para;</a></h2>
+<h3 id="951-embedding">9.5.1 什么是 Embedding<a class="headerlink" href="#951-embedding" title="Permanent link">&para;</a></h3>
+<p>Embedding（嵌入）把一段文字映射成一个高维数字向量，并保证<strong>语义相近的文字在向量空间里距离更近</strong>。有了它，"比较两段文字像不像"就变成"比较两个向量的相似度"（常用余弦相似度）。</p>
+<p>这一机制正是解决"语义鸿沟"的关键：<strong>"外地户口能交社保吗"与"灵活就业人员参保条件"字面上几乎不重合，但因为语义接近，向量距离很近，能被适配的 embedding 模型抓出来</strong>——而纯关键词搜索在这里就失效了（对照 9.1.4 的选型边界）。</p>
+<h3 id="952-embedding">9.5.2 中文 Embedding 选型<a class="headerlink" href="#952-embedding" title="Permanent link">&para;</a></h3>
+<p>中文场景截至 2026 年 8 月的两个主流选择：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;"><strong>BGE-M3</strong>（BAAI）</th>
+<th style="text-align: left;"><strong>Qwen3-Embedding</strong>（阿里）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">向量维度</td>
+<td style="text-align: left;">1024 维</td>
+<td style="text-align: left;">0.6B → 1024 维；4B → 2560 维；8B → 4096 维</td>
+</tr>
+<tr>
+<td style="text-align: left;">最大输入长度</td>
+<td style="text-align: left;">8192 token</td>
+<td style="text-align: left;">32k token</td>
+</tr>
+<tr>
+<td style="text-align: left;">能力</td>
+<td style="text-align: left;">同时输出稠密 + 稀疏 + 多向量三重表示，支持"同索引三路检索"</td>
+<td style="text-align: left;">支持 Matryoshka 维度压缩；4B/8B 支持稠密 + 稀疏双输出</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署</td>
+<td style="text-align: left;">MIT 许可，可本地自部署（满足"数据不出域"）</td>
+<td style="text-align: left;">开源权重，可本地或走托管</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>注意：</strong> 以上为截至 2026-08 的官方口径，Embedding 系列仍在迭代（官方博客显示含多模态新方向），落地前以各家官方仓库/博客最新版本为准。
+<strong>托管选择：</strong> 不想自建的，走国内托管（如硅基流动 SiliconFlow 提供 BGE / Qwen3-Embedding / Reranker API）；<strong>具体单价随定价页实时变动，落地前查官方定价页</strong>。</p>
+</blockquote>
+<h3 id="953-embedding">9.5.3 选 embedding 模型的落地判读<a class="headerlink" href="#953-embedding" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>要"数据不出域"</strong> → 选可本地部署的中文模型（如 BGE-M3，MIT 可自建），对应第 13 章 13.2 的私有化底座；</li>
+<li><strong>要语义靠近</strong>（问答、长文档）→ 选强语义的 embedding，而不是简单的词向量；</li>
+<li><strong>要精确词命中</strong>（编号、专名）→ embedding 只做语义召回，精确匹配交给 mixed retrieval 里的关键词通道（见 9.7）。</li>
+</ul>
+<hr />
+<h2 id="96">9.6 向量库：存"向量 + 原文"，支持相似度检索<a class="headerlink" href="#96" title="Permanent link">&para;</a></h2>
+<h3 id="961">9.6.1 向量库要存三样东西<a class="headerlink" href="#961" title="Permanent link">&para;</a></h3>
+<p>向量库不只是存"向量"。一次检索命中后，模型要读的是<strong>可读的原文片段</strong>，而不是一串数字；来源追溯也要回取原文。所以每个条目至少存：</p>
+<ul>
+<li><strong>向量</strong>：用于相似度检索；</li>
+<li><strong>原文片段</strong>：命中后给模型读、给答案做依据；</li>
+<li><strong>来源元数据</strong>：文号、条款号、页号、文档名——溯源全靠它。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>只存向量、丢原文，溯源就断了。</strong> 从 9.1.3 的三大问题看，向量解决"找得准"，原文与来源解决"答得可追溯"。二者缺一不可。</p>
+</div>
+<h3 id="962">9.6.2 向量库选型<a class="headerlink" href="#962" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;"><strong>Chroma</strong></th>
+<th style="text-align: left;"><strong>Milvus</strong></th>
+<th style="text-align: left;"><strong>pgvector</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">定位</td>
+<td style="text-align: left;">嵌入式向量库，Python 原生，本地文件持久化</td>
+<td style="text-align: left;">分布式、云原生独立向量数据库</td>
+<td style="text-align: left;">PostgreSQL 扩展</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署</td>
+<td style="text-align: left;">进程内 / 轻量服务，开箱即用</td>
+<td style="text-align: left;">单机 Docker 或集群（K8s）</td>
+<td style="text-align: left;">随 Postgres 部署（含云 RDS）</td>
+</tr>
+<tr>
+<td style="text-align: left;">适用规模</td>
+<td style="text-align: left;">PoC / 中小规模（万级–百万级内）</td>
+<td style="text-align: left;">生产、大规模（亿级向量为常见基准对象）</td>
+<td style="text-align: left;">百万级内、数据本就在 Postgres</td>
+</tr>
+<tr>
+<td style="text-align: left;">混合检索</td>
+<td style="text-align: left;">以稠密为主</td>
+<td style="text-align: left;">原生支持稠密 + 稀疏 + 混合检索</td>
+<td style="text-align: left;">稠密向量 + SQL/全文可拼混合</td>
+</tr>
+<tr>
+<td style="text-align: left;">何时用</td>
+<td style="text-align: left;"><strong>PoC 首选</strong>，上手成本最低</td>
+<td style="text-align: left;">生产、规模上量后</td>
+<td style="text-align: left;">不想引入新组件、数据已在 Postgres</td>
+</tr>
+</tbody>
+</table>
+<h3 id="963">9.6.3 "从最简单开始"的取舍<a class="headerlink" href="#963" title="Permanent link">&para;</a></h3>
+<p>PoC 与原型阶段（第 10 章就是）用 <strong>Chroma</strong> 开箱即用即可；等数据规模、并发、混合检索要求上来，再迁 <strong>Milvus</strong> 或 pgvector。不要一上来就搭分布式（呼应 7.2"从最简单开始"）。</p>
+<hr />
+<h2 id="97-top-k-hyde">9.7 检索与召回增强：从 top-K 到混合检索、重排、HyDE<a class="headerlink" href="#97-top-k-hyde" title="Permanent link">&para;</a></h2>
+<h3 id="971-top-k">9.7.1 基础：top-K 向量检索<a class="headerlink" href="#971-top-k" title="Permanent link">&para;</a></h3>
+<p>在线问答时，把问题向量化后在向量库中取相似度最高的 <strong>top-K</strong> 个片段。K 的取值有两难的均衡：<strong>K 太小漏掉相关片段，K 太大混入噪声</strong>，需按场景权衡（通常从几到十几起步）。</p>
+<h3 id="972">9.7.2 三段递进增强<a class="headerlink" href="#972" title="Permanent link">&para;</a></h3>
+<p>基础检索不理想时，按"先解决漏、再解决排序、再解决表达不对齐"的顺序逐段加，每一步都有明确触发条件与成本，<strong>不是默认全上</strong>：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    base["基础：纯向量检索（top-K）&lt;br/&gt;语义相似的基线"]
+    mix["→ 混合检索&lt;br/&gt;稠密向量 + 关键词（BM25·中文配 jieba）"]
+    rr["→ 重排（rerank）&lt;br/&gt;用 cross-encoder 精排 top-K"]
+    hyde["→ HyDE / 查询改写&lt;br/&gt;先造假设答案再检索 / 改写多角度查询"]
+    base --&gt; mix --&gt; rr --&gt; hyde
+    style base fill:#e4efe4,stroke:#5b7a5b
+    style mix fill:#dbe4f0,stroke:#3949ab
+    style rr fill:#f5ece0,stroke:#a8895f
+    style hyde fill:#fdecea,stroke:#a34a3a</code></pre>
+<em>图 9-5：检索增强三段递进——先治"召回漏"，再治"排序差"，最后治"查询与文档措辞不对齐"</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">阶段</th>
+<th style="text-align: left;">解决什么问题</th>
+<th style="text-align: left;">何时值得上</th>
+<th style="text-align: left;">成本 / 注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">基础向量检索</td>
+<td style="text-align: left;">语义相似召回</td>
+<td style="text-align: left;">语料规整、查询与文档用词接近</td>
+<td style="text-align: left;">基线方案，先做它</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>混合检索</strong></td>
+<td style="text-align: left;">"召回漏"——dense 漏掉的精确词（编号、专名）由 BM25 兜住</td>
+<td style="text-align: left;">语料含编号、产品名、中文专名时显著提升</td>
+<td style="text-align: left;">融合常用 RRF；中文配 jieba 分词 BM25</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>重排（rerank）</strong></td>
+<td style="text-align: left;">"排序差"——向量粗召回后再精排</td>
+<td style="text-align: left;">已做混合召回、对首屏精度敏感时</td>
+<td style="text-align: left;">对 top-K 逐对推理，延迟/成本可控；中文可用 BGE Reranker / Qwen3-Reranker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>HyDE / 查询改写</strong></td>
+<td style="text-align: left;">"查询与文档措辞不对齐"——查询过短或口语化</td>
+<td style="text-align: left;">检索为空或召回极差、查询是问句口语时</td>
+<td style="text-align: left;">HyDE 先生成"假设答案文档"再 embedding 检索；改写可多角度扩展子查询再融合</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>从最简单开始（呼应 7.2）：</strong> 先用基础 top-K 验证；明确漏了精确词再加混合检索；首屏精度不够再加重排；查询表达确实对不上，才考虑 HyDE/改写。每一层都先确认"问题确实存在"，再决定是否加。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>中文混合检索必须显式配置 jieba 分词——这是"能不能跑通"的硬细节。</strong> BM25 是"按词统计词频"的关键词检索，对中文若不先加载 jieba 分词器（如在 <code>bm25s</code>/<code>rank_bm25</code> 构建索引前用 <code>jieba.analyse</code> 分词），一整句话会被当成一个"词"，导致精确词命中失效、混合检索退化为近似纯向量。落地时务必在<strong>建立关键词索引之前</strong>显式配置 jieba，并用带编号/专名的测试数据抽检命中效果。</p>
+</div>
+<hr />
+<h2 id="98">9.8 生成 + 来源引用：把"答案可追溯"做成硬指标<a class="headerlink" href="#98" title="Permanent link">&para;</a></h2>
+<h3 id="981">9.8.1 提示词如何组装<a class="headerlink" href="#981" title="Permanent link">&para;</a></h3>
+<p>检索到片段后，提示词由三部分拼成：<strong>系统提示限定"只用所给片段作答，不要凭记忆补充" + 检索到的片段 + 用户问题</strong>。这一步要让模型"只做转述与组织，不做自由发挥"。组装后的形态大致是：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>【系统提示】你是政务政策问答助手。只能基于"参考资料"作答，不得凭记忆补充；
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>资料不足时回答"未检索到、无法回答"；回答末尾标注引用（文件名 + 文号 + 条款）。
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>【参考资料】
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>1. 片段 1（来自检索，按相关性排序，建议 3–8 段）
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>2. 片段 2
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>【用户问题】……
+</code></pre></div>
+<p><pre class="mermaid"><code>flowchart LR
+    sys["系统提示&lt;br/&gt;只用所给片段作答"]
+    ctx["检索到的相关片段"]
+    q["用户问题"]
+    out["模型输出&lt;br/&gt;答案 + 引用（文号 · 条款）"]
+    sys --&gt; out
+    ctx --&gt; out
+    q --&gt; out
+    style out fill:#3949ab,color:#fff,stroke:#1a237e</code></pre>
+<em>图 9-6：生成阶段提示词组装——模型输入被限定为"系统约束 + 片段 + 问题"，输出带出处</em></p>
+<p><strong>两条组装纪律：</strong>
+- <strong>只给检索片段，不给全文</strong>：把整本手册塞进去，等于退回"超长上下文"的教训（9.1.4 选型表），成本高、模型易失焦；
+- <strong>片段按相关性排序、控制数量</strong>：top-K 的 K 就是片段数，政务问答建议 3–8 段；片段去重后按相关性从高到低排，模型优先引用靠前的。</p>
+<blockquote>
+<p><strong>常见坑：</strong> 片段塞得太满反而稀释关键信息；系统提示没写死"只用片段作答、不得凭记忆补充"，模型会回归"凭记忆编"——引用就不可信了。</p>
+</blockquote>
+<h3 id="982">9.8.2 引用格式与"检索不到不能编"<a class="headerlink" href="#982" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>引用格式（规范写法）</strong>：答案要能对上"哪份文件、哪条"，标准写法是"依据《XX 办法》（文号）第 X 条"；多个来源并列时写成"依据《A》第 X 条、《B》第 Y 条"；片段没有文号 / 条款时，降级为"文件标题 + 段落位置"。这是"来源引用"落地的抓手，也是第 10 章 DoD 的检查点。</li>
+<li><strong>检索不到不能编（三条判据）</strong>：模型拿到的资料不足以支撑答案时，必须拒答而不是编：</li>
+<li><strong>检索为空 / 片段太少</strong> → 回答"未检索到、无法回答"；</li>
+<li><strong>命中但不相关</strong>（片段答非所问） → 说明"未找到与问题直接相关的条款"，不硬答；</li>
+<li><strong>片段互相冲突</strong> → 如实标注"不同条款存在差异"，交人工确认，不自行取舍。</li>
+</ul>
+<blockquote>
+<p>引用是否站得住，最终看三类失败有没有被拦下：<strong>错引</strong>（条款张冠李戴）、<strong>漏引</strong>（关键论断没出处）、<strong>引而不符</strong>（出处对了但答案跨出条款本意）——这三类会在 9.9 的双指标验收中逐类核验。</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>红线「答案可追溯」落此处：</strong> 这一节就是红线从"口号"到"硬指标"的桥。先有"检索到的片段 + 原文 + 来源元数据"（9.2–9.6），再有"只用片段作答 + 强制引用 + 检索不到不编"（本节），最后才有第 10 章可量化的双指标验收。</p>
+</div>
+<p><strong>一个完整示例会话（示意内容，非真实政策文本）：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>【用户提问】外地户口能在这交社保吗？
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>【检索到的片段】
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>片段 1：《XX 市社会保险办法》（X 政发〔2022〕12 号）第 18 条：外地户籍人员
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        在本市就业的，由用人单位为其办理社会保险登记，缴费比例与本市户籍一致。
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>片段 2：《XX 市灵活就业人员参保实施细则》第 3 条：非本市户籍灵活就业人员，
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        可凭居住证参加职工基本养老保险。
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>【组装后的提示词】
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>系统：你是政务政策问答助手。只能基于"参考资料"作答，不得凭记忆补充；
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>资料不足时回答"未检索到、无法回答"；回答末尾标注引用（文件名 + 文号 + 条款）。
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>参考资料：片段 1、片段 2（见上）
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>用户问题：外地户口能在这交社保吗？
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>【模型输出（正常作答）】
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>可以。按《XX 市社会保险办法》第 18 条，外地户籍人员在本市就业的，由用人
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>单位办理社保登记，缴费比例与本市户籍一致；未就业的灵活就业人员也可凭居住证
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>参保（依据：《XX 市社会保险办法》（X 政发〔2022〕12 号）第 18 条、
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>《XX 市灵活就业人员参保实施细则》第 3 条）。
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>【对照：资料不足时的输出（拒答）】
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>未检索到与"外地户口能否在这交社保"直接相关的条款，无法回答——建议咨询
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>市社保局服务热线或政务窗口核实。
+</code></pre></div>
+<h3 id="983">9.8.3 更新即重建索引，而不是重新训练<a class="headerlink" href="#983" title="Permanent link">&para;</a></h3>
+<p>政策更新时，RAG 只需对更新文档重跑<strong>离线建库</strong>（解析→分块→向量化→入库），模型本身不用重新训练。这是 RAG 相对微调在政务常更新场景下的核心优势——印证了 9.1.4 的选型判断。</p>
+<hr />
+<h2 id="99">9.9 评估与生产化：双指标验收<a class="headerlink" href="#99" title="Permanent link">&para;</a></h2>
+<h3 id="991-rag">9.9.1 为什么 RAG 要专门评估<a class="headerlink" href="#991-rag" title="Permanent link">&para;</a></h3>
+<p>一条 RAG 答案要正确，其实要过三道关：<strong>检索</strong>得准（找对片段）、<strong>生成</strong>得对（转述正确）、<strong>引用</strong>得对（出处对应）。只看"最终答案像不像对的"不够——答案对但引用张冠李戴，审不了；答案错但引用全对，也没意义。因此要分维度评估。</p>
+<h3 id="992-ragas">9.9.2 RAGAS 指标：每个指标只回答自己的问题<a class="headerlink" href="#992-ragas" title="Permanent link">&para;</a></h3>
+<p>RAGAS 是目前常用的开源 RAG 评估框架（截至 2026-08，<a href="https://data.safetycli.com/packages/pypi/ragas/">版本以官方发布为准</a>）。它按<strong>评价对象</strong>拆开评估，核心是：<strong>每个指标只能回答它自己的那个问题，不能互相替代</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">评价对象</th>
+<th style="text-align: left;">示例指标</th>
+<th style="text-align: left;">不能替代什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">检索质量（召回 / 排序）</td>
+<td style="text-align: left;">Context Precision、Context Recall、命中率</td>
+<td style="text-align: left;">引用正确性（检索命中 ≠ 引用支撑结论）</td>
+</tr>
+<tr>
+<td style="text-align: left;">回答相关性</td>
+<td style="text-align: left;">Answer Relevancy</td>
+<td style="text-align: left;">事实正确性（切题 ≠ 答对）</td>
+</tr>
+<tr>
+<td style="text-align: left;">上下文忠实度</td>
+<td style="text-align: left;">Faithfulness</td>
+<td style="text-align: left;">外部事实正确性（忠实于上下文 ≠ 上下文本身正确）</td>
+</tr>
+<tr>
+<td style="text-align: left;">回答正确性</td>
+<td style="text-align: left;">与参考答案或人工标准对照</td>
+<td style="text-align: left;">引用是否支撑声明</td>
+</tr>
+<tr>
+<td style="text-align: left;">引用质量</td>
+<td style="text-align: left;">引用正确性、完整性、声明—证据对齐</td>
+<td style="text-align: left;">检索排序质量（引用对了 ≠ 排序最好）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>反例（两类典型失败）：</strong> 1）"答案正确但引用错误"——结论答对了，引用的条款号却是张冠李戴，审不了；2）"引用正确但回答过度推断"——引用对了条款，答案却跨出了条款本意。这两类失败<strong>自动指标都抓不全</strong>，必须靠专门的人工 / 规则核验（固定评估配置 + 人工抽检，见 9.9.5）才能识别。</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>与第 10 章双指标的关系：</strong> 第 10 章的"答案准确率 / 来源可追溯率"是<strong>教材业务口径</strong>（用于实操验收，由人工对照参考答案核验）；RAGAS 是<strong>技术指标</strong>（可自动化、按评价对象拆分）。两者是"业务口径 vs 技术指标"的关系，<strong>本书不声称双指标等价于 RAGAS 的某一指标</strong>。</p>
+</div>
+<h3 id="993">9.9.3 本书的双指标验收口径<a class="headerlink" href="#993" title="Permanent link">&para;</a></h3>
+<p>透视到政务交付，把上面的技术指标收敛成两个可量化的验收口径（也是第 10 章实操三的 DoD）：</p>
+<ul>
+<li><strong>答案准确率</strong>：抽查答案，判断每一条结论是否正确、切题、没有幻觉；</li>
+<li><strong>来源可追溯率</strong>：抽查答案，判断<strong>每条关键论断是否都带了对的出处</strong>（文号 + 条款），且出处与答案内容能对上。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>验收只看"答案对不对"、不看"引用准不准"，是政务 RAG 最常见的失效点。</strong> 双指标都必须过线，"答对但引错"同样不验收（呼应 9.1.3 的免责论证）。</p>
+</div>
+<h3 id="994">9.9.4 生产化要点：建索引三问<a class="headerlink" href="#994" title="Permanent link">&para;</a></h3>
+<p>上线前用"建索引三问"（教材提炼）系统性自查，把断点找出来：</p>
+<ol>
+<li><strong>解析</strong>：这份文档（含扫描/表格/混合格式）解析出来可读、结构未被切乱吗？</li>
+<li><strong>分块</strong>：chunk 自包含、粒度合适吗？回答不完整还是检索不精准？（对应 9.4.3 调参方向）</li>
+<li><strong>检索索引</strong>：向量库所用的 embedding 维度与模型一致吗？top-K、过滤、来源元数据配好了吗？</li>
+</ol>
+<blockquote>
+<p>这三问是教材框架，其内核（解析质量、分块粒度、检索/向量索引配置）与 9.3–9.7 的行业实践一致。逐问验证通过，再进入生产化（含模型选型、并发、成本，见第 7 章）。</p>
+</blockquote>
+<h3 id="995">9.9.5 评估怎么落地：检索与生成分开评估 + 固定配置 + 库外问题<a class="headerlink" href="#995" title="Permanent link">&para;</a></h3>
+<p>双指标是"最终口径"，但<strong>答案错了不等于生成错，更可能是检索没找对</strong>。落地评估要分三件事：</p>
+<p><strong>1. 检索与生成分开评估（先定位，再修）：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">评估对象</th>
+<th style="text-align: left;">看什么</th>
+<th style="text-align: left;">对应"修哪里"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>检索侧</strong></td>
+<td style="text-align: left;">对每条验证题，相关片段是否真的出现在 top-K（命中率 / Recall@K）</td>
+<td style="text-align: left;">找不找得对 → 调分块 / embedding / 混合检索 / 重排（9.4–9.7）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>生成侧</strong></td>
+<td style="text-align: left;">给定"正确的片段"，答案是否忠实、切题、无幻觉（对照 9.9.2 三指标）</td>
+<td style="text-align: left;">答得对不对 → 调提示词组装 / 模型（9.8）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>引用侧</strong></td>
+<td style="text-align: left;">每条关键论断是否带了对的出处，出处与内容能对上</td>
+<td style="text-align: left;">引用准不准 → 调引用格式与强制规则（9.8.2）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>排错口诀（教材提炼）：<strong>"先问找没找对，再问答没答对，最后问引没引对"</strong>——检索空/错时去调检索，不要盲目改生成提示词。</p>
+</blockquote>
+<p><strong>2. 固定评估配置（结果可比的前提）：</strong> 用 LLM-as-judge 打分时，<strong>评估 prompt、模型、参数必须固定</strong>，否则"换了个模型分数就变了"，结果不可比、不可复现（呼应第 7 章纪律四）。建议：</p>
+<ul>
+<li><strong>固定 evaluator prompt</strong>（评估你评判的标准问题为模板，如："逐条判断答案是否仅由给定片段支持（是/否+原因）；标注每条关键论断的出处是否正确"）；评估用温度 <code>0</code>、固定模型名与版本；</li>
+<li><strong>人工复核规则</strong>：LLM 打分只作初筛，<strong>抽检 ≥20% 由人工复核</strong>；LLM 与人工结论冲突时以人工为准并记录。</li>
+</ul>
+<p><strong>3. 库外问题（外部给定，验收含拒答）：</strong> 只测"库内问答"会漏掉最危险的幻觉场景。<strong>库外问题（知识库中不存在答案的问题）由讲师/评分脚本外部给定</strong>，验收口径为：模型应回答"未检索到、无法回答"，<strong>不得编造</strong>——库外拒答是"答案可追溯"红线的另一面（对应 9.2 纪律与 9.9.3 双指标之外的第 3 个检查项）。</p>
+<hr />
+<h2 id="910-rag-2030">9.10 最小 RAG 预实验：可选动手 20–30 分钟<a class="headerlink" href="#910-rag-2030" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>目的不是搭一个完整系统，而是<strong>把 9.2 的链路亲手走一遍</strong>，建立"每一环节输入什么、输出什么、坏了什么表现"的手感。不引入向量库也可以做——用<strong>内存中的余弦相似度</strong>即可。</p>
+</blockquote>
+<ul>
+<li><strong>素材（自拟即可，不依赖第 10 章素材）</strong>：手写 3–5 段政策式片段（每段 100–200 字，各带文号 / 条款），另写 1 个<strong>库外问题</strong>。</li>
+<li><strong>步骤</strong>：</li>
+<li>解析与分块：把每段按"条款"切成 4–8 个 chunk（就当"结构规整的文档"）；</li>
+<li>向量化：任选一个 embedding（本地 BGE-M3 或托管 API，联系 9.5.2）；</li>
+<li>检索：对 2 个库内问题各取 top-1/top-2，对 1 个库外问题看检索结果；</li>
+<li>组装与生成：按 9.8.1 组装提示词，让模型"只用片段作答 + 标注文号条款"；</li>
+<li>自评：用 9.9.5 的三步定位法——<strong>先看检索命中没，再看生成忠不忠实，最后看引用对不对；库外问题必须拒答</strong>。</li>
+<li><strong>验收（你自己的 DoD）</strong>：库内 2 题都命中相关片段、答案有正确出处；库外 1 题模型拒答不编；你能说清"如果答案错了，是检索、生成还是引用的问题"。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong> 这一步<strong>不剧透第 10 章</strong>——用的全是自拟片段；第 10 章你会用真实政策文档 + 完整 gstack 把同一套链路做成可验收的系统。</p>
+</blockquote>
+<hr />
+<h2 id="_2">反模式与红线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>让模型凭记忆答题、不检索文档。</strong> 那不是 RAG，又回到"凭模型训练记忆硬答"，政策一更新就会答错（对应 9.1.1）。</li>
+<li><strong>答不给出来源。</strong> 政务 AI 若不能溯源（哪份文件、哪条），坐席无法免责——违反"答案可追溯"红线（对应 9.8.2）。</li>
+<li><strong>只塞全文、不做检索（退化为超长上下文）。</strong> 成本高、溯源弱、长文易失焦，是"超长上下文取代 RAG"的误判（对应 9.1.4）。</li>
+<li><strong>选错层：想直接上微调 / 用纯关键词。</strong> 政策常更新需溯源 → RAG；语义匹配 → 不能用纯关键词（对应 9.1.4）。</li>
+<li><strong>检索不到还硬编。</strong> 片段不足时应答"未检索到、无法回答"，绝不凭空造条文（对应 9.2 纪律）。</li>
+<li><strong>验证只看"答案对不对"、不看"引用准不准"。</strong> 验收要用双指标：答案准确率 + 来源可追溯率（对应 9.9.3）。</li>
+<li><strong>只评生成、不评检索。</strong> 答案错了先分侧定位——"先问找没找对，再问答没答对"（对应 9.9.5-1）。</li>
+<li><strong>评估配置不固定。</strong> 换模型 / 换 evaluator prompt 分数就变，结果不可比、不可复现（对应 9.9.5-2，呼应第 7 章纪律四）。</li>
+<li><strong>不测库外问题。</strong> 只测库内问答会漏掉最危险的幻觉场景——库外必须拒答（对应 9.9.5-3）。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>红线本处落地：答案可追溯。</strong> 本章为知识章，但"答案必须带来源引用、检索不到不能编、双指标验收、库外拒答"这套口径，会在第 10 章实操三的 SPEC 与 DoD 里强制写死（承接 7.4 gstack 纪律），并直接呼应导读页四条红线。</p>
+</div>
+<hr />
+<h2 id="_3">本章小结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>RAG 是什么</strong>：检索外部资料补足模型语料——先检索相关片段，再基于片段作答并标注出处；与微调是两条互补路径（各有所长，见 9.1.1）；同时解决记忆漂移、成本、可追溯三问题。</li>
+<li><strong>选型边界</strong>：政策问答用 RAG 而不用超长上下文 / 微调 / 纯关键词（9.1.4；关键判断："超长上下文解决'能读多少'，RAG 解决'读哪几段、答得有依据'"）。</li>
+<li><strong>核心链路</strong>：解析 → 分块 → 向量化 → 向量库 → 检索 → 生成 + 来源引用（离线建库一次、在线问答多次）。</li>
+<li><strong>选型</strong>：常更新需溯源 → RAG；固定领域有数据 → 微调；精确词 → 关键词；单纯分类 → 一次调用；先最简单。</li>
+<li><strong>关键参数</strong>：分块起点 512–1024 token + 10–20% 重叠；top-K 太少漏、太多噪；检索增强按"漏→序→表达"逐段加、不全上。</li>
+<li><strong>政务命门</strong>：答案可追溯是政务 AI 准入门槛，验收用"答案准确率 + 来源可追溯率"双指标，检索不到不能编。</li>
+<li><strong>评估落地</strong>：检索 / 生成 / 引用<strong>分开定位</strong>；evaluator prompt、模型、参数<strong>固定</strong>并配人工抽检；<strong>库外问题外部给定、必须拒答</strong>。</li>
+<li><strong>最小预实验（9.10）</strong>：20–30 分钟把链路亲手走一遍，不依赖第 10 章素材。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清 RAG 的核心思想（检索外部资料补足模型语料），并给一个外行讲明白吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能画出 RAG 核心链路并说出每步输入/输出/常见坑吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"为什么政策问答用 RAG，不用超长上下文 / 微调 / 纯关键词"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能解释分块参数两个方向的调整（回答不完整→增大；检索不精准→缩小）吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"为什么验收必须有来源可追溯率这一个指标"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用"先找没找对、再答没答对、后引没引对"给一条错答案排错吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清评估配置为什么要固定、库外问题为什么要测吗？</li>
+</ul>
+<hr />
+<h2 id="_4">练习与思考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写 RAG 核心链路（离线/在线两段）；列出分块与检索的四个常见坑；默写 9.9.5 的三步定位法。</li>
+<li><strong>进阶：</strong> 给定"外地户口能在西岭交社保吗"，说明一次 RAG 问答里分块→检索→组装→生成+引用分别做了什么，并指出纯关键词为何失败、重排在这里是否必要；再用 9.10 的最小预实验走一遍并写 3 行自评。</li>
+<li><strong>挑战（迁移练习）：</strong> 为一份每季度更新的业务手册设计 RAG 方案：说明"更新时只需重建索引、不用改模型"如何落地，并预设两处数据漂移 / 解析失效风险与排查方法（可套用 9.9.4 建索引三问）；再为它设计"检索 / 生成 / 引用分开评估 + 库外拒答"的验收方案（固定 evaluator prompt 与人工抽检比例，参照 9.9.5）。</li>
+</ul>
+<h2 id="_5">延伸阅读<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 16 章 AI FDE 落地：Delta 技术与场景）——RAG 检索与向量库的落地选型深读。</li>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 15 章 AI FDE 落地：Echo 共识与对齐）——AI 能力如何与 FDE 判断力对齐的扩展。</li>
+<li>下一章：<strong>本书第 10 章实操三 · 政策法规 RAG 问答系统</strong>——把本章当场做出来，练"答案可追溯"双指标。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

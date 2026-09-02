@@ -1,0 +1,1807 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第16章 实操五：综合证据评审与决策层汇报 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#16" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第16章 实操五：综合证据评审与决策层汇报
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 演练背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 演练前提
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 知识背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 演练流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.4 演练流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1641-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.1 第一层验收 · 三个单点 MVP 的双视角评审
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1642-blab4b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.2 第二层验收 · 实操四B（Lab4B）评审
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1643" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.3 脑暴二 · 能力回注：哪些碎石路能铺装成公路？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1644" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.4 脑暴三 · 下一阶段决策 + 客户汇报
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1645-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.5 讲演收尾 · 每组 5 分钟汇报
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1646" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.6 可选：课后出口 · 复盘真实项目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 产出物清单与验收标准（DoD）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全书收口的话
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 演练背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 演练前提
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 知识背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 演练流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.4 演练流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1641-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.1 第一层验收 · 三个单点 MVP 的双视角评审
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1642-blab4b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.2 第二层验收 · 实操四B（Lab4B）评审
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1643" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.3 脑暴二 · 能力回注：哪些碎石路能铺装成公路？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1644" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.4 脑暴三 · 下一阶段决策 + 客户汇报
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1645-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.5 讲演收尾 · 每组 5 分钟汇报
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1646" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4.6 可选：课后出口 · 复盘真实项目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 产出物清单与验收标准（DoD）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全书收口的话
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="16">第 16 章  实操五 · 综合证据评审与决策层汇报<a class="headerlink" href="#16" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 实操单元 · <strong>角色 = 全团队（Echo + Delta）</strong> · Scale / 收口阶段 · 模式 = <strong>头脑风暴 + 评审 + 汇报</strong>（关键判断不用 AI）</p>
+<p><strong>本章产出：</strong> 一套完整的<strong>综合评审与交付决策包</strong>——两层验收结论（三个单点 MVP + 实操四B）、能力回注评审、每个场景的<strong>下一阶段决策</strong>（Go / Conditional Go / Continue Pilot / No-Go）、决策层汇报稿（十页骨架），并在收口前提供<strong>"复盘真实项目"的可选出口</strong>。</p>
+<p><strong>承接：</strong> 第 6 章《解决方案框架》+ 第 8/10/12 章三个单点 MVP + <strong>实操四B（Lab4B，如已完成）</strong> + 每轮《AGENTS.md》《retro.md》+ 第 14 章（客户环境与接管证据）+ 第 15 章（价值、采用与回注证据）。</p>
+<p><strong>核心隐喻：</strong> <strong>碎石路 → 铺装公路</strong>（哪些是"西岭的内容"、哪些能抽象成"给所有客户的能力"）。</p>
+<p><strong>延伸阅读：</strong> 无编号"复盘真实项目"实验手册见《实验手册》<code>labs/migration-review-real-project.md</code>；见文末 <strong>FDE-101</strong> 链接。</p>
+<p><strong>适配说明：</strong> 沿用训练营"实操五"骨架；去现场计时；把讲师引导改写为自查问题；<strong>本实操同时服务两条线</strong>：西岭主线总结回顾（默认），以及学有余力学员的"复盘真实项目"（可选，用同一套方法）。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>用<strong>双层验收</strong>评审全部成果：第一层对三个单点 MVP 做 Echo（需求满足）/ Delta（生产可用）双视角；第二层对<strong>实操四B</strong> 做受控 Agent 验收（动态选工具、观察后继续、追问、真暂停）；</li>
+<li>用<strong>能力回注四步法</strong>判断"哪些碎石路能铺装成公路"，看懂"三块拼图 + 实操四B 的受控 Agent 能力"，并联合第 14/15 章证据给出回注候选；</li>
+<li>为每个场景作出<strong>下一阶段决策</strong>：Go / Conditional Go / Continue Pilot / No-Go（当前决策 → 业务依据 → 技术依据 → 未关闭风险 → 责任人 → 下一 Gate）；</li>
+<li>用<strong>ROI 框架 + 合规交代</strong>面向决策层做"双线汇报"（对陈主任讲价值、对市数据局讲合规），并完成<strong>十页决策层汇报</strong>；</li>
+<li>理解"会做 ≠ 会说 ≠ 会决策"：交付不是演示，是<strong>基于证据的下一阶段判断</strong>；</li>
+<li>（可选）把同一套方法迁移到<strong>复盘真实项目</strong>：拆解、复盘、决策与汇报，检验方法能否带回工作。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 全书（尤其第 3 章能力回注四步法、第 6 章 Echo、第 8/10/12 章 Delta 成果、第 14 章客户落地证据、第 15 章价值与回注证据）。</li>
+<li><strong>章节地图：</strong> 这是全书收口（Scale + 能力回注 + 交付决策）。五个实操以"汇报"开头（Ch6 Echo 向陈主任汇报方案）、也以"汇报"收尾（本章向决策层汇报成果），首尾呼应、闭环完整；实操四B 是三个单点 MVP 与综合收口之间的高级桥梁。</li>
+</ul>
+<blockquote>
+<p><strong>一句话记住本实操：</strong> 把三个单点 MVP（+ 实操四B）从"西岭的定制（碎石路）"铺成"给所有客户的能力（公路）"，<strong>基于证据为每个场景作出下一阶段决策</strong>，再用决策层听得懂的话讲清值不值——这一步走完，FDE 交付闭环才算真正闭合。</p>
+</blockquote>
+<p><strong>学习目标追踪（目标 → 活动 → 证据 → 验收）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>学习目标</th>
+<th>对应活动</th>
+<th>主要证据</th>
+<th>对应 DoD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>双层验收评审全部成果</td>
+<td>16.4.1/16.4.2</td>
+<td>需求满足度表、生产差距表</td>
+<td>两层验收完成、数据出域交代</td>
+</tr>
+<tr>
+<td>能力回注四步法判断</td>
+<td>16.4.3</td>
+<td>内部能力回注总结.md</td>
+<td>≥4 候选 + 优先级矩阵</td>
+</tr>
+<tr>
+<td>每场景下一阶段决策</td>
+<td>16.4.4</td>
+<td>下一阶段决策单.md</td>
+<td>每场景一份、允许 No-Go</td>
+</tr>
+<tr>
+<td>ROI 框架 + 合规交代双线汇报</td>
+<td>16.4.4/16.4.5</td>
+<td>客户汇报稿.md</td>
+<td>十页骨架、给区间不给单点</td>
+</tr>
+<tr>
+<td>复盘真实项目（可选）</td>
+<td>16.4.6</td>
+<td>迁移实验交付物</td>
+<td>不影响主线结业</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="161">16.1 演练背景<a class="headerlink" href="#161" title="Permanent link">&para;</a></h2>
+<p>前几轮你走完一个完整 FDE 交付闭环：Ch6（Echo）拆场景定方案，Ch8/10/12（Delta）做出三个单点 MVP（分类 / RAG / 固定路由工作流），实操四B（如已完成）综合为受控协同 Agent；第 14 章给出客户环境与接管证据，第 15 章给出价值、采用与回注判断。本实操<strong>不做新功能</strong>，只做四件事：<strong>1）两层验收 2）能力回注 3）下一阶段决策 4）决策层汇报</strong>。</p>
+<p><strong>AI 使用边界（判断归人，AI 辅助不越位）：</strong> 本实操的关键判断——需求是否满足、能否上生产、是否回注、Go / Conditional Go / Continue Pilot / No-Go——由 <strong>Echo + Delta 自己</strong>完成；AI（可用但非必需）只允许作<strong>辅助</strong>：整理证据、汇总轨迹、把已定稿的逻辑润色成汇报文案、或在汇报预演中扮演"红队"追问。<strong>"AI 能帮你写一份看起来对的总结，写不出你真正相信的、有判断的总结。"</strong></p>
+<h2 id="162">16.2 演练前提<a class="headerlink" href="#162" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 全组通读第 6 章《解决方案框架》（尤其三个场景的需求定义、验收标准）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 全组回顾实操二/三/四（及实操四B，若完成）的《AGENTS.md》和《retro.md》</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 全组回顾三个 MVP 与实操四B 的验收报告（qa-report.md）与演示材料</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 全组回顾第 14 章生产差距 / 接管证据、第 15 章价值与采用证据</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 准备白板、便签、马克笔；打印<strong>能力回注四步法模板</strong>与<strong>下一阶段决策模板</strong></li>
+</ul>
+<h2 id="163">16.3 知识背景<a class="headerlink" href="#163" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>第 14 章给出"系统能否进入客户环境、客户能否接管"的工程证据；第 15 章给出"值不值得、组织愿不愿意接、什么值得回注"的业务判断。本实操的每个环节，都用这些证据支撑：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>用到的知识</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一层验收 · 单点 MVP</td>
+<td>Echo 验"需求满足吗"（验收 ≠ 需求满足）、Delta 验"能上生产吗"（MVP ≠ 生产）：用第 14 章生产差距与第 15 章价值证据逐项校准（15.2）</td>
+</tr>
+<tr>
+<td>第二层验收 · 实操四B</td>
+<td>受控 Agent 的验收口径：动态选工具、观察后继续、追问、真暂停（11.3.7 / 实操四B 手册）</td>
+</tr>
+<tr>
+<td>能力回注评审</td>
+<td>四步法 + 碎石路→铺装公路 + 优先级矩阵；三块拼图 + <strong>受控 Agent（实操四B）与业务本体</strong>（15.4）</td>
+</tr>
+<tr>
+<td>下一阶段决策</td>
+<td>八项 FDE 生产准入（14.5）+ 业务证据（15.2–15.4）：Go / Conditional Go / Continue Pilot / No-Go</td>
+</tr>
+<tr>
+<td>决策层汇报</td>
+<td>ROI 给区间不给单点、书面锁口径；门槛·动机·信任；金字塔 + 双线话术（15.2.3 / 15.3.1 / 15.3.2）</td>
+</tr>
+</tbody>
+</table>
+<p><pre class="mermaid"><code>flowchart TB
+    PRE["演练前提&lt;br/&gt;方案框架 · AGENTS/retro · 14/15 章证据"]
+    L1["第一层验收&lt;br/&gt;三个单点 MVP：Echo 需求满足 + Delta 生产可用"]
+    L2["第二层验收&lt;br/&gt;实操四B：动态选工具 · 观察 · 追问 · 真暂停"]
+    R["能力回注评审&lt;br/&gt;碎石路 → 铺装公路 · 三块拼图 + Agent + 本体"]
+    D["下一阶段决策&lt;br/&gt;Go / Conditional Go / Continue Pilot / No-Go"]
+    REP["决策层汇报&lt;br/&gt;十页骨架 · 双线话术 · 三句话收尾"]
+    OPT["可选出口&lt;br/&gt;复盘真实项目（课后）"]
+    PRE --&gt; L1 --&gt; L2 --&gt; R --&gt; D --&gt; REP
+    REP -.课后可选.-&gt; OPT
+    style PRE fill:#dbe4f0,stroke:#3949ab
+    style L1 fill:#f5ece0,stroke:#a8895f
+    style L2 fill:#f5ece0,stroke:#a8895f
+    style R fill:#e4efe4,stroke:#5b7a5b
+    style D fill:#3949ab,color:#fff,stroke:#1a237e
+    style REP fill:#dbe4f0,stroke:#3949ab
+    style OPT fill:#e8ede5,stroke:#7a9a7a,stroke-dasharray:5 3</code></pre>
+<em>图 16-1：本实操流程——两层验收 → 能力回注 → 下一阶段决策 → 决策层汇报 →（课后可选）复盘真实项目</em></p>
+<hr />
+<h2 id="164">16.4 演练流程<a class="headerlink" href="#164" title="Permanent link">&para;</a></h2>
+<h3 id="1641-mvp">16.4.1 第一层验收 · 三个单点 MVP 的双视角评审<a class="headerlink" href="#1641-mvp" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 独立判断（先独立后碰撞）：</strong> 每人对照方案框架做两件事——<strong>Echo 视角</strong>：三个场景各写一条"需求满足了吗？✅/⚠️/❌，为什么"；<strong>Delta 视角</strong>：三个场景各写一条"这个 MVP 能上生产吗？差距在哪"（对照第 14 章八项 FDE 生产准入的维度想：数据接入 / 系统集成 / 权限责任 / 异常兜底 / 过程追溯 / 发布回退 / 客户接管 / 回注准备）。</p>
+<blockquote>
+<p><strong>自查追问：</strong> 每个 Demo 验收都达标了（分类≥85%、RAG 双指标、路由工作流零漏判）——但<strong>验收达标就等于需求满足了吗？</strong> 你量的到底是当初承诺的东西，还是客户真正要的东西？</p>
+</blockquote>
+<p><strong>Step 2 组内讨论：</strong> 需求满足度墙 + 生产差距墙；讨论"有没有验收达标但需求没满足的场景"、各 MVP 离生产多远、Echo 与 Delta 视角如何互补；对照第 14 章八项 Gate 与第 15 章价值证据，各场景能证明什么、不能证明什么。</p>
+<p><strong>Step 3 达成共识 · 输出两张表：</strong></p>
+<ul>
+<li><strong>需求满足度表</strong>（Echo）：场景 | 当初需求/验收标准 | 是否满足✅/⚠️/❌ | 差距 | 理由（证据）</li>
+<li><strong>生产差距表</strong>（Delta）：场景 | 对照八项 FDE 生产准入的差距 + <strong>单独列"数据出域交代"</strong>（红线、工程决策：本地部署模型选型/成本/工期——口径见下方 NOTE）</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>关于"数据出域"（全组必须明交代）：</strong> 课堂流程里，三个 MVP 与实操四B 使用<strong>完全虚构 / 已脱敏的教学数据</strong>调用公网 LLM 完成验证；<strong>真实客户数据只能在组织批准的安全域内（本地部署或客户授权的环境）做验证、联调与生产落地，不得"先入公网再补救"。</strong> 交付包里必须写明：哪些验证用了模拟数据、换成真实数据需要重新验证什么、本地回填的形态选型与工期（对照第 13 章 13.4 模型切换适配与第 14 章接入纪律）。</p>
+</div>
+<h3 id="1642-blab4b">16.4.2 第二层验收 · 实操四B（Lab4B）评审<a class="headerlink" href="#1642-blab4b" title="Permanent link">&para;</a></h3>
+<p>已完成实操四B 的组，用受控 Agent 的口径单独评审（对照 11.3.7 与实操四B 手册）：</p>
+<table>
+<thead>
+<tr>
+<th>验收维度</th>
+<th>通过判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动态选工具</td>
+<td>不同任务走不同工具路径，不强制"分类→查政策→查部门"固定顺序</td>
+</tr>
+<tr>
+<td>观察后继续</td>
+<td>工具结果（如信息冲突）会触发换工具或重新判断，而不是一条道走到黑</td>
+</tr>
+<tr>
+<td>主动追问</td>
+<td>信息不足时调用 <code>ask_clarification</code>，追问后能续跑</td>
+</tr>
+<tr>
+<td>真暂停</td>
+<td>敏感 / 高风险走 <code>request_human_review</code>（配合 interrupt + resume，真暂停—恢复）</td>
+</tr>
+<tr>
+<td>有限循环</td>
+<td>达到完成条件即结束；达到最大步数 / 触及风险边界即暂停或停止</td>
+</tr>
+<tr>
+<td>工作台可演示</td>
+<td>毕业展示工作台可向领导演示：用户说了什么 → Agent 做了什么 → 为何交给人工 → 得到什么</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>若未做实操四B：</strong> 在本环节改为"评审它的加入会不会改变三个 MVP 的决策"——即三个 MVP 各自仍需要独立的 Go/No-Go 判断，实操四B 是"未来可评估的综合形态"，不作为结业硬性依赖。</p>
+</blockquote>
+<h3 id="1643">16.4.3 脑暴二 · 能力回注：哪些碎石路能铺装成公路？<a class="headerlink" href="#1643" title="Permanent link">&para;</a></h3>
+<p>用能力回注四步法（Ch3），判断三个 MVP（+ 实操四B）里哪些能沉淀为平台能力。</p>
+<p><strong>Step 1 识别（10 分钟）：</strong> 白板画两区——<strong>碎石路（西岭专属，做完就扔）+ 能铺路（通用价值，别的客户也要）</strong>。每个场景逐条判断："能力去掉'西岭市民服务平台'这个壳，剩下的是什么？"</p>
+<p><strong>Step 2 抽象（10 分钟）：</strong> 对每个"能铺路"候选，讨论怎么泛化成标准模块——去掉了哪些客户特定逻辑？剩下什么通用能力？怎么设计成可配置（类别清单做成配置项）？</p>
+<p><strong>Step 3 铺路优先级（10 分钟）：</strong> 用<strong>优先级矩阵（通用性 × 成本）</strong>给候选定 P0/P1/P2。</p>
+<blockquote>
+<p><strong>自查追问：</strong> 为什么某个候选值得"立即做"？——回注价值在于"以最低成本撬动最多客户"。<strong>P0 应该是通用性高 + 成本低的"高杠杆候选"</strong>（如通用文本分类器）。</p>
+</blockquote>
+<p><strong>Step 4 产出《内部能力回注总结》。</strong> 关键认知——<strong>三块拼图 + 受控 Agent + 业务本体</strong>：</p>
+<blockquote>
+<p>三个 MVP 回注的是<strong>不同的通用模式</strong>，合起来才是完整能力栈：
+- <strong>分类器</strong>（"是什么"：文本分类）、<strong>RAG</strong>（"依据"：知识库问答）、<strong>路由工作流</strong>（"怎么办"：预编排分支 + 兜底）；
+- <strong>实操四B 受控 Agent</strong>（"下一步做什么"：动态选工具 + 追问 + 人工暂停——与三块拼图配合，才是完整能力栈）；
+- 以及处处都在的那个最通用的东西——<strong>"拿不准就兜底转人工"</strong>（Human-in-the-Loop）；
+- <strong>业务本体</strong>：把"请求—依据—责任主体—工单—人工审核"的结构与"等待市民补充 / 等待人工 / 工具调用记录 / 工单草稿 / 人工决定后迁移"等状态与动作（回注候选），按第 15 章 15.4 判断业务通用性（第 14 章 14.9 验证工程可执行性）。</p>
+</blockquote>
+<p><strong>输出物：</strong> 碎石路/能铺路两区图 + 《内部能力回注总结》（单点 MVP + 实操四B 概览、可回注清单、三块拼图 + Agent + 本体、回注价值、回注计划）。</p>
+<h3 id="1644">16.4.4 脑暴三 · 下一阶段决策 + 客户汇报<a class="headerlink" href="#1644" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 下一阶段决策（本实操新增的核心环节）：</strong> 为每个场景（及实操四B）各写一份<strong>下一阶段决策单</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>当前决策：Go（正式推进）/ Conditional Go（附条件推进）/ Continue Pilot（继续试点）/ No-Go（停止或另起）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>→ 业务依据（第 15 章证据：价值 / 采用 / 回注）
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>→ 技术依据（第 14 章证据：Gate 八项 / 接管）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>→ 未关闭风险（数据出域、容量、责任、合规……）
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>→ 责任人（Echo / Delta / 客户方）
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>→ 下一 Gate（什么条件、什么时候复核）
+</code></pre></div>
+<blockquote>
+<p><strong>决策不是投票，是拿证据说话。</strong> 没有证据支撑的"Go"和"No-Go"都是态度，不是决策。"Continue Pilot"是合法的中间态——继续试点要写明试点范围与复核时间，不是拖延。若三个场景与实操四B 结论不一致（例如 A 可 Go、C 需 No-Go），如实呈现，不要统一成"全部 Go"。</p>
+</blockquote>
+<p><strong>Step 2 客户汇报（金字塔结构，十页骨架）：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>第 1 页 · 结论       一句话：做了什么 + 核心价值（数字）+ 投入产出
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>第 2 页 · 业务问题    客户原来的痛点 / 当初的验收标准（第 6 章方案框架）
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>第 3 页 · 方案与价值  三个 MVP + 实操四B 各一个最有说服力的价值点 + ROI 框架（给区间，不给单点）
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>第 4 页 · 合规与约束  数据不出域 / 模拟数据边界与本地回填方案 / 责任边界（谁负责）
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>第 5 页 · 验证证据    盲测与用户反馈：能证明什么、不能证明什么（不把演示数字当生产保证）
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>第 6 页 · 能力回注    碎石路铺成哪些公路：三块拼图 + 受控 Agent + 本体回注清单
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>第 7 页 · 下一阶段    各场景 Go / Conditional Go / Continue Pilot / No-Go 一览（附条件）
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>第 8 页 · 风险        未关闭风险与降险动作（数据出域、容量、责任、合规）
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>第 9 页 · 需要的支持  决策层要批准什么：资源、试点范围、本地部署立项……
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>第 10 页 · 下一步     从 Demo 到生产的路径 + "上线后 N 周出真实数字"承诺
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>两种汇报人看两套重点页：</strong> 面向陈主任（决策层）重点讲第 1 / 3 / 7 / 9 页（价值、决策、支持）；面向市数据局（监管层）重点讲第 4 / 8 页（合规、责任与风险）。先判断"谁在听、他最关心什么"，再决定放大哪几页。</p>
+</div>
+<p><strong>Step 3 ROI 与追问演练（沿用第 15 章口径）：</strong></p>
+<blockquote>
+<p><strong>ROI 不是编数字，是给算账的方向和框架。</strong> 用五步法搭出"哪些环节能省、省的是谁的成本、怎么测"：<strong>假设 → 效率 → 质量 → 敏感度 → 锁定</strong>；用第 15 章 15.2.3 的<strong>三类价值公式 + 保守/基准/乐观三场景</strong>算出区间，<strong>给区间不给单点</strong>；承诺"<strong>上线后 N 周出真实数字</strong>"。
+预演常问：<strong>快赢</strong>（先上哪个？什么时候见效）、<strong>追责</strong>（数据泄露谁负责？怎么降险）、<strong>失业</strong>（AI 会不会让我失业？——用"机器干重复、人干判断"具体回应）、<strong>No-Go 场景</strong>（为什么这个不继续？怎么向发起人交代？）。</p>
+</blockquote>
+<p><strong>输出物：</strong> 下一阶段决策单（每场景一份）+ 客户汇报稿（十页骨架 + ROI 区间 + 合规交代）。</p>
+<h3 id="1645-5">16.4.5 讲演收尾 · 每组 5 分钟汇报<a class="headerlink" href="#1645-5" title="Permanent link">&para;</a></h3>
+<p><strong>汇报要求（强制做减法，三句话结构）：</strong>
+1. <strong>验收结论</strong>：两层验收结果——需求满足了吗？能不能上生产？（含实操四B，若完成）
+2. <strong>能力回注清单</strong>：碎石路铺成了哪条公路？
+3. <strong>下一阶段与客户价值</strong>：每个场景的决策是什么？值不值？</p>
+<p><strong>汇报人：</strong> 建议 Echo 和 Delta <strong>各一人上台</strong>（检验全团队，不是个人）。听众扮"客户"可追问；讲师点评。</p>
+<p><strong>评分维度：</strong> 判断力（讲得出"为什么满足/不满足、为什么 Go/No-Go"？）/ 能力回注（讲得出"铺了哪条公路"？）/ 决策质量（有证据、有未关闭风险、有责任人吗？）/ 客户视角（讲客户价值还是技术细节？有 ROI 吗？）/ 表达（全业务语言、能答追问吗？）。</p>
+<h3 id="1646">16.4.6 可选：课后出口 · 复盘真实项目<a class="headerlink" href="#1646" title="Permanent link">&para;</a></h3>
+<p>完成西岭主线后，有真实项目且能匿名化的学员，可按《复盘真实项目》手册（《实验手册》<code>labs/migration-review-real-project.md</code>）做<strong>无编号、可选</strong>迁移实验：不新增任何 FDE 方法，只用同一套 Echo/Delta 方法对你的真实项目做<strong>拆解 → 复盘 → 决策与汇报</strong>。本章的验收表、决策单、十页汇报骨架可直接复用于你的真实项目。完成与否不影响主线结业；实操四B（Lab4B）手册见 <code>labs/lab4b-cooperative-agent.md</code>。</p>
+<hr />
+<h2 id="165-dod">16.5 产出物清单与验收标准（DoD）<a class="headerlink" href="#165-dod" title="Permanent link">&para;</a></h2>
+<p><strong>交付物：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>实操五-总结汇报/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── 需求满足度表.md           # Echo：三场景（+实操四B 若完成）✅/⚠️/❌ + 理由与证据
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── 生产差距表.md             # Delta：三场景 + 八项 Gate 差距（含数据出域交代与本地回填方案）
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── 实操四B验收表.md          # （若完成）第二层验收六维判定 + 演示记录
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── 内部能力回注总结.md       # ★核心：碎石路/能铺路 + 三块拼图 + 受控 Agent + 本体候选 + 优先级
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>├── 下一阶段决策单.md         # ★每场景：Go / Conditional Go / Continue Pilot / No-Go + 依据/风险/责任人/Gate
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>├── 客户汇报稿.md             # 十页骨架金字塔汇报（含 ROI 区间 + 合规交代 + 支持申请）
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>└── 讲演汇报稿.md             # 三句话结构：验收结论/能力回注/决策与价值
+</code></pre></div>
+<p><strong>验收标准（DoD）：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>两层验收</strong>：需求满足度表 + 生产差距表完成；数据出域交代与本地回填方案单独列出（模拟数据边界写清）；实操四B（若完成）六维验收判定齐</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>能力回注</strong>：碎石路/能铺路判断 + 识别 ≥4 候选 + 抽象泛化 + 优先级矩阵 + <strong>三块拼图 + 受控 Agent + 本体回注候选</strong>认知 + 内部总结完成</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>下一阶段决策</strong>：每个场景一份决策单，含业务/技术依据、未关闭风险、责任人、下一 Gate；允许出现 Continue Pilot 与 No-Go，不统一"全 Go"</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>客户汇报</strong>：十页骨架 + ROI 给区间不给单点 + 双线话术 + 合规交代 + 支持申请（第 9 页），模拟汇报过关</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>讲演收尾</strong>：每组完成 5 分钟三句话汇报，能回答客户追问（含 No-Go 追问）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 关键判断由人完成；AI 只作整理/润色/红队辅助（使用与否如实说明）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 全团队协作（Echo/Delta 视角都发挥）</li>
+</ul>
+<hr />
+<h2 id="_2">反模式与红线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>验收只报流水账、不讲判断。</strong> "需求满足了吗"要讲得出理由与证据，不是复述 Demo。</li>
+<li><strong>拿单点 MVP 当整体结论。</strong> 三个 MVP 各自独立评审；A 能 Go ≠ C 也能 Go——统一"全 Go"是掩盖差异。</li>
+<li><strong>能力回注只看定制性、看不到通用性。</strong> 要把"文本分类/知识问答/分级路由/受控 Agent"的通用机制从"西岭的内容"里抽出来。</li>
+<li><strong>把什么都标 P0。</strong> 优先级靠"高杠杆"（通用性高+成本低）判断，不是"自己喜欢"。</li>
+<li><strong>跳过"未关闭风险"。</strong> 决策单没有风险与责任人，等于没做决策——尤其数据出域、容量、责任、合规。</li>
+<li><strong>讲成技术汇报。</strong> 对陈主任讲 LangGraph/RAG/准确率=沟通失败——对陈主任讲价值与决策、对市数据局讲合规。</li>
+<li><strong>编 ROI 数字。</strong> "省 2000 万"式报价是编的；诚实做法是给算账框架 + 区间 + "上线后 N 周出真实数字"。</li>
+<li><strong>绕开"数据出域"。</strong> 这是红线，必须交代模拟数据边界与本地回填方案，不能含糊带过——这正是 FDE 与"只做 Demo"的区别。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>本书收官红线对照：</strong> 四条政务红线在你的交付包中已全部闭环——<strong>数据不出域</strong>（模拟数据边界 + 本地回填方案已列在生产差距表）、<strong>答案可追溯</strong>（RAG 带引用）、<strong>敏感件零漏判</strong>（路由工作流与实操四B 验收硬指标）、<strong>人能判断、AI 能执行</strong>（决策与风险接受由 Echo/Delta 完成，AI 只辅助）——这四条红线 + 能力回注 + 下一阶段决策，就是 FDE 交付完整闭环的标准。</p>
+</div>
+<hr />
+<h2 id="_3">本章小结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>两层验收</strong>：第一层三场景双视角（Echo 需求满足 / Delta 生产可用，对照八项 Gate 与价值证据）；第二层实操四B（动态选工具/观察/追问/真暂停/有限循环/可演示）。</li>
+<li><strong>能力回注</strong>：识别→抽象→集成→验证；<strong>三块拼图（分类/RAG/路由） + 受控 Agent + 业务本体</strong>；"拿不准就兜底转人工"是最通用的机制。</li>
+<li><strong>下一阶段决策</strong>：Go / Conditional Go / Continue Pilot / No-Go，每项带业务与技术依据、未关闭风险、责任人、下一 Gate——<strong>决策是拿证据说话，不是投票</strong>。</li>
+<li><strong>客户汇报</strong>：十页骨架、双线话术（陈主任讲价值与决策/市数据局讲合规与风险）、ROI 给区间不给单点、第 9 页申请支持。</li>
+<li><strong>讲演收尾</strong>：三句话结构（验收结论/回注清单/决策与价值），Echo+Delta 各一人上台；首尾呼应，闭环完整。</li>
+<li><strong>可选出口</strong>：复盘真实项目（课后、无编号、不影响结业）——同一套方法带回工作。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用 150 字业务语言讲清"我们交付了什么、解决了你什么痛点、下一阶段怎么走"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能判断"验收达标但需求没满足"的差异吗？MVP 和生产差在哪？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能把三个 MVP（+实操四B）抽象成通用能力，并标出 P0 高杠杆项吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能为每个场景写一份带依据、风险与责任人的下一阶段决策单吗？允许 No-Go 吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能按十页骨架搭客户汇报，对陈主任/市数据局讲两套话术、并申请支持吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我的 ROI 是"给区间 + 上线后 N 周出真实数字"，没有编单点数吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我的交付包有没有把"数据出域"（模拟数据边界 + 本地回填）作为明确交代写清楚？</li>
+</ul>
+<hr />
+<h2 id="_4">练习与思考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写能力回注四步法；说出"碎石路 vs 能铺路""内容 vs 机制"的区别；默写四类下一阶段决策及各自适用情况。</li>
+<li><strong>进阶：</strong> 为"工单分级路由工作流"写一份<strong>下一阶段决策单</strong>：若你在第 12 章验收达标，给出 Go / Conditional Go / Continue Pilot / No-Go 之一，并写全业务依据、技术依据、未关闭风险、责任人、下一 Gate；再为"实操四B"列两条回注候选（如"等待市民补充/等待人工"状态、"工单草稿-人工决定后迁移"动作）说明为何值得抽象。</li>
+<li><strong>挑战（迁移练习/双线汇报）：</strong> 为"诉求分类 MVP"准备两个版本的 5 分钟汇报——一版对看重 ROI 的决策层（重点讲第 1/3/7/9 页），一版对看重合规的监管层（重点讲第 4/8 页），用金字塔结构写出并注明两版取舍；若你有真实项目，按《复盘真实项目》手册走一遍"拆解—复盘—决策"的骨架。</li>
+</ul>
+<hr />
+<h2 id="_5">延伸阅读<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>想读 FDE 交付的 Scale 阶段（撤出/交接、客户自运营）、能力回注方法论与价值量化/变革管理延伸，见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 8 章 Phase 4 Scale、第 9 章能力回注方法论、第 15 章 AI FDE 落地：Echo 共识与对齐）。</li>
+<li><strong>实验手册：</strong> 实操五执行细节见《实验手册》<code>labs/lab5-review-and-report.md</code>；无编号实验手册——实操四B 见 <code>labs/lab4b-cooperative-agent.md</code>、复盘真实项目见 <code>labs/migration-review-real-project.md</code>；能力回注四步法模板、下一阶段决策单模板、客户汇报稿模板（十页骨架）、ROI 计算表、金字塔汇报结构随 <code>resources/templates/</code> 提供。</li>
+</ul>
+<hr />
+<h2 id="_6">全书收口的话<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>到这里，你跟着西岭市民服务平台的五个实操（+ 实操四B），走完了一整个 FDE 交付闭环：<strong>Echo（Ch6）把模糊需求拆成施工图 → Delta（Ch8/10/12）把施工图做成三个能跑、能溯源、带安全底线的单点 MVP → 实操四B 综合成受控协同 Agent → 第 14—15 章给出客户环境与价值证据 → 全团队（Ch16）把定制铺成平台能力、基于证据作出下一阶段决策、向决策层讲清价值。</strong></p>
+<p>第 4 章最后问过你：<strong>"你把位置测试当标签贴死了吗？"</strong> 现在你应该体会到——Echo 和 Delta 不是两种人，而是 FDE 都要练的两种能力：<strong>一端是挖真需求、做取舍、讲价值的"判断力"，另一端是让 AI 干活、把关、回注的"施工力"。</strong> 合起来，才是 FDE"从卖人力到卖能力"的完整闭环。</p>
+<p><strong>回到公司，你要做的第一件事，就是把这套方法在你的真实项目上用起来——先找对问题，再让它跑起来，最后把碎石路铺成公路。</strong> 有真实项目且能匿名化的同学，可以再做一遍《复盘真实项目》：检验这套方法能不能经得起"换一个项目、没有标准答案"的考验。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

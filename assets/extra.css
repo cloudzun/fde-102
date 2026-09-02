@@ -1,0 +1,145 @@
+/* ============================================================
+   AI 时代的 FDE —— 站点配色定制
+   主色：靛蓝 indigo（企业级信任 / 前沿部署）
+   强调：琥珀金 amber（平台飞轮沉淀的金子 / "卖能力"）
+   ============================================================ */
+
+/* ---- 首页 Hero ---- */
+.md-header {
+  background: linear-gradient(135deg, #1a237e 0%, #283593 55%, #3949ab 100%);
+}
+[data-md-color-scheme="slate"] .md-header {
+  background: linear-gradient(135deg, #0d1440 0%, #1a237e 60%, #283593 100%);
+}
+
+/* ---- 篇标题视觉（正文里 # 篇标题）---- */
+h1 {
+  color: #1a237e;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+[data-md-color-scheme="slate"] h1 {
+  color: #9fa8da;
+}
+
+/* ---- 强调：琥珀金点缀（关键字/链接 hover/强调色块）---- */
+.md-typeset a {
+  color: #b28704;
+}
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #ffca28;
+}
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* ---- 表格：表头用靛蓝、hover 用琥珀浅底 ---- */
+.md-typeset table:not([class]) th {
+  background-color: #3949ab;
+  color: #fff;
+  font-weight: 600;
+}
+.md-typeset table:not([class]) tr:hover {
+  background-color: rgba(255, 179, 0, 0.08);
+}
+
+/* ---- Admonition / GitHub-style 引用块：细边框 + 靛蓝左缘 ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-width: 4px;
+  border-radius: 4px;
+}
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: #5c6bc0;
+}
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #ffb300;
+}
+.md-typeset .admonition.important,
+.md-typeset details.important {
+  border-color: #3949ab;
+}
+.md-typeset .admonition.warning,
+.md-typeset details.warning,
+.md-typeset .admonition.caution,
+.md-typeset details.caution {
+  border-color: #e65100;
+}
+
+/* ---- 代码块：深靛蓝底，琥珀高亮 ---- */
+.md-typeset pre > code {
+  background-color: #101f4d;
+  color: #e8eaf6;
+  border-radius: 4px;
+}
+.md-typeset .highlight code {
+  background-color: #101f4d;
+}
+.md-typeset code {
+  color: #b28704;
+}
+[data-md-color-scheme="slate"] .md-typeset code {
+  color: #ffca28;
+}
+
+/* ---- 导航：当前页用琥珀标记 ---- */
+.md-nav__item--active > .md-nav__link {
+  color: #b28704;
+  font-weight: 600;
+}
+[data-md-color-scheme="slate"] .md-nav__item--active > .md-nav__link {
+  color: #ffca28;
+}
+
+/* ---- 版权区 ---- */
+.md-footer-meta {
+  background-color: #1a237e;
+}
+[data-md-color-scheme="slate"] .md-footer-meta {
+  background-color: #0d1440;
+}
+
+/* ============================================================
+   mermaid 深底节点文字对比度修复
+   Material 主题注入 themeCSS：.label{color;fill:var(--md-mermaid-label-fg-color)}
+   （深色常量，且不带 !important）。在深色填充节点上，会把源码里"白字"盖成深字，导致深浅不分明/看不清。
+   这里用页面级 !important 规则，按节点填充色（深色者为白字、浅色者为深字），
+   强制 .label 及其 foreignObject 内文本的 color 与 fill，压过 Material 那条不带 !important 的规则。
+   ============================================================ */
+/* 深色填充 → 白字（覆盖色与填充两处，mermaid 可能用任意其一渲染 foreignObject 文本） */
+.md-typeset .node:has(rect[style*="fill:#3949ab"]),
+.md-typeset .node:has(rect[style*="fill:#1a237e"]),
+.md-typeset .node:has(rect[style*="fill:#2e6ba8"]),
+.md-typeset .node:has(rect[style*="fill:#7b5ea7"]),
+.md-typeset .node:has(rect[style*="fill:#907bb5"]),
+.md-typeset .node:has(rect[style*="fill:#e45756"]) {
+  color: #fff !important;
+}
+.md-typeset .node:has(rect[style*="fill:#3949ab"]) .label,
+.md-typeset .node:has(rect[style*="fill:#1a237e"]) .label,
+.md-typeset .node:has(rect[style*="fill:#2e6ba8"]) .label,
+.md-typeset .node:has(rect[style*="fill:#7b5ea7"]) .label,
+.md-typeset .node:has(rect[style*="fill:#907bb5"]) .label,
+.md-typeset .node:has(rect[style*="fill:#e45756"]) .label,
+.md-typeset .node:has(rect[style*="fill:#3949ab"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#1a237e"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#2e6ba8"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#7b5ea7"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#907bb5"]) .label *,
+.md-typeset .node:has(rect[style*="fill:#e45756"]) .label * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* ============================================================
+   字体：对齐 xiling 参考站（cloudzun/xiling）的系统字体栈
+   ——只改字体，不动布局/颜色/任何其它规则。
+   原理：Material 的 :root 里 --md-text-font-family = var(--md-text-font, _),…，
+   覆盖 --md-text-font / --md-code-font 两个变量即全局换字体（正文+代码）。
+   ============================================================ */
+:root {
+  --md-text-font: "Roboto", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --md-code-font: "Cascadia Mono", "Consolas", monospace;
+}

@@ -1,0 +1,1870 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第10章 实操三：政策法规 RAG 问答系统 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-rag-b" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第10章 实操三：政策法规 RAG 问答系统
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 知识背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 任务书
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 课前准备
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 演练流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 演练流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 环节 1 · 写启动提示词
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 环节 2 · 注入并跟进八环节
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.3 环节 3 · 验收与收尾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.4 环节 4 · 复盘沉淀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 产出物清单与验收标准（DoD）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-echo-prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Echo Prototype 检查单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 知识背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 任务书
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 课前准备
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 演练流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 演练流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 环节 1 · 写启动提示词
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 环节 2 · 注入并跟进八环节
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.3 环节 3 · 验收与收尾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.4 环节 4 · 复盘沉淀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 产出物清单与验收标准（DoD）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-echo-prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Echo Prototype 检查单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="10-rag-b">第 10 章  实操三 · 政策法规 RAG 问答系统（场景 B）<a class="headerlink" href="#10-rag-b" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 实操单元 · <strong>角色 = Delta</strong> · Prototype 阶段 · 模式 = <strong>AI 施工</strong>（opencode + gstack）· <strong>场景 B</strong></p>
+<p><strong>本章产出：</strong> 一个可运行的<strong>政务政策问答系统</strong>（市民/坐席输入政策问题→检索政策库→生成<strong>带来源引用</strong>的回答）+ Streamlit 对话界面 + 一轮完整 gstack 交付件。</p>
+<p><strong>承接：</strong> 第 6 章《解决方案框架》场景 B；第 8 章实操二成果；第 9 章 RAG 方法。</p>
+<p><strong>延伸阅读：</strong> 本书第 9 章（RAG 知识底座：9.1 开卷考试、9.2 核心链路、9.9 双指标验收）。</p>
+<p><strong>实验手册：</strong> Q&amp;A 验证集、启动提示词参考答案、gstack 安装速查、灵魂追问与讲师要点见《实验手册》<strong><code>labs/lab3-policy-rag.md</code></strong>；政策文档素材见 <code>labs/lab3-policy-docs/</code>——本实操正文只保留"方法与验收"。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>复用实操二练熟的"启动提示词 → gstack 八环节 → checkpoint 把关"工作流；</li>
+<li>施工 RAG：读懂政策文档（含 docx/pdf 解析）→ 分块 → 向量化 → 检索 → 生成 + 来源引用；</li>
+<li>把"<strong>答案可追溯</strong>"作为政务命门落地为<strong>双指标验收</strong>（答案准确率 + 来源可追溯率）；</li>
+<li>掌握 RAG 特有的几个决策点：切块策略、top-K、检索不到兜底、建索引后抽查。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 9 章（RAG 链路与选型）、第 8 章（施工工作流）、第 6 章（西岭场景 B）。</li>
+<li><strong>章节地图：</strong> 本章是 Delta 侧<strong>第二个</strong>施工实操（坡度第二级：检索 + 生成）。坡度递增：分类器（一把梭）→ RAG（检索+生成）。</li>
+</ul>
+<p><strong>学习目标追踪（目标 → 活动 → 证据 → 验收）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>学习目标</th>
+<th>对应活动</th>
+<th>主要证据</th>
+<th>对应 DoD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>复用实操二施工工作流</td>
+<td>10.4 全程</td>
+<td>启动提示词含 7 项信息</td>
+<td>含政策文档 + Q&amp;A 验证集</td>
+</tr>
+<tr>
+<td>施工 RAG（解析→分块→向量化→检索→生成+引用）</td>
+<td>10.4.1/10.4.2</td>
+<td>索引与检索代码、qa_pairs.csv</td>
+<td>5 份文档读全、建索引抽查</td>
+</tr>
+<tr>
+<td>双指标验收落地</td>
+<td>10.4.3 环节 3</td>
+<td>qa-report.md 双指标结果</td>
+<td>双指标达标、拒答实测</td>
+</tr>
+<tr>
+<td>RAG 特有决策点（切块/top-K/兜底）</td>
+<td>10.4.2 环节 2</td>
+<td>SPEC-决策记录.md</td>
+<td>决策点都拍板</td>
+</tr>
+<tr>
+<td>演示级验收声明 + 交接</td>
+<td>10.4.3/10.4.4</td>
+<td>验收声明、retro.md</td>
+<td>声明与交接完成</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="101">10.1 知识背景<a class="headerlink" href="#101" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>这一轮在 Ch9 坐标系里的位置：</strong>
+- <strong>开卷考试（9.1）</strong>：本实操落在四层级金字塔第 2 层 RAG——先检索政策片段，再基于片段作答并标注来源；不用微调（政策常更新、需溯源、易幻觉）、不用纯关键词搜索（语义鸿沟）。
+- <strong>核心链路（9.2）</strong>：离线建库（解析→分块→向量化→存库）做一次，在线问答（检索→生成 + 引用）做多次；政策更新只需重建索引，不用改模型。
+- <strong>双指标（9.9.3）</strong>：答案准确率 + 来源可追溯率，是政务 AI 的准入门槛——答必须带出处、检索不到不能编。
+- <strong>从最简单开始（9.6.3 / 9.7.2）</strong>：本实操用基础向量检索（Chroma + top-K），不堆叠混合检索 / 重排；当评估发现某类查询持续差，才按 9.7 逐段升级。
+- <strong>数据不出域（7.4）</strong>：本实操 embedding 走 API（如硅基流动 bge-m3）的前提，是<strong>课堂模拟数据（完全虚构、脱敏、无真实个人信息）可在课堂批准环境使用公网服务</strong>（教学数据边界见导读与 13.2 的六类"出域"口径）；若换成真实客户数据（未经确认不得进入公网服务），应切到本地向量库与本地 embedding（第 13 章 13.2 的私有化路径）。
+- <strong>最小工具契约（供后续复用）</strong>：本实操的检索能力将被封装为 <strong><code>search_policy</code></strong> 工具——<strong>输入</strong>：用户问题；<strong>输出</strong>：带来源的证据片段列表。每个证据带<strong>来源元数据</strong>：<code>source_file</code>（原始文件）/ <code>normalized_file</code>（归一化文本）/ <code>article</code>（条款）/ <code>excerpt</code>（摘要），供"来源可追溯"与 <strong>实操四B</strong> 复用，并守住"无证据不回答"的底线。元数据字段现在建好，后面建索引、答引用、做本体（15.4）都不用返工。</p>
+</blockquote>
+<h2 id="102">10.2 任务书<a class="headerlink" href="#102" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>打开第 6 章《解决方案框架》场景 B："政务政策知识问答——让市民问政策，系统直接给答案，还得告诉他是哪份文件、哪条规定的，免得坐席背锅。"</p>
+<p><strong>技术方案（已在实操一定）：</strong> RAG（不是微调、不是纯关键词搜索）——政策文件会更新、答案必须可溯源、不能凭模型记忆瞎答。技术栈：opencode + gstack + DeepSeek + 向量库 + Streamlit。</p>
+</blockquote>
+<h2 id="103">10.3 课前准备<a class="headerlink" href="#103" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> opencode、gstack 已装（实操二装过，可复用）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> DeepSeek API key 已配置</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>向量库 + embedding 依赖已装</strong>（见下方环境准备）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 已通读第 6 章《解决方案框架》场景 B 部分</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 已查看实操二的《AGENTS.md》和《retro.md》（交接经验）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 政策文档素材在手（<code>labs/lab3-policy-docs/</code>，5 份混合格式）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 创建本实操目录 <code>实操三-政策问答/</code></li>
+</ul>
+<p><strong>环境准备（向量库 + embedding）：</strong> RAG 比分类器多了两样东西——向量库和 embedding 模型。让 Agent 帮你装（含：清华镜像 pip、GitHub ghfast 代理、独立 venv、装 chromadb、配置 embedding API（如硅基流动 bge-m3）写进 .env）。<strong>验证标准：装完必须实际跑一行 import + 调用，确认返回向量维度</strong>——<code>pip list</code> 显示"已安装"可能是假象（环境变量泄漏加载到残缺包），务必实测。</p>
+<blockquote>
+<p><strong>embedding 两条路：</strong> 本实操用 <strong>API 优先</strong>（如硅基流动 bge-m3）——免运维、验证快；本地跑要下载 2GB+ 模型和 torch、机器差会卡死。若 API 不可用再降级本地。</p>
+</blockquote>
+<p><strong>政策文档（<code>labs/lab3-policy-docs/</code>）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>格式</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>社保参保政策.md</td>
+<td>Markdown</td>
+<td>6章27条</td>
+</tr>
+<tr>
+<td>医保报销政策.md</td>
+<td>Markdown</td>
+<td>7章28条</td>
+</tr>
+<tr>
+<td>保障性住房政策.md</td>
+<td>Markdown</td>
+<td>7章27条</td>
+</tr>
+<tr>
+<td>户籍迁移政策.docx</td>
+<td><strong>Word</strong></td>
+<td>7章23条</td>
+</tr>
+<tr>
+<td>就业创业补贴政策.pdf</td>
+<td><strong>PDF</strong></td>
+<td>6章33条</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>.docx</code> 和 <code>.pdf</code> 要先做<strong>格式解析</strong>（转成可检索文本）再分块向量化。政策文档是素材目录下的真实文件，<strong>施工时让 Agent 从该目录读取，不让 Agent 自己编政策内容</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="104">10.4 演练流程<a class="headerlink" href="#104" title="Permanent link">&para;</a></h2>
+<h3 id="1041-1">10.4.1 环节 1 · 写启动提示词<a class="headerlink" href="#1041-1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>这不是让 AI 干的活，是你（Delta）的活。</strong> 流程和实操二一样，但你这次有了经验，且场景 B 的 7 项信息内容不同。对照第 6 章方案框架场景 B 填：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>信息块</th>
+<th>本场景内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>背景与角色</td>
+<td>"我是 FDE 团队的 Delta，施工场景 B：政务政策问答"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>要做什么</td>
+<td>"政务政策知识问答系统，基于政策文件回答市民咨询"</td>
+</tr>
+<tr>
+<td>3</td>
+<td>输入输出</td>
+<td>"输入一个政策问题，输出：回答 + 来源引用（哪份文件、哪一条）"</td>
+</tr>
+<tr>
+<td>4</td>
+<td>技术选型（含理由）</td>
+<td>"已选型 RAG，不用微调（政策常更新、需溯源）、不用纯关键词搜索（语义鸿沟）"</td>
+</tr>
+<tr>
+<td>5</td>
+<td>数据现状</td>
+<td>"政策库在 Lab3-policy-docs/（5 份混合格式）+ Q&amp;A 验证集；政策会更新，需重建索引"</td>
+</tr>
+<tr>
+<td>6</td>
+<td>验收口径</td>
+<td>"答案准确率 ≥80% + 来源可追溯率 ≥90%（双指标）"</td>
+</tr>
+<tr>
+<td>7</td>
+<td>约束与边界</td>
+<td>"答案必须带来源引用，不能凭模型记忆瞎答；API key 走环境变量"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 1 写出 7 项信息 + 政策文档路径 + Q&amp;A 验证集；Step 2 用自查问题审查（同实操二 7 个自查）；Step 3 附上 Q&amp;A 验证集（6 条，让 Agent 落盘 <code>tests/qa_pairs.csv</code>）。</strong>（Q&amp;A 验证集全文与启动提示词参考答案见《实验手册》<code>labs/lab3-policy-rag.md</code> 附录 D。）</p>
+<blockquote>
+<p><strong>本阶段最容易漏的两处：</strong>
+- <strong>数据现状写"政策会更新，需重建索引"</strong>——漏了 Agent 可能不做索引更新机制；
+- <strong>验收口径写"来源可追溯率"这个指标</strong>——漏了 Agent 只优化答案对错、不重视引用（可溯源是政务命门）。</p>
+<p><strong>验证集设计（教学点）：验证集问题不要设计得太宽。</strong> 一个宽问题往往覆盖多个条款（如"外地户口能交社保吗"同时涉及稳定就业/灵活就业两条），单条款锚定必然歧义。<strong>拆细</strong>（稳定就业→第15条、灵活就业→第16条）能同时提升验收稳定性和教学清晰度。</p>
+</blockquote>
+<h3 id="1042-2">10.4.2 环节 2 · 注入并跟进八环节<a class="headerlink" href="#1042-2" title="Permanent link">&para;</a></h3>
+<p>注入：把启动提示词灌进 <code>/office-hours</code> + 附驱动指令（同实操二：环节产出落盘、禁止全自动、拍板点列选项——完整写法见《实验手册》<code>labs/lab3-policy-rag.md</code>）。</p>
+<p><strong>跟进八环节，你的把关点（相比实操二，新增 RAG 特有的检查）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>Agent 会做什么</th>
+<th>你的 checkpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>office-hours</td>
+<td>追问数据、口径、溯源</td>
+<td>回答文档/口径问题；确认"值得做"</td>
+</tr>
+<tr>
+<td>spec</td>
+<td>死磕 No-Go、数据模型、验收口径</td>
+<td>"答案必须带来源"写进 SPEC了吗</td>
+</tr>
+<tr>
+<td>autoplan</td>
+<td>暴露 RAG 决策等你拍板</td>
+<td><strong>真的拍板</strong>：切块策略、top-K、检索不到怎么办</td>
+</tr>
+<tr>
+<td>build</td>
+<td>文档→分块→向量化→检索→生成</td>
+<td>文档来自 Lab3-policy-docs、非 Agent 编；5 份都读全（含 docx/pdf）；<strong>建索引后抽查检索（见下）</strong></td>
+</tr>
+<tr>
+<td>review</td>
+<td>两遍检查，P0–P3</td>
+<td>修 P0/P1；API key 没硬编码；embedding 无硬编码模型名</td>
+</tr>
+<tr>
+<td>qa</td>
+<td>真实跑 + 边界</td>
+<td>用 Q&amp;A 验证集测；双指标达标</td>
+</tr>
+<tr>
+<td>ship</td>
+<td>版本+CHANGELOG+README+commit</td>
+<td>.env 未入库</td>
+</tr>
+<tr>
+<td>retro</td>
+<td>复盘四点</td>
+<td>摩擦写具体；有行动项</td>
+</tr>
+</tbody>
+</table>
+<p><strong>施工阶段必做的一个验证动作——建索引后抽查检索：</strong></p>
+<p><pre class="mermaid"><code>flowchart TB
+    P1["政策文档 5 份&lt;br/&gt;（含 docx / pdf）"]
+    P2["解析 .docx / .pdf → 可检索文本"]
+    P3["按条切块&lt;br/&gt;过滤程序性条款"]
+    P4["向量化 + 存入向量库"]
+    CHK["建索引后抽查 top-k&lt;br/&gt;目标条款是否在前几"]
+    Q["用户提问"]
+    R["检索 top-5 片段"]
+    A["生成答案 + 来源引用"]
+    P1 --&gt; P2 --&gt; P3 --&gt; P4 --&gt; CHK
+    Q --&gt; R
+    P4 -.检索底库.-&gt; R
+    R --&gt; A
+    style P4 fill:#dbe4f0,stroke:#3949ab
+    style CHK fill:#f5ece0,stroke:#a8895f
+    style A fill:#3949ab,color:#fff,stroke:#1a237e</code></pre>
+<em>图 10-1：本实操施工主链路——离线建索引 + 在线问答，建索引后先抽查 top-k 再验收</em></p>
+<blockquote>
+<p>这条"建索引后抽查"是 RAG 施工最容易被跳过的动作，详见下方决策点 5。</p>
+</blockquote>
+<p><strong>关键决策点（RAG 特有，Agent 停下时你要拍板）：</strong></p>
+<ol>
+<li><strong>切块策略</strong>：政策文档天然按「条」组织，<strong>推荐按条切块</strong>（正则匹配行首"第X条"，每条一块，条款号随块保留）——引用粒度天然对齐"第X条"，与验证集零转换。固定长度切块会一次塞好几条政策、切断条款号，不推荐。<strong>注意程序性条款</strong>（"本政策由XX负责解释/自XX起施行/有效期"）对所有问题都呈中等相似度、相互高度相似，会污染检索——<strong>建索引时建议过滤</strong>。</li>
+<li><strong>检索数量（top-K）</strong>：太少答案不全、太多噪声大——实测 <strong>top-5 配合程序性条款过滤</strong>效果稳定。</li>
+<li><strong>检索不到怎么办</strong>：<strong>绝不能编</strong>——应明确说"政策库中未找到，建议咨询人工"。相似度阈值只是"进生成的门槛"，检索到相似度不高的片段进了生成后，<strong>拒答靠提示词约束模型判断兜底</strong>——两层防线，验收各测一条（准备 1–2 条库外问题实测拒答）。</li>
+<li><strong>来源引用格式</strong>：要显示"文件名 + 条款号"——这是政务可溯源的底线。</li>
+<li><strong>建索引后必须抽查检索</strong>：建完索引，对每条验证集问题输出 top-k 排名，人工扫一眼目标条款在不在前几。<strong>不抽查直接验收，目标条款可能被程序性条款挤掉，首轮必 FAIL、白花几十分钟</strong>——这是 RAG 施工最实用的经验。</li>
+</ol>
+<blockquote>
+<p><strong>自查追问：</strong> Agent 在 autoplan 问"检索不到时模型怎么回答"——你不能说"你看着办"。为什么？因为 <strong>政务场景，编造政策答案是事故</strong>（坐席/平台要负责）。你必须拍板"检索不到必须明说，不能编"。这个决策 AI 不知道严重性，只有你知道。</p>
+</blockquote>
+<h3 id="1043-3">10.4.3 环节 3 · 验收与收尾<a class="headerlink" href="#1043-3" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 核对交付物：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>实操三-政策问答/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── 01-office-hours.md
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── SPEC.md                   # 含失败模式 + No-Go + 数据模型 + 验收口径
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── SPEC-决策记录.md           # autoplan 拍板记录
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── docs/                     # 政策库（从 Lab3-policy-docs/ 读取）
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── src/                      # 分块/向量化/检索/生成模块
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── streamlit_app.py          # 对话界面
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── tests/qa_pairs.csv        # Q&amp;A 验证集
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>├── review.md / qa-report.md
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>├── VERSION / CHANGELOG.md / README.md
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>└── retro.md
+</code></pre></div>
+<p><strong>Step 2 验收口径（双指标）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>要求</th>
+<th>判定机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>答案准确率</strong></td>
+<td>≥80%</td>
+<td>让 LLM 语义评判：对照 expected_answer 判"一致/不一致"</td>
+</tr>
+<tr>
+<td><strong>来源可追溯率</strong></td>
+<td>≥90%</td>
+<td>严格比对：引用的"文件名+条款号"与 expected_source 一致才算对（条款号归一化：'第16条'/'第十六条'都算 16；漏引/错引/不符都算未达标）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>为什么"答案对但来源错"也要扣分？</strong> 政务命门是可溯源——答案对了、来源引错了，等于让市民去核对一个不存在的文件，比不答更糟。</p>
+<p><strong>统计提示（小样本口径）：</strong> 6 条验证集上，"可追溯率 ≥90%" 实际需要 <strong>6/6 全对</strong>——5/6≈83.3% 不达标；小样本下 90% 门槛<strong>退化为"全对制"</strong>。该结果<strong>只说明本次样本</strong>，不代表稳定的生产水平；对"全对才过线"要有心理预期。</p>
+</blockquote>
+<p><strong>Step 3 模拟向小王演示：</strong>
+- 用她听得懂的话讲（别说"RAG""向量检索"）；
+- 演示一个"带来源引用"的回答——"系统答完还告诉市民哪份文件哪一条，你可以去核对"；
+- 呼应她"答错政策担责任"的顾虑——"政策答错责任能追溯到文件，不用你背锅"。</p>
+<blockquote>
+<p><strong>自查追问：</strong> 向小王演示时，为什么"来源引用"是最好的切入点？——因为她最怕"答错政策被追责"。<strong>来源引用把"AI 答错了谁负责"从"坐席背锅"变成"按文件来、有据可查"。</strong> 这正是场景 B 的核心价值。</p>
+</blockquote>
+<p><strong>Step 4 写"演示级验收声明"（DoD）：</strong></p>
+<blockquote>
+<p>"本项目使用 5 份政策文档 + 6 条 Q&amp;A 验证集，属<strong>演示级验收</strong>——结论仅证明方案在给定政策库和样本上可行，不宣称覆盖全部政策或达到生产可用。"</p>
+<p><strong>自查追问：</strong> 为什么必须写这句？政务场景夸大更危险——<strong>说"覆盖全部政策"而实际没有，市民按错误信息办事，责任是平台扛。</strong></p>
+</blockquote>
+<h3 id="1044-4">10.4.4 环节 4 · 复盘沉淀<a class="headerlink" href="#1044-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>看 Agent 的 retro；追加：<strong>更新 AGENTS.md</strong>（RAG 特有坑：程序性条款过滤、拒答两层防线）+ <strong>改进交接</strong>（下一轮场景 C Agent 开工前先看这条经验）。</li>
+</ul>
+<hr />
+<h2 id="105-dod">10.5 产出物清单与验收标准（DoD）<a class="headerlink" href="#105-dod" title="Permanent link">&para;</a></h2>
+<p><strong>交付物：</strong> 见环节 3 Step 1 文件树。</p>
+<p><strong>验收标准（DoD）：</strong>
+- [ ] 启动提示词含 7 项信息块 + 政策文档 + Q&amp;A 验证集 + 双指标验收口径
+- [ ] Agent 按 gstack 八环节跑完，每环节有产出文件
+- [ ] RAG 决策点都拍了板（切块策略 / top-K / 检索不到兜底 / 来源格式）
+- [ ] "答案必须带来源"写进 SPEC；<strong>建索引后抽查检索</strong>（目标条款在前几）
+- [ ] 5 份政策文档都读全（含 docx/pdf 解析），来自 Lab3-policy-docs、非编造
+- [ ] 双指标达标（准确率 ≥80% + 可追溯率 ≥90%），拒答（库外问题）实测过
+- [ ] .env 未入库，P0/P1 已修复
+- [ ] 向小王演示"来源引用 = 责任可追溯"
+- [ ] 写了"演示级验收声明"
+- [ ] retro 更新了 AGENTS.md 与交接行动项</p>
+<blockquote>
+<p>（gstack 安装速查见 <code>labs/lab3-policy-rag.md</code> 附录 A；Q&amp;A 验证集与启动提示词参考答案见附录 D；灵魂追问与讲师要点见附录 B/C。）</p>
+</blockquote>
+<hr />
+<h2 id="106-echo-prototype">10.6 Echo Prototype 检查单<a class="headerlink" href="#106-echo-prototype" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>本章不是 Delta 单线活动：Prototype 结束时，<strong>Echo 至少完成一次检查</strong>（对照实操一的方案框架），产出可归因、可评分的个人记录。Delta 仍是施工主责。</p>
+</blockquote>
+<p>Echo 至少完成：</p>
+<ul>
+<li>哪些问题允许回答、哪些必须拒答（回答边界确认）；</li>
+<li>引用是否真正支撑结论（抽查"答对但引错/引对但过度推断"两类失败）；</li>
+<li>政策适用对象、时间和地域边界确认；</li>
+<li>坐席是否能理解和复核答案（对小王演示后的反馈）；</li>
+<li>是否满足原始业务需求的判断（对照 10.2 任务书）。</li>
+</ul>
+<p>通用检查单（每条填一行）：</p>
+<table>
+<thead>
+<tr>
+<th>原需求</th>
+<th>当前功能</th>
+<th>证据</th>
+<th>用户反馈</th>
+<th>未满足项</th>
+<th>阈值是否调整</th>
+<th>下一步判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.2 场景 B 双指标口径</td>
+<td>RAG + 引用 + 拒答</td>
+<td>qa-report.md</td>
+<td>演示反馈</td>
+<td>待填</td>
+<td>是否调整及原因</td>
+<td>Go / 继续 / 回炉</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">反模式与红线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>不指定政策文档来源、让 Agent 自己编政策。</strong> 内容必须来自 Lab3-policy-docs，不得编造。</li>
+<li><strong>retro 不抽查检索直接验收。</strong> 目标条款可能被程序性条款挤掉 → 首轮必 FAIL。</li>
+<li><strong>只优化答案准确率、忽视来源可追溯。</strong> 政务场景来源错误比答案错误更糟。</li>
+<li><strong>检索不到让模型编造。</strong> 必须说"未找到，建议咨询人工"——编造政策是事故。</li>
+<li><strong>验证集设计得太宽（单条款锚定歧义）。</strong> 拆细能提升验收稳定性与教学清晰度。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>红线本处落地：答案可追溯。</strong> 本章你亲手把"答案必须带来源 + 检索不到不能编 + 双指标验收"写进 SPEC 与 DoD——这是政务问答类项目常见的验收准入门槛（教材经验口径，非普遍法定要求），也是导读页四条红线的本处闭环。</p>
+</div>
+<hr />
+<h2 id="_3">本章小结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>RAG 施工链路：读取（含 docx/pdf 解析）→ 分块 → 向量化 → 检索 → 生成 + 来源引用。</li>
+<li><strong>Gstack 流程复用</strong>实操二，新增 RAG 特有决策点：切块策略、top-K、检索不到兜底、建索引抽查。</li>
+<li><strong>政务命门 = 答案可追溯</strong>：双指标验收（答案 ≥80% + 来源可追溯 ≥90%），"检索不到不能编"是底线。</li>
+<li>演示级验收声明 + 向小王讲"来源引用=责任可追溯"。</li>
+<li><strong>本体贡献</strong>：建立"诉求—政策条款—政策文件"的依据关系（业务本体的输入，见第 15 章 15.4）。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能独立写含 RAG 特有信息（政策文档 + QA 验证集 + 双指标）的启动提示词吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"为什么按条切块、为什么要过滤程序性条款"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"检索不到为什么不能编、两层防线是什么"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"为什么答案对但来源错也要扣分"吗？</li>
+</ul>
+<hr />
+<h2 id="_4">练习与思考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写 RAG 施工链路；说出实操二/三的核心区别（一次调用 vs 检索+生成）。</li>
+<li><strong>进阶：</strong> 用"拆细验证集"原则，把"外地户口能在西岭交社保吗"拆成两条，说明各锚定哪个条款、为什么更稳。</li>
+<li><strong>挑战（迁移练习/升级路径）：</strong> 想对齐完整版 RAG 工程可按需升级——1）<strong>混合检索 + 重排序</strong>（bge-m3 hybrid + bge-reranker-v2-m3，召回 top-100→top-10）；2）<strong>RAGAS 三维评估</strong>（忠实度/上下文精度/回答相关性替代/补充双指标）；3）<strong>生产化</strong>（ACL 元数据、增量更新而非全量重建）。说明每项该在"什么时候发现问题再上"，而非一开始堆砌。</li>
+</ul>
+<hr />
+<h2 id="_5">延伸阅读<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 16 章 AI FDE 落地：Delta 技术与场景）——向量库（Chroma/Milvus）、embedding（bge-m3）、本土 RAG 技术栈的落地方案。</li>
+<li><strong>实验手册：</strong> 政策文档（<code>labs/lab3-policy-docs/</code>）、Q&amp;A 验证集、启动提示词参考答案见《实验手册》<code>labs/lab3-policy-rag.md</code>（与训练营"实操三"同源）。</li>
+<li><strong>下一章：</strong> 本书 <strong>第 11 章 Agent 方法 · 自动化边界</strong>（坡度第三级：决策循环 + 自动化边界）。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

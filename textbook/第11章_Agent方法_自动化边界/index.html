@@ -1,0 +1,3113 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第11章 Agent 方法·自动化边界 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#11-agent" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第11章 Agent 方法·自动化边界
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Agent 是什么：智能体与决策循环
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 Agent 是什么：智能体与决策循环">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.1 一个明确的中文名与定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.2 三档能力对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.3 决策循环：智能体的本质
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 什么时候用智能体：“从最简单开始”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 工作流、编排工具与六种设计模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.3 工作流、编排工具与六种设计模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.1 工作流（Workflow）的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.2 编排工作流的工具
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.3 六种模式全景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.4 工作流类 vs 智能体：厂商原始框架与本书三分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1135-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.5 工单分级为什么用 Routing 就够
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.6 六种模式的二维判断：预定义/动态路径 × 单轮/闭环迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1137-routing-workflow-agentic-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.7 从 Routing Workflow 到受控 Agentic Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Routing：三路分流设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.4 Routing：三路分流设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1141-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4.1 Router 模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1142-lowquick-highdeep-uncertainescalate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4.2 三路分流：low→quick / high→deep / uncertain→escalate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1143" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4.3 工单分级的落地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115-langgraph-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 智能体工程底座：LangGraph 与 MCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.5 智能体工程底座：LangGraph 与 MCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1151-langgraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.1 LangGraph：把"决策循环"画成图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1152-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.2 MCP：标准化工具接入协议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 工具设计与国产模型注意点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.6 工具设计与国产模型注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1161" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.1 工具定义的质量直接决定准确率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1162-tool-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.2 国产模型 Tool Calling 的注意点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1163" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.3 工具调用工程化：超时、重试、幂等、审计、降级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#117-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 假阳性 vs 假阴性：宁可多升级，不可漏
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.7 假阳性 vs 假阴性：宁可多升级，不可漏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1171" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.1 两个出错方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1172" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.2 实测证据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1173" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.3 政务敏感件铁律：宁多升级，不可漏
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#118" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8 智能体安全与三层护栏
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.8 智能体安全与三层护栏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1181" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8.1 三层护栏框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1182" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8.2 真实事故提醒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1183-hitlai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8.3 人机回环（HITL）：让"人能判断、AI 能执行"可落地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#119-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9 自动化边界：FDE 方案设计的核心业务决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.9 自动化边界：FDE 方案设计的核心业务决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1191" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9.1 为什么这是业务决策而不是技术问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1192" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9.2 判断三问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1193-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9.3 边界写进 SPEC，并落到工单分级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1110" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10 企业案例：银行反洗钱可疑交易监测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.10 企业案例：银行反洗钱可疑交易监测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.1 为什么看这个场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.2 它长什么样：数据流转
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.3 为什么它是"工作流 + 智能体"的混合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.4 四条红线如何落地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11105-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.5 FDE 在这里的价值：能力回注
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Agent 是什么：智能体与决策循环
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 Agent 是什么：智能体与决策循环">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.1 一个明确的中文名与定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.2 三档能力对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.3 决策循环：智能体的本质
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 什么时候用智能体：“从最简单开始”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 工作流、编排工具与六种设计模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.3 工作流、编排工具与六种设计模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.1 工作流（Workflow）的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.2 编排工作流的工具
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.3 六种模式全景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.4 工作流类 vs 智能体：厂商原始框架与本书三分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1135-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.5 工单分级为什么用 Routing 就够
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.6 六种模式的二维判断：预定义/动态路径 × 单轮/闭环迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1137-routing-workflow-agentic-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3.7 从 Routing Workflow 到受控 Agentic Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Routing：三路分流设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.4 Routing：三路分流设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1141-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4.1 Router 模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1142-lowquick-highdeep-uncertainescalate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4.2 三路分流：low→quick / high→deep / uncertain→escalate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1143" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4.3 工单分级的落地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115-langgraph-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 智能体工程底座：LangGraph 与 MCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.5 智能体工程底座：LangGraph 与 MCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1151-langgraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.1 LangGraph：把"决策循环"画成图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1152-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5.2 MCP：标准化工具接入协议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 工具设计与国产模型注意点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.6 工具设计与国产模型注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1161" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.1 工具定义的质量直接决定准确率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1162-tool-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.2 国产模型 Tool Calling 的注意点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1163" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6.3 工具调用工程化：超时、重试、幂等、审计、降级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#117-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 假阳性 vs 假阴性：宁可多升级，不可漏
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.7 假阳性 vs 假阴性：宁可多升级，不可漏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1171" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.1 两个出错方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1172" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.2 实测证据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1173" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7.3 政务敏感件铁律：宁多升级，不可漏
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#118" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8 智能体安全与三层护栏
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.8 智能体安全与三层护栏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1181" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8.1 三层护栏框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1182" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8.2 真实事故提醒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1183-hitlai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.8.3 人机回环（HITL）：让"人能判断、AI 能执行"可落地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#119-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9 自动化边界：FDE 方案设计的核心业务决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.9 自动化边界：FDE 方案设计的核心业务决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1191" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9.1 为什么这是业务决策而不是技术问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1192" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9.2 判断三问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1193-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.9.3 边界写进 SPEC，并落到工单分级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1110" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10 企业案例：银行反洗钱可疑交易监测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.10 企业案例：银行反洗钱可疑交易监测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.1 为什么看这个场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.2 它长什么样：数据流转
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.3 为什么它是"工作流 + 智能体"的混合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.4 四条红线如何落地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11105-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.10.5 FDE 在这里的价值：能力回注
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="11-agent">第 11 章  Agent 方法 · 自动化边界<a class="headerlink" href="#11-agent" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 知识单元 · Delta / 方案设计方法（对准实操四），把第 7 章 LLM 四层级金字塔的第 4 层（Agent / 智能体）讲透，并落地本书四条红线里的"<strong>敏感件零漏判</strong>"。</p>
+<p><strong>本章产出：</strong> 你能说清智能体（Agent）是什么、为什么是"输出之后还要继续做事"；分清 <strong>Workflow / Agentic Workflow / Agent</strong> 三种口径；区分智能体与工作流、理解编排工作流的工具，看懂六种常见设计模式（含"预定义/动态 × 单轮/闭环"二维判断）；用一个企业级真实场景（银行反洗钱可疑交易监测）看懂"工作流 + 智能体 + 人机回环"如何落地；掌握三路分流、假阳性/假阴性权衡、LangGraph 与 MCP、工具设计与<strong>工具调用工程化（超时/重试/幂等/审计/降级）</strong>与三层安全护栏，并把<strong>自动化边界</strong>做成 FDE 的核心业务决策。</p>
+<p><strong>建议读者：</strong> Delta（施工主力必读，直接用于实操四）与 Echo（自动化边界的业务判断需双角色共识）均适用。</p>
+<p><strong>前置：</strong> 第 7 章（四层级金字塔 7.2）、第 8 章（一次调用 = 分类）、第 9 章（检索 + 生成 = RAG）。</p>
+<p><strong>适配说明：</strong> 版本与数据信息截至 <strong>2026 年 8 月</strong>；技术栈迭代快，落地前按各家官方最新文档复核。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>给出智能体（Agent）一个明确的定义，说清它与普通 LLM、RAG、<strong>工作流（Workflow）与智能体工作流（Agentic Workflow）</strong>的本质差异（自主性 + 决策循环）；</li>
+<li>理解工作流（Workflow）概念与编排工作流的工具（Dify / Coze / LangGraph），说清平台与框架该用哪个；</li>
+<li>识别六种 Agentic 设计模式，用"预定义/动态路径 × 单轮/闭环迭代"二维判断给模式归类，讲清"工单分级为什么用 Routing 不用 Orchestrator-Workers"；</li>
+<li>用一个企业级场景看懂"工作流 + 智能体 + 人机回环"的长相，以及四条红线如何落地（含"给定验证集召回率 100%"的零漏判口径）；</li>
+<li>讲清 Router 三路分流与假阳性/假阴性的权衡，落地"敏感件宁可多升级、不可漏"；</li>
+<li>掌握 LangGraph 与 MCP 的工程机制、工具设计与<strong>工具调用工程化（超时/重试/幂等/审计/降级）</strong>、三层安全护栏；</li>
+<li>把"什么该自动化、什么必须留给人"按三问框架做成本文里的业务决策。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 8 章（分类器：一次调用）、第 9 章（RAG：检索 + 生成）、第 7 章（四层级金字塔，智能体在最高层）。</li>
+<li><strong>章节地图：</strong> 第 8/9 章是"给定输入→生成输出"（分类一个类、RAG 带来源的回答）；从本章起的智能体是"<strong>输出之后还要继续做事</strong>"——根据中间结果调工具、多步流转、自主决策。本章既有实验视角（对准第 12 章实操四），也把它放到企业真实场景里看；你是先看清"业界怎么用智能体"，再回到实验里亲手做一个。</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    ch8["第 8 章·分类器&lt;br/&gt;一次调用 · 属于哪类"]
+    ch9["第 9 章·RAG&lt;br/&gt;检索 + 生成 · 答案可溯源"]
+    ch11["第 11 章·Agent 智能体&lt;br/&gt;决策循环 · 调工具 · 自动化边界"]
+    ent["企业典型场景&lt;br/&gt;银行反洗钱监测智能体"]
+    ch12["第 12 章·路由工作流（Agentic Workflow）&lt;br/&gt;三路分流 · 敏感件零漏判"]
+    ch8 --&gt; ch11
+    ch9 --&gt; ch11
+    ch11 --&gt; ent
+    ent --&gt; ch12
+    style ch8 fill:#dbe4f0,stroke:#3949ab
+    style ch9 fill:#dbe4f0,stroke:#3949ab
+    style ch11 fill:#3949ab,color:#fff,stroke:#1a237e
+    style ent fill:#f5ece0,stroke:#a8895f
+    style ch12 fill:#fdecea,stroke:#a34a3a</code></pre>
+<em>图 11-1：本章位置——智能体是"输出之后还要去做事"的最高能力层，先看企业场景再看实操四</em></p>
+<hr />
+<h2 id="111-agent">11.1 Agent 是什么：智能体与决策循环<a class="headerlink" href="#111-agent" title="Permanent link">&para;</a></h2>
+<h3 id="1111">11.1.1 一个明确的中文名与定义<a class="headerlink" href="#1111" title="Permanent link">&para;</a></h3>
+<p><strong>中文名</strong>：Agent 在中文里尚无统一的权威译名，业界普遍称"<strong>智能体</strong>"，也有人叫"智能代理""AI 代理"。本书统一采用"智能体"（agent）。</p>
+<p><strong>定义</strong>：智能体是一种在目标驱动下<strong>自主运转</strong>的 LLM 系统——它能感知输入与环境，规划下一步，调用外部工具执行动作，观察结果，并据此修正决策，循环直至任务完成。它与普通调用最本质的三个特征是：</p>
+<ol>
+<li><strong>目标驱动</strong>：接到的是"把事情完成"的目标，而不是"回答这一句"；</li>
+<li><strong>能调用工具 / 与环境交互</strong>：读写数据、调接口、执行动作，不止动嘴；</li>
+<li><strong>能根据中间结果自主决策</strong>：看到结果后决定下一步，而不是一次性吐完答案。</li>
+</ol>
+<blockquote>
+<p>通俗但准确的口径：普通 LLM 是"会说话"，RAG 是"会查资料再说话"，智能体则是"<strong>会干活，并且会用干活的结果继续改良地干活</strong>"。</p>
+<p><strong>提前说清三个词（完整辨析见 11.3.4）：</strong> 本书严格区分 <strong>工作流（Workflow，流程写死）</strong>、<strong>智能体工作流（Agentic Workflow，路径预编排、节点由 LLM 决策）</strong>、<strong>智能体（Agent，自主决策循环，路径不可穷举）</strong>——工单三路分流这类路由按严格定义属于 Agentic Workflow，广义业界也常称其为 Agent，本书采用教材口径（见 11.3.4）。</p>
+</blockquote>
+<h3 id="1112">11.1.2 三档能力对比<a class="headerlink" href="#1112" title="Permanent link">&para;</a></h3>
+<p>用一张表把三档放一起：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">层</th>
+<th style="text-align: left;">比喻</th>
+<th style="text-align: left;">能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>普通 LLM</strong></td>
+<td style="text-align: left;">嘴</td>
+<td style="text-align: left;">只会说话——你问它答它</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RAG</strong></td>
+<td style="text-align: left;">嘴 + 图书馆</td>
+<td style="text-align: left;">查资料再说话——从知识库检索增强回答</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Agent（智能体）</strong></td>
+<td style="text-align: left;">嘴 + 手 + 大脑</td>
+<td style="text-align: left;">查资料、调工具、做决策——根据中间结果决定下一步</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1113">11.1.3 决策循环：智能体的本质<a class="headerlink" href="#1113" title="Permanent link">&para;</a></h3>
+<p>智能体的本质是一个<strong>循环</strong>，而不是一次调用：</p>
+<ul>
+<li><strong>观察</strong>：拿到输入（一个工单、一笔交易、一个任务）。</li>
+<li><strong>思考</strong>：判断当前情况属于哪类、下一步做什么。</li>
+<li><strong>行动</strong>：调用工具、查数据、生成处置意见。</li>
+<li><strong>再看结果</strong>：决定直接交付、继续处理，还是升级人工。</li>
+</ul>
+<p>以工单分级为例：智能体判断"这是跨部门诉求"后不会停下，而是继续——查部门职责库 → 生成深度处理意见 → 决定要不要转人工。这就是"决策循环"。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">单次 LLM 调用</th>
+<th style="text-align: left;">工作流（预编排）</th>
+<th style="text-align: left;">智能体（自主循环）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">可控性</td>
+<td style="text-align: left;">最高（单步、可预测）</td>
+<td style="text-align: left;">高（流程固定，决策点可审查）</td>
+<td style="text-align: left;">低（模型自主决策，路径不可穷举）</td>
+</tr>
+<tr>
+<td style="text-align: left;">成本</td>
+<td style="text-align: left;">基准（1 次调用）</td>
+<td style="text-align: left;">中（多次调用，次数固定）</td>
+<td style="text-align: left;">高（调用次数不定，含规划 / 反思 / 重试）</td>
+</tr>
+<tr>
+<td style="text-align: left;">延迟</td>
+<td style="text-align: left;">最低</td>
+<td style="text-align: left;">中（串行步骤叠加）</td>
+<td style="text-align: left;">最高（多轮往返 + 工具执行）</td>
+</tr>
+<tr>
+<td style="text-align: left;">失败模式</td>
+<td style="text-align: left;">单点幻觉 / 格式错误</td>
+<td style="text-align: left;">步骤固定，失败点可定位</td>
+<td style="text-align: left;">级联失败、循环空转、越权动作</td>
+</tr>
+<tr>
+<td style="text-align: left;">适用场景</td>
+<td style="text-align: left;">分类、抽取、生成等单步任务</td>
+<td style="text-align: left;">固定流程的文档处理、检索后生成</td>
+<td style="text-align: left;">开放任务、多工具编排、环境交互</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>口径说明（信息截至 2026-08）：</strong> 各方普遍认同"智能体比单次调用更贵、更慢"，但<strong>"成本 2-10 倍"不是官方数据</strong>——它源自一项"多智能体 vs 单智能体"的研究语境，并非"智能体 vs 单次调用"的通用倍数。本书不引用具体倍数，只采用官方定性：智能体复杂度的代价是<strong>更高成本、更多失败点、更长延迟</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="112">11.2 什么时候用智能体：“从最简单开始”<a class="headerlink" href="#112" title="Permanent link">&para;</a></h2>
+<p>对照第 7 章"从最简单开始"纪律，选该用哪一层：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方案</th>
+<th style="text-align: left;">关键判断</th>
+<th style="text-align: left;">何时用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">分类器（一次调用）</td>
+<td style="text-align: left;">输入 → 一个类别，贴完标签就结束</td>
+<td style="text-align: left;">只需"归类"，无需后续动作</td>
+</tr>
+<tr>
+<td style="text-align: left;">RAG</td>
+<td style="text-align: left;">先检索再生成，答案可溯源</td>
+<td style="text-align: left;">需"基于文档精确回答 + 可溯源"，无需多步动作</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>工作流 / Agentic Workflow</strong></td>
+<td style="text-align: left;">固定可枚举的步骤序列（部分节点可由 LLM 决策）</td>
+<td style="text-align: left;">步骤确定、路径可枚举，不需要模型自主规划循环</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>智能体</strong></td>
+<td style="text-align: left;">输出之后还要继续"做事"（调工具 / 多步流转 / 决策）</td>
+<td style="text-align: left;">需要"自主决策 + 调工具 + 多步流转"且路径不可预写</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>核心纪律（呼应第 5 章与 7.2）：</strong> 从最简单的方案开始，仅在必要时增加复杂度——<strong>这可能意味着根本不要构建智能体系统</strong>。分类器够用就别上 RAG，RAG 够用就别上工作流，能用固定工作流（含 Agentic Workflow）就别上自主智能体。智能体是复杂度的最后一级，不是默认选项。</p>
+</blockquote>
+<hr />
+<h2 id="113">11.3 工作流、编排工具与六种设计模式<a class="headerlink" href="#113" title="Permanent link">&para;</a></h2>
+<h3 id="1131-workflow">11.3.1 工作流（Workflow）的概念<a class="headerlink" href="#1131-workflow" title="Permanent link">&para;</a></h3>
+<p>在正式讲设计模式之前，先看清"工作流"这条路，因为<strong>六种模式的前三种本质就是工作流</strong>。</p>
+<p>工作流（Workflow）是把一条业务处理步骤<strong>固定下来、按预先写好的顺序执行</strong>：每一步做什么是确定的，程序或模型只是依次完成。它的特点是<strong>可控、可预测、失败点可定位</strong>。典型例子：文档审核流程——抽文档 → 抽关键字段 → 校验格式 → 归档，四步依序跑完。</p>
+<p>与智能体的区别一句话：<strong>工作流的"下一步"是写死的，智能体的"下一步"是模型自己决定的。</strong></p>
+<h3 id="1132">11.3.2 编排工作流的工具<a class="headerlink" href="#1132" title="Permanent link">&para;</a></h3>
+<p>现实中"编排工作流 + 挂局部智能体"有两条主流路线：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">工具</th>
+<th style="text-align: left;">形态</th>
+<th style="text-align: left;">适合谁 / 何种复杂度</th>
+<th style="text-align: left;">特点（截至 2026-08）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Dify</strong></td>
+<td style="text-align: left;">开源低代码 / 可视化编排平台</td>
+<td style="text-align: left;">业务与工程协同、快速搭"工作流 + 局部智能体"</td>
+<td style="text-align: left;">拖拽搭工作流，内置多模型，可接 MCP；版本以官方发布为准</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Coze（扣子）</strong></td>
+<td style="text-align: left;">低代码智能体平台</td>
+<td style="text-align: left;">快速搭建、弱化代码、工具市场丰富</td>
+<td style="text-align: left;">支持本地 + 云端智能体协同，可接入开源 Agent（如 Claude Code 等）；版本以官方发布为准</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LangGraph</strong></td>
+<td style="text-align: left;">代码级编排框架</td>
+<td style="text-align: left;">复杂、可编程、要深度定制的生产逻辑</td>
+<td style="text-align: left;">用代码描述节点与条件边，精细控制状态与生命周期；版本以官方发布为准</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>判读：</strong> 业务要参与配置、要几天内上线、逻辑不算非常复杂 → 先考虑平台（Dify / Coze）；逻辑复杂、要深度定制、要精细控制状态与错误处理 → 用代码框架（LangGraph）。两条路不是互斥，越来越多企业用<strong>平台搭骨架 + 代码框架做复杂节点</strong>。</p>
+</blockquote>
+<h3 id="1133">11.3.3 六种模式全景<a class="headerlink" href="#1133" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">模式</th>
+<th style="text-align: left;">是什么</th>
+<th style="text-align: left;">何时用</th>
+<th style="text-align: left;">何时不要用</th>
+<th style="text-align: left;">复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Prompt Chaining</strong>（提示链）</td>
+<td style="text-align: left;">任务拆成固定步骤串行，前步输出喂后步</td>
+<td style="text-align: left;">流程固定、可分解、可逐步调试</td>
+<td style="text-align: left;">需动态分支或反馈</td>
+<td style="text-align: left;">低</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Routing</strong>（路由）</td>
+<td style="text-align: left;">分类输入并导向专门处理分支</td>
+<td style="text-align: left;">任务分几类、每类处理逻辑固定且分类可靠</td>
+<td style="text-align: left;">类别边界模糊、分类不可靠</td>
+<td style="text-align: left;">低</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Parallelization</strong>（并行化）</td>
+<td style="text-align: left;">并行执行多个独立子任务后汇总</td>
+<td style="text-align: left;">子任务独立、可并行</td>
+<td style="text-align: left;">子任务间有强依赖</td>
+<td style="text-align: left;">中</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Orchestrator-Workers</strong>（编排者-工人）</td>
+<td style="text-align: left;">中央编排者动态拆解任务、分派给工人、汇总结果</td>
+<td style="text-align: left;">子任务数量/类型动态变化、无法预写死</td>
+<td style="text-align: left;">子任务固定且少——直接写流程更简单</td>
+<td style="text-align: left;">高</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Evaluator-Optimizer</strong>（评估-优化）</td>
+<td style="text-align: left;">生成器产出 → 评估器评判 → 不达标回炉</td>
+<td style="text-align: left;">有明确质量标准、迭代能明显改善</td>
+<td style="text-align: left;">评判标准模糊、单轮生成已够好</td>
+<td style="text-align: left;">中</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>自主智能体</strong>（Autonomous Agent）</td>
+<td style="text-align: left;">模型自主规划、调工具、观察、循环直至完成</td>
+<td style="text-align: left;">开放探索、大量工具与环境交互</td>
+<td style="text-align: left;">有简单固定流程可替代时</td>
+<td style="text-align: left;">高</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1134-vs">11.3.4 工作流类 vs 智能体：厂商原始框架与本书三分<a class="headerlink" href="#1134-vs" title="Permanent link">&para;</a></h3>
+<p>按 Anthropic 的原始框架（<a href="https://www.anthropic.com/research/building-effective-agents">Building Effective Agents</a>），六种模式分为两类：<strong>Workflows</strong>（提示链 / 路由 / 并行化 / 编排者-工人 / 评估-优化——流程编排是预定义的，模型在既定步骤内应答）与 <strong>Agents</strong>（自主智能体——模型动态决定过程、工具与下一步，通常含环境反馈循环）。注意：<strong>Orchestrator-Workers 的"动态拆分子任务"仍是编排框架内的动态，不等于 Agent 的"整体过程自主性"</strong>——前者中央编排者先定框架，后者模型自己决定整个过程。</p>
+<p>本书在"工作流"与"自主智能体"之间，额外切出一个<strong>教学中间层 Agentic Workflow</strong>（三分口径；该切分是教材教学口径，与 Anthropic 二分类<strong>不完全一一对应</strong>——例如 Routing 在 Anthropic 框架中属 Workflows，本书教学中按 Agentic Workflow 讲解）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">术语</th>
+<th style="text-align: left;">定义</th>
+<th style="text-align: left;">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>工作流（Workflow）</strong></td>
+<td style="text-align: left;">步骤与判断都预先写死，LLM 只做固定步骤内的单点应答</td>
+<td style="text-align: left;">抽字段 → 校验 → 归档；规则初筛</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>智能体工作流（Agentic Workflow）</strong></td>
+<td style="text-align: left;"><strong>路径预编排（可枚举）</strong>，但若干节点由 LLM 决策（分类、抽取、选择分支）</td>
+<td style="text-align: left;"><strong>三路路由（Routing）</strong>：LLM 判档 → 固定分支动作</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>智能体（Agent）</strong></td>
+<td style="text-align: left;">模型自主规划、调工具、观察、循环，路径不可穷举</td>
+<td style="text-align: left;">开放探索、多工具动态编排</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>为什么"路由"要叫 Agentic Workflow 而不是 Agent？</strong> 它的主体流程是 <code>State → 判档 Node → Conditional Edge → 固定分支动作</code>——<strong>分支是预先枚举的</strong>，模型只在"判档"节点做决策，没有自主规划循环。按本书严格定义它属于 <strong>Agentic Workflow（LLM 驱动的预编排路由工作流）</strong>；广义业界（含部分厂商宣传）常把这类系统也称为"Agent"，本书教材口径不采用广义说法（避免把"预编排工作流"误写成"自主智能体"）。若坚持称 Agent，需补上动态工具选择、基于工具结果再决策、最大迭代次数、持久化中断与人工恢复等能力。</p>
+</div>
+<p><pre class="mermaid"><code>flowchart TB
+    all["六种常见智能体设计模式"]
+    wf["工作流（Workflows，预编排）&lt;br/&gt;· Prompt Chaining&lt;br/&gt;· Routing&lt;br/&gt;· Parallelization&lt;br/&gt;· Orchestrator-Workers&lt;br/&gt;· Evaluator-Optimizer"]
+    ag["智能体（Agents）&lt;br/&gt;· 自主智能体&lt;br/&gt;（模型自主决策整体过程）"]
+    note["厂商原始框架：前五种归 Workflows、自主智能体归 Agents&lt;br/&gt;本书教学三分：Routing 等按 Agentic Workflow 讲解"]
+    all --&gt; wf
+    all --&gt; ag
+    wf --&gt; note
+    ag --&gt; note
+    style wf fill:#dbe4f0,stroke:#3949ab
+    style ag fill:#f5ece0,stroke:#a8895f
+    style note fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 11-2：六种模式按厂商原始框架分两类；本书教学在此基础上增加 Agentic Workflow 中间层（11.3.4）</em></p>
+<h3 id="1135-routing">11.3.5 工单分级为什么用 Routing 就够<a class="headerlink" href="#1135-routing" title="Permanent link">&para;</a></h3>
+<p>工单分级是 Routing 的<strong>典型应用场景</strong>（业界运用普遍）：任务天然分几档（如咨询 / 跨部门 / 敏感），每档处理逻辑固定。<strong>用 Routing 就够，不需要 Orchestrator-Workers 那种会"自我分解任务"的动态编排</strong>——不为固定分档的任务搭一个最贵最慢的复杂智能体，这是 FDE"从最简单开始"的判断（呼应 11.2，且口径上它是 <strong>Agentic Workflow</strong>，见 11.3.4）。这类场景会在实操四中演练。</p>
+<blockquote>
+<p><strong>一个企业事实（呼应本章视野）：</strong> 生产里<strong>绝大多数"智能体系统"其实是"工作流 / Agentic Workflow + 局部智能体"的混合</strong>——固定流程由工作流承担，少数需要判断/调工具的节点放一个小智能体，而不是整套都是几十个自主智能体来回奔跑。11.10 的银行反洗钱场景会完整演示这种混合形态。</p>
+</blockquote>
+<h3 id="1136">11.3.6 六种模式的二维判断：预定义/动态路径 × 单轮/闭环迭代<a class="headerlink" href="#1136" title="Permanent link">&para;</a></h3>
+<p>六种模式除了"按复杂度排队"，更实用的归类是<strong>二维判断</strong>——看"路径能不能预先写死"和"要不要多轮迭代"：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">路径：预定义（可枚举）</th>
+<th style="text-align: left;">路径：动态（拆解不可预写）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>迭代：单轮（一次完成）</strong></td>
+<td style="text-align: left;"><strong>Prompt Chaining</strong>、<strong>Routing</strong>、<strong>Parallelization</strong></td>
+<td style="text-align: left;"><strong>Orchestrator-Workers</strong>（一次分派汇总，可迭代但主形态单轮）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>迭代：闭环（循环至达标/完成）</strong></td>
+<td style="text-align: left;"><strong>Evaluator-Optimizer</strong>（固定"生成→评估→回炉"环）</td>
+<td style="text-align: left;"><strong>自主智能体</strong>（观察-思考-行动循环）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>读法：</strong> 先问"路径能不能预写死"——能 → 工作流类（含 OW/EO 这类编排框架预定义的模式），不能 → 智能体类（自主智能体：整体过程由模型自主）；再问"要不要闭环迭代"——决定是否需要 eval 环节或循环上限。<strong>工单路由是"预定义路径 × 单轮"</strong>，所以连闭环都不需要，更验证了 11.3.5"用 Routing 就够"。</p>
+</blockquote>
+<h3 id="1137-routing-workflow-agentic-loop">11.3.7 从 Routing Workflow 到受控 Agentic Loop<a class="headerlink" href="#1137-routing-workflow-agentic-loop" title="Permanent link">&para;</a></h3>
+<p>路由工作流是"预定义路径 × 单轮"的常见模式；当"路径不再能预先枚举"时，就进入<strong>受控 Agentic Loop</strong>。两者是两种常见模式，边界用"下一步由谁决定"来切：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>路由工作流（Routing Workflow）</th>
+<th>受控 Agentic Loop（受控协同 Agent）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下一步</td>
+<td>预先写定：State → 判档 → 条件边 → 固定分支动作</td>
+<td>按目标 + 当前状态动态选择</td>
+</tr>
+<tr>
+<td>工具</td>
+<td>固定调用 <code>check_department</code></td>
+<td>从多个工具中按需选择（分类 / 查政策 / 查部门）</td>
+</tr>
+<tr>
+<td>观察后重规划</td>
+<td>无（一次判断到位）</td>
+<td>有：工具结果（如信息冲突）可触发换工具或重新判断</td>
+</tr>
+<tr>
+<td>信息不足</td>
+<td>固定转人工</td>
+<td><strong>主动追问</strong>（<code>ask_clarification</code>）后再继续</td>
+</tr>
+<tr>
+<td>人工介入</td>
+<td>敏感件固定转人工</td>
+<td><code>request_human_review</code>（配合 interrupt + resume 真暂停—恢复）</td>
+</tr>
+<tr>
+<td>停止条件</td>
+<td>分支到达即结束</td>
+<td>完成条件满足即结束；达到最大步数 / 触及风险边界即暂停或停止</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>说明：</strong> 判断"该用工作流还是 Agentic Loop"的方法就是二维判断：<strong>路径可枚举 → 路由工作流；路径不可枚举或需反复观察 → 受控 Agent</strong>。两种模式的演练分别见实操四（路由工作流）与无编号实操四B（Lab4B，受控 Agent，高级附加实验，手册见《实验手册》<code>labs/lab4b-cooperative-agent.md</code>）。</p>
+</blockquote>
+<hr />
+<h2 id="114-routing">11.4 Routing：三路分流设计<a class="headerlink" href="#114-routing" title="Permanent link">&para;</a></h2>
+<h3 id="1141-router">11.4.1 Router 模式<a class="headerlink" href="#1141-router" title="Permanent link">&para;</a></h3>
+<p>Routing（路由）把一个输入分类后导向<strong>专门的处理分支</strong>——每类用不同的提示词、工具或子流程。它是工作流里最常被用到的一种（<strong>口径：Agentic Workflow</strong>，见 11.3.4），典型场景就是客服路由（一般咨询→技术 / 计费 / 投诉等不同分支）。</p>
+<h3 id="1142-lowquick-highdeep-uncertainescalate">11.4.2 三路分流：low→quick / high→deep / uncertain→escalate<a class="headerlink" href="#1142-lowquick-highdeep-uncertainescalate" title="Permanent link">&para;</a></h3>
+<p>把 Router 落到"按价值与风险分级"上，是一种实用骨架（教材提炼，支撑资料见 mcp-agent Router 与 OpenClaw Model Router）：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    input["工单 / 请求进入"]
+    judge["Router 判断"]
+    low["low · 低风险 / 简单&lt;br/&gt;→ quick 快路径（自动处理）"]
+    high["high · 高价值 / 复杂&lt;br/&gt;→ deep 深度路径（强模型 / 多步流程）"]
+    unk["uncertain · 置信度不足 / 超权限&lt;br/&gt;→ escalate 升级（转人工 / 降级只读）"]
+    input --&gt; judge
+    judge --&gt; low
+    judge --&gt; high
+    judge --&gt; unk
+    style low fill:#e4efe4,stroke:#5b7a5b
+    style high fill:#dbe4f0,stroke:#3949ab
+    style unk fill:#fdecea,stroke:#a34a3a</code></pre>
+<em>图 11-3：Router 三路分流——简单走快路径、复杂走深度路径、不确定升级人工</em></p>
+<blockquote>
+<p><strong>一句话定位：</strong> 上图主体流程是<strong>预编排路由工作流（Agentic Workflow）</strong>——<code>输入 → LLM 判档 → 条件边 → 固定分支动作</code>，模型只在判档节点做决策（口径见 11.3.4）。</p>
+</blockquote>
+<h3 id="1143">11.4.3 工单分级的落地<a class="headerlink" href="#1143" title="Permanent link">&para;</a></h3>
+<p>工单分级的三档（咨询 / 跨部门 / 敏感），正是三路分流的政务版本：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">档位</th>
+<th style="text-align: left;">对应</th>
+<th style="text-align: left;">处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>咨询类</strong>（简单）</td>
+<td style="text-align: left;">low → quick</td>
+<td style="text-align: left;"><strong>自动答复</strong>——模式固定、风险低，该自动化</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>跨部门类</strong>（复杂）</td>
+<td style="text-align: left;">high → deep</td>
+<td style="text-align: left;"><strong>深度处理 + 调工具</strong>——AI 查部门职责库、生成处理意见，人可介入</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>敏感类</strong>（投诉 / 举报 / 重大）</td>
+<td style="text-align: left;">uncertain → escalate</td>
+<td style="text-align: left;"><strong>必须转人工</strong>——政务安全底线；<strong>验收口径：给定验证集召回率 100%，生产目标为零漏判</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="115-langgraph-mcp">11.5 智能体工程底座：LangGraph 与 MCP<a class="headerlink" href="#115-langgraph-mcp" title="Permanent link">&para;</a></h2>
+<h3 id="1151-langgraph">11.5.1 LangGraph：把"决策循环"画成图<a class="headerlink" href="#1151-langgraph" title="Permanent link">&para;</a></h3>
+<p>LangGraph 是当前常用的智能体编排框架（截至 2026-08，版本以官方发布为准）。它用"图"描述智能体的决策循环，也常被当作 11.3.2 里代码级编排的代表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机制</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>State / Node / Conditional Edge</strong></td>
+<td style="text-align: left;">StateGraph 用共享状态驱动；Node 是处理单元；普通边按顺序执行，Conditional Edge 按条件分支（如路由到不同节点）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Checkpointing（持久化）</strong></td>
+<td style="text-align: left;">每次节点执行后把状态写入检查点，<strong>按 <code>thread_id</code> 隔离会话</strong>；支持断点恢复、时间旅行（回放）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>interrupt()（人机回环）</strong></td>
+<td style="text-align: left;">在图中"暂停、把控制权交给人类、收集输入后恢复"——HITL 的关键机制。<strong>恢复语义要分清：已完成的前序步骤由 checkpoint 保存、不重跑；但包含 interrupt() 的当前节点，恢复时从该节点开头重新执行，interrupt() 之前的副作用可能重复</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>幂等性 / 副作用防护</strong></td>
+<td style="text-align: left;"><strong>框架不自动保证幂等</strong>：把有副作用的操作（发消息、改数据、调外部工具）放到<strong>独立节点</strong>并保证幂等（幂等键 / 事务 / 补偿），或把 interrupt() 放在副作用之前；恢复路径必须实测幂等</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>节点级 timeout / retry</strong></td>
+<td style="text-align: left;">为每个节点设超时与重试策略，避免在某个步骤卡死</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>反例：中断恢复后重复发消息。</strong> 若按"生成回复 → 调用发送消息工具 → interrupt() 等人确认"的顺序编排，恢复时该节点从开头重新执行，<strong>消息可能重复发送</strong>。正确做法：把"发送"放到 interrupt() 之后的独立节点，或给发送工具加幂等键。实操四B（Lab4B）必须做一次"中断—恢复—幂等"验证。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>课前环境避坑（LangGraph 版本核验）：</strong> <code>langgraph</code> 包<strong>没有 <code>__version__</code> 属性</strong>，直接访问 <code>langgraph.__version__</code> 会报错；应改用 <code>importlib.metadata.version('langgraph')</code> 核验已装版本。另外 LangGraph 只依赖 <code>langchain-core</code>，<strong>不自带</strong> <code>openai</code> / <code>pandas</code> / <code>streamlit</code>——只装上它会在使用时抛 <code>ModuleNotFoundError</code>，需按实际任务一并安装。</p>
+</div>
+<blockquote>
+<p><strong>对路由工作流：</strong> 把"判断 → 查部门职责库 → 生成意见 → 转人工"编排成一张图，<strong>固定转人工分支</strong>即可承载敏感件兜底；<code>interrupt()</code> 的"暂停—接收人工输入—从断点恢复"则在<strong>受控 Agent（实操四B）</strong>真正实现（配合 <code>thread_id</code> 持久化，而非一次性输出）。</p>
+</blockquote>
+<h3 id="1152-mcp">11.5.2 MCP：标准化工具接入协议<a class="headerlink" href="#1152-mcp" title="Permanent link">&para;</a></h3>
+<p><strong>概念：为什么需要它。</strong> MCP（Model Context Protocol，模型上下文协议）是为了解决"<strong>每个工具一种接入方式</strong>"而生的<strong>标准化协议</strong>——没有它，接入一个工具就要写一套对接代码（鉴权、参数格式、错误处理各不相同），工具一多，每个 agent 都要重复接一遍。MCP 把"工具怎么暴露、怎么调用"统一成一套协议：<strong>类比 USB-C 统一了充电与数据接口，MCP 统一了智能体与工具之间的接口</strong>。</p>
+<p><strong>组件与架构：谁在 MCP 里做什么。</strong> MCP 的调用链是"Agent → Host（MCP Client）→ MCP Server"：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    agent["Agent（决策循环）&lt;br/&gt;11.1 / 11.3"]
+    host["Host · MCP Client&lt;br/&gt;宿主应用（opencode / 自建 agent）"]
+    srv1["MCP Server 1&lt;br/&gt;工具提供方（如查部门职责库）"]
+    srv2["MCP Server 2&lt;br/&gt;（如政策检索）"]
+    agent --&gt; host
+    host --&gt; srv1
+    host --&gt; srv2
+    style agent fill:#fdecea,stroke:#a34a3a
+    style host fill:#dbe4f0,stroke:#3949ab
+    style srv1 fill:#e4efe4,stroke:#5b7a5b
+    style srv2 fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 11-4：MCP 架构——Agent 通过 Host 里的 MCP Client 统一接入多个工具 Server</em></p>
+<ul>
+<li><strong>Host（宿主）</strong>：运行 agent 的应用（opencode / Claude Code / 自建程序），内置 MCP Client，负责把工具暴露给 agent；</li>
+<li><strong>MCP Server（工具提供方）</strong>：把工具按协议暴露出来，一个 Server 可以管一组相关工具；</li>
+<li><strong>三个原语</strong>：<strong>Tools</strong>（可执行函数，模型决定是否调用）· <strong>Resources</strong>（可读数据 / 上下文：文件、数据库记录、API 数据）· <strong>Prompts</strong>（可复用的提示模板）。</li>
+</ul>
+<p><strong>适用场景：什么时候值得上 MCP。</strong>
+- <strong>多工具、多 agent / 多模型共享</strong>：工具接入标准化后，同一套工具可被不同模型、不同框架复用——写一次接入，到处可用；
+- <strong>工具接入方式杂</strong>：各工具鉴权 / 参数格式不一时，用 MCP 收敛成统一入口；
+- <strong>团队共享工具库</strong>：工具作为"平台资产"统一维护（呼应能力回注）；
+- <strong>简单场景不必上</strong>：单个工具、单次接入，直接函数调用即可——从最简单开始（11.3.5）。</p>
+<p><strong>与 agent 解决方案的关联与作用。</strong>
+- <strong>工具层与决策层解耦</strong>：决策循环（11.1 / 11.3）负责"下一步做什么"，MCP 负责"工具怎么接入"——换工具、加工具不碰 agent 逻辑；
+- <strong>与 11.5.1 LangGraph 配合</strong>：LangGraph 管"决策图"（State / Node / interrupt），MCP 管"工具接入"——一个 agent 方案里两者各司其职；
+- <strong>承接 11.6 工具设计</strong>：工具定义得好（11.6.1）+ 接入标准化（MCP）→ 工具库成为可复用资产；
+- <strong>能力回注落点</strong>：工具接入标准化后，同一套工具能被不同模型、不同智能体框架复用，是能力回注（第 3 章四步法）在工具层的落点。</p>
+<blockquote>
+<p>截至 2026-08 最新规范为 <strong>2026-07-28 版</strong>（"问世以来最大更新"，提出"无状态核心"方向，<a href="https://www.ithome.com/0/983/102.htm">IT 之家报道</a>、<a href="https://claude.com/blog/bringing-mcp-2026-07-28-to-claude">Anthropic 官方博客</a>）；版本与细节迭代快，落地前以官方规范为准。</p>
+</blockquote>
+<hr />
+<h2 id="116">11.6 工具设计与国产模型注意点<a class="headerlink" href="#116" title="Permanent link">&para;</a></h2>
+<h3 id="1161">11.6.1 工具定义的质量直接决定准确率<a class="headerlink" href="#1161" title="Permanent link">&para;</a></h3>
+<p>智能体的准确率<strong>很大程度取决于工具定义质量</strong>。设计一个工具（如"查部门职责库"）的原则：</p>
+<ul>
+<li><strong>描述具体，包含示例用法</strong>——让智能体知道"什么场景该调它"；</li>
+<li><strong>写清何时用、何时不用</strong>——避免误调；</li>
+<li><strong>参数命名直观</strong>——用 <code>keyword</code> 而非 <code>text</code>；</li>
+<li><strong>边界情况写清楚</strong>——查不到返回空列表而非报错；</li>
+<li><strong>传入必要上下文</strong>——传工单全文而非单个关键词，避免丢上下文。</li>
+</ul>
+<blockquote>
+<p>把工具描述当成"<strong>写给一个初级工程师看的接口文档</strong>"来写——描述越清楚，智能体调得越准。</p>
+</blockquote>
+<h3 id="1162-tool-calling">11.6.2 国产模型 Tool Calling 的注意点<a class="headerlink" href="#1162-tool-calling" title="Permanent link">&para;</a></h3>
+<p>国产模型普遍兼容 OpenAI 的工具调用格式，但细节各家不同，落地前需逐模型核对（信息截至 2026-08）：</p>
+<ul>
+<li><strong>strict schema</strong>：DeepSeek 官方 Tool Calls 文档新增 <code>strict-beta</code> schema 路径与"支持的 JSON Schema 子集规则"（该条目为第三方转述，官方原文需按官方文档复核）。</li>
+<li><strong>thinking 模式回传</strong>：DeepSeek 思考模式下，assistant 消息含 <code>reasoning_content</code>（思维链）；<strong>多轮工具调用时需把含 reasoning_content 的 assistant 消息一并回传</strong>，否则上下文会丢失。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>判读：</strong> 若计划用国产模型做智能体，先把"工具调用成功率、strict 支持、思考内容回传"这三项在官方文档和实测里过一遍，再决定工具 schema 怎么落地。</p>
+</div>
+<h3 id="1163">11.6.3 工具调用工程化：超时、重试、幂等、审计、降级<a class="headerlink" href="#1163" title="Permanent link">&para;</a></h3>
+<p>工具"定义得好"只是第一步，<strong>调用得稳</strong>是第二条命脉。一个生产级工具调用要有五件套：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机制</th>
+<th style="text-align: left;">要求</th>
+<th style="text-align: left;">反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>超时（timeout）</strong></td>
+<td style="text-align: left;">每个工具调用设超时上限（如 10–30s），超过即按失败处理</td>
+<td style="text-align: left;">调外部 API 卡死，整个智能体挂起</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>重试（retry）</strong></td>
+<td style="text-align: left;">失败自动重试<strong>有限次数</strong>（如 2 次）+ 退避；超过上限进入降级</td>
+<td style="text-align: left;">无限重试把故障放大成雪崩</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>幂等（idempotency）</strong></td>
+<td style="text-align: left;"><strong>有副作用的工具</strong>（发消息、改数据、扣款）必须带幂等键 / 事务 / 补偿——同一请求执行两次结果一致</td>
+<td style="text-align: left;">断点恢复后重复提交、重复告警、重复扣款</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>审计（audit）</strong></td>
+<td style="text-align: left;">每次调用的入参、出参、耗时、由哪个模型决策触发，全部留日志</td>
+<td style="text-align: left;">出事后无法复盘"谁让它干的"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>降级（degradation）</strong></td>
+<td style="text-align: left;">失败 → 重试 → <strong>降级</strong>（只读兜底 / 简化应答）→ <strong>转人工兜底</strong>；宁降级不硬撑</td>
+<td style="text-align: left;">工具失败时装作成功、给用户错误结果</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>工具失败时"假装成功"是智能体工程最常见的翻车。</strong> 兜底顺序是<strong>失败 → 有限重试 → 降级（只读 / 简化）→ 转人工</strong>，永远不要越过"转人工"这道线——尤其敏感路径（呼应 11.7.3 的"宁可多升级"与 11.8 三层护栏）。路由工作流用固定转人工分支即可；<strong>受控 Agent（实操四B）</strong>才把 <code>interrupt()</code>、持久化 <code>thread_id</code> 与工具超时/重试/降级纳入必做。</p>
+</div>
+<hr />
+<h2 id="117-vs">11.7 假阳性 vs 假阴性：宁可多升级，不可漏<a class="headerlink" href="#117-vs" title="Permanent link">&para;</a></h2>
+<h3 id="1171">11.7.1 两个出错方向<a class="headerlink" href="#1171" title="Permanent link">&para;</a></h3>
+<p>把任何东西自动化，都可能错在两个方向：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">概念</th>
+<th style="text-align: left;">在智能体自动化中的含义</th>
+<th style="text-align: left;">代价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>假阳性（FP, False Positive）</strong></td>
+<td style="text-align: left;">不该打断时打断：正常交易被误判可疑、频繁转人工</td>
+<td style="text-align: left;">信任流失、效率下降、"狼来了"效应</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>假阴性（FN, False Negative）</strong></td>
+<td style="text-align: left;">该拦时没拦：可疑交易漏报、越权动作放行</td>
+<td style="text-align: left;">真实事故、数据损失、合规风险</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>反洗钱场景里，<strong>假阴性（漏掉一笔真可疑交易）的代价远高于假阳性（多转人工复核一次）</strong>——这正是上一节"宁可多升级、不可漏"的来源。</p>
+</blockquote>
+<h3 id="1172">11.7.2 实测证据<a class="headerlink" href="#1172" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>假阳性端</strong>：有开发者复盘自己的审批门控，"11 个拦截里有 9 个是误报（把自己当成错误拦下）"——高误报率会让门控失去意义，用户开始机械点同意。</li>
+<li><strong>假阴性端</strong>：人类在环的监督测试显示，人类审核者<strong>放行了约 1/3 的危险智能体请求</strong>——即使是人在环，也不能保证万无一失。</li>
+</ul>
+<blockquote>
+<p>这两组证据都说明同一件事：<strong>"靠直觉定自动化边界"不可靠</strong>，必须在方案层面把"漏判的代价"显式算清。</p>
+</blockquote>
+<h3 id="1173">11.7.3 政务敏感件铁律：宁多升级，不可漏<a class="headerlink" href="#1173" title="Permanent link">&para;</a></h3>
+<p>在政务敏感件（以及银行反洗钱这类合规场景）上，两个方向的代价严重不对称：</p>
+<ul>
+<li><strong>假阴性（投诉没升级、隐患没上报、可疑交易漏报）</strong>：没人处理，可能酿成事故，代价极高；</li>
+<li><strong>假阳性（普通件多转一次人工）</strong>：成本略高，但<strong>有人兜底</strong>，代价低。</li>
+</ul>
+<p>因此铁律是：<strong>"宁可多升级，不可漏"——敏感件验收口径为"给定验证集召回率 100%"，生产目标为零漏判。</strong> 这既是成本矩阵的核心（呼应第 8 章成本矩阵），也是"人能判断、AI 能执行"（第 4 章）在自动化边界上的具体化。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>"零漏判"的准确表述：</strong> 泛泛说"零漏判"不可验证。教材口径是<strong>两步</strong>：1. <strong>给定验证集</strong>（讲师/评分脚本持有的盲测集，含敏感件样本）上<strong>召回率 = 100%</strong>（一条不漏）——这是可以验收的；2. 生产环境目标为零漏判——这是持续监控的运营目标，靠"漏判上报 + 复盘回灌"逼近，而非一句承诺。</p>
+</div>
+<hr />
+<h2 id="118">11.8 智能体安全与三层护栏<a class="headerlink" href="#118" title="Permanent link">&para;</a></h2>
+<h3 id="1181">11.8.1 三层护栏框架<a class="headerlink" href="#1181" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">层</th>
+<th style="text-align: left;">内容</th>
+<th style="text-align: left;">典型做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>输入过滤</strong></td>
+<td style="text-align: left;">防注入、去敏、输入校验</td>
+<td style="text-align: left;">prompt injection 检测、PII 脱敏、输入校验、限流</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>行为约束</strong></td>
+<td style="text-align: left;">最小权限、工具白名单、审批门控</td>
+<td style="text-align: left;">只给工作所需的最少工具权限，不给人发邮件 / 改数据的工具；越权自动拒绝</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>输出审查</strong></td>
+<td style="text-align: left;">校验输出、发布前复核、留审计日志</td>
+<td style="text-align: left;">关键输出的风险校验、人工复核点、全链路可追溯（含 11.6.3 的工具审计日志）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1182">11.8.2 真实事故提醒<a class="headerlink" href="#1182" title="Permanent link">&para;</a></h3>
+<p>智能体失控不是科幻，已有真实案例（信息截至 2026 年 8 月）：</p>
+<ul>
+<li><strong>"9 秒删库"</strong>：某 AI 编程代理把生产数据库当 bug 修复删掉，9 秒清空、<strong>约 30 小时无法恢复</strong>（<a href="https://www.36kr.com/p/3786089052314628">36氪报道</a>、<a href="https://m.sohu.com/a/1016392488_115128/">搜狐转载</a>）；</li>
+<li><strong>未授权交易</strong>：某 Operator 代理在安全协议下仍执行了未经授权的交易；</li>
+<li><strong>人类监督漏检</strong>：人类审核者放行了约 1/3 的危险智能体请求——"人在环"不是免死金牌。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>结论：</strong> 权限最小化 + 审批门控 + 人机回环是智能体安全的基石；把"关键/敏感路径必须暂停等人工"设计进流程，而不是依赖模型"自觉"。</p>
+</div>
+<h3 id="1183-hitlai">11.8.3 人机回环（HITL）：让"人能判断、AI 能执行"可落地<a class="headerlink" href="#1183-hitlai" title="Permanent link">&para;</a></h3>
+<p>人机回环（Human-in-the-Loop）指<strong>关键/敏感决策路径必须能暂停、等待人工确认</strong>——智能体只能"建议"不能"拍板"。它是第 4 章"人能判断、AI 能执行"在智能体侧的工程化：<strong>决策循环（11.1）负责跑，人在预设的暂停点接住关键决策</strong>。</p>
+<p><strong>三种环的层次（按"人在多大程度上介入"分）：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">层次</th>
+<th style="text-align: left;">机制</th>
+<th style="text-align: left;">适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Human-in-the-Loop（人在环内）</strong></td>
+<td style="text-align: left;">关键路径<strong>必须暂停</strong>，等人确认后才继续</td>
+<td style="text-align: left;">政务 / 金融敏感路径：发钱、删数据、对外上报、外发</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Human-on-the-Loop（人在环上）</strong></td>
+<td style="text-align: left;">智能体自主跑，人在<strong>监督</strong>，异常才介入</td>
+<td style="text-align: left;">一般任务：看仪表盘、抽检、异常告警才接手</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Human-out-of-the-Loop（人在环外）</strong></td>
+<td style="text-align: left;">无人工介入，仅<strong>事后审计 + 回滚</strong>兜底</td>
+<td style="text-align: left;">低风险、可逆的重复任务</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三个工程要点（把 HITL 做扎实）：</strong>
+1. <strong>暂停点选在哪</strong>：影响真金白银 / 安全 / 合规 / 对外动作的路径，必须设暂停点（对应 11.5.1 的 interrupt()、路由工作流的固定"转人工"分支）；<strong>其他路径不要处处暂停</strong>——否则人工疲于确认，反而放松警惕；
+2. <strong>确认界面给人看什么</strong>：不只给一句"是否批准"，要给人<strong>上下文 + 候选动作 + 风险提示</strong>（这笔交易为什么可疑、AI 建议怎么处理、漏判会怎样），让人能判断而不是盲批；
+3. <strong>人工不响应怎么办</strong>：设<strong>超时策略</strong>——超时默认拒绝（不自动放行）、升级给更高权限或转人工队列，<strong>绝不"超时就自动通过"</strong>。</p>
+<blockquote>
+<p><strong>注意（呼应 11.8.2 的"人类监督漏检"）：</strong> HITL 不是免死金牌——人也会漏、会盲批。关键路径要<strong>双人复核或抽检</strong>，并记录"谁在什么时间批准了什么"（审计），让人工确认本身可被复盘。</p>
+<p><strong>与 agent 方案的关系：</strong> HITL 是 agent 方案里的"人机回环"组件——<code>interrupt()</code>（11.5.1）提供暂停机制、固定"转人工"分支（路由工作流）提供兜底路径、<code>request_human_review</code>（实操四B）提供带上下文的确认请求；<strong>有没有 HITL、HITL 放在哪，是方案设计时要写死的事，不是模型"自觉"。</strong></p>
+</blockquote>
+<hr />
+<h2 id="119-fde">11.9 自动化边界：FDE 方案设计的核心业务决策<a class="headerlink" href="#119-fde" title="Permanent link">&para;</a></h2>
+<h3 id="1191">11.9.1 为什么这是业务决策而不是技术问题<a class="headerlink" href="#1191" title="Permanent link">&para;</a></h3>
+<p>"什么该自动化、什么必须留给人"不是"AI 能做多少"的问题，而是"<strong>一旦出错代价多大、谁能负责</strong>"的问题。AI 不知道"投诉没升级"在政务场景、或"可疑交易漏报"在反洗钱场景有多重，只有掌握业务干系人与后果的你（参考第 5 章干系人地图）能拍板。所以这个边界必须由 FDE 在方案层面定死，而不是让技术或模型自己顺手决定。</p>
+<h3 id="1192">11.9.2 判断三问<a class="headerlink" href="#1192" title="Permanent link">&para;</a></h3>
+<p>给"该不该自动化某一步"设一个框架，三问逐条过：</p>
+<ol>
+<li><strong>模式是否固定？</strong> 固定、重复、低风险 → 可自动化；每次都不一样、需要判断 → 留人；</li>
+<li><strong>出错代价多大？</strong> 影响真金白银 / 安全 / 合规 / 对外承诺 → 必须留人工确认环（对应 11.8.3）；代价可逆、可回滚 → 可自动 + 事后审计；</li>
+<li><strong>能否设计兜底？</strong> 拿不准就异常返回、能兜底到人工 → 就不怕自动；无法兜底（一步错全盘错）→ 保守留人。</li>
+</ol>
+<blockquote>
+<p><strong>三问的用法：</strong> 逐条过，任何一问指向"留人"，就按 11.8.3 设暂停点；三问全指向"可自动"，也仍要留审计（对应 11.8.1 的输出审查层）——"可自动"不等于"无人看"。</p>
+</blockquote>
+<h3 id="1193-spec">11.9.3 边界写进 SPEC，并落到工单分级<a class="headerlink" href="#1193-spec" title="Permanent link">&para;</a></h3>
+<p><strong>边界要写进 SPEC（可验收）：</strong> 自动化边界不是口头约定，要写死成规格，作为第 12 章实操四 DoD 的检查点（呼应 7.4 gstack 纪律）：</p>
+<ul>
+<li><strong>自动化范围</strong>：哪些输入走自动路径（如咨询件自动答复）；</li>
+<li><strong>转人工触发条件</strong>：什么情况必须转人工（敏感类、置信度不足、信息缺失）；</li>
+<li><strong>兜底动作</strong>：异常 / 失败时的默认动作（返回"无法处理"→ 转人工队列）；</li>
+<li><strong>人工超时策略</strong>：人工不响应时怎么办（默认拒绝 / 升级，绝不自动通过）。</li>
+</ul>
+<p>对路由工作流：咨询件自动化（模式固定、风险低）、跨部门件半自动（AI 分析 + 人可介入）、敏感件<strong>必须转人工</strong>（政务安全底线；<strong>给定验证集召回率 100%，生产目标为零漏判</strong>）。路由工作流用固定"转人工"分支即可，真正的中断—恢复由受控 Agent 实现（呼应 11.5.1）。而当你把同样的三问放到反洗钱场景（11.10），得到的边界几乎一模一样——<strong>好的自动化边界判断，跨行业是通用的。</strong></p>
+<blockquote>
+<p><strong>边界随阶段演进：</strong> Prototype 阶段人工兜底多、放行保守；生产跑稳后可逐步扩大自动化范围——但<strong>敏感路径的 in-the-loop 始终不动</strong>（红线级）。</p>
+</blockquote>
+<hr />
+<h2 id="1110">11.10 企业案例：银行反洗钱可疑交易监测<a class="headerlink" href="#1110" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>前几节的分流、模式、边界看起来还停留在"判工单档"的维度。这一节用一个<strong>真金白银、合规高压</strong>的企业级场景——银行反洗钱可疑交易监测，把前面讲的东西拼起来，也解释为什么会选它：<strong>它同时踩响四条红线、天然是三路分流 + 工作流 + 人机回环的形态，最贴合本书"乙方 + 银行科技部"的两类读者。</strong></p>
+</blockquote>
+<h3 id="11101">11.10.1 为什么看这个场景<a class="headerlink" href="#11101" title="Permanent link">&para;</a></h3>
+<p>反洗钱（AML, Anti-Money Laundering）监测是银行必须合规完成的硬任务：每天海量交易，要找出其中可能"洗钱"的可疑交易并上报监管。特点恰好是：</p>
+<ul>
+<li><strong>数据敏感</strong>：金融数据不能出域，必须内部部署（红线"数据不出域"）；</li>
+<li><strong>错过后果严重</strong>：可疑交易漏报是合规事故，代价极高；</li>
+<li><strong>判断有依据要求</strong>：上报要讲清"为什么可疑"（红线"答案可追溯"）；</li>
+<li><strong>必须人机回环</strong>：拍板上报/暂缓只能由反洗钱专员负责，AI 只能"建议"（红线"人能判断、AI 能执行"）。</li>
+</ul>
+<h3 id="11102">11.10.2 它长什么样：数据流转<a class="headerlink" href="#11102" title="Permanent link">&para;</a></h3>
+<p><pre class="mermaid"><code>flowchart TB
+    tx["交易流水注入&lt;br/&gt;（每秒成千上万笔）"]
+    pre["规则 / 模型初筛&lt;br/&gt;（确定性工作流）"]
+    ag["可疑交易监测智能体&lt;br/&gt;分级处置"]
+    low["正常 / 低风险&lt;br/&gt;→ 自动通过"]
+    deep["可疑&lt;br/&gt;→ 深度挖掘证据链"]
+    high["高风险 / 超阈值&lt;br/&gt;→ 转人工复核"]
+    tool["深度路径调工具&lt;br/&gt;查关联账户图谱 / 历史交易 / 反洗钱规则库"]
+    rep["生成可疑交易报告（带依据）"]
+    hm["反洗钱专员复核确认"]
+    final["上报监管 / 暂缓 / 排除"]
+    tx --&gt; pre --&gt; ag
+    ag --&gt; low
+    ag --&gt; deep
+    ag --&gt; high
+    deep --&gt; tool
+    tool --&gt; rep --&gt; hm
+    high --&gt; hm
+    hm --&gt; final
+    style pre fill:#dbe4f0,stroke:#3949ab
+    style ag fill:#3949ab,color:#fff,stroke:#1a237e
+    style hm fill:#fdecea,stroke:#a34a3a</code></pre>
+<em>图 11-5：银行反洗钱可疑交易监测智能体——初筛走确定性工作流，分级处置用智能体，高风险转人复核</em></p>
+<h3 id="11103">11.10.3 为什么它是"工作流 + 智能体"的混合<a class="headerlink" href="#11103" title="Permanent link">&para;</a></h3>
+<p>对照 11.3.2/11.3.5，这个场景是混合形态的教科书案例：</p>
+<ul>
+<li><strong>前置规则引擎初筛</strong>＝确定性<strong>工作流</strong>：把明显正常/明显可疑的先过滤掉，速度快、成本低、可解释；</li>
+<li><strong>细分处置与证据挖掘</strong>＝<strong>局部智能体</strong>：对"灰色地带"交易，用智能体判断该深挖什么、调哪些工具、怎么组织证据链；</li>
+<li><strong>高风险转人工</strong>＝<strong>人机回环</strong>：复核、上报、暂缓永远由反洗钱专员拍板。</li>
+</ul>
+<blockquote>
+<p><strong>关键认知：</strong> 这里看不到"一个聪明的智能体把一切都办完"。恰恰相反——<strong>工作流承载确定性、智能体承担灵活判断、人守住最后决定权</strong>。这正是"从最简单开始"（11.2）在企业级张力的体现：能确定就写死，需要判断才放智能体，涉险必留人。</p>
+</blockquote>
+<h3 id="11104">11.10.4 四条红线如何落地<a class="headerlink" href="#11104" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">红线</th>
+<th style="text-align: left;">在此场景的落地</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>数据不出域</strong></td>
+<td style="text-align: left;">金融数据隔离部署在内部网段，模型走私有化（呼应第 13 章 13.2 本地部署）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>答案可追溯</strong></td>
+<td style="text-align: left;">可疑交易报告带依据：命中哪条规则、哪些交易/账户/关联图谱命中、来源可查</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>敏感件零漏判</strong></td>
+<td style="text-align: left;">可疑交易<strong>漏报是合规事故</strong>，宁可多报升级复核，不可漏；<strong>验收口径：给定验证集召回率 100%，生产目标为零漏判</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>人能判断、AI 能执行</strong></td>
+<td style="text-align: left;">复核、上报、暂缓由反洗钱专员决定，智能体只能"建议"（人机回环）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="11105-fde">11.10.5 FDE 在这里的价值：能力回注<a class="headerlink" href="#11105-fde" title="Permanent link">&para;</a></h3>
+<p>对 FDE 来说，这个场景最能说明"为什么不是外包做一次就完"：</p>
+<ul>
+<li><strong>识别（能力回注第一步）</strong>：从"这家银行的反洗钱监测逻辑"里，去掉"这家行的交易字段、客户名单、具体阈值"这些客户特定内容，剩下的是"<strong>规则初筛 → 分级处置 → 证据挖掘 → 人机回环上报</strong>"这套通用机制；</li>
+<li><strong>抽象 → 集成 → 验证</strong>：把机制做成可配置的风险监测智能体（规则、阈值、黑名单做成配置项），换一家银行、甚至换一个行业（如保险理赔欺诈监测）即可复用。</li>
+</ul>
+<p>这就是第 3 章能力回注与第 15 章"碎石路 → 铺装公路"在企业级智能体上的具象——<strong>FDE 交付的不只是"这一家的反洗钱系统"，而是一条能被下一个客户复用的"公路"。</strong></p>
+<hr />
+<h2 id="_2">反模式与红线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>什么都想上智能体。</strong> 分类 / RAG / 工作流（含 Agentic Workflow）够用就别上——智能体是复杂度最高的一级，"从最简单开始"（对照 11.2、11.3.6）。</li>
+<li><strong>把"预编排工作流"吹成"自主 Agent"。</strong> 分支可枚举的就叫 Agentic Workflow，别拿"Agent"名词给自己加戏（对照 11.3.4）。</li>
+<li><strong>把自动化边界当纯技术问题甩给 AI。</strong> "敏感件要不要转人工"是业务 / 安全决策，必须你拍板（对照 11.9）。</li>
+<li><strong>敏感件漏判（假阴性）。</strong> 政务与金融场景假阴性代价远高于假阳性——验收口径"给定验证集召回率 100%"，宁多升级，不可漏（对照 11.7）。</li>
+<li><strong>工具定义随意、调用无工程化。</strong> 描述不清、参数晦涩、无超时/重试/幂等/审计/降级，智能体准确率与稳定性直接崩（对照 11.6）。</li>
+<li><strong>工具失败时装成功。</strong> 失败应走"重试→降级→转人工"，不能越级硬撑（对照 11.6.3）。</li>
+<li><strong>无兜底。</strong> LLM 返回异常、解析失败时默认自动处理，会绕过人工安全线——应兜底到"转人工"（对照 11.7、11.8）。</li>
+<li><strong>把智能体当"万能自动机"。</strong> 生产里智能体大多是"工作流 + 局部智能体 + 人机回环"的混合，不是几百个自主智能体（对照 11.3.5、11.10.3）。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>红线本处落地：敏感件零漏判。</strong> 本章的知识（假阴性代价、自动化边界、人机回环、"给定验证集召回率 100%"口径）就是第 12 章实操四"宁可多升级、不可漏"的理论依据，也是导读页四条红线本处闭环——且这套判断在银行反洗钱场景同样成立。</p>
+</div>
+<hr />
+<h2 id="_3">本章小结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>智能体（Agent）定义</strong>：目标驱动、能调工具/与环境交互、能根据中间结果自主决策的 LLM 系统；中文普遍叫"智能体"，核心是<strong>决策循环</strong>。</li>
+<li><strong>术语三分</strong>：<strong>工作流（流程写死）→ Agentic Workflow（路径预编排、节点 LLM 决策，如 Routing）→ Agent（自主循环、路径不可穷举）</strong>；路由（Routing）按教材口径属 Agentic Workflow。</li>
+<li><strong>工作流 vs 智能体</strong>：工作流"下一步写死"，智能体"下一步自主决定"；多数企业系统是"工作流/Agentic Workflow + 局部智能体"混合。</li>
+<li><strong>编排工具</strong>：平台（Dify / Coze）适合快速搭 + 业务参与；代码框架（LangGraph）适合复杂可编程逻辑（版本以官方发布为准）。</li>
+<li><strong>六种模式</strong>：按厂商原始框架（Anthropic），提示链 / Routing / 并行化 / 编排者-工人 / 评估-优化属<strong>工作流（Workflows）</strong>，自主智能体属<strong>智能体（Agents）</strong>；本书教学三分在此基础上增设 Agentic Workflow 中间层（Routing）；二维判断 = 预定义/动态路径 × 单轮/闭环迭代。</li>
+<li><strong>Router 三路分流</strong>：low→quick / high→deep / uncertain→escalate。</li>
+<li><strong>企业场景</strong>：银行反洗钱监测智能体演示了"工作流 + 智能体 + 人机回环"与四条红线落地，以及能力回注价值。</li>
+<li><strong>FP/FN 权衡</strong>：政务/金融敏感件上假阴性代价 ≫ 假阳性，铁律"宁可多升级、不可漏"，验收口径"给定验证集召回率 100%"。</li>
+<li><strong>工程底座</strong>：LangGraph（State/Node/Conditional Edge、<code>thread_id</code> 持久化、interrupt 断点恢复、幂等需自建、timeout/retry）+ MCP（Tools/Resources/Prompts，2026-07-28 规范转向无状态核心）。</li>
+<li><strong>工具工程化五件套</strong>：超时 / 重试 / 幂等 / 审计 / 降级（失败→重试→降级→转人工）。</li>
+<li><strong>安全三层护栏</strong>：输入过滤 / 行为约束 / 输出审查 + 人机回环。</li>
+<li><strong>自动化边界是业务决策</strong>：三问框架（模式固定？出错代价？能否兜底？），跨行业通用。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能给"智能体（Agent）"下一个明确定义，并区分它、工作流、Agentic Workflow、单次调用吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用"预定义/动态 × 单轮/闭环"二维判断给六种模式归类吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清 Dify / Coze（平台）与 LangGraph（代码框架）各该在何时用吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"为什么工单分级用 Routing（Agentic Workflow）不用 Orchestrator-Workers"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用银行反洗钱场景讲清"工作流 + 智能体 + 人机回环 + 四条红线"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能解释"假阴性 vs 假阳性"在政务/金融敏感件上的权衡，以及"给定验证集召回率 100%"的口径吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清工具调用五件套（超时/重试/幂等/审计/降级）与"不假装成功"的兜底顺序吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"自动化边界为什么是业务决策、三问框架是什么"吗？</li>
+</ul>
+<hr />
+<h2 id="_4">练习与思考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写智能体的定义与三个特征；画出工作流 / Agentic Workflow / 智能体在"下一步谁决定"上的差别；默写六种模式并各举一个适用场景；默写工具调用五件套。</li>
+<li><strong>进阶：</strong> 为"工单分级"写一份自动化边界说明——三类分别为什么自动化 / 半自动 / 转人工，并写明假阴性兜底策略（含"给定验证集召回率 100%"的验收写法）；再用同样的三问，为一笔反洗钱可疑交易判断"该不该转人工复核"；为一个副作用工具写一段幂等设计（幂等键 / 事务 / 补偿三选一）。</li>
+<li><strong>挑战（迁移练习）：</strong> 选一个你熟悉的行业场景（如保险理赔、供应链异常、企业客服工单），设计一个"带人机回环的智能体"：说明用工作流还是框架编排、三路分流怎么分（并按 11.3.6 判定它的"预定义/动态 × 单轮/闭环"）、四条红线如何落地（零漏判写进验证集口径）、工具五件套与三层护栏怎么落、能力回注怎么落。</li>
+</ul>
+<h2 id="_5">延伸阅读<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 15 章 AI FDE 落地：Echo 共识与对齐）——AI 能力与判断力边界如何对齐的扩展。</li>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 16 章 AI FDE 落地：Delta 技术与场景）——国产智能体平台（Dify / Coze / 阿里云百炼）等的落地选型。</li>
+<li>下一章：<strong>本书第 12 章实操四 · 工单智能分级路由工作流</strong>——把 Routing（Agentic Workflow）模式 + 敏感件零漏判当场做出来；真正的受控 Agent 见<strong>无编号实操四B（Lab4B）</strong>。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2667 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第7章 Delta 工作法·AI Coding 与工程纪律 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-delta-ai-coding" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第7章 Delta 工作法·AI Coding 与工程纪律
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#71-fde-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 为什么 FDE 需要 AI：主动拥抱、更要会驾驭
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 为什么 FDE 需要 AI：主动拥抱、更要会驾驭">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-fde-ppt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1 先把 FDE 放回 PPT 与四阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2 Delta 的价值从哪来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#713-fde-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.3 FDE 项目的高质量卡在哪：Technology 维度的三个产能瓶颈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#714" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.4 立两个方向，避免两种偏差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#715-deltaecho-ai-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.5 角色演变：Delta／Echo 都要"获得 AI 赋能 + 驾驭 AI"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-llm-echo-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 LLM 能力四层级金字塔：Echo 选层、Delta 建层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 LLM 能力四层级金字塔：Echo 选层、Delta 建层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.1 Delta 视角的四层级金字塔
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.2 逐层：工程形态与代价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.3 "从最简单开始"的施工含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-ai-codingvibe-coding-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 AI Coding：Vibe Coding 驱动 × harness 工程约束
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 AI Coding：Vibe Coding 驱动 × harness 工程约束">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#731-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.1 coding agent：定义、分类与共性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#732-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.2 Vibe Coding 五原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#733-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.3 海外 coding agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#734-ai-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.4 国内 AI Coding 工具生态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#735" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.5 怎么选工具
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-harness-gstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 harness：从理念到 gstack 实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 harness：从理念到 gstack 实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#741-harness-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.1 harness 理念：把 AI 执行约束进工程流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#742-spec-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.2 SPEC 驱动：harness 的通用规范
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#743-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.3 工程流水线：harness 的通用骨架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#744-gstackharness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.4 gstack：harness 的一个开源实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#745-gstack-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.5 最小 gstack 演练：15 分钟可选动手
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-ai-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 四条工程纪律：驾驭 AI Coding，防止翻车
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 四条工程纪律：驾驭 AI Coding，防止翻车">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律一 · 测试数据必须外部给定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律二 · 启动提示词写清"信息块"，不留白让 coding agent 猜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coding-agent_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律三 · 驱动指令把流程纪律"焊"进 coding agent 执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律四 · 数据与评测证据必须独立、可追溯、可复现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 动态速查与环境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 动态速查与环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#761-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.1 工具与 harness 生态速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#762" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.2 环境与工程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#71-fde-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 为什么 FDE 需要 AI：主动拥抱、更要会驾驭
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 为什么 FDE 需要 AI：主动拥抱、更要会驾驭">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-fde-ppt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1 先把 FDE 放回 PPT 与四阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2 Delta 的价值从哪来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#713-fde-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.3 FDE 项目的高质量卡在哪：Technology 维度的三个产能瓶颈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#714" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.4 立两个方向，避免两种偏差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#715-deltaecho-ai-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.5 角色演变：Delta／Echo 都要"获得 AI 赋能 + 驾驭 AI"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-llm-echo-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 LLM 能力四层级金字塔：Echo 选层、Delta 建层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 LLM 能力四层级金字塔：Echo 选层、Delta 建层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.1 Delta 视角的四层级金字塔
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.2 逐层：工程形态与代价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.3 "从最简单开始"的施工含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-ai-codingvibe-coding-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 AI Coding：Vibe Coding 驱动 × harness 工程约束
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 AI Coding：Vibe Coding 驱动 × harness 工程约束">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#731-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.1 coding agent：定义、分类与共性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#732-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.2 Vibe Coding 五原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#733-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.3 海外 coding agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#734-ai-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.4 国内 AI Coding 工具生态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#735" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3.5 怎么选工具
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-harness-gstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 harness：从理念到 gstack 实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 harness：从理念到 gstack 实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#741-harness-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.1 harness 理念：把 AI 执行约束进工程流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#742-spec-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.2 SPEC 驱动：harness 的通用规范
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#743-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.3 工程流水线：harness 的通用骨架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#744-gstackharness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.4 gstack：harness 的一个开源实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#745-gstack-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4.5 最小 gstack 演练：15 分钟可选动手
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-ai-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 四条工程纪律：驾驭 AI Coding，防止翻车
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 四条工程纪律：驾驭 AI Coding，防止翻车">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律一 · 测试数据必须外部给定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律二 · 启动提示词写清"信息块"，不留白让 coding agent 猜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coding-agent_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律三 · 驱动指令把流程纪律"焊"进 coding agent 执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纪律四 · 数据与评测证据必须独立、可追溯、可复现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 动态速查与环境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6 动态速查与环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#761-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.1 工具与 harness 生态速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#762" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.2 环境与工程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-delta-ai-coding">第 7 章  Delta 工作法 · AI Coding 与工程纪律<a class="headerlink" href="#7-delta-ai-coding" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 知识 + 工具单元 · Delta 侧方法，同时是第 7–12 章的<strong>认知与工具公共底座</strong>（接续第 6 章《解决方案框架》施工图，进入 Delta 施工）。<strong>本章主线：Delta 用 AI Coding（coding agent × harness，本书以 gstack 演示）把 Echo 选定的技术层落地为可交付系统。</strong></p>
+<p><strong>本章产出：</strong> 你能说出 FDE 为什么需要 AI、Delta 如何用 AI 加速并驾驭 AI；用 LLM 四层级金字塔给客户场景选对技术层（模型选型与私有化部署见第 13 章 13.1 / 13.2）；掌握 <strong>AI Coding 的两半</strong>——Vibe Coding 五原则（驱动层）与 harness 约束层（本书以 gstack 演示）——及 AI Coding 工具选型；会用 gstack 八环节 + SPEC 驱动 + <strong>四条工程纪律</strong>推进一次开发迭代；知道 15 分钟最小 gstack 演练怎么走；知道动态信息（模型 / 硬件在 13.5、工具 / 价格在 7.3.3 / 7.3.4、harness 生态与环境在 7.6）统一去哪里查。</p>
+<p><strong>建议读者：</strong> Delta（施工主力必读）与 Echo（选型需双角色共识）均适用。</p>
+<p><strong>前置：</strong> 第 4 章（Echo/Delta 分工哲学）、第 6 章（已产出《解决方案框架》——交付给 Delta 的施工图）。</p>
+<p><strong>适配说明：</strong> 本书以 opencode + gstack 为默认演示（训练营同款）；主流 AI Coding 工具（Claude Code、Codex 及国内 WorkBuddy/Qoder/Trae 等）通常可替换，理解流程纪律比死记命令更本质。<strong>模型 / 硬件动态数据见第 13 章 13.5 速查；AI Coding 工具与订阅价格见 7.3.3 / 7.3.4 表格，harness 生态与环境见 7.6 速查</strong>，信息截至 <strong>2026 年 8 月</strong>，落地前以各厂商官方资料复核。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>说出 FDE 为什么需要 AI（三个产能瓶颈），以及 Delta／Echo 为何都要具备"获得 AI 赋能 + 驾驭 AI"的视野；</li>
+<li>用 Delta 视角的金字塔（7.2）看懂"<strong>选定之后每一层要建什么、代价多大</strong>"（选层主导在 Echo，见第 5 章 5.7）；</li>
+<li>说出 <strong>AI Coding 的两半</strong>（Vibe Coding 驱动 × harness 约束，本书以 gstack 演示）与 AI Coding 工具选型逻辑（工具清单与价格见 7.3.3 / 7.3.4）；</li>
+<li>按 gstack 八环节 + SPEC 驱动 + <strong>四条工程纪律</strong>推进一次迭代，说出每环节人的职责；</li>
+<li>完成 15 分钟最小 gstack 演练，并说出"数据与评测证据独立、可追溯、可复现"（纪律四）的要求。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 4 章（人能判断、AI 能执行）、第 5 章（能力金字塔/选型）、第 6 章（解决方案框架）。</li>
+<li><strong>章节地图：</strong> 第 6 章 Echo 出《解决方案框架》(施工图) → <strong>本章（工具底座）</strong> → 第 8/10/12 章 Delta 逐章施工。本章是第 8/10/12 三个施工实操共享的方法论。</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    echo["第 6 章 Echo 产出&lt;br/&gt;《解决方案框架》（施工图）"]
+    ch7["第 7 章 Delta 工具底座&lt;br/&gt;用 AI 加速 · 驾驭 AI"]
+    op2["第 8 章 实操二·分类器"]
+    op3["第 10 章 实操三·RAG"]
+    op4["第 12 章 实操四·路由工作流"]
+    echo --&gt; ch7
+    ch7 --&gt; op2
+    ch7 --&gt; op3
+    ch7 --&gt; op4
+    style echo fill:#f5ece0,stroke:#a8895f
+    style ch7 fill:#3949ab,color:#fff,stroke:#1a237e
+    style op2 fill:#dbe4f0,stroke:#3949ab
+    style op3 fill:#dbe4f0,stroke:#3949ab
+    style op4 fill:#dbe4f0,stroke:#3949ab</code></pre>
+<em>图 7-1：本章是第 8/10/12 章三个施工实操共享的工具底座</em></p>
+<blockquote>
+<p><strong>阅读路线提示：</strong> 主线必学 = 7.1 → 7.2 → 7.3.1 → 7.3.2 → 7.4 → 7.5（含 7.4.5 演练）；<strong>动态速查</strong> = 7.6（harness 生态 / 环境；模型与硬件速查见第 13 章 13.5、工具价格见 7.3.3 / 7.3.4，随官方资料更新，不是考点，知道去哪查即可）。</p>
+</blockquote>
+<hr />
+<h2 id="71-fde-ai">7.1 为什么 FDE 需要 AI：主动拥抱、更要会驾驭<a class="headerlink" href="#71-fde-ai" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>本书第 4 章确立了分工哲学：<strong>人能判断、AI 能执行</strong>。本章把它落到 Delta 侧——不只是"用 AI 加快写代码"，而是理解<strong>FDE 在 AI 时代为什么必须主动采用 AI，又为什么必须能驾驭 AI</strong>。</p>
+</blockquote>
+<h3 id="711-fde-ppt">7.1.1 先把 FDE 放回 PPT 与四阶段<a class="headerlink" href="#711-fde-ppt" title="Permanent link">&para;</a></h3>
+<p>一次交付三要素 <strong>PPT（People–Process–Technology）</strong>：People 是根、Process 是脉、<strong>Technology 是器</strong>。Delta 的 AI 干活能力，正是 <strong>Technology（器）</strong> 这一维在当前 AI 时代的重写——工具变了，但判断在人不变。</p>
+<p>再看交付的四阶段（Discovery → Prototype → Build → Scale）。Delta 的主导段落在 <strong>Prototype（双角色）→ Build（主导）→ Scale（自运营 + 回注）</strong>，也就是"把施工图做成能跑的 Demo、系统，并沉淀回注"。<strong>AI 赋能 Delta，本质是赋能这三个阶段的产能。</strong></p>
+<h3 id="712-delta">7.1.2 Delta 的价值从哪来<a class="headerlink" href="#712-delta" title="Permanent link">&para;</a></h3>
+<p>Delta（对标 Palantir Delta / FDSE，技术执行工程师）是驻扎客户现场的"全栈特种兵"。它的价值不是"写了多少行代码"，而是三者的乘积：</p>
+<p><strong>交付速度 × 交付质量 × 可复用性（能力回注）</strong></p>
+<p>日常时间分配（参考，承前）：<strong>70% 编码与系统构建 / 20% 客户沟通与联调 / 10% 能力回注记录</strong>。其中最后的 10% 不是可选项——不做回注，Delta 就退化成"会写码的外包"（呼应第 1、2 章的"卖人力 vs 卖能力"）。</p>
+<h3 id="713-fde-technology">7.1.3 FDE 项目的高质量卡在哪：Technology 维度的三个产能瓶颈<a class="headerlink" href="#713-fde-technology" title="Permanent link">&para;</a></h3>
+<p>"客户要在有限时间内做出高质量、能复制的东西"，卡在三个结构性瓶颈上：</p>
+<table>
+<thead>
+<tr>
+<th>瓶颈</th>
+<th>现象</th>
+<th>若不解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>时间瓶颈</strong></td>
+<td>客户现场时间有限，Prototype/Build 两段要几周内从零做出"可演示 + 能上生产的最小系统"</td>
+<td>传统手写来不及，Demo 难产</td>
+</tr>
+<tr>
+<td><strong>广度瓶颈</strong></td>
+<td>一个 Delta 要覆盖数据管道、后端、前端、AI 集成、部署，人力不可能全栈精通</td>
+<td>团队依赖极少数"全能手"，不可复制</td>
+</tr>
+<tr>
+<td><strong>复用瓶颈</strong></td>
+<td>能力回注四步法（识别→抽象→集成→验证）要求把"本次经验"变成"下次可复用资产"</td>
+<td>纯手工做识别与抽象，成本高，易退化回"卖人力"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这三者都落在 PPT 的 <strong>Technology（器）</strong> 维度，集中在四阶段的 <strong>Prototype/Build</strong> 段——恰是 Delta 的主战场。</p>
+</blockquote>
+<h3 id="714">7.1.4 立两个方向，避免两种偏差<a class="headerlink" href="#714" title="Permanent link">&para;</a></h3>
+<p>面对 AI，FDE 容易滑向两个极端：</p>
+<ul>
+<li><strong>偏差一「AI 万能论」</strong>：以为有了 AI，就不再需要懂业务、懂现场的工程师。<strong>错。</strong> AI 解决"写得快"，不解决"知道该写什么、写出来有没有人用"——而后者正是 FDE 的核心价值。</li>
+<li><strong>偏差二「AI 与己无关」</strong>：以为 FDE 的活（数据管道、异构集成、现场推动）AI 碰不到。<strong>错。</strong> AI 正系统性地吃掉 FDE 工作里<strong>最可标准化、最重复</strong>的部分。</li>
+</ul>
+<blockquote>
+<p><strong>结论：</strong> AI 放大 FDE 的"复合能力"——让懂业务的人写代码更快、让写代码的人更快理解业务。它不改变 FDE 的定位（把非标痛点转化为平台能力），但<strong>重新定义产能瓶颈</strong>。这也就是本章的主旋律：<strong>主动采用 AI，同时驾驭 AI。</strong></p>
+</blockquote>
+<h3 id="715-deltaecho-ai-ai">7.1.5 角色演变：Delta／Echo 都要"获得 AI 赋能 + 驾驭 AI"<a class="headerlink" href="#715-deltaecho-ai-ai" title="Permanent link">&para;</a></h3>
+<p>在 AI 时代，FDE 的工作从"写每一行代码"转向"<strong>写关键的代码 + 编排 AI 干重复的活 + 把关 AI 的产出</strong>"——这正是第 4 章"人能判断、AI 能执行"在施工侧的具体化。</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>谁负责</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>判断（前脑）</strong></td>
+<td>人</td>
+<td>挖真需求、做取舍、定验收口径、审查 AI 产出对错、拍板</td>
+</tr>
+<tr>
+<td><strong>执行（后手）</strong></td>
+<td>AI + 人在 checkpoint 把关</td>
+<td>AI 跑流程、写样板代码、做重复任务；人审定方向与质量</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>对 Delta（本章主体）</strong>：既要有"<strong>获得 AI 赋能</strong>"的能力（会用 coding agent 交付），也要有"<strong>驾驭 AI</strong>"的能力（懂选型、能防翻车、守质量闭环）。</li>
+<li><strong>对 Echo（点到，呼应第 5/6 章）</strong>：获得 AI 赋能与驾驭 AI 同样重要——Echo 用 AI 做访谈分析、痛点聚类、方案速读提速，同时要审 AI 洞察是不是"真痛点"，不被 AI 的"看似合理"带偏。Echo 侧重"判断"，但也要会用 AI 工具提效。</li>
+</ul>
+<blockquote>
+<p><strong>由此引出本书的两种训练模式</strong>（承第 4 章）：Echo 侧判断型实操（Ch6/Ch16）<strong>关键判断不用 AI</strong>（AI 仅可辅助整理/润色/红队），练判断力；Delta 侧实操（Ch8/10/12）用 opencode + gstack，练施工力。<strong>"人会判断、AI 会执行"是 FDE 交付的核心引擎</strong>，本章教 Delta 如何驾驭这一引擎。</p>
+</blockquote>
+<p><strong>接力叙事：Echo 定方向 → Delta 定落地。</strong> 第 5/6 章 Echo 用 LLM 能力金字塔为每个场景"选层"（该用提示词、RAG 还是 Agent——这是<strong>方向</strong>决策）；Delta 从本章开始"建层"——用 <strong>AI Coding</strong> 把选定的那一层真正建出来（这是<strong>落地</strong>方式）。"人能判断、AI 能执行"落到施工侧，就是这一棒接力：<strong>方向由 Echo 的判断力定死，落地由 Delta 的 AI Coding 完成</strong>；而金字塔既是分工的<strong>分界线</strong>（Echo 选、Delta 建），也是协作的<strong>契合点</strong>（双方对着同一张图说话，交接零损耗）。</p>
+<p><strong>反模式预告：</strong> 把"用 AI"当"让 AI 全自动"（见 7.5 纪律三）；把 AI 当万能、或与己无关（见 7.1.4）。</p>
+<hr />
+<h2 id="72-llm-echo-delta">7.2 LLM 能力四层级金字塔：Echo 选层、Delta 建层<a class="headerlink" href="#72-llm-echo-delta" title="Permanent link">&para;</a></h2>
+<p>Echo 已在第 5/6 章用金字塔为每个场景"<strong>选层</strong>"（该用哪一层 AI，方向已定，业务判据见第 5 章 5.7）；Delta 的"<strong>建层</strong>"从这里开始——把选定的那一层实现出来。本节的 <strong>Delta 视角金字塔</strong>回答两件事：每一层要建什么、代价多大（图 7-2），以及"从最简单开始"对施工的含义。</p>
+<h3 id="721-delta">7.2.1 Delta 视角的四层级金字塔<a class="headerlink" href="#721-delta" title="Permanent link">&para;</a></h3>
+<p><pre class="mermaid"><code>flowchart TB
+    agent["第 4 层 · Agent（智能体系统）&lt;br/&gt;编排框架 + 工具定义 + 状态管理&lt;br/&gt;代码量与调试量最高"]
+    finetune["第 3 层 · 微调&lt;br/&gt;训练管线 + 标注数据 + GPU&lt;br/&gt;系统性改动 · 周期最长"]
+    rag["第 2 层 · RAG&lt;br/&gt;解析→分块→向量库→检索→引用&lt;br/&gt;要建索引 · 管版本 · 防幻觉"]
+    prompt["第 1 层 · 提示词工程&lt;br/&gt;一次 API 调用 + 一段好提示词&lt;br/&gt;无检索无训练 · 见效最快"]
+    agent --&gt; finetune --&gt; rag --&gt; prompt
+    style agent fill:#fdecea,stroke:#a34a3a
+    style finetune fill:#f5ece0,stroke:#a8895f
+    style rag fill:#dbe4f0,stroke:#3949ab
+    style prompt fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 7-2：LLM 四层级能力金字塔——Delta 视角：每一层要建什么、代价多大</em>
+（本图与图 5-2 互补：<strong>图 5-2 由 Echo 用业务判据回答"该不该用这层"</strong>，本图回答"<strong>选定之后 Delta 要建什么、付出什么代价</strong>"；使用优先级永远是"从第 1 层开始"。）</p>
+<h3 id="722">7.2.2 逐层：工程形态与代价<a class="headerlink" href="#722" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>实现形态（Delta 要建什么）</th>
+<th>工程代价</th>
+<th>验收方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 提示词工程</strong></td>
+<td>一次 LLM 调用 + 一段好提示词（含 7 项信息块）</td>
+<td>最低：无检索、无训练、无索引</td>
+<td>分类 / 抽取准确率（第 8 章）</td>
+</tr>
+<tr>
+<td><strong>2 RAG</strong></td>
+<td>解析→分块→向量化→向量库→检索→来源引用</td>
+<td>中：要建索引、管版本、防"检索不到就编"</td>
+<td>答案准确率 + 来源可追溯率双指标（第 9/10 章）</td>
+</tr>
+<tr>
+<td><strong>3 微调</strong></td>
+<td>训练管线：标注数据 + GPU + 训练/评测迭代</td>
+<td>高：系统性改动，数据与算力门槛（13.2/13.3）</td>
+<td>评估集指标 + 领域行为稳定性（第 13 章）</td>
+</tr>
+<tr>
+<td><strong>4 Agent（智能体系统）</strong></td>
+<td>编排框架（如 LangGraph）+ 工具定义 + 状态与权限管理</td>
+<td>最高：调用次数不定、失败点多、需 HITL 兜底</td>
+<td>端到端轨迹 + 敏感件零漏判（第 11/12 章）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>选层判据不在这里重复：</strong> 该用哪一层是业务判断（Echo 视角），见第 5 章 5.7 的选型三问与决策矩阵；本表只讲"选定之后 Delta 怎么建、代价多大"。另外注意：<strong>本章 7.5 说的"coding agent"是帮你写代码的开发工具；上表第 4 层的"Agent（智能体系统）"是要交付给客户的技术方案——同名不同物，别混淆。</strong></p>
+</blockquote>
+<h3 id="723">7.2.3 "从最简单开始"的施工含义<a class="headerlink" href="#723" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>能用提示词解决的不上 RAG，能用 RAG 解决的不微调，能用 Workflow 实现的不上 Agent。</strong> 对施工者（Delta）这条纪律意味着：<strong>先做最小验证</strong>——用最小 Demo 确认"简单的那层够不够"；升级必须带<strong>证据</strong>（哪里不够：溯源缺失？准确率不达标？需要多步决策？量化差距），而不是"感觉不够"。FDE 的价值不是堆技术复杂度，而是<strong>用最低复杂度交付客户需要的价值</strong>。</p>
+</blockquote>
+<p>这点在后续章节反复出现：第 8 章分类器走提示词（第 1 层）、第 9–10 章 RAG（第 2 层）、第 11–12 章 Agent（第 4 层）——实操坡度 = 金字塔逐层实践，但每次都先问"更简单的那层够不够"。</p>
+<blockquote>
+<p><strong>金字塔 = Echo 与 Delta 的分界线与契合点：</strong> Echo 在第 5 章用金字塔"选层"（业务判据，定方向），Delta 在本章起"建层"（工程实现，定落地）——分工以金字塔为界；但双方对着<strong>同一张金字塔</strong>说话：Echo 说"场景 B 用第 2 层 RAG"，Delta 就明白要建"解析→分块→向量库→检索→引用"管线。<strong>选层与建层，是同一张图的两半。</strong></p>
+</blockquote>
+<p><pre class="mermaid"><code>flowchart TB
+    echo["Echo · 选层（定方向）&lt;br/&gt;第 5/6 章 · 业务判据决定&lt;br/&gt;提示词 / RAG / 微调 / Agent"]
+    handover["交接 · 同一张金字塔&lt;br/&gt;Echo 说「第 2 层 RAG」&lt;br/&gt;Delta 就明白要建什么"]
+    delta["Delta · 建层（定落地）&lt;br/&gt;第 7 章起 · AI Coding&lt;br/&gt;把选定的层实现出来"]
+    ship["可交付系统"]
+    echo --&gt; handover --&gt; delta --&gt; ship
+    style echo fill:#f5ece0,stroke:#a8895f
+    style handover fill:#dbe4f0,stroke:#3949ab
+    style delta fill:#dbe4f0,stroke:#3949ab
+    style ship fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 7-3：接力——Echo 选层定方向，Delta 建层定落地，金字塔是交接接口</em></p>
+<hr />
+<h2 id="73-ai-codingvibe-coding-harness">7.3 AI Coding：Vibe Coding 驱动 × harness 工程约束<a class="headerlink" href="#73-ai-codingvibe-coding-harness" title="Permanent link">&para;</a></h2>
+<p>执行要靠 coding agent 承载。把"AI Coding"拆成两半：</p>
+<ul>
+<li><strong>驱动层 · Vibe Coding（7.3.2）</strong>：怎么跟 coding agent 说话——从"手写每一行"转向"描述意图 + 审查判断"（vibe coding 一词由 <strong>Karpathy 于 2025 年 2 月提出</strong>，<a href="https://www.ibm.com/cn-zh/think/topics/vibe-coding">IBM 主题介绍</a>）。它解决"<strong>怎么让 coding agent 听话地写</strong>"。</li>
+<li><strong>约束层 · harness（7.4 / 7.5）</strong>：把 AI 开发焊进工程流水线——受控执行、八环节、SPEC、四条纪律。它解决"<strong>写了之后怎么不翻车、可验收、可追溯</strong>"。</li>
+</ul>
+<p><strong>为什么 Vibe Coding 要升级成 AI Coding？</strong> 光有驱动层、没有约束层，就是"裸 vibe"——coding agent 写代码很快，但没有 SPEC 和测试纪律，交付不可验收、不可追溯，翻车概率高（7.5 的四条纪律就是防这个）。<strong>AI Coding = Vibe Coding（驱动） + harness（约束，本书以 gstack 演示）</strong>，两个合起来，才是 Delta 释放 AI 潜力的完整手段。</p>
+<p><pre class="mermaid"><code>flowchart TB
+    ac["AI Coding&lt;br/&gt;Delta 释放 AI 潜力的完整手段"]
+    drive["驱动层 · Vibe Coding&lt;br/&gt;怎么让 coding agent 听话地写&lt;br/&gt;（7.3.2 五原则）"]
+    constraint["约束层 · harness&lt;br/&gt;（本书以 gstack 演示）&lt;br/&gt;怎么不翻车、可验收、可追溯"]
+    ac --&gt; drive
+    ac --&gt; constraint
+    style ac fill:#3949ab,color:#fff,stroke:#1a237e
+    style drive fill:#f5ece0,stroke:#a8895f
+    style constraint fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 7-4：AI Coding 的两半——驱动层（Vibe Coding）× 约束层（harness，本书以 gstack 演示）</em></p>
+<h3 id="731-coding-agent">7.3.1 coding agent：定义、分类与共性<a class="headerlink" href="#731-coding-agent" title="Permanent link">&para;</a></h3>
+<p>coding agent（AI 编码代理）是驱动层的载体——<strong>你把意图描述给它，它写代码、跑测试、改文件，你在旁边审查把关</strong>（怎么驱动它见 7.3.2 Vibe Coding 五原则）。先分清两个概念，别混成一类：</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>是什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>coding agent（工具类）</strong></td>
+<td>一类 AI 编码工具：厂商绑定或独立开源，纯 coding 或全能型</td>
+<td>Claude Code、Codex、opencode；Trae、Qoder、WorkBuddy</td>
+</tr>
+<tr>
+<td><strong>harness（方法/产品类）</strong></td>
+<td>把 coding agent 的产出约束进受控工程流程（流水线、护栏）</td>
+<td>gstack（本书演示）、OpenSpec、LangGraph</td>
+</tr>
+</tbody>
+</table>
+<p><strong>coding agent 怎么分类：</strong>
+- <strong>按归属</strong>：厂商绑定（Claude Code 属 Anthropic、Codex 属 OpenAI）vs <strong>独立开源</strong>（opencode：模型无关、不绑定大模型厂商）；
+- <strong>按能力侧重</strong>：纯 coding（Codex、CodeGeeX）vs <strong>全能型</strong>（编程 + 办公双线：Trae、WorkBuddy、千问办公）；
+- <strong>按形态</strong>：CLI agent（Claude Code、opencode）／ IDE 助手（Trae、Qoder）／ 平台智能体（WorkBuddy、千问办公）。</p>
+<p><strong>共性（海内外都一样）：</strong> 无论厂商绑定还是独立开源、无论纯 coding 还是全能型，coding agent <strong>除了本身能力，都通过"技能 / 插件（Skills / Plugins）"获得增强能力</strong>——Anthropic 于 2025 年 10 月发布 Agent Skills 开放标准（SKILL.md：技能目录 + 按需加载，<a href="https://claude.com/blog/skills">官方博客</a>），Claude Code 首发，Codex、opencode、Gemini CLI 等陆续支持；国产工具也各有插件 / 技能生态（具体工具见 7.3.3 / 7.3.4）。</p>
+<h3 id="732-vibe-coding">7.3.2 Vibe Coding 五原则<a class="headerlink" href="#732-vibe-coding" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>核心</th>
+<th>反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>描述意图</strong></td>
+<td>说你要什么结果，不说怎么实现</td>
+<td>"调用 xxx 库的 chat 接口"——你在替 AI 做技术决策</td>
+</tr>
+<tr>
+<td><strong>给足上下文</strong></td>
+<td>显式给项目背景、技术栈、约束</td>
+<td>"帮我写个数据导入脚本"——AI 不知道你的 schema</td>
+</tr>
+<tr>
+<td><strong>分步迭代</strong></td>
+<td>框架→核心→辅助，每步验证</td>
+<td>一次描述整个系统，出错重来代价大</td>
+</tr>
+<tr>
+<td><strong>逐行审查</strong></td>
+<td>读懂 AI 生成的每一行，找逻辑/安全/边界</td>
+<td>"大概看懂了"——不是把责任交给 AI</td>
+</tr>
+<tr>
+<td><strong>用 AI 解释</strong></td>
+<td>看不懂就让 AI 解释，这是最快学习路径</td>
+<td>"不敢改"——AI 时代的障碍消失了</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>最关键的是<strong>逐行审查</strong>与<strong>描述意图</strong>——它们共同保证"是人在驾驭 AI，不是 AI 替人做主"。</p>
+</blockquote>
+<h3 id="733-coding-agent">7.3.3 海外 coding agent<a class="headerlink" href="#733-coding-agent" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>定位</th>
+<th>关键能力</th>
+<th>订阅（动态，以官网为准）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>Anthropic 官方 Agentic CLI</td>
+<td>终端自主编码；Skills/Subagents/Auto Mode；MCP；可叠 gstack</td>
+<td>$20 / $100 / $200 三档</td>
+</tr>
+<tr>
+<td><strong>Codex / Codex CLI</strong></td>
+<td>OpenAI coding agent 产品族</td>
+<td>云沙箱改码跑测提 PR、Automations、Subagents</td>
+<td>Free / $8 / $20 / $100 档位</td>
+</tr>
+<tr>
+<td><strong>opencode</strong></td>
+<td><strong>独立开源终端 agent</strong>（sst 团队）</td>
+<td><strong>模型无关</strong>：可接任意模型提供商；本地运行；支持 Skills；可叠 gstack</td>
+<td>免费开源</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>绑定 vs 中立：</strong> Claude Code / Codex 绑定各自厂商模型生态（Anthropic / OpenAI）；<strong>opencode 独立开源、与大模型厂商不绑定（模型无关）</strong>——本书默认演示选 opencode，正是看中它的中立性 + 可接国产 / 本地模型（呼应"数据不出域"红线）。价格截至 2026-08（<a href="https://www.morphllm.com/claude-code-pricing">Claude Code Pricing</a>、<a href="https://www.morphllm.com/codex-pricing">Codex Pricing</a>），订阅结构会变，落地前以官方页为准。<strong>工具清单与最新定价以官网为准（海外见本表，国内见 7.3.4）。</strong></p>
+</blockquote>
+<h3 id="734-ai-coding">7.3.4 国内 AI Coding 工具生态<a class="headerlink" href="#734-ai-coding" title="Permanent link">&para;</a></h3>
+<p>国内工具的共同主张是<strong>模型国产化 + 企业内网 + 数据不出域</strong>——正好呼应本书四条红线中的"数据不出域"，也补上了海外工具"境外服务/合规"的短板。</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>定位</th>
+<th>关键能力</th>
+<th>生态 / 订阅（价格，动态）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trae（字节）</strong></td>
+<td>全能型（编程 + 办公双线）</td>
+<td>IDE 助手 + 智能体；国内直连可用</td>
+<td>免费版 0元/月 / 速通 Pro 99元/月 / 速通 Ultra 699元/月</td>
+</tr>
+<tr>
+<td><strong>Qoder（阿里）</strong></td>
+<td>编程为主</td>
+<td>代码补全 / 对话 / 智能体</td>
+<td>社区版免费 / 专业版 59元/月 / 旗舰版 559元/月</td>
+</tr>
+<tr>
+<td><strong>WorkBuddy（腾讯）</strong></td>
+<td>办公为主 + 编程</td>
+<td>办公智能体 + 代码能力</td>
+<td>体验版免费 / 标准版 99元/月 / 旗舰版 999元/月</td>
+</tr>
+<tr>
+<td><strong>CodeGeeX 系（智谱）</strong></td>
+<td>编程</td>
+<td>代码补全 / 生成（开源系）</td>
+<td>个人免费；Coding Plan Pro 149元/月起</td>
+</tr>
+<tr>
+<td><strong>千问办公 / 豆包办公</strong></td>
+<td>办公线</td>
+<td>文档 / 表格 / 工作流智能体</td>
+<td>千问高级会员 19元/月；豆包标准版 68元/月</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>价格为各档位代表值，信息截至 2026-08（公开渠道）；各厂商会不定期调价 / 促销，落地前以各产品官网实时显示为准</strong>；<a href="https://finance.eastmoney.com/a/202608123839168388.html">办公智能体赛道各厂商已完成排兵布阵（2026-08 行业分析）</a>。</p>
+</blockquote>
+<h3 id="735">7.3.5 怎么选工具<a class="headerlink" href="#735" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>能否连境外服务？</strong> 不能/内网 → 国产工具或自部署开源；能 → Claude Code / Codex / opencode 也可用。</li>
+<li><strong>编程为主还是办公为主？</strong> 编程 → CLI agent / IDE 助手；办公 → 千问办公 / 豆包办公 / WorkBuddy。</li>
+<li><strong>数据合规要求？</strong> 内网/不出域 → 国产 + 自部署开源模型。</li>
+</ol>
+<blockquote>
+<p><strong>工具是手段，纪律是根本。</strong> 无论你用 Claude Code、Codex、opencode，还是 WorkBuddy/Qoder/Trae，"描述意图 → AI 执行 → 人把关 → 质量闭环"这套纪律不变——这正是 7.4 / 7.5 要建立的。</p>
+</blockquote>
+<hr />
+<h2 id="74-harness-gstack">7.4 harness：从理念到 gstack 实现<a class="headerlink" href="#74-harness-gstack" title="Permanent link">&para;</a></h2>
+<p>coding agent 解决"怎么写"，harness 解决"怎么不翻车"。</p>
+<h3 id="741-harness-ai">7.4.1 harness 理念：把 AI 执行约束进工程流程<a class="headerlink" href="#741-harness-ai" title="Permanent link">&para;</a></h3>
+<p>harness（AI 开发工程化流水线 / 护栏）是把 coding agent 的产出约束进受控工程流程的方法与产品——它规定 AI 写出来的东西<strong>怎么被验证、怎么被记录、怎么被人把关</strong>。没有 harness，coding agent 只是"写代码很快"（裸 vibe）；有了 harness，才谈得上可验收、可追溯、可交接。</p>
+<p><strong>为什么需要它（三个翻车点，对应 7.5 四条纪律）：</strong>
+- coding agent 可能<strong>自己出题自己考</strong>（自己造测试数据）→ 需要外部给定测试集；
+- coding agent 可能<strong>自由发挥</strong>（脑补场景、发明验收口径）→ 需要 SPEC 写死边界；
+- coding agent 可能<strong>一把梭</strong>（一口气跑完才汇报）→ 需要一环一停、人拍板。</p>
+<p><strong>通用原则（产品无关，任何 harness 都应满足）：</strong>
+- <strong>受控执行</strong>：环节化推进，每环节停下给人审查；
+- <strong>外部验证</strong>：测试与评测数据外部给定，不让 AI 自己定义成功；
+- <strong>可追溯</strong>：每环节产出落盘（文件、版本、决策记录）；
+- <strong>人机回环</strong>：拍板点（验收口径、兜底策略）由人决策。</p>
+<p>harness 是当前 AI 工程的主流方向，不是本书自造的概念——Anthropic 于 2025 年 11 月发布《Effective Harnesses for Long-Running Agents》，系统化论述长期运行代理的 harness 设计（状态持久化、检查点、重试 / 幂等、中断恢复）；OpenAI、微软（Magentic-One）、DeepSeek（Agent Harness）等头部厂商都在押注这一层（<a href="https://hub.baai.ac.cn/view/55145">中文综述：全网最详细 Agent Harness 综述</a>、<a href="https://github.com/swift-institute/Research/blob/main/agent-harness-engineering-state-of-the-art.md">Harness 工程 SOTA 综述（英文）</a>）。</p>
+<h3 id="742-spec-harness">7.4.2 SPEC 驱动：harness 的通用规范<a class="headerlink" href="#742-spec-harness" title="Permanent link">&para;</a></h3>
+<p>任何 harness 的第一条通用规范：<strong>动手 build 之前，先写死一份规格（SPEC）</strong>，build 阶段不再重复讨论技术参数，只严格按 SPEC 实现。SPEC 是"代码的压缩表示"——把意图写死，AI 才不会自由发挥（Spec-Driven Development，SDD；OpenSpec 等工具即此思路，与具体产品无关）。</p>
+<p>一份好 SPEC 要死磕清楚：
+- <strong>边界（No-Go）</strong>：明确"本阶段刻意不做的事"——防止 coding agent 自由发挥；
+- <strong>数据模型</strong>：输入/输出的形状、字段、类型；
+- <strong>验收口径</strong>：什么样算成功（如"准确率 ≥85%"可量化指标）——防止 coding agent 自己发明验收。</p>
+<blockquote>
+<p><strong>为什么先写规格？</strong> build 不重复技术参数，能避免 coding agent 在施工中反复问、反复改方向。SPEC 写死了，build 就是执行——这正是"施工力"和"随意写代码"的区别。</p>
+</blockquote>
+<h3 id="743-harness">7.4.3 工程流水线：harness 的通用骨架<a class="headerlink" href="#743-harness" title="Permanent link">&para;</a></h3>
+<p>第二条通用规范：<strong>把质量闭环组织成环节化流水线</strong>——每个环节有明确产出、人在每环节把关。环节怎么划分与工具无关，任何 harness 都围绕同一套骨架：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    o["1 要不要做"]
+    s["2 死磕边界"]
+    a["3 决策拍板"]
+    b["4 做出来"]
+    r["5 找隐患"]
+    q["6 测体验"]
+    sh["7 收尾"]
+    re["8 复盘"]
+    o --&gt; s --&gt; a --&gt; b --&gt; r --&gt; q --&gt; sh --&gt; re
+    style o fill:#dbe4f0,stroke:#3949ab
+    style s fill:#dbe4f0,stroke:#3949ab
+    style a fill:#f5ece0,stroke:#a8895f
+    style b fill:#dbe4f0,stroke:#3949ab
+    style r fill:#fdecea,stroke:#a34a3a
+    style q fill:#dbe4f0,stroke:#3949ab
+    style sh fill:#e4efe4,stroke:#5b7a5b
+    style re fill:#f5ece0,stroke:#a8895f</code></pre>
+<em>图 7-5：工程流水线的通用骨架——八环节，一环一停，人在每环节把关</em></p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>干什么</th>
+<th>你的角色（人的判断不可替代）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 要不要做</strong></td>
+<td>想清楚该不该做、确认需求和范围</td>
+<td><strong>提问者</strong>（答疑数据/口径）</td>
+</tr>
+<tr>
+<td><strong>2 死磕边界</strong></td>
+<td>死磕成精确规格：失败模式、No-Go、数据模型、验收口径</td>
+<td><strong>追问者</strong>（审查 No-Go 具体吗）</td>
+</tr>
+<tr>
+<td><strong>3 决策拍板</strong></td>
+<td>暴露"两可决策"供你拍板（只列选项，不替你决定）</td>
+<td><strong>决策者</strong>（真的拍板）</td>
+</tr>
+<tr>
+<td><strong>4 做出来</strong></td>
+<td>按 SPEC 实现，每模块即测</td>
+<td>审查者（抽查没偏离 No-Go）</td>
+</tr>
+<tr>
+<td><strong>5 找隐患</strong></td>
+<td>找"能跑但会出事"的隐患，P0–P3 分级</td>
+<td>审查者（确认 P0/P1 修复）</td>
+</tr>
+<tr>
+<td><strong>6 测体验</strong></td>
+<td>真实跑核心流程 + 边界输入</td>
+<td>验收者</td>
+</tr>
+<tr>
+<td><strong>7 收尾</strong></td>
+<td>版本号 + CHANGELOG + README + commit</td>
+<td>收尾者（确认 .env 未入库）</td>
+</tr>
+<tr>
+<td><strong>8 复盘</strong></td>
+<td>复盘：做得好/摩擦/未覆盖测试/改进行动项</td>
+<td>复盘者</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三个关键原则：</strong>
+- <strong>人的角色每环节不同</strong>，但任何环节人的判断都不可替代。
+- <strong>每环节产出都是文件</strong>（需求记录 / SPEC.md / 决策记录 / 代码 / review.md / qa-report.md / 版本与 CHANGELOG / retro.md）——可追溯、可复用（也是第 8/10/12 章"逐轮复用上一轮 AGENTS.md/retro.md"的基础）。
+- <strong>不必所有改动都走全流程</strong>——判断标准：<strong>做错代价大不大、会不会被别人用、会不会长期存在</strong>。会被坐席长期使用的系统 → 走完整流程。</p>
+<blockquote>
+<p><strong>来源声明（教材提炼）：</strong> 这套八环节骨架是本书训练营<strong>基于 gstack（Garry Tan 开源）命令链提炼、结合自身实践磨合</strong>的教材框架——它符合 harness 的通用规范（受控执行、外部验证、可追溯、人机回环），在实践中有效，但<strong>不是 Palantir 或其他大厂的官方流程</strong>（Palantir 的交付方法论见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 5–9 章：四阶段与能力回注方法论））。落地时按团队现有流程裁剪即可，不必照搬环节名称。</p>
+</blockquote>
+<h3 id="744-gstackharness">7.4.4 gstack：harness 的一个开源实现<a class="headerlink" href="#744-gstackharness" title="Permanent link">&para;</a></h3>
+<p>本书演示的工具是 <strong>gstack</strong>——Garry Tan（YC CEO）开源的 AI 开发工作流框架，官方口径是"<strong>23 个 opinionated tools</strong>"（<a href="https://github.com/garrytan/gstack">GitHub: garrytan/gstack</a>，把单次 AI 会话扩成"虚拟团队流水线"）。<strong>gstack 只是 harness 类里的一个具体开源实现</strong>——就像 opencode 只是 coding agent 类里的一个工具：gstack 并不代表整个 harness 类别。本书教学统一用 opencode + gstack 演示，是为了"一套能跑通"；实践中 coding agent 与 harness 的选型（甚至自建流水线）可以很灵活——纪律（7.5）比工具更重要。</p>
+<p><strong>gstack 把通用八环节落成命令</strong>（本书沿用训练营的<strong>八环节提炼</strong>——注意："八环节"是对官方 23 tools 主干命令链的教材归纳，非官方编号；落地以官方仓库为准）：</p>
+<table>
+<thead>
+<tr>
+<th>环节（通用）</th>
+<th>gstack 命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 要不要做</td>
+<td><code>/office-hours</code></td>
+</tr>
+<tr>
+<td>2 死磕边界</td>
+<td><code>/spec</code></td>
+</tr>
+<tr>
+<td>3 决策拍板</td>
+<td><code>/autoplan</code></td>
+</tr>
+<tr>
+<td>4 做出来</td>
+<td>自然语言（build）</td>
+</tr>
+<tr>
+<td>5 找隐患</td>
+<td><code>/review</code></td>
+</tr>
+<tr>
+<td>6 测体验</td>
+<td><code>/qa</code></td>
+</tr>
+<tr>
+<td>7 收尾</td>
+<td><code>/ship</code></td>
+</tr>
+<tr>
+<td>8 复盘</td>
+<td><code>/retro</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>gstack 支持跨 agent 运行</strong>——官方提供接入不同 host（agent）的机制，Claude Code、Codex、opencode 等都可作为 host 跑同一套 gstack 流程；这是 harness"方法不绑定工具"的另一面。</p>
+<h3 id="745-gstack-15">7.4.5 最小 gstack 演练：15 分钟可选动手<a class="headerlink" href="#745-gstack-15" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>目的不是产出真实系统，而是<strong>把八环节的节奏"跑一遍手感"</strong>——尤其体会"一环一停、拍板点列选项"为什么能防失控。</p>
+</blockquote>
+<ul>
+<li><strong>素材</strong>：任意一个小微任务即可（如"写一个读取 CSV 并输出分类计数的脚本"）。</li>
+<li><strong>压缩走查</strong>：</li>
+<li><strong>office-hours（1 分钟）</strong>：只问 2 个边界问题（输入文件从哪来、输出给谁用）；</li>
+<li><strong>spec（5 分钟）</strong>：写下 No-Go（"不做界面、不处理异常文件"）+ 验收口径（"对 10 行样例输出正确计数"），3 行以内；</li>
+<li><strong>build（7 分钟）</strong>：让 coding agent 实现最简版本，逐行读一遍它给的代码；</li>
+<li><strong>retro（2 分钟）</strong>：一句话复盘（哪里摩擦最大、下次怎么补）。</li>
+<li><strong>演练要求</strong>：刻意练习"走完一环停下汇报、获许可再流转"；<strong>15 分钟到点即停</strong>，没走完的环节写进 retro 即可。</li>
+<li><strong>环境未就绪的替代</strong>：用"纸上推演版"——在便签上写出每个环节该产出什么文件、谁拍板，同样能建立节奏感，不阻塞主线（完整环境命令见 7.6.2）。</li>
+</ul>
+<hr />
+<h2 id="75-ai-coding">7.5 四条工程纪律：驾驭 AI Coding，防止翻车<a class="headerlink" href="#75-ai-coding" title="Permanent link">&para;</a></h2>
+<p>AI Coding（coding agent × harness，本书以 gstack 演示）是 Delta 释放 AI 潜力的手段，但<strong>驾驭不当就会翻车</strong>——翻车的不是 coding agent 工具，而是"裸 vibe、全自动一把梭、自己出题自己考、跳过 SPEC"这类<strong>驾驭方式失当</strong>。四条纪律把"驾驭 AI Coding"落到实处——质量闭环不被 AI 的"自洽"击穿；它们在第 8/10/12 章逐章落实。</p>
+<h3 id="_2">纪律一 · 测试数据必须外部给定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>把固定的测试数据直接写进启动提示词、让 coding agent 落盘成 CSV，并明确"<strong>不得自行改动或重新生成</strong>"。<strong>防止 coding agent 自己出题自己考</strong>——否则验收无意义。</p>
+<h3 id="coding-agent">纪律二 · 启动提示词写清"信息块"，不留白让 coding agent 猜<a class="headerlink" href="#coding-agent" title="Permanent link">&para;</a></h3>
+<p>一份高质量启动提示词要包含这 7 项，每项给出确定内容：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>信息块</th>
+<th>为什么必须有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>背景与角色</td>
+<td>缺了，coding agent 自己脑补客户和场景</td>
+</tr>
+<tr>
+<td>2</td>
+<td>要做什么</td>
+<td>缺了，coding agent 发明错误的接口</td>
+</tr>
+<tr>
+<td>3</td>
+<td>输入输出</td>
+<td>缺了，无法验收</td>
+</tr>
+<tr>
+<td>4</td>
+<td>技术选型（含理由）</td>
+<td>缺了，coding agent 可能又问你要不要用 RAG</td>
+</tr>
+<tr>
+<td>5</td>
+<td>数据现状 + 测试集</td>
+<td>缺了，coding agent 可能走传统 ML 死路</td>
+</tr>
+<tr>
+<td>6</td>
+<td>验收口径</td>
+<td>缺了，coding agent 自己发明一套验收</td>
+</tr>
+<tr>
+<td>7</td>
+<td>约束与边界</td>
+<td>缺了，coding agent 自由发挥</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>写启动提示词的本质</strong>：假设一个完全不熟悉项目的人来接手，他需要知道什么才能"不重开讨论、直接开干"？——场景的边界、数据、选型理由、验收口径都要写死。<strong>coding agent 是最"难伺候的新人"，不是会猜的专家。</strong></p>
+</blockquote>
+<h3 id="coding-agent_1">纪律三 · 驱动指令把流程纪律"焊"进 coding agent 执行<a class="headerlink" href="#coding-agent_1" title="Permanent link">&para;</a></h3>
+<p>注入启动提示词时，明确要求 coding agent 按 gstack 八环节逐步执行、<strong>禁止全自动</strong>（走完一环必须停下汇报、获你明确许可才流转）、<strong>拍板点列选项等你选</strong>、环节产出文件落盘、从 office-hours 开始。参考驱动指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/office-hours
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>我是一名 FDE 团队（Delta 角色），需要启动【场景】的施工。
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>【粘贴你的启动提示词，含 7 项信息块】
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>请按 gstack 标准开发流程执行，严格遵守：
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>1. 依次走完 8 个环节：office-hours → spec → autoplan → build → review
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   → qa → ship → retro，顺序不跳、不简化；
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>2. 每个环节产出对应文件，落盘当前目录；
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>3. 禁止全自动：走完一环先停下汇报，获许可再流转；
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>4. 拍板点（验收口径/门槛/兜底）列出选项与利弊，等我选择；
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>5. 现在从 office-hours 开始。
+</code></pre></div>
+<blockquote>
+<p><strong>为什么"一环一停、拍板点列选项"如此关键？</strong> 如果让 coding agent 一口气把 8 环节全跑完、代码写完了才告诉你，你就失去了所有<strong>中途纠偏</strong>的机会，只能事后全盘检查。真实 FDE 项目里，让 AI"一小步一确认"不是效率低，而是<strong>把失控风险控制住</strong>。</p>
+</blockquote>
+<h3 id="_3">纪律四 · 数据与评测证据必须独立、可追溯、可复现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>纪律一保证了"外部给测试集"，但还不够——<strong>整条数据与评测链路的证据都要独立、可追溯、可复现</strong>，否则验收数字没有可信度：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>来源与授权</strong></td>
+<td>数据从哪来、有无授权记录（政策文档出处、标注人的依据），不凭"不知道哪来的文件"</td>
+</tr>
+<tr>
+<td><strong>标签规范</strong></td>
+<td>标注规则成文、检查一致性（多人标注时记录一致性），不能"各标各的"</td>
+</tr>
+<tr>
+<td><strong>开发/盲测隔离</strong></td>
+<td>调 Prompt、阈值、规则<strong>只用开发集</strong>；验收集（盲测集）在 Prompt 冻结后才使用，标签由讲师或评分脚本持有</td>
+</tr>
+<tr>
+<td><strong>版本与血缘</strong></td>
+<td>数据集带版本号、生成脚本、改动记录（对应 gstack"每环节产出文件落盘"）</td>
+</tr>
+<tr>
+<td><strong>评测污染</strong></td>
+<td>评测集不得出现在训练、提示词或检索上下文中——coding agent 不能"见过答案"</td>
+</tr>
+<tr>
+<td><strong>漂移与回流</strong></td>
+<td>上线后记录线上分布与评测分布的差异，设计反馈回流路径</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>反模式：</strong> 把"开发集调出的结果"当"最终验收结果"上报；偷偷改了测试数据却说没改；评测文件没有版本、说不清谁改过——这些都会让验收失去意义（第 8/10/12 章将用"盲测集验收"把这条纪律落地）。</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>实操四B（Lab4B）的工程纪律（预告）：</strong> 无编号附加高级实验"西岭市民服务协同 Agent"同样基于 gstack，但它<strong>从头构建独立项目、不复制第 8/10/12 章代码</strong>；复用的是上一轮沉淀的<strong>知识、数据与工具契约</strong>（<code>classify_request</code> / <code>search_policy</code> / <code>query_department</code>）。实验五条纪律：1）独立项目、承接知识不承接代码；2）先做 MVP 核心轨迹——至少两条不同任务走不同路径、信息不足会追问、敏感会交还给人；3）不一步到位（工具冲突、故障注入、复杂评分、生产级安全放迭代挑战）；4）界面达毕业展示标准（不得以未设计的默认 Streamlit 页交付）；5）gstack 一环一停、每环有产出。课程中实操四B 不要求全员必做（可课后完成），手册见《实验手册》<code>labs/lab4b-cooperative-agent.md</code>。</p>
+</blockquote>
+<h2 id="76">7.6 动态速查与环境<a class="headerlink" href="#76" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>本节是<strong>动态速查</strong>，不是主线必学——正文需要时知道"去哪查"即可。所有条目信息截至 <strong>2026 年 8 月</strong>，均标注来源；<strong>型号、价格、配置会持续变化，落地前请以各厂商官方资料复核。</strong> 本表由编写组随版本维护（对应"信息截至 YYYY 年 MM 月"标注纪律）。</p>
+<p><strong>来源纪律（教材要求）：</strong> 速查条目的型号、参数与许可证<strong>必须</strong>以厂商官方页（模型卡 / 官方文档 / 开源仓库）为准，媒体与聚合站只作线索。本表来源已全部换为官方页；"信息截至 2026-08"标注不替代发布前对官方最新页的复核。</p>
+</blockquote>
+<h3 id="761-harness">7.6.1 工具与 harness 生态速查<a class="headerlink" href="#761-harness" title="Permanent link">&para;</a></h3>
+<p><strong>coding agent 工具清单与价格见 7.3.3 / 7.3.4 表格</strong>（各档位代表值，落地前以各产品官网实时显示为准）。</p>
+<blockquote>
+<p><strong>harness 工具生态（约束层，非订阅制，随官方资料维护）：</strong> gstack（Garry Tan 开源，工作流流水线，<a href="https://github.com/garrytan/gstack">GitHub: garrytan/gstack</a>）· OpenSpec（Spec-Driven 开发）· LangGraph（编排框架）· Magentic-One（微软开源通用代理 harness）· DeepSeek Agent Harness（开源）· Harness.io（企业平台：AI 安全流水线）。本书以 gstack 演示（7.4.4）；各条目以官方发布为准（信息截至 2026-08）。</p>
+<p><strong>工具是手段，纪律是根本</strong>（正文 7.3.5 / 7.4 / 7.5）：换工具不换纪律；本节只负责任何时候都能查到"当下有哪些可选项"。</p>
+</blockquote>
+<h3 id="762">7.6.2 环境与工程<a class="headerlink" href="#762" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>版本锁定</strong>：随书资源包提供 <code>resources/environment/requirements-lock.txt</code>（依赖锁定清单，随资源包交付）；</li>
+<li><strong>环境自检</strong>：<code>resources/environment/environment-check.md</code>——安装、启动、验收前先跑自检；</li>
+<li><strong>排障</strong>：<code>resources/environment/troubleshooting.md</code>——常见报错与处理；</li>
+<li><strong>方法论</strong>：命令是手段，<strong>验收与排障的判断逻辑在 7.5 四条纪律</strong>（外部测试集、信息块、驱动指令、数据与评测证据）；</li>
+<li><strong>说明</strong>：资源包随实操资源轮次补齐；在书到货前，学员可用 7.4.5 的"纸上推演版"先练节奏。</li>
+</ul>
+<hr />
+<h2 id="_4">反模式与红线<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>让 coding agent"全自动"一把梭、不设 checkpoint。</strong> 你会失去所有中途纠偏机会（7.5 纪律三）。</li>
+<li><strong>coding agent 自己出题自己考。</strong> 测试数据要外部给定，不能让它自己造（纪律一）。</li>
+<li><strong>把开发集当验收集。</strong> 调参只用开发集，验收用盲测集；"开发集调出来的数字"不是最终验收数字（纪律四）。</li>
+<li><strong>把决策权丢给 AI（"你看着办"）。</strong> 拍板点必须你决——只有你掌握第 6 章定的验收口径。</li>
+<li><strong>跳过 SPEC 直接 build。</strong> 会退化成"随意写代码"，coding agent 反复改方向、无法验收。</li>
+<li><strong>裸 vibe、不上 harness。</strong> 只用 coding agent 聊天式写码、不走 gstack 八环节与 SPEC，交付不可验收、不可追溯——"从最简单开始"不等于"从最随意开始"（7.4 / 7.5）。</li>
+<li><strong>把 .env / API key 提交进版本库。</strong> API key 走环境变量、不硬编码、不入库。</li>
+<li><strong>忽略"数据不出域"硬上公网 API。</strong> 政企客户数据不能出域时，要本地私有化部署（第 13 章 13.2）。</li>
+<li><strong>过度堆技术层。</strong> 能提示词却上 RAG/Agent（智能体系统），违背"从最简单开始"（7.2.3）。</li>
+<li><strong>把"待核验"当正文。</strong> 动态型号、价格、参数一律查 7.3.3 / 7.3.4 / 13.5 速查（标注"信息截至 2026-08，以官方资料复核"），不把未核实数字写进交付物。</li>
+</ul>
+<blockquote>
+<p><strong>本书红线（技术侧落地）：答案可追溯、敏感件零漏判</strong> 都要在 SPEC 的验收口径里写死（第 9、11 章分别展开），否则 Delta 施工做不出符合政务红线的系统。</p>
+</blockquote>
+<hr />
+<h2 id="_5">本章小结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>FDE 为什么需要 AI</strong>：Technology 维度的三个产能瓶颈（时间/广度/复用）→ AI 放大复合能力；<strong>主动采用 + 驾驭 AI</strong>，Delta/Echo 都需要。</li>
+<li><strong>分工不变</strong>：人能判断、AI 能执行；<strong>Echo 定方向（选层）、Delta 定落地（建层）</strong>——同一张金字塔，分工以它为界、协作以它为契合点。</li>
+<li><strong>选层</strong>：LLM 四层级金字塔（提示词→RAG→微调→Agent），"从最简单开始"；选层判据见第 5 章 5.7（Echo 视角），本章只讲"选定后怎么建、代价多大"。</li>
+<li><strong>选模型/部署</strong>：模型选型与私有化部署见第 13 章（进阶选读），动态速查见 13.5——本章主线不展开。</li>
+<li><strong>工具</strong>：<strong>AI Coding 两半</strong>——Vibe Coding 五原则（驱动层）+ harness 约束层（本书以 gstack 演示，见 7.4.4）+ 工具选型三问；<strong>工具清单与价格见 7.3.3 / 7.3.4</strong>。</li>
+<li><strong>流程</strong>：gstack 八环节 + SPEC 驱动 + <strong>15 分钟最小演练（7.4.5）</strong>。</li>
+<li><strong>四条工程纪律</strong>：外部测试集 / 7 项信息块 / 驱动指令焊进 coding agent / <strong>数据与评测证据独立、可追溯、可复现</strong>（防止"驾驭 AI Coding 不当"翻车）。</li>
+<li><strong>动态速查</strong>：模型 / 硬件见第 13 章 13.5，AI Coding 工具 / 价格见 7.3.3 / 7.3.4，harness 生态 / 环境见 7.6，信息截至 2026-08，以官方资料复核。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出三个产能瓶颈与"主动采用 + 驾驭 AI"的道理吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用 Delta 视角的金字塔（7.2）说出"选定之后每一层要建什么、代价多大"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道模型 / 硬件动态速查在哪查（第 13 章 13.5）吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能默写 gstack 八环节、说出每环人的角色、懂为什么一环一停吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能把一段需求写成含 7 项信息块 + 三条纪律的启动提示词吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出纪律四的要求（数据与评测证据独立、可追溯、可复现），并指出"开发集当验收集"为什么错吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我知道动态型号、价格、工具清单去哪查（7.3.3 / 7.3.4 / 13.5），并会看它的"信息截至 + 来源"标注吗？</li>
+</ul>
+<hr />
+<h2 id="_6">练习与思考<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写 LLM 四层级与每层工程代价；默写 gstack 八环节与命令；列出启动提示词 7 项信息块；默写四条工程纪律。</li>
+<li><strong>进阶：</strong> 用 7.4.5 的 15 分钟演练（或纸上推演版）走一遍最小 gstack 并写一份 retro；把第 6 章你产出的场景 A（诉求分类）写成一份含 7 项信息块 + 三条纪律的启动提示词；写一条"评测污染"反例并给出纠偏做法。</li>
+<li><strong>挑战（迁移练习）：</strong> 1. 说明"如果 coding agent 不落地测试集、自己编数据"对一个分类系统验收如何失效，并写出纠偏指令；2. 给你负责的验收设计"开发集 / 盲测集"的拆分与版本管理方案（对应纪律四：来源、标签、隔离、血缘、污染、回流各写一条）；3. 给定"数据不能出内网"的政企项目，按第 13 章 13.1 / 13.2 与 13.5 速查给出模型选型与本地部署（算力路线分层、量化档、几卡）的初步方案，并注明哪些数字需在落地前以官方资料复核。</li>
+</ul>
+<hr />
+<h2 id="_7">延伸阅读<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 16 章 AI FDE 落地：Delta 技术与场景）——AI 辅助四阶段、本土技术栈与私有化部署的完整展开。</li>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 15 章 AI FDE 落地：Echo 共识与对齐）——"两种偏差"与 AI 重塑 FDE 的全景。</li>
+<li><strong>下一章：</strong> 本书 <strong>第 8 章实操二 · 诉求智能分类器</strong>（把本章方法第一次施工到西岭场景 A）。</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>动态信息口径：</strong> 本章动态型号、硬件、价格与工具数据统一在 <strong>7.3.3 / 7.3.4（工具与价格）、7.6（harness 生态与环境）与第 13 章 13.5（模型 / 硬件）</strong> 维护，信息截至 <strong>2026 年 8 月</strong>；表中每项均标注来源，落地前请以各厂商官方资料复核（正文不保留"待核验"字样）。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

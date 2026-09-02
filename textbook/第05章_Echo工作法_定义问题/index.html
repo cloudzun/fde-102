@@ -1,0 +1,2397 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第5章 Echo 工作法·定义问题 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-echo-discovery" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第5章 Echo 工作法·定义问题
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#51-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 核心原则：Discovery 初期不以功能开发为目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 三个思维脚手架
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 三个思维脚手架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚手架一：四类失败模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚手架二：四层决策链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚手架三：LLM 四层能力金字塔
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-sop1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 SOP1：干系人地图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 痛点诊断
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-sop2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 SOP2：数据资产盘点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-sop3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 SOP3：快赢场景筛选
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 场景拆解与技术选型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 场景拆解与技术选型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.1 把大需求拆成子场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.2 技术选型三问 + 技术决策矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-discovery-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Discovery Gate 与《解决方案框架》
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Discovery Gate 与《解决方案框架》">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#581-discovery-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.1 Discovery Gate：六要素核验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#582" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.2 《解决方案框架》模板
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.3 成功标准与验收设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-ai-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 AI 辅助 Discovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#51-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 核心原则：Discovery 初期不以功能开发为目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 三个思维脚手架
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 三个思维脚手架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚手架一：四类失败模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚手架二：四层决策链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚手架三：LLM 四层能力金字塔
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-sop1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 SOP1：干系人地图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 痛点诊断
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-sop2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 SOP2：数据资产盘点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-sop3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 SOP3：快赢场景筛选
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 场景拆解与技术选型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 场景拆解与技术选型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.1 把大需求拆成子场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.2 技术选型三问 + 技术决策矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-discovery-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Discovery Gate 与《解决方案框架》
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Discovery Gate 与《解决方案框架》">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#581-discovery-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.1 Discovery Gate：六要素核验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#582" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.2 《解决方案框架》模板
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.3 成功标准与验收设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-ai-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 AI 辅助 Discovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5-echo-discovery">第 5 章  Echo 工作法 · 定义问题（Discovery）<a class="headerlink" href="#5-echo-discovery" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> Echo 侧方法论的"知识底座"——教你 Echo 在项目里具体怎么干活</p>
+<p><strong>本章产出：</strong> 你能说出"Discovery 初期不以功能开发为目标"的原则、原因与<strong>时间盒技术验证</strong>的边界；熟练使用三个思维脚手架（失败模式 / 决策链 / 能力金字塔）；独立完成三个 SOP（干系人地图 / 数据资产盘点 / 快赢筛选），每个 SOP 都知道<strong>输入 / 完成判据 / 异常应对</strong>；完成"场景拆解 + 选型三问 + 技术决策矩阵"；能独立产出一页纸《解决方案框架》（格式见 5.8.2）；用 <strong>Discovery Gate</strong> 六要素核验自己能否进入 Prototype；了解 AI 如何辅助 Discovery。</p>
+<p><strong>建议读者：</strong> 偏 Echo 者精读，偏 Delta 者也需理解（要在施工时看懂 Echo 的方案框架怎么来的）。</p>
+<p><strong>前置：</strong> 第 3 章（Discovery 在四阶段的位置、Discovery Gate 总纲 3.3.2）、第 4 章（Echo 角色）。第 6 章实操一将直接应用本章方法。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>说出"Discovery 初期不以功能开发为目标"的原则及为什么，并说清时间盒技术验证的允许边界；</li>
+<li>掌握三个思维脚手架：四类失败模式 / 四层决策链 / LLM 能力金字塔；</li>
+<li>应用三个 SOP：干系人地图（SOP1）、数据资产盘点（SOP2）、快赢筛选（SOP3）——每个 SOP 能说出<strong>输入、步骤、输出、完成判据、异常与示例</strong>；</li>
+<li>用快赢评分量表（1–5 分 + 判断依据）排序候选场景；</li>
+<li>完成"场景拆解 + 技术选型三问 + 技术决策矩阵"，为一个场景给出选型理由；</li>
+<li>产出《解决方案框架》——它就是 Delta 的施工图；用 Discovery Gate 六要素自检。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 3 章（四阶段、Gate 总纲）、第 4 章（Echo 角色）。</li>
+<li><strong>章节地图：</strong> 本章是理论，<strong>第 6 章实操一（西岭需求调研）马上用</strong>——两者是"知识 → 动手"的一对；第 3 章 3.3.2 的 Gate 总纲在本章 5.8 落到 Discovery 的可操作核验。</li>
+</ul>
+<blockquote>
+<p><strong>一句话记住本章：</strong> Echo 主责判断——Discovery 初期不以功能开发为目标（允许时间盒技术验证），用三个脚手架把"客户嘴上说的需求"挖成"真正值得做的真问题"，再用三个 SOP 与 Gate 核验，产出一份能让 Delta 照着施工的《解决方案框架》。</p>
+</blockquote>
+<hr />
+<h2 id="51-discovery">5.1 核心原则：Discovery 初期不以功能开发为目标<a class="headerlink" href="#51-discovery" title="Permanent link">&para;</a></h2>
+<p>Echo 进驻客户后的第一原则：</p>
+<blockquote>
+<p><strong>Discovery 初期不以功能开发为目标——先听客户说话，成为内行人。</strong></p>
+</blockquote>
+<p>为什么不是先动手？因为（呼应第 3 章 PPT 框架）<strong>People 是根、Process 是脉、Technology 是器——顺序不可颠倒。</strong> 一上来就奔着"做出功能"去，你会在没搞清"客户到底要解决什么、谁在用、数据行不行"之前，就把方案做在错误的地基上。</p>
+<p><strong>"不以功能开发为目标" ≠ "完全不碰技术"。</strong> Echo 允许做<strong>时间盒（time-boxed）技术验证</strong>：对"数据到底能不能拿到、格式能解析到什么程度、API 连通性、样例数据走一遍要多久"这类<strong>只有到现场才能确认的不确定项</strong>，用半天级时间盒快速验证，把验证结果当作 Discovery 的发现来支撑选型，而不是投入功能开发。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>允许（时间盒技术验证）</th>
+<th>不允许（功能开发）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>做法</td>
+<td>连一次 API、跑通 1 条样例、解析 1 份文档、查字段可得性</td>
+<td>写业务代码、搭界面、做完整数据管线</td>
+</tr>
+<tr>
+<td>目的</td>
+<td>消除"数据/技术不可行"的不确定性，支撑选型判断</td>
+<td>交付可用的功能</td>
+</tr>
+<tr>
+<td>时间盒</td>
+<td>单次半天以内，累计不超过 Discovery 工作量的 20%</td>
+<td>无时间盒（应留到 Prototype）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>判断标准：</strong> 验证产出的是<strong>"判断依据"</strong>，不是<strong>"可用功能"</strong>。如果一项工作能让"该选 RAG 还是微调""数据够不够做"更确定，就值得做；如果只是"先做着，反正以后用得上"，那属于功能开发，留到 Prototype 阶段。</p>
+</blockquote>
+<p>Echo 在 Discovery 初期的时间分配，大致这样分配仅供参考：</p>
+<p><pre class="mermaid"><code>pie title Echo 在 Discovery 初期的时间分配
+    "听客户说话·干系人访谈" : 35
+    "跟班观察业务现场" : 25
+    "数据资产盘点" : 20
+    "验证与方案设计（含时间盒验证）" : 20</code></pre>
+<em>图 5-1：Echo 在 Discovery 初期把时间花在听懂业务上（含时间盒技术验证）</em></p>
+<blockquote>
+<p><strong>这也是与 Delta 的根本分工：</strong> Echo 的第一任务是把问题"定义对"，而不是"动手做"。判断错再快的施工也是白费——第 6 章实操一整个就是在练"别急着动手"。</p>
+</blockquote>
+<hr />
+<h2 id="52">5.2 三个思维脚手架<a class="headerlink" href="#52" title="Permanent link">&para;</a></h2>
+<p>头脑风暴 / 诊断不是"随便聊聊"，而是用三个脚手架让讨论有结构、有产出。它们是 Echo 的核心知识，也是第 6 章实操一的骨架。</p>
+<h3 id="_2">脚手架一：四类失败模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>AI 项目翻车不是偶然，是模式。客户不会主动说"我们这有风险"——你要自己从材料里读出来：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>一句话</th>
+<th>典型症状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据不可用</strong></td>
+<td>数据拿不齐、拿不干净</td>
+<td>格式杂乱、字段缺失、数据未必拿得齐</td>
+</tr>
+<tr>
+<td><strong>业务不配合</strong></td>
+<td>用系统的人抵制</td>
+<td>担心被替代、消极使用、不录入</td>
+</tr>
+<tr>
+<td><strong>合规卡住</strong></td>
+<td>法规/监管一票否决</td>
+<td>数据不出域、算法需可解释、有兜底要求</td>
+</tr>
+<tr>
+<td><strong>ROI 说不清</strong></td>
+<td>算不清投入产出</td>
+<td>没统计过基线的"现状数据"是拍脑袋</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用它的方法：</strong> 对项目材料逐条问"这属于哪一类失败模式"——尤其停在"哪个区最空"时：<strong>空区往往是全组集体盲区</strong>（多数组会漏"业务不配合"或"ROI 说不清"这类非技术风险）。</p>
+<h3 id="_3">脚手架二：四层决策链<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>对不同层级的人，要说不同的话。把干系人按四层排开，每层关心什么、该对他说什么：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>核心关切</th>
+<th>你该对他说什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>决策层</strong></td>
+<td>值不值、能不能拿去汇报</td>
+<td>ROI 和成效</td>
+</tr>
+<tr>
+<td><strong>操作层</strong></td>
+<td>会不会抢我饭碗、好不好用</td>
+<td>角色升级——从"分派员"变"审核员"</td>
+</tr>
+<tr>
+<td><strong>技术层</strong></td>
+<td>数据安全、对接工作量</td>
+<td>本地部署、少动现有系统</td>
+</tr>
+<tr>
+<td><strong>监管层</strong></td>
+<td>合规、数据安全、算法可解释</td>
+<td>数据不出域、算法可解释、有兜底</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用它的方法：</strong> 画权力 × 兴趣坐标，把关键干系人（含"刁钻"的：平时低兴趣、出事高权力的监管层）定位进去，为每人写一句沟通策略。</p>
+<h3 id="llm">脚手架三：LLM 四层能力金字塔<a class="headerlink" href="#llm" title="Permanent link">&para;</a></h3>
+<p>拆完场景，每个子场景该用什么技术？遵循<strong>"从最简单开始"——能用简单的，就不上复杂的</strong>：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    layer4["Agent&lt;br/&gt;需自主决策+调工具+多步流转"]
+    layer3["微调&lt;br/&gt;需模型学会领域知识、数据足够"]
+    layer2["RAG&lt;br/&gt;需基于文档精确回答+可溯源"]
+    layer1["提示词 / 分类&lt;br/&gt;能用一次调用解决的，就用最简单的"]
+
+    layer4 --- layer3 --- layer2 --- layer1
+    style layer1 fill:#e4efe4,stroke:#5b7a5b
+    style layer2 fill:#dbe4f0,stroke:#3949ab
+    style layer3 fill:#f5ece0,stroke:#a8895f
+    style layer4 fill:#907bb5,stroke:#5a4a7a,color:#fff</code></pre>
+<em>图 5-2：LLM 四层能力金字塔——从最简单开始</em></p>
+<p><strong>用它的方法：</strong> 对每个子场景问"该用哪一层、为什么是它、为什么不是更复杂的那层"。<strong>新手最容易"什么都想上 Agent"，要拉回"从最简单开始"。</strong>（金字塔不是"单线升级"路线，各维度可组合——判断哪个维度该上，见 5.7.2 技术决策矩阵。）</p>
+<blockquote>
+<p><strong>选层是 Echo 的"方向"决策；选定之后"怎么建出来"由 Delta 用 AI Coding 承接（见第 7 章 7.2–7.5：建层、gstack、四条纪律）。金字塔是 Echo → Delta 的交接接口——双方对着同一张图分工：Echo 选层、Delta 建层。</strong></p>
+</blockquote>
+<hr />
+<h2 id="53-sop1">5.3 SOP1：干系人地图<a class="headerlink" href="#53-sop1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>目标</strong>：搞清楚"谁说了算、谁会挡路、对谁说什么话"。</p>
+</blockquote>
+<ul>
+<li><strong>输入</strong>：项目材料（需求原文、组织架构、干系人名单初稿）；客户允许接触的人员范围。</li>
+<li><strong>步骤</strong>：</li>
+<li>列出干系人清单（决策者 / 影响者 / 使用者 / 阻碍者 / 冠军用户候选）；</li>
+<li>用<strong>权力（纵）× 兴趣（横）</strong>两维定位到四个象限（见下图表 5-1）；</li>
+<li>为每个关键干系人写一句沟通策略；<strong>头三天锁定冠军用户</strong>。</li>
+</ul>
+<p>用 <strong>权力（纵轴）× 兴趣（横轴）</strong> 两个维度，把干系人分进四个象限——每个象限对应一种对待策略。下图是它的可视化（以本书西岭案例的角色落位）：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    subgraph Matrix["▲ 高权力"]
+        direction LR
+        subgraph Left["低兴趣 ←"]
+            direction TB
+            subgraph TopLeft["高权力"]
+                A["Q2 · 重点应对&lt;br&gt;市数据局（监管层／阻碍者）&lt;br&gt;策略：重点维护 · 防一票否决"]
+            end
+            subgraph BottomLeft["低权力"]
+                C["Q4 · 简单知会&lt;br&gt;李工（边缘角色）&lt;br&gt;策略：保持知会"]
+            end
+            TopLeft --- BottomLeft
+        end
+        subgraph Right["→ 高兴趣"]
+            direction TB
+            subgraph TopRight["高权力"]
+                B["Q1 · 核心管理&lt;br&gt;陈主任（决策者／冠军用户）&lt;br&gt;策略：讲价值 · 拉入伙"]
+            end
+            subgraph BottomRight["低权力"]
+                D["Q3 · 积极引导&lt;br&gt;小王（使用者）&lt;br&gt;策略：讲角色升级 · 防抵制"]
+            end
+            TopRight --- BottomRight
+        end
+        Left --- Right
+    end
+    Matrix -.-&gt; |低权力| Bottom</code></pre>
+<em>图 5-3：权力（纵轴）× 兴趣（横轴）——干系人四象限（西岭案例落位）</em></p>
+<blockquote>
+<p><strong>坐标轴的读法：</strong> 纵轴是"权力高低"（说了算不算），横轴是"兴趣高低"（想不想参与推动）。沿纵轴从上往下 = 权力从高到低；沿横轴从左往右 = 兴趣从低到高。四象限的详细策略对照见下表：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>兴趣 ＼ 权力</th>
+<th><strong>高兴趣</strong>（想参与、想推动）</th>
+<th><strong>低兴趣</strong>（平时不参与）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>高权力</strong>（说了算）</td>
+<td><strong>决策者 / 冠军用户</strong>：核心对象，讲价值、拉入伙</td>
+<td><strong>监管层 / 阻碍者</strong>：重点维护，防"一票否决"</td>
+</tr>
+<tr>
+<td><strong>低权力</strong>（管不了）</td>
+<td><strong>使用者</strong>：预防抵制，讲"角色升级"</td>
+<td><strong>边缘</strong>：保持知会即可</td>
+</tr>
+</tbody>
+</table>
+<p><em>表 5-1：权力 × 兴趣坐标——干系人的四个象限及对应策略</em></p>
+<p><strong>读法（"对谁说什么话"）：</strong>
+- <strong>高权力 · 高兴趣</strong> —— 最值得投入的对象：可能是决策者（讲 ROI 和成效），也可能是<strong>冠军用户</strong>（最支持你、能帮你推动项目的人）；
+- <strong>高权力 · 低兴趣</strong> —— "平时不看你、出事定生死"（如监管层）：平时少打扰，但涉及红线必须主动上报、防一票否决；
+- <strong>低权力 · 高兴趣</strong> —— 天天用系统的人（操作层）：最怕被替代，要讲"角色升级"，预防消极抵制；
+- <strong>低权力 · 低兴趣</strong> —— 边缘角色：保持知会即可，不必投入太多精力。</p>
+<ul>
+<li><strong>输出（底稿）</strong>：干系人清单 + 权力×兴趣图 + 每人一句话沟通策略。</li>
+<li><strong>完成判据</strong>：四象限都有明确落位；五类干系人（决策者 / 影响者 / 使用者 / 阻碍者 / 冠军用户）都能点出名字；对每个关键干系人能答"该对他说什么"。</li>
+<li><strong>异常与应对</strong>：名单不全 → 通过跟班观察与访谈补全；监管层信息不足 → 查公开制度文件 + 安排一次正式访谈；客户不愿透露组织关系 → 先按"角色"占位（如"信息中心负责人"）画结构，边访谈边填名字。</li>
+<li><strong>示例（西岭）</strong>：决策层陈主任（高权力·高兴趣）、监管层市数据局（高权力·低兴趣）、操作层坐席组长小王（低权力·高兴趣）、技术层信息中心李工（低权力·低兴趣/中性）。实操一（Ch6）会画出这张图。</li>
+</ul>
+<hr />
+<h2 id="54">5.4 痛点诊断<a class="headerlink" href="#54" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>目的</strong>：挖出真正值得解决的痛点。</li>
+<li><strong>做法</strong>：</li>
+<li><strong>结构化访谈</strong>：按角色列问题，深挖"你每天最头疼的事"；</li>
+<li><strong>跟班观察</strong>：到现场看业务怎么流转——<strong>"眼睛看到的比嘴上说的更真实"</strong>。</li>
+<li><strong>分类</strong>：把痛点分到四类：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>痛点类型</th>
+<th>指什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>流程</strong></td>
+<td>业务流程低效、返工</td>
+<td>简单/复杂诉求混着走同一套流程</td>
+</tr>
+<tr>
+<td><strong>数据</strong></td>
+<td>数据拿不齐、不可用</td>
+<td>政策库 md/pdf/docx 混杂、格式杂乱</td>
+</tr>
+<tr>
+<td><strong>决策</strong></td>
+<td>判断/分派靠人、易错</td>
+<td>坐席老分错部门、拍脑袋估错分率</td>
+</tr>
+<tr>
+<td><strong>协作</strong></td>
+<td>跨部门信息孤岛</td>
+<td>工单 / 市民信息 / 政策库分属多套系统</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>底稿</strong>：痛点清单 + 分类矩阵。</li>
+<li><strong>完成判据</strong>：每条痛点都有原始证据（访谈引述 / 观察记录 / 数据样例），不凭印象；至少覆盖四类中的两类以上；能说出每条痛点"影响谁、多频繁、代价多大"。</li>
+<li><strong>异常与应对</strong>：访谈对象回避真实问题 → 换跟班观察校准；痛点太多无法收敛 → 按"高频 × 高代价"先筛 Top 5；证据不足 → 回到现场补一次跟班。</li>
+</ul>
+<p><strong>顺带收集"候选业务语义"（不做最终建模）：</strong> 访谈与跟班时记下四类观察，作为后续本体建模的输入（第 15 章 15.4 展开）：</p>
+<ul>
+<li>客户<strong>反复提到的业务对象</strong>（诉求、政策、工单、部门……）；</li>
+<li><strong>哪些对象之间的关系</strong>决定业务结果（诉求依据哪条政策、工单归哪个部门）；</li>
+<li><strong>哪些动作由谁执行</strong>（分类、分派、升级、审批）；</li>
+<li><strong>哪些状态变化需要审批</strong>（转人工、驳回、关闭）。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Discovery 阶段<strong>只收集候选语义，不完成最终本体</strong>——对象边界、关系与动作的正确性要等数据与流程验证后再定（第 14 章 14.9 工程验证、第 15 章 15.4 建模）。</p>
+</div>
+<hr />
+<h2 id="55-sop2">5.5 SOP2：数据资产盘点<a class="headerlink" href="#55-sop2" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>目标</strong>：验证"数据行不行"——AI 项目最常死在数据上。</p>
+</blockquote>
+<ul>
+<li><strong>输入</strong>：已拆解的子场景清单（5.7 有初稿即可）；每个场景"业务需要什么数据"的问题清单。</li>
+<li><strong>步骤</strong>：<strong>"业务牵引"逆向盘点</strong>——先想清楚业务需要哪些数据，再倒查这些数据在哪、格式如何、能否拿到：</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    Q["业务需要什么数据？"] --&gt; H["数据在哪？（哪个系统/部门）"]
+    H --&gt; F["什么格式？（.md / .xlsx / .pdf / .docx / 扫描件）"]
+    F --&gt; A["能拿到吗？（可得性 / 权限 / 合规）"]
+    A --&gt; C["能直接用吗？（还需清洗多少）"]
+    style Q fill:#dbe4f0,stroke:#3949ab
+    style H fill:#e4efe4,stroke:#5b7a5b
+    style F fill:#e4efe4,stroke:#5b7a5b
+    style A fill:#f5ece0,stroke:#a8895f
+    style C fill:#f5ece0,stroke:#a8895f</code></pre>
+<em>图 5-4：数据资产盘点的"业务牵引逆向"流程</em></p>
+<p><strong>常见陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据"纸面上有、实际拿不到"</td>
+<td>图表有清单，但权限/合规拿不出</td>
+</tr>
+<tr>
+<td>格式杂乱</td>
+<td>PDF/Word/扫描件需大量清洗</td>
+</tr>
+<tr>
+<td>口径对不上</td>
+<td>字段定义与业务口径不一致</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>输出（底稿）</strong>：数据资产清单 + 可得性评估（能拿 / 有条件 / 拿不到）+ 需清洗度。</li>
+<li><strong>完成判据</strong>：每个子场景所需数据字段都有出处与格式；每项标了可得性并写明原因；至少有一次到系统 / 部门核实（不凭"纸面有"）；基线数字（如错分率）有统计来源，或明确标注"待核实"。</li>
+<li><strong>异常与应对</strong>：数据拿不到 → 记录原因（权限 / 合规），作为"数据不可用"失败模式的证据，回头影响选型与范围；格式杂乱 → 用 1 份样例做解析验证并估算清洗量；口径对不上 → 列字段口径对照表，找业务骨干确认。</li>
+<li><strong>示例（西岭）</strong>：政策库是 5 份混合格式文档（3 个 .md + 1 个 .docx + 1 个 .pdf），李工明说"数据未必拿得齐、格式杂乱"——这是"数据不可用"风险的地基；诉求错分率没有统计 → 基线数字列为"待核实"，方案里必须安排现场抽样统计。</li>
+</ul>
+<hr />
+<h2 id="56-sop3">5.6 SOP3：快赢场景筛选<a class="headerlink" href="#56-sop3" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>目标</strong>：从所有候选里选出"先做哪个"。</p>
+</blockquote>
+<ul>
+<li><strong>输入</strong>：候选场景清单（来自痛点诊断与场景拆解）；每个场景的影响与可行性初步材料。</li>
+<li><strong>步骤</strong>：</li>
+<li>用下表<strong>评分量表</strong>对每个候选场景逐项打分（1–5 分）；</li>
+<li><strong>每项分值必须写判断依据</strong>（数字、事实或访谈引述，不允许"凭感觉"）；</li>
+<li>按总分排序，圈出<strong>快赢</strong>（高影响 × 高可行）。</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    subgraph Matrix["▲ 高可行性"]
+        direction LR
+        subgraph Left["低影响力 ←"]
+            direction TB
+            subgraph TopLeft["高可行性"]
+                A["Q2 · 可做但价值有限&lt;br&gt;（低影响 · 高可行）&lt;br&gt;策略：延后"]
+            end
+            subgraph BottomLeft["低可行性"]
+                C["Q4 · 不做&lt;br&gt;（低影响 · 低可行）&lt;br&gt;策略：砍掉"]
+            end
+            TopLeft --- BottomLeft
+        end
+        subgraph Right["→ 高影响力"]
+            direction TB
+            subgraph TopRight["高可行性"]
+                B["Q1 · ★快赢&lt;br&gt;（高影响 · 高可行）&lt;br&gt;策略：第一优先，先做这个！"]
+            end
+            subgraph BottomRight["低可行性"]
+                D["Q3 · 需补条件&lt;br&gt;（高影响 · 低可行）&lt;br&gt;策略：第二优先，先补数据/条件"]
+            end
+            TopRight --- BottomRight
+        end
+        Left --- Right
+    end
+    Matrix -.-&gt; |低可行性| Bottom</code></pre>
+<em>图 5-5：影响力 × 可行性矩阵——找出"快赢"场景（坐标图画法，与干系人地图一致）</em></p>
+<blockquote>
+<p><strong>坐标轴的读法：</strong> 纵轴是"可行性高低"（数据、技术、合规、周期上好不好做），横轴是"影响力高低"（领导关不关心、业务获得感强不强、覆盖大不大）。沿纵轴从上往下 = 可行性从高到低；沿横轴从左往右 = 影响力从低到高。四象限策略对照见下表：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>影响力 ＼ 可行性</th>
+<th><strong>高影响力</strong></th>
+<th><strong>低影响力</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>高可行性</strong></td>
+<td><strong>快赢（Q1）</strong>：第一优先，先做这个</td>
+<td><strong>可做但价值有限（Q2）</strong>：延后，有余力再排</td>
+</tr>
+<tr>
+<td><strong>低可行性</strong></td>
+<td><strong>需补条件（Q3）</strong>：第二优先，先补数据 / 条件</td>
+<td><strong>不做（Q4）</strong>：砍掉，不投入</td>
+</tr>
+</tbody>
+</table>
+<p><em>表 5-2：影响力 × 可行性矩阵——四象限策略对照</em></p>
+<p><strong>快赢评分量表（影响力 × 可行性，每项 1–5 分，必须附依据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分项</th>
+<th>1 分</th>
+<th>3 分</th>
+<th>5 分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>影响力</strong></td>
+<td>领导关注</td>
+<td>无人关心</td>
+<td>一个部门主任关心</td>
+<td>决策者点名要</td>
+</tr>
+<tr>
+<td></td>
+<td>群众 / 业务获得感</td>
+<td>无感</td>
+<td>部分受益</td>
+<td>高频、强痛点</td>
+</tr>
+<tr>
+<td></td>
+<td>覆盖规模</td>
+<td>单点</td>
+<td>一个部门</td>
+<td>跨部门 / 全流程</td>
+</tr>
+<tr>
+<td><strong>可行性</strong></td>
+<td>数据</td>
+<td>拿不到</td>
+<td>有条件（需申请/清洗）</td>
+<td>已在手</td>
+</tr>
+<tr>
+<td></td>
+<td>技术复杂度</td>
+<td>高（微调 / Agent）</td>
+<td>中（RAG）</td>
+<td>低（一次 LLM 调用）</td>
+</tr>
+<tr>
+<td></td>
+<td>合规</td>
+<td>有红线风险</td>
+<td>需评审</td>
+<td>无新增风险</td>
+</tr>
+<tr>
+<td></td>
+<td>周期</td>
+<td>&gt;1 个月</td>
+<td>2–4 周</td>
+<td>≤2 周</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>输出（底稿）</strong>：候选场景评分表（含每项依据）+ 按总分排序 + 快赢结论。</li>
+<li><strong>完成判据</strong>：每个候选场景六个评分项都有 1–5 分与一句依据；排序与快赢结论能讲清理由；快赢场景不依赖"还没到位的数据"。</li>
+<li><strong>异常与应对</strong>：多个场景同分 → 用"决策者最关心 + 群众获得感最强"口径破同分；评分缺依据 → 回到现场补证据（基线数字、样例、访谈引述）；高影响低可行 → 标注"需先补数据/条件"，不硬排第一。</li>
+<li><strong>示例（西岭）</strong>：三个场景（诉求分类 / 政策问答 / 工单分流）中，<strong>诉求分类是"快赢"</strong>——技术最简（一次调用）、数据在收件记录里、陈主任最关心件量，得分最高，他在实操一选了它第一个施工；政策问答次之（依赖政策库解析，数据中等）；工单分流排后（涉及跨部门流程，需先对齐部门职责库）。</li>
+</ul>
+<hr />
+<h2 id="57">5.7 场景拆解与技术选型<a class="headerlink" href="#57" title="Permanent link">&para;</a></h2>
+<h3 id="571">5.7.1 把大需求拆成子场景<a class="headerlink" href="#571" title="Permanent link">&para;</a></h3>
+<p>客户给的一句模糊大需求（如"把这一整套都智能化了"）往往裹着三四个需求。Echo 的工作是把它拆开：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    big["一句模糊大需求：把整个平台都智能化"]
+    s1["子场景 A&lt;br/&gt;诉求智能分类"]
+    s2["子场景 B&lt;br/&gt;政策智能问答"]
+    s3["子场景 C&lt;br/&gt;工单智能分流"]
+
+    big --&gt; s1
+    big --&gt; s2
+    big --&gt; s3
+    style big fill:#3949ab,color:#fff,stroke:#1a237e
+    style s1 fill:#dbe4f0,stroke:#3949ab
+    style s2 fill:#e4efe4,stroke:#5b7a5b
+    style s3 fill:#f5ece0,stroke:#a8895f</code></pre>
+<em>图 5-6：把"模糊大需求"拆成可施工的子场景</em></p>
+<p>每个子场景要记清三件事：<strong>1. 解决的什么问题 2. 用户是谁 3. 成功怎么衡量</strong>（成功衡量必须落到可数指标，如"分类准确率 ≥95%""政策问答可追溯率 6/6"——这决定后续 Prototype 的验收口径）。</p>
+<h3 id="572">5.7.2 技术选型三问 + 技术决策矩阵<a class="headerlink" href="#572" title="Permanent link">&para;</a></h3>
+<p>对每个子场景，先用"三问"定技术路线：</p>
+<blockquote>
+<p><strong>Q1 能不能用最简单的一层？</strong>（一次调用分类？）
+<strong>Q2 需不需要"基于文档精确回答 + 溯源"？</strong>（→ RAG？还是微调？）
+<strong>Q3 需不需要"自主决策 + 调工具 + 多步流转"？</strong>（→ Agent？）</p>
+</blockquote>
+<p>用一张决策树串起来（对照能力金字塔）：</p>
+<p><pre class="mermaid"><code>flowchart TD
+    start["一个子场景，该用什么？"]
+    q1{"只需归个类？&lt;br/&gt;无后续动作"}
+    q2{"要基于文档&lt;br/&gt;精确回答 + 溯源？"}
+    q3{"要自主决策&lt;br/&gt;+ 调工具 + 多步流转"}
+    q4{"需内化特定领域&lt;br/&gt;风格 / 格式 / 私有协议？"}
+    c1["分类器（一次调用）"]
+    rag["RAG"]
+    ft["微调（第 13 章进阶）"]
+    ag["Agent（第 11/12 章）"]
+    wf["高级提示词工程&lt;br/&gt;/ 固定工作流（第 7/11 章）"]
+
+    start --&gt; q1
+    q1 -- 是 --&gt; c1
+    q1 -- 否 --&gt; q2
+    q2 -- 是 --&gt; rag
+    q2 -- 否 --&gt; q3
+    q3 -- 是 --&gt; ag
+    q3 -- 否 --&gt; q4
+    q4 -- 是 --&gt; ft
+    q4 -- 否 --&gt; wf
+    style start fill:#3949ab,color:#fff,stroke:#1a237e
+    style c1 fill:#e4efe4,stroke:#5b7a5b
+    style rag fill:#dbe4f0,stroke:#3949ab
+    style ft fill:#f5ece0,stroke:#a8895f
+    style ag fill:#907bb5,stroke:#5a4a7a,color:#fff
+    style wf fill:#dbe4f0,stroke:#3949ab</code></pre>
+<em>图 5-7：技术选型决策树——从最简单开始，仅必要时升级</em></p>
+<blockquote>
+<p><strong>决策树 q3 的"否"注意别误导向微调：</strong> Q1/Q2/Q3 全都不满足，说明这个子场景既不需要分类、也不需要检索、更不靠多步决策——它<strong>并不必然要微调</strong>。是否"学会"某个<strong>特定领域风格 / 格式 / 私有协议</strong>（q4）才是微调的判据；否则用<strong>高级提示词工程 / 固定工作流</strong>（复杂 Prompt 链、固定流程、摘要提取等都归此类）即可。</p>
+</blockquote>
+<p><strong>技术决策矩阵（与金字塔互补；金字塔管"选型排序"，矩阵管"维度判断与组合"）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>判断问题（按顺序逐条问）</th>
+<th>是 →</th>
+<th>否 →</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需要外部领域知识（文档 / 知识库）？</td>
+<td>RAG</td>
+<td>继续下一问</td>
+</tr>
+<tr>
+<td>答案需要来源引用、可溯源？</td>
+<td>RAG（必需）</td>
+<td>继续下一问</td>
+</tr>
+<tr>
+<td>需要稳定改变模型行为（风格 / 格式 / 私有协议）？</td>
+<td>微调（数据足够时）</td>
+<td>继续下一问</td>
+</tr>
+<tr>
+<td>需要调用工具、多步决策？</td>
+<td>Agent / Workflow</td>
+<td>继续下一问</td>
+</tr>
+<tr>
+<td>流程路径是否可枚举（预编排）？</td>
+<td>固定工作流（Agentic Workflow）</td>
+<td>动态 Agent</td>
+</tr>
+<tr>
+<td>需要人工审批 / 兜底环节？</td>
+<td>加 HITL 节点（不改变主选型）</td>
+<td>全自动</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>矩阵读法：</strong> 六问逐条判断，多个"是"可以叠加组合（典型组合：<strong>RAG + 固定工作流 + HITL 人工兜底</strong>）。每次选型都要能讲清"为什么是它、为什么不用更复杂的、它与哪些维度组合、人工兜底在哪"。</p>
+<p><strong>选型口诀（源自能力金字塔）：从最简单开始，能用简单的就不上复杂的；但该上复杂时（文档溯源→RAG、决策循环→Agent）也要果断。</strong></p>
+<p><strong>本课程实例（西岭选型理由）：</strong>
+- <strong>场景 A 诉求分类</strong> → 分类器（一次调用，无需多步决策）——不用 Agent；
+- <strong>场景 B 政策问答</strong> → RAG（需要"基于文档回答 + 可溯源"，且政策常更新、一次重训一次、无法溯源）——不用微调；组合：<strong>RAG + 库外拒答兜底</strong>；
+- <strong>场景 C 工单分流</strong> → 工作流（预编排三路路由 + 工具调用 + 敏感件转人工 HITL）——不是分类器，因为分流后还要"做事"（自动答复/转人工）（详见第 11–12 章对 Workflow / Agent 的定义）。</p>
+</blockquote>
+<hr />
+<h2 id="58-discovery-gate">5.8 Discovery Gate 与《解决方案框架》<a class="headerlink" href="#58-discovery-gate" title="Permanent link">&para;</a></h2>
+<h3 id="581-discovery-gate">5.8.1 Discovery Gate：六要素核验<a class="headerlink" href="#581-discovery-gate" title="Permanent link">&para;</a></h3>
+<p>离开 Discovery 进入 Prototype 前，按第 3 章 3.3.2 的 Gate 总纲做六要素核验：</p>
+<table>
+<thead>
+<tr>
+<th>Gate 要素</th>
+<th>本阶段内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输入条件</strong></td>
+<td>已立项 / 客户授权；可接触干系人与数据入口</td>
+</tr>
+<tr>
+<td><strong>核心活动</strong></td>
+<td>干系人地图（5.3）、痛点诊断（5.4）、数据盘点（5.5）、快赢筛选（5.6）、场景拆解与选型（5.7）</td>
+</tr>
+<tr>
+<td><strong>必交付物</strong></td>
+<td>干系人地图 + 痛点清单 + 数据资产清单 + 快赢评分表 +《解决方案框架》（5.8.2）</td>
+</tr>
+<tr>
+<td><strong>通过证据</strong></td>
+<td>决策者认可方向；冠军用户到位；数据已验证可得；每个选型能讲清"为什么是它"；四条红线（尤其数据不出域）已写入方案；基线数字有来源或标注"待核实"</td>
+</tr>
+<tr>
+<td><strong>未通过动作</strong></td>
+<td>缺证据 → 补证据再过；范围过大 → 砍场景降级；无快赢 → 重筛或建议终止</td>
+</tr>
+<tr>
+<td><strong>主责与协同</strong></td>
+<td>Echo 主导；Delta 补技术可行性；客户：决策者 + 业务骨干确认</td>
+</tr>
+</tbody>
+</table>
+<p><strong>快速自检（通过证据的轻量版）：</strong>
+- [ ] <strong>决策者认可</strong>：决策层知道并认可这个方向，且认可它的价值（能讲清"值不值得做"）？
+- [ ] <strong>冠军用户到位</strong>：有人愿意深度参与、帮助推动？
+- [ ] <strong>数据已验证</strong>：所需数据可拿到、可用？
+- [ ] <strong>"黑话"复述</strong>：能把客户业务"黑话"复述出来了吗？（听懂了内行话）</p>
+<h3 id="582">5.8.2 《解决方案框架》模板<a class="headerlink" href="#582" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># 《解决方案框架》
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>## 一、需求拆解
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>| 八字段 | 场景A | 场景B | 场景C |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>| 业务目标 | | | |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>| 成功指标 | | | |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>| 数据与样本 | | | |
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>| 通过门槛 | | | |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>| 人工兜底 | | | |
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>| 失败代价 | | | |
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>| 责任人 | | | |
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>| 待校准假设 | | | |
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>## 二、技术选型
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>| 场景 | 选型 | 为什么是它 | 为什么不用更复杂的 |
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>## 三、施工优先级
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>- 第一优先（快赢）：场景__，理由
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>- 第二 / 第三：...
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>## 四、四类风险与应对
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>| 风险类型 | 本项目具体风险 | 初步应对 |
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>## 五、数据不出域方案
+</code></pre></div>
+<h3 id="583">5.8.3 成功标准与验收设计<a class="headerlink" href="#583" title="Permanent link">&para;</a></h3>
+<p>《解决方案框架》不只是"做什么"，还要写清"做到什么程度算成"——每个场景填一张八字段表，它决定后续每个 Delta 实操（第 8/10/12 章）的验收口径从哪来：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>要回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>业务目标</strong></td>
+<td>对谁、解决什么问题</td>
+</tr>
+<tr>
+<td><strong>成功指标</strong></td>
+<td>业务和技术分别衡量什么</td>
+</tr>
+<tr>
+<td><strong>数据与样本</strong></td>
+<td>数据来自哪里，谁持有标签</td>
+</tr>
+<tr>
+<td><strong>通过门槛</strong></td>
+<td>当前阈值是多少，为什么定这个数</td>
+</tr>
+<tr>
+<td><strong>人工兜底</strong></td>
+<td>哪些情况必须转人工</td>
+</tr>
+<tr>
+<td><strong>失败代价</strong></td>
+<td>错分、错答、漏判分别造成什么后果</td>
+</tr>
+<tr>
+<td><strong>责任人</strong></td>
+<td>谁确认口径，谁执行验证</td>
+</tr>
+<tr>
+<td><strong>待校准假设</strong></td>
+<td>哪些阈值只能在 Prototype 后确定</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>"教学初始值"与"校准"分开写。</strong> 教材若给默认阈值（如准确率 ≥85%），必须标注为<strong>教学初始值</strong>，不得声称"已由学员确定"；Prototype 结束后允许基于证据校准阈值，但<strong>必须记录变更原因与确认人</strong>（校准记录进入第 16 章证据包）。Delta 不得自行发明业务阈值——那是 Echo 的职责。</p>
+</div>
+<blockquote>
+<p><strong>这份《解决方案框架》就是 Echo 交给 Delta 的"施工图/任务书"</strong>——第 6 章实操一就是产出它的地方，第 8/10/12 章的 Delta 施工照着它做。</p>
+<p><strong>完整成品样例不随正文公布</strong>——它是第 6 章实操一的产出，公布出来等于直接给答案；讲师可在实操一验收后组织讲评对标。</p>
+<p><strong>延伸阅读：</strong> Discovery 更完整的 SOP 与工作底稿（访谈提纲、跟班记录、数据清单模板等），见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 5 章 Phase 1 Discovery）。</p>
+</blockquote>
+<hr />
+<h2 id="59-ai-discovery">5.9 AI 辅助 Discovery<a class="headerlink" href="#59-ai-discovery" title="Permanent link">&para;</a></h2>
+<p>AI 时代 Echo 也可以借力，但要守住一条铁律：</p>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>"AI 洞察只是'子弹'，不是'结论'。"</strong> 用 LLM 大提速访谈解析 / 痛点聚类 / 尽调速读，但 AI 归纳出的结论<strong>必须回到现场做人工确认</strong>——否则会把 LLM 的"看似合理"误当成客户真话。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>AI 辅助</th>
+<th>它为你做什么</th>
+<th>你（人）要验证什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>访谈/纪要结构化</td>
+<td>自动转写、去噪、抽关键实体与痛点</td>
+<td>结论与真实现场是否一致</td>
+</tr>
+<tr>
+<td>痛点聚类与初筛</td>
+<td>聚类高频痛点、量化出现频率</td>
+<td>高频 ≠ 重要，用业务判断筛</td>
+</tr>
+<tr>
+<td>尽调资料速读</td>
+<td>RAG 秒答制度文档里的卡点</td>
+<td>找业务骨干核对"黑话复核"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>实践边界：</strong> Ch6 实操一（求判断力）和 Ch16 实操五（求表达力）<strong>关键判断不用 AI</strong>——训练的是 FDE 最不可替代的判断力；真实项目里当然可用 AI 提效，但那是在你已经具备判断力之后。</p>
+</blockquote>
+<hr />
+<h2 id="_4">反模式与红线<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>一上来就套模板 / 用 AI 堆产出代替判断。</strong> Discovery 训练的是判断力；AI 一键生成"完美方案"掩盖的恰是 FDE 不可替代的能力。</li>
+<li><strong>把"不以功能开发为目标"误解为"完全不碰技术"。</strong> 时间盒技术验证是被鼓励的——它的产出是"判断依据"，不是"可用功能"（5.1 的允许/不允许表）。</li>
+<li><strong>跳过"先独立、后碰撞"。</strong> 头脑风暴一上来就开口讨论，会被声量大的人带偏；先每人独立写判断，才能暴露真实分歧（Ch6 实操一专门练）。</li>
+<li><strong>把"拍脑袋的数字"当依据。</strong> 基线的"现状数据"（如错分率）若没统计，是整个 ROI 方案的地基——<strong>哪些数字必须先核实，要列清楚</strong>；快赢评分每项都必须附依据，不允许"凭感觉"打分（5.6）。</li>
+<li><strong>SOP 做完没有判据。</strong> 干系人地图画了、数据盘了，却说不出"这步算没算完成"——每个 SOP 必须过一遍完成判据（5.3/5.5/5.6）。</li>
+<li><strong>对决策层讲技术黑话。</strong> Echo 汇报要用客户听得懂的业务语言，能让陈主任直接拿去市里汇报。</li>
+<li><strong>把"高风险高复杂度"当场就上。</strong> 什么都想上 Agent / 微调——从最简单开始（能力金字塔 + 决策树 + 决策矩阵）。</li>
+</ul>
+<blockquote>
+<p>🔺 <strong>本书红线（首次在方法层落地）：数据不出域</strong> 是政务 AI 的关键选型约束——Echo 在 Discovery 就必须把它作为设计约束写入方案（《解决方案框架》第五节），而非施工期才发现。本条红线在 Ch6 实操一将亲手落地。</p>
+</blockquote>
+<hr />
+<h2 id="_5">本章小结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Echo 第一原则：<strong>Discovery 初期不以功能开发为目标，成为内行人</strong>（People 先于 Technology）；<strong>允许时间盒技术验证</strong>（产出判断依据，不产出功能）。</li>
+<li><strong>三个脚手架</strong>：四类失败模式（挖风险）/ 四层决策链（理干系人）/ LLM 能力金字塔（选型，"从最简单开始"，维度可组合）。</li>
+<li><strong>三个 SOP（统一六段式：输入—步骤—输出—完成判据—异常—示例）</strong>：干系人地图（找冠军用户）/ 数据资产盘点（业务牵引逆向，基线数字标"待核实"）/ 快赢筛选（1–5 分评分量表 + 依据）。</li>
+<li><strong>选型</strong>：用"三问 + 决策树 + 技术决策矩阵"决出 分类/RAG/微调/Agent/工作流，并讲清理由与组合。</li>
+<li>产出《解决方案框架》（场景+选型+优先级+风险+数据不出域）——即 Delta 的施工图，格式见 5.8.2；正文不公布成品样例（避免直接给出第 6 章实操一的答案）。</li>
+<li><strong>Discovery Gate</strong>：六要素核验（输入/活动/交付物/证据/未通过动作/主责），过关才进 Prototype。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出三个脚手架分别解决什么问题吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用四类失败模式，对任意一个项目材料"挖风险"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能画出干系人权力×兴趣图并定位五类人吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出三个 SOP 各自的输入、完成判据与常见异常吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用快赢评分量表给候选场景打分并附依据吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能对一个场景做"选型 + 理由 + 为什么不用更复杂的 + 组合判据"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能独立写出《解决方案框架》五个部分，并说清每部分各装什么内容吗？</li>
+</ul>
+<hr />
+<h2 id="_6">练习与思考<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写三个脚手架；说出三个 SOP 的输入/输出/完成判据各一条；默写 Discovery Gate 六要素。</li>
+<li><strong>进阶：</strong> 用"数据不出域"约束，为一个政务场景回答"技术选型三问 + 决策矩阵"，写明选型理由；再为快赢评分表补一个"依据缺失"的场景，练习把它转成"待核实"清单。</li>
+<li><strong>挑战（迁移练习）：</strong> 挑一个你熟悉的真实模糊需求（一句话），用本章工具拆成子场景并做选型，产出一页纸《解决方案框架》初稿，并用 5.8.1 Gate 六要素逐项自检——指出你缺哪条通过证据、打算怎么补。</li>
+</ul>
+<hr />
+<h2 id="_7">延伸阅读<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>想读 Discovery 的完整 SOP 与工作底稿、访谈提纲、数据清单模板，见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 5 章 Phase 1 Discovery、第 16 章 AI FDE 落地：Delta 技术与场景）。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

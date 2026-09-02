@@ -1,0 +1,2034 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第14章 Delta 生产化·工程 Scale - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#14-delta-scale" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第14章 Delta 生产化·工程 Scale
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 从 Prototype 到客户环境：五个关键转换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 从 Prototype 到客户环境：五个关键转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.1 模拟数据 → 真实数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.2 独立 Demo → 客户业务系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.3 模型输出 → 业务动作闭环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1414" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.4 开发者运行 → 客户团队运营
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1415" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.5 客户定制 → 平台能力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 真实环境适配：验证原型假设
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 数据接入与业务语义对齐
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 从模型结果到业务闭环
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-fde-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 FDE 生产准入 Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 客户现场的异常与变更
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 生产保障：FDE 必须会判断，但不必包办实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8 客户自运营与 FDE 撤出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#149" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9 工程能力回注与业务本体
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1410-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.10 贯穿实操：把一个 Demo 接入模拟客户环境
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 从 Prototype 到客户环境：五个关键转换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 从 Prototype 到客户环境：五个关键转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.1 模拟数据 → 真实数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.2 独立 Demo → 客户业务系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.3 模型输出 → 业务动作闭环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1414" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.4 开发者运行 → 客户团队运营
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1415" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.5 客户定制 → 平台能力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 真实环境适配：验证原型假设
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 数据接入与业务语义对齐
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 从模型结果到业务闭环
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-fde-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 FDE 生产准入 Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 客户现场的异常与变更
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 生产保障：FDE 必须会判断，但不必包办实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8 客户自运营与 FDE 撤出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#149" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9 工程能力回注与业务本体
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1410-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.10 贯穿实操：把一个 Demo 接入模拟客户环境
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="14-delta-scale">第 14 章  Delta 生产化 · 工程 Scale：生产落地与客户接管<a class="headerlink" href="#14-delta-scale" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> Delta 侧生产落地单元，处在四阶段交付的 <strong>Build 收口 + Scale 阶段</strong>（坐标见第 3 章 3.3，角色分工见第 4 章 4.6）：承接第 8、10、12 章 Prototype 的 Demo，Delta 在此完成<strong>生产评估、自运营交接、能力回注</strong>三类职责。它不系统教授通用 DevOps 或 SRE，而是训练 FDE 如何把 Demo <strong>接入客户真实数据、系统、流程和责任边界</strong>，完成生产准入、客户接管与能力回注。以客户现场"最后一公里"为主线，通用运维内容只作为生产准入证据出现。</p>
+<p><strong>本章产出：</strong> 你能用五个转换看清"Demo → 客户环境"的全貌；验证原型进入真实环境后数据、系统、业务、责任四类假设是否成立；把模型输出接入真实业务动作与人工兜底闭环；用 FDE 生产准入 Gate（八项）判断是否具备上线条件；应对客户现场变化并知道何时返回 Prototype / Discovery 或停止；完成客户自运营、接管演练与 FDE 撤出；识别并验证可回注的工程机制与业务本体。</p>
+<p><strong>建议读者：</strong> Delta（精读）；Echo（需理解——14.6 的现场变化往往要 Echo 回来判断业务边界）；全团队。</p>
+<p><strong>前置：</strong> 第 7 章（gstack 与四条工程纪律）、第 8/10/12 章（至少一个 Demo，默认第 8 章分类器）、第 13 章（生产底座，可选）、第 5 章（干系人与数据盘点）。</p>
+<p><strong>适配说明：</strong> 默认实验对象为<strong>第 8 章诉求分类器</strong>；进阶可选第 12 章路由工作流。执行环境为"<strong>模拟客户环境</strong>"（见 14.10），不要求搭建完整生产基础设施。<strong>精确安装与运行命令见随书资源包 <code>resources/environment/</code> 与《实验手册》对应章节——本章只定目标、证据与验收。</strong></p>
+<p><strong>本章属性：</strong> <strong>必做贯穿任务 + 知识支持</strong>——不是编号实操，但须产出<strong>模拟生产准入、接管、撤出与工程回注证据</strong>（八项 Gate 差距、接管演练、回滚、回注候选），供第 16 章综合评审；计入团队与个人评价（评价量规见 <code>resources/certification/</code>）。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标（6 项）：</strong><ol>
+<li>区分 Prototype、FDE Build 与 FDE Scale，以及普通技术 Build / Scale 与 FDE 的区别；</li>
+<li>验证 Demo 进入客户现场后的<strong>数据、流程、系统和责任</strong>假设；</li>
+<li>将模型输出接入真实业务动作和人工兜底，形成闭环；</li>
+<li>使用 FDE 生产准入 Gate 判断是否具备上线条件（八项，允许"有条件通过/继续试点/返回"）；</li>
+<li>完成客户自运营与接管演练，明确 FDE 撤出条件（客户依赖下降 = 完成标志）；</li>
+<li>识别并验证可回注的业务本体与工程机制（第二场景复用）。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 7 章（SPEC、gstack、数据与评测纪律）、第 8/10/12 章（三个 Demo 与验收）、第 5 章（数据盘点、干系人）。</li>
+<li><strong>章节地图：</strong> 第 13 章回答"底座部署在哪、模型怎么适配"；本章回答"<strong>系统怎样进得了客户现场、客户怎样接得住</strong>"；第 15 章（Echo）回答"组织为什么愿意接、价值成不成立"；第 16 章用本章 Gate 结果做最终决策。</li>
+</ul>
+<blockquote>
+<p><strong>一句话主线：FDE 的 Build 是把原型嵌入客户真实业务；FDE 的 Scale 是让客户能够自行运营，并把可复用能力带回平台。</strong></p>
+<p><strong>Delta 在 Scale 阶段的三项职责（对照第 4 章 4.6 矩阵）：</strong> 1. <strong>生产评估</strong>——真实环境持续验证假设与指标（14.2 / 14.5）；2. <strong>自运营交接</strong>——运行手册、接管演练、FDE 撤出（14.8）；3. <strong>能力回注</strong>——工程机制与业务本体的第二场景验证（14.9）。Echo 在 Scale 负责业务价值与组织采纳（第 15 章），Engineering 承接平台级运维深水区（14.7）。</p>
+<p><strong>本章回答三个问题：</strong> 1. Demo 进入客户真实环境后，原来的假设是否仍然成立？2. 客户团队能否在不依赖原作者的情况下使用、处理异常和继续运营？3. 现场形成的哪些业务结构和工程机制值得回注平台？</p>
+</blockquote>
+<hr />
+<h2 id="141-prototype">14.1 从 Prototype 到客户环境：五个关键转换<a class="headerlink" href="#141-prototype" title="Permanent link">&para;</a></h2>
+<p>全章地图是五个转换——每一节都是其中一个转换的展开：<strong>转换 1–3 完成 Build</strong>（把原型嵌入真实业务，14.1.1–14.1.3），<strong>转换 4–5 属于 Scale 阶段</strong>（客户自运营 + 能力回注，14.1.4–14.1.5，即 Delta 在 Scale 的两项核心职责）：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    A["模拟数据&lt;br/&gt;→ 真实数据"]
+    B["独立 Demo&lt;br/&gt;→ 客户业务系统"]
+    C["模型输出&lt;br/&gt;→ 业务动作闭环"]
+    D["开发者运行&lt;br/&gt;→ 客户团队运营"]
+    E["客户定制&lt;br/&gt;→ 平台能力"]
+    A --&gt; B --&gt; C --&gt; D --&gt; E
+    style A fill:#dbe4f0,stroke:#3949ab
+    style B fill:#dbe4f0,stroke:#3949ab
+    style C fill:#e4efe4,stroke:#5b7a5b
+    style D fill:#f5ece0,stroke:#a8895f
+    style E fill:#3949ab,color:#fff,stroke:#1a237e</code></pre>
+<em>图 14-1：FDE Build / Scale 的五个关键转换（自上而下，每个转换都有一组假设要验证）</em></p>
+<blockquote>
+<p><strong>五个转换缺一不可：</strong> 只完成前两个是"把 Demo 接到客户系统"，没有"业务动作闭环"和"客户能运营"，Build 并没有完成；第四个不完成，Scale 没有发生；第五个不做，公司退回"卖人力"。</p>
+</blockquote>
+<h3 id="1411">14.1.1 模拟数据 → 真实数据<a class="headerlink" href="#1411" title="Permanent link">&para;</a></h3>
+<p><strong>客户现场问题：</strong> 原型测试集是自己造的，字段干净、类别齐全；客户真实数据有缺失、有历史脏值、格式不一致，分布和原型假设对不上。</p>
+<p><strong>FDE 判断：</strong> 数据分布差异是否影响验收指标？真实数据能否在目标安全域内使用？谁对数据负责、数据更新如何通知？</p>
+<p><strong>协作边界：</strong> 数据权限、安全域判定（涉及数据分类分级，见 14.2）与客户数据团队确认，Delta 不自行取用客户核心库。</p>
+<p><strong>西岭例子：</strong> 原型里诉求文本规整；真实受理库里夹杂扫描件、方言、空白字段——分类指标能否复现要先验证，不能直接沿用演示数字。</p>
+<p><strong>反模式：</strong> 用原型测试集指标冒充真实数据验证——没有真实样本的"接入"不成立。</p>
+<p><strong>轻量操作 / 验收：</strong> 拿到一份"与原测试集格式不同"的客户真实格式数据，记录字段差异与指标变化；证据 = 数据样例 + 字段映射 + 差异清单。</p>
+<h3 id="1412-demo">14.1.2 独立 Demo → 客户业务系统<a class="headerlink" href="#1412-demo" title="Permanent link">&para;</a></h3>
+<p><strong>客户现场问题：</strong> Demo 是独立进程、本地入口；客户有口径不一的多套系统（受理、工单、知识库），"哪个是真账本"必须问清楚。</p>
+<p><strong>FDE 判断：</strong> Demo 的入口在哪（谁把什么交给它）；要调用哪些现有系统；哪个系统是<strong>事实来源</strong>（见 14.3）；结果写回哪里；用户用旧账号还是新账号；对接失败时业务如何继续。</p>
+<p><strong>协作边界：</strong> 联调测试数据、沙箱/测试环境向客户 IT 申请；Delta 不擅自改客户生产接口。</p>
+<p><strong>西岭例子：</strong> 分类器判断出"住建"后，要调用模拟工单接口把工单写回——不是"弹个标签看一眼"。</p>
+<p><strong>反模式：</strong> 只把 Demo 部署到一台服务器就宣称"接入"——没有入口、没有写回、没有事实来源，等于没接。</p>
+<p><strong>验收：</strong> 端到端演示：输入 → 判断 → 写回 → 可查；证据 = 接口联调记录 + 状态回写可验证。</p>
+<h3 id="1413">14.1.3 模型输出 → 业务动作闭环<a class="headerlink" href="#1413" title="Permanent link">&para;</a></h3>
+<p><strong>客户现场问题：</strong> 模型给出"这是住建类"不等于"工单真的分派给了住建局"。</p>
+<p><strong>FDE 判断：</strong> 输出经过哪些业务规则、权限判断、人工确认，落到哪个系统动作，动作结果写回哪里，失败时停在哪儿、谁继续处理：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>输入来自哪里
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>→ 模型或规则做什么判断
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>→ 谁确认这个判断
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>→ 调用哪个业务动作
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>→ 动作结果写回哪里
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>→ 失败时停在哪里
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>→ 谁继续处理
+</code></pre></div>
+<blockquote>
+<p><strong>模型给出结果不等于业务动作已经完成；输出没有进入真实流程，就还没有完成 Build。</strong></p>
+</blockquote>
+<p><strong>反模式（案例二）：</strong> 分类器判断正确，但工单接口超时、工单没有真正分派——"模型指标正确 ≠ 业务闭环完成"。</p>
+<p><strong>验收：</strong> 一次完整动作链可走通且可回查（含失败路径）。</p>
+<h3 id="1414">14.1.4 开发者运行 → 客户团队运营<a class="headerlink" href="#1414" title="Permanent link">&para;</a></h3>
+<p><strong>客户现场问题：</strong> 系统上线后改阈值、看日志、处理异常都找原 Delta——客户离不开原作者。</p>
+<p><strong>FDE 判断：</strong> 谁启动/停止服务、谁处理失败请求、谁维护知识与规则、谁批准配置变更、谁解释指标变化、谁承担最终责任（见 14.8 六类 owner）。</p>
+<p><strong>输出：</strong> 运行与业务说明（不是只有技术 README）——客户照着能操作、能排障、能发起变更审批。</p>
+<p><strong>反模式（案例五）：</strong> "客户离不开原作者"不是 Scale 成功；<strong>客户能够自运营才是</strong>。</p>
+<h3 id="1415">14.1.5 客户定制 → 平台能力<a class="headerlink" href="#1415" title="Permanent link">&para;</a></h3>
+<p><strong>客户现场问题：</strong> 分类代码能复制到下一个项目，但"住建/人社/市监/城管"完全不可复用。</p>
+<p><strong>FDE 判断：</strong> 哪些内容只能留在客户域内（数据、专属政策、部门名称）；哪些对象/关系/动作与工程机制具有通用性；如何避免客户专属逻辑污染公共平台；如何用第二场景验证复用（见 14.9）。</p>
+<p><strong>反模式（案例六）：</strong> 代码可复用 ≠ 业务语义可复用——回注要区分客户内容、通用对象结构、通用工程机制。</p>
+<hr />
+<h2 id="142">14.2 真实环境适配：验证原型假设<a class="headerlink" href="#142" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>FDE Build 最关键的问题：Prototype 成立时依赖的假设，进入客户真实环境后还有多少成立？</strong> 用"原型假设核验表"逐条过：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>原型假设</th>
+<th>客户现场证据</th>
+<th>是否成立</th>
+<th>不成立的影响</th>
+<th>调整动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据可得、口径一致</td>
+<td>真实样本 + 字段映射</td>
+<td>是/否</td>
+<td>指标失真或范围收窄</td>
+<td>换数据源 / 回 Prototype</td>
+</tr>
+<tr>
+<td>接口稳定、可写回</td>
+<td>联调记录</td>
+<td>是/否</td>
+<td>无法闭合动作</td>
+<td>降级人工 / 换集成方式</td>
+</tr>
+<tr>
+<td>业务规则有正式口径</td>
+<td>业务方确认</td>
+<td>是/否</td>
+<td>自动判断不可信</td>
+<td>收窄自动化边界</td>
+</tr>
+<tr>
+<td>责任边界清楚</td>
+<td>责任人确认</td>
+<td>是/否</td>
+<td>不敢上线</td>
+<td>补《谁负责》</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据假设。</strong> 核验：数据是否真实存在；字段含义是否一致；数据质量能否支撑当前方案；是否及时更新；是否可在目标<strong>安全域</strong>内使用——这涉及数据分类分级与"数据不出域"红线（参考《数据安全法》确立的数据分类分级保护制度，<a href="https://www.zhonglun.com/research/articles/8527.html">中伦解读</a>、<a href="http://www.zz-iplaw.com.cn/CN/10441-11332.aspx">数据安全法简评</a>，教材表述）；以及原型测试集是否代表真实业务分布。最常被跳过的是最后一条：原型测试集是自己造的，指标必然"好看"，真实分布一换数字就要重测。</p>
+<p><strong>系统假设。</strong> 核验：接口是否存在且稳定；认证方式是否允许接入；调用频率限制是多少；是否支持结果写回；旧系统是否兼容；是否有测试环境或沙箱。反模式：对着客户提供的接口文档自以为"能接"，结果认证不开放、没有沙箱、写回受限——联调一次就暴露。验收证据：至少一次真实环境（或模拟环境）联调记录。</p>
+<p><strong>业务假设。</strong> 核验：业务规则是否有正式口径；人工兜底是否有人承接；原有流程是否允许改变；业务人员是否接受新的职责；验收指标是否仍被业务方认可。<strong>这一假设最容易被技术视角漏掉，却最影响能不能上线</strong>——Echo 参与确认（呼应第 5 章干系人）。</p>
+<p><strong>责任假设。</strong> 核验：谁对模型输出负责、谁处理错误和申诉、谁批准高风险动作、谁维护数据/政策/部门规则、谁承担系统运行责任。责任不确定的自动化等于"没人负责的自动决策"，属于最危险的生产缺口（衔接 14.8 RACI 与 14.10 撤出条件）。</p>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>假设核验不是走过场。</strong> 四类假设任何一条"不成立"都有对应的调整动作（换数据源 / 收窄边界 / 返回 Prototype），而不是硬着头皮上线再补救。</p>
+</div>
+<hr />
+<h2 id="143">14.3 数据接入与业务语义对齐<a class="headerlink" href="#143" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>FDE Build 的核心工作之一，<strong>不是通用数据工程，而是"业务语义对齐 + 找到事实来源"</strong>。</p>
+</blockquote>
+<p><strong>找到事实来源（Single Source of Truth）。</strong></p>
+<p>对每个关键数据明确：哪个系统是<strong>唯一事实来源</strong>；是否存在多个冲突来源；谁能解释字段含义；数据延迟多长；数据错误由谁修复。概念与来源锚定参考<a href="https://www.sap.com/latvia/products/data-cloud/master-data-governance/what-is-mdm.html">主数据 / 事实来源</a>、<a href="https://www.thoughtspot.com/data-trends/data-science/master-data-management">MDM 说明</a>（教材提炼）。</p>
+<p><strong>案例一（字段语义不一致）：</strong> 工单系统的"类别"表示责任部门，数据平台的"类别"表示事件性质——Delta 只按字段名对接，分类结果会写入错误位置。<strong>数据接入首先是业务语义对齐，不是接口调用。</strong></p>
+<p><strong>对齐业务术语。</strong></p>
+<p>同一概念在多个系统里常有不同名字——"诉求 / 案件 / 事件 / 工单"是否同一对象；"责任部门 / 承办部门"是否同义；"已处理 / 已办结 / 已关闭"是否同一状态。<strong>Delta 不能自行猜测，应与 Echo、业务人员和系统负责人共同确认。</strong></p>
+<p><strong>识别对象、关系、状态和动作（为回注收集候选）。</strong></p>
+<p>为后续业务本体回注（14.9）收集：核心业务对象、对象属性、对象之间的关系、生命周期与状态、可以执行的业务动作、动作的权限与审批条件。<strong>本节只完成业务语义对齐与候选收集；完整的业务通用性判断由第 15 章完成。</strong></p>
+<hr />
+<h2 id="144">14.4 从模型结果到业务闭环<a class="headerlink" href="#144" title="Permanent link">&para;</a></h2>
+<p>三个 Demo 的 Build，完成标准都不是"输出正确"，而是<strong>输出进入真实流程并闭合动作</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>Demo</th>
+<th>Prototype 结果</th>
+<th>进入客户环境后必须闭合的动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>诉求分类器</strong></td>
+<td>输出分类标签</td>
+<td>写回工单、低置信度进入人工队列、人工修正结果回流</td>
+</tr>
+<tr>
+<td><strong>政策 RAG</strong></td>
+<td>输出答案和来源</td>
+<td>引用可打开原文、文档版本可核对、政策更新后重建并重新验证</td>
+</tr>
+<tr>
+<td><strong>路由工作流</strong></td>
+<td>输出处理分支</td>
+<td>调用真实工具、进入审批、动作结果回写、失败可恢复</td>
+</tr>
+<tr>
+<td><strong>实操四B 协同 Agent</strong>（无编号）</td>
+<td>输出动态轨迹</td>
+<td>多轮状态与对话上下文、追问与人工暂停（interrupt+resume）、工具调用记录、工单草稿与状态回写（真实部署时全部留在批准安全域内）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>闭环程度递进：</strong> 三个单点 MVP 各自闭合"一次动作"，实操四B（Lab4B）闭合"一条动态轨迹"（选工具 → 观察 → 追问 / 暂停 → 收束或转人工）。第 16 章对两者<strong>分别验收</strong>（第一层三场景、第二层实操四B）；有代码基础的学员可用实操四B 做综合毕业项目，继承三类闭环能力并新增多轮状态、追问与真暂停（进阶路径见 7.5 的实操四B 纪律与《实验手册》<code>labs/lab4b-cooperative-agent.md</code>）。</p>
+</blockquote>
+<p><strong>业务动作链。</strong></p>
+<p>统一检查（见 14.1.3 的动作链）：输入来源 → 判断 → 确认 → 动作 → 写回 → 失败停在哪 → 谁继续。</p>
+<p><strong>人工兜底不是一个标签。</strong></p>
+<p>"转人工"只有满足以下条件才算真实闭环：有明确接收队列、有负责人、有处理时限、人工可以看到必要上下文、审核结果能够回写、未处理任务会告警、后续可用于评测与改进。</p>
+<p><strong>案例三（转人工没有接收人）：</strong> 系统输出"转人工"，但没有人工队列、负责人和处理时限——<strong>人工兜底必须进入真实流程，不能只是一个标签。</strong></p>
+<p><strong>状态回写与事实一致性。</strong></p>
+<p>明确：哪个系统保存最终状态；重复请求是否造成重复动作（幂等，见 14.7）；写回失败如何恢复；人工修改与 AI 建议冲突时以谁为准；审计链是否保留。</p>
+<hr />
+<h2 id="145-fde-gate">14.5 FDE 生产准入 Gate<a class="headerlink" href="#145-fde-gate" title="Permanent link">&para;</a></h2>
+<p>把九维 Build Readiness Gate 收敛为<strong>八项 FDE 生产准入条件</strong>（教材提炼，Gate 结果要能喂给第 16 章作 Go/No-Go 输入；对照第 3 章 3.3.2 Stage Gate 总纲——<strong>本表是 Build Gate 的工程侧展开</strong>，判断"能否上线交给客户"；14.8 的撤出条件再喂给 <strong>Scale Gate</strong>，判断"能否宣告交付完成"）：</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>核心问题</th>
+<th>通过证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据接入</strong></td>
+<td>真实数据可用且责任清楚吗</td>
+<td>数据样本、字段映射、质量报告</td>
+</tr>
+<tr>
+<td><strong>系统集成</strong></td>
+<td>输入、动作和状态回写接通了吗</td>
+<td>接口联调记录、端到端演示</td>
+</tr>
+<tr>
+<td><strong>权限责任</strong></td>
+<td>谁能看、谁能改、谁批准清楚吗</td>
+<td>权限矩阵、越权拒绝、责任确认</td>
+</tr>
+<tr>
+<td><strong>异常兜底</strong></td>
+<td>外部依赖失败后业务还能继续吗</td>
+<td>故障演练、人工队列、恢复记录</td>
+</tr>
+<tr>
+<td><strong>过程追溯</strong></td>
+<td>能还原一次业务判断和动作吗</td>
+<td>日志、审计、版本标识</td>
+</tr>
+<tr>
+<td><strong>发布回退</strong></td>
+<td>新版本退化时能恢复吗</td>
+<td>灰度记录、回滚验证</td>
+</tr>
+<tr>
+<td><strong>客户接管</strong></td>
+<td>客户团队能独立运行吗</td>
+<td>运行手册、接管演练</td>
+</tr>
+<tr>
+<td><strong>回注准备</strong></td>
+<td>能区分客户专属与通用能力吗</td>
+<td>回注候选、隔离说明、复用证据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断格式（每项都按此写）：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>当前状态
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>→ 客户现场证据
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>→ 未关闭风险
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>→ 修复或降级动作
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>→ 责任人
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>→ 是否允许进入下一阶段
+</code></pre></div>
+<p><strong>Gate 结果允许：</strong> 通过 / 有条件通过 / 继续试点 / 返回 Prototype / 返回 Discovery / 停止。<strong>不得为了按计划上线把"未通过"写成"基本通过"。</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>Gate 是给客户的承诺底线。</strong> "未通过"是正常结果，掩盖风险才是失败；每个"有条件通过"必须写清条件、责任人、截止时间与下一个 Gate（第 16 章据此决策）。</p>
+</div>
+<hr />
+<h2 id="146">14.6 客户现场的异常与变更<a class="headerlink" href="#146" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>本节讲 <strong>FDE 现场变化</strong>，不是通用错误码——现场变化才是 FDE 工作的常态。</p>
+</blockquote>
+<p><strong>常见现场变化。</strong></p>
+<p>客户字段或接口改变；部门职责调整；政策文件更新；验收口径变化；客户临时扩大范围；一线人员拒绝使用；原系统接口不稳定；合规要求提高；客户负责人更换；人工审核容量不足。</p>
+<p><strong>处理分级（Delta 不默认继续加代码）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>处理方式</th>
+<th>适用情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>临时修复</td>
+<td>紧急恢复，不改变业务边界</td>
+</tr>
+<tr>
+<td>配置调整</td>
+<td>变化属于已设计的配置范围（类别清单、阈值、部门映射做成配置项）</td>
+</tr>
+<tr>
+<td>通用组件修改</td>
+<td>多场景存在同类需求，值得工程回注</td>
+</tr>
+<tr>
+<td>返回 Prototype</td>
+<td>技术方案或指标需要重新验证</td>
+</tr>
+<tr>
+<td>返回 Discovery</td>
+<td>业务问题、用户或价值假设发生变化</td>
+</tr>
+<tr>
+<td>停止</td>
+<td>风险、成本或价值已不成立</td>
+</tr>
+</tbody>
+</table>
+<p><strong>案例四（部门职责调整）：</strong> 客户把一类事项从住建调到城管——如果逻辑写死在 Prompt 和代码里，修改困难且无法追溯；应优先通过<strong>配置与业务模型</strong>处理；超出原问题边界时返回 Discovery。</p>
+<p><strong>变更不能绕过 Echo。</strong></p>
+<p>以下情况必须重新让 Echo 参与判断：客户改变目标用户、业务成功标准变化、自动化边界扩大、人工责任发生变化、方案影响新的监管要求、原快赢场景不再有价值。<strong>这体现 Echo 与 Delta 在 Build 阶段并非完全割裂。</strong></p>
+<hr />
+<h2 id="147-fde">14.7 生产保障：FDE 必须会判断，但不必包办实现<a class="headerlink" href="#147-fde" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>配置、日志、重试、权限、回滚、监控仍然重要，但本章中它们是<strong>生产准入证据</strong>，不是课程主体。深水区实现（熔断器实现、监控平台搭建、分布式 Trace、Kubernetes、高可用集群、完整 SLO 方法、RTO/RPO 深入、供应链清单）<strong>移入附录与资源包</strong>，正文只留判断、验收与协作边界。<strong>这些深水区若客户没有现成平台，由 Engineering（第 3 章 3.2.3）或客户平台团队承接，Delta 只定义准入条件与协作接口，不自行建设一套。</strong></p>
+</blockquote>
+<p><strong>配置与密钥。</strong></p>
+<p>FDE 必须确认：配置与代码分离；Secret 不进源码、日志和交付包；环境之间不误用配置；缺配置时安全失败。<strong>底层密钥平台由客户安全或平台团队负责时，FDE 明确接口与责任即可，不自行建设一套密钥系统。</strong></p>
+<p><strong>日志、审计与指标。</strong></p>
+<p>FDE 必须确认系统能回答：发生了什么；谁作出了什么操作；当时使用什么模型、Prompt、配置和数据版本；系统现在是否异常。<strong>具体监控平台可由客户既有系统承载。</strong></p>
+<p><strong>超时、重试与安全降级。</strong></p>
+<p>FDE 必须定义业务行为：失败后是否重试；重试是否造成重复业务动作（<strong>有副作用的动作要幂等</strong>——幂等键 / 状态确认 / 补偿三选一）；何时停止自动处理；何时进入人工；谁处理积压任务（衔接 14.4 人工队列容量）。</p>
+<blockquote>
+<p><strong>反模式：</strong> 工单分派接口超时，系统不知道第一次是否成功，重试把同一工单分派两次——涉及外部动作时必须设计幂等键、状态确认或补偿。</p>
+</blockquote>
+<p><strong>权限与动作边界。</strong></p>
+<p>FDE 必须确认：模型可以<strong>建议</strong>什么、可以<strong>执行</strong>什么、哪些动作必须人工批准、哪些动作不得自动执行、操作是否可追责。<strong>"模型有工具调用能力 ≠ 模型有权执行所有动作。"</strong></p>
+<p><strong>灰度、回滚与监控。</strong></p>
+<p>FDE 必须要求：新版本先小范围验证；退化后可切回稳定版本；关键业务指标和异常可见；告警有负责人和处置动作（呼应 13.4.2 灰度双轨与 13.4.4 联动回滚纪律）。<strong>具体发布平台和监控工具不作为本章主线教学内容。</strong></p>
+<hr />
+<h2 id="148-fde">14.8 客户自运营与 FDE 撤出<a class="headerlink" href="#148-fde" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Scale 的完成标志不是"FDE 一直驻场保证系统运行"，而是客户对日常运营的依赖逐步下降。</strong></p>
+</blockquote>
+<p><strong>客户自运营需要哪些角色。</strong></p>
+<p>至少明确：业务 owner、技术 owner、数据 owner、人工审核负责人、安全与合规负责人、事故升级联系人（责任矩阵可用 RACI——谁负责 / 谁批准 / 咨询 / 知会，<a href="https://www.iapm.net/en/blog/successfully-analysing-and-presenting-responsibilities-the-raci-matrix/">RACI 说明</a>）。</p>
+<p><strong>客户需要掌握哪些操作。</strong></p>
+<p>启动和健康检查；查看业务与系统状态；处理人工任务；更新政策、标签或配置；处理常见故障；版本切换和回滚；发起变更审批。</p>
+<p><strong>接管演练（保留并强化跨组接管）。</strong></p>
+<blockquote>
+<p><strong>接管组不能询问原作者，只能依据运行手册和交接材料完成启动、处理一个预设异常、确认业务状态并恢复服务。</strong></p>
+</blockquote>
+<p>文档是否有效，由接管者而不是作者判断。</p>
+<p><strong>FDE 撤出条件（逐条勾选）。</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 客户 owner 已确认；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 日常操作已培训；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 常见故障可独立处理；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 人工审核队列有人负责；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 关键指标有人查看；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 版本变更有审批流程；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 支持边界和升级渠道已确认；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 未关闭风险已书面接受；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 客户在限定观察期内完成独立运行。</li>
+</ul>
+<hr />
+<h2 id="149">14.9 工程能力回注与业务本体<a class="headerlink" href="#149" title="Permanent link">&para;</a></h2>
+<p><strong>两类回注对象。</strong></p>
+<table>
+<thead>
+<tr>
+<th>回注类型</th>
+<th>典型内容</th>
+<th>判断重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>工程能力</strong></td>
+<td>配置、provider 适配（13.4.1）、审计、失败兜底、健康检查、交接模板</td>
+<td>能否跨 Demo 复用</td>
+</tr>
+<tr>
+<td><strong>业务语义候选</strong></td>
+<td>对象、关系、状态、动作和权限</td>
+<td>能否跨客户解释和执行</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第 14 章负责工程可执行性，第 15 章负责业务通用性和价值判断。</strong></p>
+<p><strong>Palantir Ontology 的参考意义。</strong></p>
+<p>对象的属性描述业务世界有什么；关系描述对象如何关联；动作和函数描述业务可以做什么；权限与治理约束谁可以执行。<strong>本书借鉴这种方法（教材提炼），不要求使用特定平台</strong>（完整"本体论"知识在第 15 章 15.4）。</p>
+<p><strong>本体工程验证（Delta 侧）。</strong></p>
+<p>Delta 需要验证：对象属性有稳定数据来源；对象身份可唯一确认；关系有维护机制；状态变化有合法路径；动作有真实接口或人工流程；权限、审计和失败处理可验证；客户专属数据没有进入公共平台；<strong>至少一个对象或动作模型在第二个场景复用</strong>。</p>
+<p><strong>成熟度区分。</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>概念本体    → 已定义对象、关系和动作
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>可执行本体  → 已映射数据、接口、权限和状态
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>已验证回注能力 → 已在第二场景完成复用验证
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>不得把一张对象关系图直接称为平台能力。</strong> 未完成数据、动作、权限和第二场景验证，只能叫"概念模型"（对应 Gate 的"回注准备"维）。</p>
+</div>
+<hr />
+<h2 id="1410-demo">14.10 贯穿实操：把一个 Demo 接入模拟客户环境<a class="headerlink" href="#1410-demo" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>本实验不要求搭建完整生产基础设施，而是模拟 FDE 把 Demo 接入客户现场的全过程。<strong>默认对象：第 8 章诉求分类器</strong>（业务简单、依赖少、便于观察接入与接管）；进阶组可换第 12 章路由工作流。</p>
+</blockquote>
+<p><strong>模拟客户环境应提供：</strong> 一份与原测试集格式不同的"客户真实格式"数据；一个模拟工单接口；一个用户与角色清单；一个人工审核队列；一次字段变更；一次接口失败；一份客户接管要求；一个用于验证复用的第二场景。</p>
+<p><strong>环节一 · 核验原型假设</strong>：对比模拟与客户数据格式，找出字段/类别/质量差异，确认哪些原型指标不能直接沿用，更新方案边界（14.1.1/14.2）。</p>
+<p><strong>环节二 · 接入客户数据和系统</strong>：建立字段映射；调用模拟工单接口；把分类结果写回；记录事实来源与状态（14.1.2/14.3）。</p>
+<p><strong>环节三 · 闭合人工兜底</strong>：低置信度结果进人工队列；审核人员可查看上下文；审核结果写回；超时未处理产生提醒（14.1.3/14.4）。</p>
+<p><strong>环节四 · 处理现场变化</strong>：注入一类变化（新增部门类别 / 字段名称改变 / 模拟接口暂时失败 / 验收口径变化 / 合规要求提升），判断改配置、改通用组件、返回 Prototype、返回 Discovery 或停止（14.6）。</p>
+<p><strong>环节五 · 完成生产准入评审</strong>：按八项 Gate 逐项给出现场证据、未关闭风险、是否允许进入下一阶段、责任人与条件（14.5）。</p>
+<p><strong>环节六 · 跨组接管</strong>：接管组仅靠运行与业务说明完成——启动、处理一条正常诉求、处理一条人工审核诉求、处理一个接口异常、确认状态回写、恢复服务（14.8）。</p>
+<p><strong>环节七 · 能力回注</strong>：抽象一个工程机制 + 一个对象或动作模型；在第二场景尝试复用；记录需要修改的内容；判断属于客户定制、回注候选还是已验证能力（14.9）。</p>
+<p><strong>实操最终认知：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Demo 能跑 ≠ 进入客户业务
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>进入客户业务 ≠ 客户能够接管
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>客户能够接管 ≠ 能力已经可以跨客户复用
+</code></pre></div>
+<p><strong>核心必做 vs 进阶选做（分层，避免全员浅做一遍通用运维）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>核心必做（全员）</strong></td>
+<td>原型假设核验、客户数据字段映射、模拟业务接口接入与状态回写、人工兜底闭环、一次客户现场变化处理、FDE 生产准入 Gate、跨组接管、一个回注候选的第二场景验证</td>
+</tr>
+<tr>
+<td><strong>进阶选做</strong></td>
+<td>完整重试与熔断、Trace 与 SLO、角色权限系统、容量压测、灰度和自动回滚、漂移检测、RTO/RPO、可执行本体完整映射</td>
+</tr>
+</tbody>
+</table>
+<p><strong>建议课时：</strong> 全章约 5–6 小时（一个教学日，<strong>其中核心必做约 3 学时，对应导读学时表</strong>）：五个转换与假设核验 60 分钟；数据语义对齐与业务闭环 90 分钟；生产准入与现场变化 60 分钟；自运营接管与撤出 60 分钟；贯穿实操与接管 60–90 分钟。具体以班型调整。</p>
+<hr />
+<h2 id="_2">反模式与红线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>把 Build 理解成"把 Demo 部署到服务器"。</strong> 没有真实数据、系统接口、业务动作和责任闭环，就没有完成 Build（14.1）。</li>
+<li><strong>只验模型输出，不验业务动作。</strong> 分类正确但未写回、路由正确但未进入队列，都不算业务闭环（14.4）。</li>
+<li><strong>用技术补丁掩盖需求变化。</strong> 目标用户、价值指标或责任边界变化时，应返回 Discovery，而不是继续加代码（14.6）。</li>
+<li><strong>把"转人工"写成一个标签。</strong> 没有队列、负责人、时限和回写，就没有人工兜底（14.4）。</li>
+<li><strong>把客户现有平台工作全部揽给 FDE。</strong> FDE 应定义准入条件和协作接口，不应取代客户的安全、运维和平台团队（14.7）。</li>
+<li><strong>把永久驻场当成 Scale。</strong> 客户始终离不开原作者，说明交接失败（14.8）。</li>
+<li><strong>把客户内容回注公共平台。</strong> 回注结构、动作和机制，不回注客户数据与专属政策（14.9）。</li>
+<li><strong>把对象关系图当平台能力。</strong> 未完成数据、动作、权限和第二场景验证，只能称为概念模型（14.9）。</li>
+<li><strong>为了按计划上线而放宽 Gate。</strong> 未通过是正常结果，掩盖风险才是失败（14.5）。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>红线（贯穿）：</strong> 数据不出域（14.2 安全域）、答案可追溯（14.4 RAG 引用与版本）、敏感件零漏判（14.4 人工兜底闭环）、人能判断 AI 能执行（14.7 动作边界）。所有实测结论标注"仅本次环境与样本"，不外推为生产普遍保证。</p>
+</div>
+<hr />
+<h2 id="_3">本章小结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Delta 在 Scale 的三项职责</strong>：生产评估（14.2 / 14.5）、自运营交接（14.8）、能力回注（14.9）——Echo 管业务侧（第 15 章），Engineering 管运维深水区（14.7）。</li>
+<li><strong>五转换</strong>：模拟数据→真实数据、独立 Demo→客户业务系统、模型输出→业务动作闭环、开发者运行→客户团队运营、客户定制→平台能力（14.1）。</li>
+<li><strong>假设核验</strong>：数据、系统、业务、责任四类假设进入真实环境后逐条验证（14.2）。</li>
+<li><strong>语义对齐先于接口调用</strong>：找事实来源、对齐业务术语、收集对象/关系/状态/动作候选（14.3）。</li>
+<li><strong>业务闭环</strong>：输出必须进入动作链并闭合人工兜底与状态回写（14.4）。</li>
+<li><strong>八项生产准入 Gate</strong>：数据接入/系统集成/权限责任/异常兜底/过程追溯/发布回退/客户接管/回注准备；允许通过/有条件/继续试点/返回/停止（14.5）。</li>
+<li><strong>现场变化</strong>：优先配置与通用组件，超出边界返回 Prototype / Discovery 或停止；变更不绕过 Echo（14.6）。</li>
+<li><strong>生产保障是准入证据不是课程主体</strong>：配置、日志、重试、权限、回滚、监控只讲判断与验收，深水区进附录（14.7）。</li>
+<li><strong>自运营与撤出</strong>：六类 owner、接管演练、"客户依赖下降 = 完成标志"、撤出九条件（14.8）。</li>
+<li><strong>回注</strong>：工程能力 + 业务语义两类；概念本体 → 可执行本体 → 已验证回注能力，第二场景验证（14.9）。</li>
+<li><strong>贯穿实操</strong>：七环节模拟客户环境接入，核心必做 + 进阶选做分层（14.10）。</li>
+</ul>
+<p><strong>动手自检（对照完成标准）：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清普通 Build / Scale 与 FDE Build / Scale 的区别吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用五个转换组织"Demo → 客户环境"的全景吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我的假设核验表四类假设都有证据与调整动作吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 数据接入做了语义对齐（事实来源、术语、对象/关系/动作候选）吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模型输出到业务动作闭环了吗？转人工有队列/负责人/时限/回写吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 八项 Gate 每项都有现场证据与未关闭风险吗？结果允许"返回/停止"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 现场变化我会分级处理，并判断何时要 Echo 回来吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 客户能在不依赖我的情况下自运营吗？撤出条件逐条勾选了吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我区分了客户定制 / 回注候选 / 已验证能力，并在第二场景验证了吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 所有结论都注明"仅本次环境与样本"了吗？</li>
+</ul>
+<hr />
+<h2 id="_4">练习与思考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写五个转换；默写八项生产准入 Gate；说出"转人工闭环"的七要素；说出 FDE 撤出的三条关键条件。</li>
+<li><strong>进阶：</strong> 为分类器填写一张"原型假设核验表"（数据/系统/业务/责任各一行，附现场证据与调整动作）；设计"备注：接口失败时业务如何继续"的降级方案（判断级，不写具体命令）。</li>
+<li><strong>挑战（迁移练习）：</strong> 把本实验换到第 12 章路由工作流——说明它的"业务动作闭环"与人工兜底和分类器有何不同；再选一个工程机制 + 一个业务对象/动作模型，在"企业员工服务台"第二场景做最小复用验证并记录改动量。</li>
+</ul>
+<h2 id="_5">延伸阅读<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 8 章 Phase 4 Scale）——客户自运营、撤出交接、能力回注方法论的完整展开。</li>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 16 章 AI FDE 落地：Delta 技术与场景）——生产化与工程回注的落地扩展（含通用运维深水区相关主题）。</li>
+<li>下一章：<strong>本书第 15 章 Echo 价值化 · 业务 Scale：价值落地、组织采纳与能力回注</strong>（用本章的客户现场证据，回答"值不值得用、组织愿不愿意接"）。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

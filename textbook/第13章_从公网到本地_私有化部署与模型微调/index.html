@@ -1,0 +1,3035 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第13章 从公网到本地·私有化部署与模型微调 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第13章 从公网到本地·私有化部署与模型微调
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 为什么在本地部署 + 怎么选型：合规与能力双驱动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 为什么在本地部署 + 怎么选型：合规与能力双驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.1 合规红线：为什么真实数据必须留在本地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.2 选型三问：在合规前提下把模型落到本地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1313-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.3 经济性动因：烧不起公网 API，转而在本地运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 私有化部署：形态、算力路线与硬件规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 私有化部署：形态、算力路线与硬件规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.1 私有化 ≠ 只能放客户本地机房
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.2 算力路线：合规可得性优先的分层选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1323" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.3 一体化 / 训推一体机 / 集群三档选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1324" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.4 显存规划与量化取舍：从模型反推要几卡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1325" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.5 模型服务化与推理引擎：企业做法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1326-v4-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.6 高性价比档位与价格核算：以 V4 Flash 为例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 微调：判断、方法与成本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 微调：判断、方法与成本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.1 什么时候才轮到微调
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-loraqlora-sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.2 三种微调方法：LoRA、QLoRA 与全参 SFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.3 硬件与成本量级：在售配置怎么选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1334" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.4 一次微调的典型流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1335" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.5 红线呼应：数据不出域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1336-qlora-24gb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.6 小模型 QLoRA 实验：24GB 单卡可选动手
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 模型切换适配：从公网验证到本地回填
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.4 模型切换适配：从公网验证到本地回填">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1341" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.1 为什么必须适配：三个层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1342" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.2 适配五步：从接口抽象到灰度回滚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1343" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.3 三场景适配对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1344-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.4 决策依据与切换 Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 动态速查：模型与硬件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.5 动态速查：模型与硬件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1351" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5.1 模型速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1352" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5.2 硬件速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1353" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5.3 部署配置示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 为什么在本地部署 + 怎么选型：合规与能力双驱动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 为什么在本地部署 + 怎么选型：合规与能力双驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.1 合规红线：为什么真实数据必须留在本地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.2 选型三问：在合规前提下把模型落到本地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1313-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.3 经济性动因：烧不起公网 API，转而在本地运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 私有化部署：形态、算力路线与硬件规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 私有化部署：形态、算力路线与硬件规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.1 私有化 ≠ 只能放客户本地机房
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.2 算力路线：合规可得性优先的分层选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1323" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.3 一体化 / 训推一体机 / 集群三档选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1324" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.4 显存规划与量化取舍：从模型反推要几卡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1325" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.5 模型服务化与推理引擎：企业做法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1326-v4-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.6 高性价比档位与价格核算：以 V4 Flash 为例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 微调：判断、方法与成本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 微调：判断、方法与成本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.1 什么时候才轮到微调
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-loraqlora-sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.2 三种微调方法：LoRA、QLoRA 与全参 SFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.3 硬件与成本量级：在售配置怎么选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1334" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.4 一次微调的典型流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1335" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.5 红线呼应：数据不出域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1336-qlora-24gb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.6 小模型 QLoRA 实验：24GB 单卡可选动手
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 模型切换适配：从公网验证到本地回填
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.4 模型切换适配：从公网验证到本地回填">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1341" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.1 为什么必须适配：三个层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1342" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.2 适配五步：从接口抽象到灰度回滚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1343" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.3 三场景适配对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1344-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.4 决策依据与切换 Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 动态速查：模型与硬件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.5 动态速查：模型与硬件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1351" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5.1 模型速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1352" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5.2 硬件速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1353" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5.3 部署配置示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="13">第 13 章  从公网到本地：私有化部署与模型微调<a class="headerlink" href="#13" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 知识单元 · 进阶选读，承接第 7 章 LLM 四层级金字塔的第 3 层（微调），并承载<strong>模型选型（13.1）、私有化部署（13.2）与模型/硬件动态速查（13.5）</strong>。它解决三个常常被问的问题：<strong>"项目要数据不出域，模型到底怎么私有化部署？"</strong>、<strong>"该选哪个模型、用 API 还是本地？"</strong> 以及 <strong>"RAG 不够用时，要不要微调、微调要花多少硬件与钱？"</strong></p>
+<p><strong>本章产出：</strong> 你能说清"先 RAG 后微调、微调是最后一公里"；用选型三问（13.1）判断"选哪个模型、API 还是本地"；看懂私有化部署的形态（本地机房 / 专属云 / 离线一体机 / 混合）、按合规可得性分层的算力路线（13.2.2：信创昇腾 / 性价比 NVIDIA / 吞吐 MI300X）与硬件规范（显存规划、推理引擎、量化取舍）；掌握 LoRA / QLoRA / 全参 SFT 三种方法、一次微调的典型流程与<strong>数据治理 Gate</strong>、成本量级，并能完成一个<strong>小模型 QLoRA 实验</strong>；说清<strong>从公网验证到本地回填</strong>要做哪些适配与回归（13.4）；把"数据不出域"落地为工程决策。</p>
+<p><strong>建议读者：</strong> Delta（施工判断主力）为主，Echo 参与"要不要微调"的选型共识。</p>
+<p><strong>前置：</strong> 第 7 章（四层级金字塔 7.2）、第 9/10 章（RAG，作对照）。</p>
+<p><strong>定位说明：</strong> 本章<strong>不是五个实操里的一环</strong>，而是一条副线选读：时机判断（如"何时把本地微调补进生产回填"）在第 16 章实操五收口时参考，切模型时的适配与回归见 13.4。数据信息截至 <strong>2026 年 8 月</strong>，动态型号与价格联动 <strong>13.5 速查</strong>，落地前以各厂商官方资料复核。</p>
+<p><strong>主线必读与进阶选读：</strong> 主线必读——13.1（为什么本地部署 + 怎么选型：合规要求 → 选型三问）、13.2 部署形态与安全边界（13.2.1/13.2.2）、13.3（微调：判断、方法与成本，含数据治理 Gate 13.3.4 与红线呼应 13.3.5）、13.4 公网→本地切换与回归；进阶选读——13.2.4–13.2.6 硬件深水、13.3.2/13.3.3 微调方法与硬件成本细节、13.3.4 流程细节、13.3.6 小模型实验。主线学员以必读为主，进阶内容按项目需要选读。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>说清"为什么需要本地"与"怎么选型"：合规要求（数据不出境 / 算法备案与安全评估 / 自主可控）→ 选型三问（数据能否出域 / 能否本地部署 / 选哪个档位）；看懂私有化部署的四种形态（本地机房 / 专属云 / 离线一体机 / 混合）、按合规可得性分层的算力路线（13.2.2）与"推理 vs 微调"的显存差异（13.3.3）；</li>
+<li>说清"先 RAG 后微调、微调是最后一公里"的判断逻辑，以及 RAG 与微调的分工（事实性 vs 行为性，默认分工而非绝对规律）（13.3）；</li>
+<li>区分 LoRA、QLoRA、全参 SFT 三种微调方法，说出企业默认路径与各自硬件量级（<strong>进阶选读</strong>，主线学员至少了解）（13.3.2/13.3.3）；</li>
+<li>复述一次微调的标准流程（数据治理 Gate → 数据 → LoRA → 合并或 adapter 独立部署 → 量化编译 → 评测对照 → 灰度替换）及其纪律（<strong>进阶选读</strong>）（13.3.4）；</li>
+<li>说清微调的成本量级，用"先问 LoRA 够不够、再问要不要全参"做决策（<strong>进阶选读</strong>）（13.3.3）；</li>
+<li>为"公网 → 本地/微调"切换做适配与回归（13.4）：接口/行为/质量三层面、冻结切换基准集、量化对照、灰度双轨与回滚；</li>
+<li>用一份判断清单判断"该不该微调"，并落地"数据不出域"红线；在小模型上完成一次 QLoRA 实验（可选动手）（13.3.1 / 13.3.5 / 13.3.6）。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 第 7 章四层级金字塔（微调在第 3 层，见 7.2 / 图 7-2）、9.1/10 章 RAG（模型选型 13.1、私有化部署 13.2、动态速查 13.5）。</li>
+<li><strong>章节地图：</strong> 前几章讲的是金字塔第 1 层（提示词 / 分类）、第 2 层（RAG）、第 4 层（智能体）；本章补上<strong>第 3 层（微调）</strong>——顺序是<strong>先落地"数据不出域"的工程底座（模型选型 13.1 + 私有化部署 13.2），再讲微调（13.3，最后一公里），最后收口于"公网 → 本地回填"（13.4）</strong>。它作为进阶选读，帮助你处理"数据不出域 + 行为类需求"这类只能用私有化 + 微调解决的场景。</li>
+</ul>
+<p><pre class="mermaid"><code>flowchart TB
+    rag["第 9/10 章 · RAG&lt;br/&gt;管事实 / 知识"]
+    fin["第 13 章 · 微调（第 3 层）&lt;br/&gt;管行为 / 格式 / 风格"]
+    deploy["第 13 章 · 私有化部署&lt;br/&gt;数据不出域 · 合规可得算力"]
+    gate["第 16 章 · 全团队收口&lt;br/&gt;生产差距 · 模拟验证→本地回填"]
+    rag --&gt; fin
+    deploy --&gt; gate
+    fin --&gt; gate
+    style rag fill:#dbe4f0,stroke:#3949ab
+    style fin fill:#f5ece0,stroke:#a8895f
+    style deploy fill:#e4efe4,stroke:#5b7a5b
+    style gate fill:#3949ab,color:#fff,stroke:#1a237e</code></pre>
+<em>图 13-1：本章是金字塔第 3 层与私有化部署的补全，为第 16 章收口的"本地回填"当技术底座</em></p>
+<hr />
+<h2 id="131">13.1 为什么在本地部署 + 怎么选型：合规与能力双驱动<a class="headerlink" href="#131" title="Permanent link">&para;</a></h2>
+<h3 id="1311">13.1.1 合规红线：为什么真实数据必须留在本地<a class="headerlink" href="#1311" title="Permanent link">&para;</a></h3>
+<p>政企客户部署大模型，第一步不是比模型能力，而是回答"<strong>真实数据能不能出域、模型行为能不能被监管</strong>"。三条合规红线决定了答案：</p>
+<p><strong>红线一 · 数据不能出域。</strong> 《数据安全法》《个人信息保护法》与数据出境安全评估规定，重要数据、政务数据与个人信息<strong>不得随意出境或交给第三方</strong>。公网 API（尤其境外模型服务）意味着把客户数据交给第三方处理——在政务与金融场景直接违规。<strong>含义</strong>：真实数据只能留在获批安全域内（本地机房 / 授权专属云），模型必须能部署在这个安全域里。</p>
+<p><strong>红线二 · 算法要备案、行为要可解释。</strong> 《生成式人工智能服务管理暂行办法》（网信办等七部门令第 15 号，<a href="https://www.gov.cn/gongbao/2023/issue_10666/202308/content_6900864.html">官方文本</a>）要求对外提供生成式 AI 服务须履行<strong>算法备案与安全评估</strong>；配套的《生成式人工智能服务安全基本要求》（全国网安标委 TC260-003，<a href="http://www.whwx.gov.cn/zcfg/zcwj/202511/t20251111_2675219.shtml">全文</a>、<a href="https://www.tc260.org.cn/portal/article/105/20240319163446">解读</a>）进一步要求<strong>语料安全、模型安全、服务安全</strong>并配套上线前评估。<strong>含义</strong>：模型的训练数据、输出行为要能说清、可审计；依赖"黑盒"闭源服务，备案与评估时说不清。</p>
+<p><strong>红线三 · 自主可控。</strong> 信创要求与政采大模型"安全采购指南"（如 <a href="https://czt.gd.gov.cn/zfcg/content/post_4759170.html">广东政采</a>）要求关键行业<strong>模型、权重、算力可自管</strong>；实际政采项目普遍要求"模型上线前检测、语料安全检测、安全运营保障"（如<a href="https://www.cgwenjian.com/view/file/202603200001688531?wd=">政务智算采购项目</a>）。<strong>含义</strong>：模型与权重掌握在自己手里，不能依赖不可控的外部服务。</p>
+<blockquote>
+<p><strong>必要性小结：</strong> 三条红线不是"本地更好"的技术偏好，而是<strong>合规的硬要求</strong>——公网 API（尤其境外）在"数据不出域、算法可解释、自主可控"三个维度都过不了关，<strong>本地 / 私有化部署是政企场景的必要条件</strong>。（注：是否"必须不出域"取决于数据分类分级、法规、行业监管、合同与组织制度的综合判断，见 13.2 的"出域六情形"；本案例把它定为项目红线。）</p>
+</blockquote>
+<h3 id="1312">13.1.2 选型三问：在合规前提下把模型落到本地<a class="headerlink" href="#1312" title="Permanent link">&para;</a></h3>
+<p>红线确定了"<strong>要不要</strong>本地"，选型三问解决"<strong>能不能</strong>落地、<strong>选哪个</strong>模型"：</p>
+<p><strong>第一问 · 数据能不能出域（安全合规，决定要不要本地）</strong>
+- 数据敏感度分级：<strong>完全虚构 / 脱敏的教学数据</strong>可走公网 API 验证（第 8/10/12 章做法）；<strong>真实客户数据</strong>（政务、金融、个人信息）不能出域 → 必须本地部署；
+- 依据：TC260-003 语料安全、个保法、数据出境评估。<strong>不能出域就没有选择——直接进本地路线。</strong></p>
+<p><strong>第二问 · 能不能本地部署（部署可控，决定本地化可行性）</strong>
+- 三个子条件<strong>合起来</strong>才算"能"：
+  1. <strong>权重可得</strong>：模型权重公开可获取（开源权重）——只开放 API 的闭源模型做不到本地化；
+  2. <strong>算力与许可满足</strong>：本地算力（英伟达 / 昇腾，见 13.2）跑得起所选档位；许可证允许自部署（如 Apache-2.0 / MIT）；
+  3. <strong>自主可控</strong>：权重、版本、运维在自己手里（信创要求）。
+- <strong>三者缺一不可</strong>：有开源权重但没算力（跑不动）、有算力但权重闭源（拿不到）、权重算力都有但许可禁止自部署——都不能算"能本地部署"。</p>
+<p><strong>第三问 · 选哪个档位（能力适配，决定选什么模型）</strong>
+- 任务复杂度定档：深度推理 → 思考 / 大模型档；模式匹配 → 小模型档（对照第 7 章"从最简单开始"）；
+- 用评测基准与业务指标验证：公开基准做初筛，最终用你的业务数据实测（准确率 / 可追溯率等，第 9 章口径）；
+- 再叠加部署约束定规格：显存、成本、国产芯片、推理引擎（13.2 展开）。</p>
+<blockquote>
+<p><strong>可行性小结：</strong> 三条红线之内，本地部署是<strong>可行</strong>的完整链路——<strong>数据不能出域（第一问）→ 开源权重 + 算力 + 许可满足（第二问）→ 按任务选档（第三问）→ 部署形态与硬件规格（13.2）</strong>。具体在售型号、许可证、上下文长度与价格属动态数据，查 <strong>13.5 速查</strong>（信息截至 2026-08，以官方页为准）。</p>
+</blockquote>
+<h3 id="1313-api">13.1.3 经济性动因：烧不起公网 API，转而在本地运行<a class="headerlink" href="#1313-api" title="Permanent link">&para;</a></h3>
+<p>合规红线之外，还有一种<strong>纯基于成本</strong>的考量：公网 API 按 token 计费，调用量一大、上下文一长，月账单涨得飞快——有些客户"烧不起"，转而把模型放到本地跑。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">公网 API</th>
+<th style="text-align: left;">本地部署</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">成本形态</td>
+<td style="text-align: left;">随调用量<strong>线性增长</strong>（按 token 计费）</td>
+<td style="text-align: left;"><strong>固定投入为主 + 低边际成本</strong>（GPU 折旧 / 租赁 + 电费 + 运维）</td>
+</tr>
+<tr>
+<td style="text-align: left;">低调用量</td>
+<td style="text-align: left;">便宜（API 划算）</td>
+<td style="text-align: left;">不划算（GPU 利用率低，折旧照付）</td>
+</tr>
+<tr>
+<td style="text-align: left;">高调用量 / 长上下文 / 批量</td>
+<td style="text-align: left;">月成本随调用量涨到数十万元级</td>
+<td style="text-align: left;">GPU 摊薄后月成本可低一个量级</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>提醒：</strong> 1. 本地不总是更便宜——先算调用量与利用率，再决定；2. "省钱"与"合规"是两个独立动因——合规红线（13.1.1）是"必须本地"，成本是"划算本地"；两者可叠加，但<strong>不要用成本论证替代合规论证</strong>。具体怎么选硬件、算下来多少钱，见 <strong>13.2.6 的价格核算</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="132">13.2 私有化部署：形态、算力路线与硬件规范<a class="headerlink" href="#132" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>"出域"要拆开说（全书统一口径）：</strong> "数据出域"不是一个词，至少区分六种情形——1）出本地设备；2）出客户内网；3）上公有云；4）向第三方处理者提供；5）跨境；6）出组织批准的安全域。它们的合规要求完全不同，<strong>不得笼统称为同一个"出域"</strong>。西岭案例统一口径：1）课堂<strong>教学模拟数据</strong>（完全虚构、脱敏、无真实个人信息）可在课堂批准环境调用公网服务；2）所模拟的<strong>真实政务数据</strong>未经确认不得进入公网服务；3）<strong>真实客户数据</strong>必须在 Discovery 中按数据分类分级、法律法规、行业监管、合同、组织制度和审批结果确定处理边界。</p>
+</div>
+<h3 id="1321">13.2.1 私有化 ≠ 只能放客户本地机房<a class="headerlink" href="#1321" title="Permanent link">&para;</a></h3>
+<p>"数据不出域"落到部署形态，<strong>不只是"买台机器放客户机房"一种选择</strong>。按数据敏感度与组织制度，常见四种形态：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">形态</th>
+<th style="text-align: left;">是什么</th>
+<th style="text-align: left;">适合谁</th>
+<th style="text-align: left;">与"不出域"的关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>本地机房 / 一体机</strong></td>
+<td style="text-align: left;">硬件部署在客户自有机房/园区</td>
+<td style="text-align: left;">涉密、高合规、无云依赖</td>
+<td style="text-align: left;">数据与权重物理隔离在客户可控网络内</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>专属云（隔离 VPC / 专属资源区）</strong></td>
+<td style="text-align: left;">云厂商在客户专属 VPC / 资源隔离区内运行，租户级隔离</td>
+<td style="text-align: left;">一般政企、运维能力强、可接受云上专属区</td>
+<td style="text-align: left;">逻辑隔离 + 合规边界按云租户划（需确认监管认可）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>离线一体机</strong></td>
+<td style="text-align: left;">一体化交付、断电断网仍可运行</td>
+<td style="text-align: left;">现场网络受限、极端隔离场景</td>
+<td style="text-align: left;">强隔离、弱联网</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>混合部署</strong></td>
+<td style="text-align: left;">核心数据与模型在本地，外围（如不敏感工具链）走云 API</td>
+<td style="text-align: left;">多数政企的现实形态</td>
+<td style="text-align: left;">突出"最小必要出域"，明确边界清单</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>落地判读：</strong> "私有化"是<strong>数据不出域的工程实现</strong>，选哪种形态取决于<strong>监管要求、网络条件与运维能力</strong>，不是"只能本地机房"。涉密高合规 → 本地机房/一体机；一般政企 → 专属云或混合；网络受限 → 离线一体机。（选型三问见 13.1.2。）</p>
+</blockquote>
+<h3 id="1322">13.2.2 算力路线：合规可得性优先的分层选择<a class="headerlink" href="#1322" title="Permanent link">&para;</a></h3>
+<p>算力路线不是"二选一"，而是<strong>在"合规可得性"前提下按规模与预算分层选</strong>——先问"哪些硬件能合规买到"，再看性能与成本：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">路线</th>
+<th style="text-align: left;">代表硬件</th>
+<th style="text-align: left;">可得性 / 合规</th>
+<th style="text-align: left;">适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>国产信创路线</strong></td>
+<td style="text-align: left;">昇腾 910C / Atlas 800</td>
+<td style="text-align: left;"><strong>合规可得</strong>（信创默认，政企首选）</td>
+<td style="text-align: left;">数据不出域、合规优先；涉密 / 高合规走全私有化一体机</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>性价比路线</strong></td>
+<td style="text-align: left;">RTX 4090 / 5090、4× RTX 6000 Ada</td>
+<td style="text-align: left;">消费 / 专业卡，正规渠道可得（留意出口管制）</td>
+<td style="text-align: left;">中小规模、开发 / 中低频本地（13.2.6 档位）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>吞吐路线</strong></td>
+<td style="text-align: left;">单张 AMD MI300X</td>
+<td style="text-align: left;">非英伟达禁运范围，可采购</td>
+<td style="text-align: left;">高吞吐、省钱替代 API（13.2.6 价格核算）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>旗舰路线（仅参照）</strong></td>
+<td style="text-align: left;">B300（Blackwell Ultra）</td>
+<td style="text-align: left;"><strong>禁运：官方渠道不可得，非正规渠道有合规风险</strong>——本书不推荐</td>
+<td style="text-align: left;">大规模集群（合规环境之外，仅作生态参照）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>昇腾 910C 是当前国产算力的中流砥柱</strong>（信息截至 2026 年 8 月）：<a href="http://gdstc.gd.gov.cn/kjzx_n/gdkj_n/content/mpost_4924300.html">粤港澳大湾区首个"国芯训国模"昇腾万卡智算集群已上线，部署 <strong>11,520 张昇腾 910C</strong>（来源：广东省科技厅公告）</a>；910C 已被字节跳动、中国电信等头部厂商规模采用（<a href="https://xueqiu.com/1855261132/368119001">Omdia 分析转述</a>），出货量持续放量。昇腾 950 系列为下一代方向，但 910C 目前凭借成熟生态与产能仍是存量主力。</p>
+<p><strong>为什么 B300 不推荐（仅作参照）：</strong> 受美国对华禁运，B300 官方渠道不可得；<strong>走非正规渠道价格翻倍（≈1400 万/台）且本身有合规风险</strong>（呼应 13.1.1 红线三），13.2.6 的价格核算也显示自建 B300 整机多数场景打不平。本书推荐的算力路线一律<strong>合规可得</strong>——信创昇腾、消费 / 专业 NVIDIA 卡、AMD MI300X 均为正规渠道可获取。</p>
+<p><strong>政企默认做法（呼应 13.1）：</strong> 涉密 / 高合规走全私有化一体机（昇腾）；一般政企走"私有化核心 + 云 API 补充"混合形态；信创环境默认<strong>昇腾路线</strong>（国产芯片 910C + 麒麟 OS + 国产数据库栈）。选型三问见 13.1.2——其中"数据能不能出域、监管认不认可云上专属区"直接决定选哪种形态与算力档位。</p>
+</blockquote>
+<p><pre class="mermaid"><code>flowchart TB
+    q0{"数据能否出域？"}
+    yes["公网 API / 混合部署&lt;br/&gt;核心本地 + 外围云（最小必要出域）"]
+    q1{"监管是否认可&lt;br/&gt;云上专属区？"}
+    vpc["专属云&lt;br/&gt;（隔离 VPC / 专属资源区）"]
+    q2{"网络是否受限？"}
+    local["本地机房 / 一体机"]
+    offline["离线一体机&lt;br/&gt;断电断网可运行"]
+    pick["选算力档位&lt;br/&gt;按合规与预算&lt;br/&gt;（13.2.2 表 / 13.2.6）"]
+    q0 -- 能 --&gt; yes
+    q0 -- 不能 --&gt; q1
+    q1 -- 认可 --&gt; vpc
+    q1 -- 不认可 --&gt; q2
+    q2 -- 不受限 --&gt; local
+    q2 -- 受限 --&gt; offline
+    local --&gt; pick
+    offline --&gt; pick
+    style q0 fill:#3949ab,color:#fff,stroke:#1a237e
+    style local fill:#e4efe4,stroke:#5b7a5b
+    style vpc fill:#f5ece0,stroke:#a8895f
+    style offline fill:#f5ece0,stroke:#a8895f
+    style pick fill:#dbe4f0,stroke:#3949ab</code></pre>
+<em>图 13-2：私有化形态决策树——先问"数据能否出域"，再定形态；算力档位按合规与预算选（13.2.2 表 / 13.2.6）</em></p>
+<blockquote>
+<p><strong>读法：</strong> 第一问永远是"数据能否出域"（红线）；能 → 公网 / 混合；不能 → 先看监管是否认可云上专属区（专属云），不被认可再看网络是否受限（本地 / 离线一体机），最后<strong>按合规与预算选算力档位</strong>——合规优先选昇腾（信创默认），中小规模选消费 / 专业 NVIDIA 卡，高吞吐选 AMD MI300X（档位与价格核算见 13.2.6）。</p>
+</blockquote>
+<h3 id="1323">13.2.3 一体化 / 训推一体机 / 集群三档选型<a class="headerlink" href="#1323" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">形态</th>
+<th style="text-align: left;">典型硬件</th>
+<th style="text-align: left;">适用边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">消费级"工作站"（非交付形态）</td>
+<td style="text-align: left;">RTX 4090 24GB 等</td>
+<td style="text-align: left;">7B 级 QLoRA 实验、PoC；<strong>不是政企交付主体，只在原型验证阶段提一句</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">专业工作站 / 桌面一体机</td>
+<td style="text-align: left;">DGX Station 等</td>
+<td style="text-align: left;">团队级开发、私有化小规模训练/微调</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>8 卡服务器 / 训推一体机</strong></td>
+<td style="text-align: left;">B300 整机、昇腾训推一体机</td>
+<td style="text-align: left;"><strong>政企私有化主力</strong>：推理 + LoRA 微调共用一台</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>企业集群</strong></td>
+<td style="text-align: left;">8×80GB 机群 / Atlas 800T A2 / Atlas 900 A3</td>
+<td style="text-align: left;">全参 70B+ / 大批量 LoRA，多项目共享算力池</td>
+</tr>
+<tr>
+<td style="text-align: left;">智算中心（万卡级，政企租用）</td>
+<td style="text-align: left;">万卡昇腾/英伟达集群</td>
+<td style="text-align: left;">大模型预训练/大规模后训练，政企以算力券方式租用</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>企业交付的主体是"器"级的服务器/一体机，不是一张家用显卡</strong>（原型验证用单卡/云端 API 即可，不构成交付形态）；边界口诀（教材提炼）：<strong>"能在一台 8 卡服务器里完成的（LoRA/QLoRA）就在一台里完成；要跨多台的（全参 70B+/大量数据）才上集群；万卡集群是平台级投资，不是单项目采购。"</strong></p>
+</blockquote>
+<h3 id="1324">13.2.4 显存规划与量化取舍：从模型反推要几卡<a class="headerlink" href="#1324" title="Permanent link">&para;</a></h3>
+<p><strong>先讲量化（它直接决定显存需求）。</strong> 模型权重与激活默认用高精度浮点（FP16 / BF16，每参数 2 字节）存储与计算。<strong>量化（Quantization）把权重 / 激活压缩到更低的位宽</strong>——FP8 每参数 1 字节、INT4 / FP4 每参数 0.5 字节——显存按比例下降、推理更快，代价是精度损失；训练好的权重有冗余与分布集中，低比特近似通常保留绝大部分能力（GPTQ / AWQ / GGUF 等量化方法即此思路）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">位宽</th>
+<th style="text-align: left;">每参数</th>
+<th style="text-align: left;">权重体积（每 10 亿参数）</th>
+<th style="text-align: left;">精度损失</th>
+<th style="text-align: left;">定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>FP16 / BF16</strong></td>
+<td style="text-align: left;">2 字节</td>
+<td style="text-align: left;">2GB</td>
+<td style="text-align: left;">无（基线）</td>
+<td style="text-align: left;">全精度基线，评测对照用</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FP8 / INT8</strong></td>
+<td style="text-align: left;">1 字节</td>
+<td style="text-align: left;">1GB</td>
+<td style="text-align: left;">很小</td>
+<td style="text-align: left;"><strong>生产默认</strong>（精度损失小、显存减半）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>INT4 / FP4（NVFP4）</strong></td>
+<td style="text-align: left;">0.5 字节</td>
+<td style="text-align: left;">0.5GB</td>
+<td style="text-align: left;">明显</td>
+<td style="text-align: left;">逼近硬件极限时才用，必须评测定档</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：<strong>W4A16</strong>（权重 4-bit、激活 16-bit）是混合量化——只压权重不压激活，是 INT4 的一种稳妥形态（如 13.2.6 中 4× RTX 6000 Ada 跑 V4 Flash 的 W4A16 ≈159GB 即此）。</p>
+</blockquote>
+<p><strong>再算显存（由三部分组成</strong>，主流框架与厂商一致的口径，<a href="https://huggingface.co/spaces/hf-accelerate/model-memory-usage">HuggingFace 显存估算器</a>、<a href="https://docs.vllm.ai/projects/vllm-omni/en/stable/configuration/gpu_memory_utilization/">vLLM 官方显存文档</a>、<a href="https://www.alibabacloud.com/help/zh/pai/product-overview/estimation-of-the-required-video-memory-for-the-model">阿里云 PAI 估算指南</a>）：</p>
+<ol>
+<li><strong>权重</strong>：参数量 × 每参数字节（上表）；</li>
+<li><strong>KV cache</strong>：随上下文长度、并发 batch、层数与注意力头数增长——长上下文 + 高并发时可能占显存大头（vLLM 提供专门的显存分配与计算公式）；</li>
+<li><strong>激活与运行时</strong>：前向计算与推理框架自身的缓冲，另计。</li>
+</ol>
+<p><strong>估算步骤（粗略下界）：</strong> 总显存 ≈ 权重体积 + KV cache + 激活余量；所需卡数 = 总显存 ÷ 单卡显存。以 700 亿参数模型为例，各量化档的权重体积与所需卡数如下（<strong>与上方档位表逐行对齐</strong>，未含 KV cache 余量）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">位宽</th>
+<th style="text-align: left;">700 亿参数权重体积</th>
+<th style="text-align: left;">80GB 单卡</th>
+<th style="text-align: left;">48GB 单卡</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>FP16 / BF16</strong></td>
+<td style="text-align: left;">≈ 140GB</td>
+<td style="text-align: left;">≥ 2 卡</td>
+<td style="text-align: left;">≥ 3 卡</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FP8 / INT8</strong></td>
+<td style="text-align: left;">≈ 70GB</td>
+<td style="text-align: left;">≥ 1 卡</td>
+<td style="text-align: left;">≥ 2 卡</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>INT4 / FP4</strong></td>
+<td style="text-align: left;">≈ 35GB</td>
+<td style="text-align: left;">≥ 1 卡</td>
+<td style="text-align: left;">≥ 1 卡</td>
+</tr>
+</tbody>
+</table>
+<p>量化一档（FP8）卡数大致减半；再降一档（INT4），多数规模单卡即可装下。</p>
+<p><strong>量到哪一档（选型三步）：</strong> 量化位宽每降一档 → <strong>显存减半 + 吞吐提升 + 精度风险上升</strong>，三步定档：</p>
+<ol>
+<li><strong>显存够不够</strong>：权重体积能否装进可用显存——不够才需要量化；</li>
+<li><strong>精度敏不敏感</strong>：任务越依赖精确数字 / 条款引用（政务分类、RAG 答案），量化越要保守（FP8 起步）；生成式 / 摘要类可更激进；</li>
+<li><strong>必须评测定档</strong>：量化前后在同一基准集上对照（准确率 / 可追溯率等，呼应 13.4.2 的"量化与精度对照"），低于验收线就升一档（INT4 → FP8 → FP16）——<strong>生产默认 FP8 / NVFP4，INT4 慎用</strong>。</li>
+</ol>
+<blockquote>
+<p><strong>判读要点（按公式计算，非在售配置）：</strong> 万亿参数级 MoE（如 2.8T 总参）NVFP4 权重体积 ≈ 2.8T × 0.5 字节 ≈ <strong>1.4TB</strong>，才有机会压进"288GB × 8 ≈ 2TB 级单节点"；更重的生产级吞吐需求再考虑多节点。<strong>具体在售配置与部署示例见 13.5，落地一律以厂商部署文档核验。</strong></p>
+<p><strong>示例（V4 Flash 高性价比档位，呼应 13.2.6）：</strong> RTX 4090（24GB）靠 AWQ 等极低比特量化才装得下；RTX 5090（32GB）用 4-bit 量化流畅运行；4× RTX 6000 Ada（192GB）用 W4A16（≈159GB）留出余量——<strong>"选哪档硬件"和"量到哪档"是同一个决策的两面</strong>。</p>
+</blockquote>
+<h3 id="1325">13.2.5 模型服务化与推理引擎：企业做法<a class="headerlink" href="#1325" title="Permanent link">&para;</a></h3>
+<p><strong>模型服务化是什么。</strong> 把本地模型"跑起来"只是第一步——生产要的是<strong>把模型包装成可并发服务的 API</strong>（OpenAI 兼容格式），让业务系统像调接口一样调用，同时扛住并发、控制延迟与吞吐。服务化 = 推理引擎（怎么高效跑）+ 部署形态（怎么对外服务）。</p>
+<p><strong>推理引擎选型</strong>（引擎决定"同一张卡能服务多少并发、多快"）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">引擎</th>
+<th style="text-align: left;">角色</th>
+<th style="text-align: left;">关键机制</th>
+<th style="text-align: left;">何时用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>vLLM</strong></td>
+<td style="text-align: left;">开源主流推理引擎</td>
+<td style="text-align: left;">Continuous batching、PagedAttention、Prefix Caching、OpenAI 兼容 API</td>
+<td style="text-align: left;"><strong>生产默认首选</strong>（吞吐高、生态全、接入快）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TensorRT-LLM</strong></td>
+<td style="text-align: left;">英伟达编译优化</td>
+<td style="text-align: left;">图编译 + 算子融合，极致延迟 / 吞吐</td>
+<td style="text-align: left;">英伟达硬件上追求极致性能时</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Triton / Triton-Dynamo</strong></td>
+<td style="text-align: left;">统一推理网关层</td>
+<td style="text-align: left;">多模型统一部署、调度、版本管理</td>
+<td style="text-align: left;">多个模型 / 多框架统一服务时</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MindIE</strong></td>
+<td style="text-align: left;">昇腾 910C 默认推理引擎</td>
+<td style="text-align: left;">昇腾软硬协同优化</td>
+<td style="text-align: left;">国产昇腾栈（13.2.2 信创路线）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三个关键机制（为什么 vLLM 这类引擎能"同卡多并发"）：</strong>
+1. <strong>Continuous batching（连续批处理）</strong>：请求动态拼批、先完成先出——GPU 不空等，吞吐大幅提升；
+2. <strong>PagedAttention / KV cache 分页管理</strong>：把 KV cache 按页分配，显存利用率高，长上下文 + 高并发也能装下；
+3. <strong>Prefix Caching（前缀缓存）</strong>：相同前缀（如 RAG 里重复的指令模板、政策片段）只算一次——政务 RAG 场景命中率高，成本下降明显。</p>
+<p><strong>多卡并行策略</strong>（模型大过单卡显存、或要更高吞吐时）：
+- <strong>张量并行（TP）</strong>：单机内把一层切成多卡（吃 NVLink 带宽）——单机首选；
+- <strong>流水线并行（PP）</strong>：跨节点按层分段——模型大、单节点放不下时；
+- <strong>数据并行（DP）</strong>：多副本各处理一批请求——吞吐优先、模型可单卡装下时；
+- <strong>专家并行（EP）</strong>：MoE 模型按专家分卡——V4 Flash 这类 MoE 模型的专项优化。</p>
+<p><strong>生产部署要点：</strong>
+- <strong>调度与弹性</strong>：K8s + GPU Operator 管理 GPU 资源（调度、显存分配、故障重启）；
+- <strong>入口网关</strong>：Higress / API7 等做路由、限流、鉴权、灰度——呼应 11.8.3 工具调用的超时 / 重试 / 降级；
+- <strong>健康检查与监控</strong>：延迟、吞吐（QPS）、显存占用、并发数的监控告警；
+- <strong>多副本与灰度</strong>：多副本扛并发，新模型版本先灰度再全量（呼应 13.4.2 的灰度双轨）。</p>
+<blockquote>
+<p><strong>呼应：</strong> 引擎与并行策略决定了"同一档硬件能服务多少调用"（13.2.6 价格核算里的吞吐上限就来自这里）；服务化跑稳了，13.4 的"公网 → 本地回填"才有承载基础。</p>
+</blockquote>
+<h3 id="1326-v4-flash">13.2.6 高性价比档位与价格核算：以 V4 Flash 为例<a class="headerlink" href="#1326-v4-flash" title="Permanent link">&para;</a></h3>
+<p><strong>先看模型：</strong> DeepSeek V4 Flash 的 MoE 架构配合量化（INT4 / FP8 / W4A16）能把显存需求大幅压低——<strong>不必上 B300 整机，消费级到专业级显卡就能本地跑</strong>。按预算与并发从低到高：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">档位</th>
+<th style="text-align: left;">核心硬件</th>
+<th style="text-align: left;">参考成本</th>
+<th style="text-align: left;">关键配置 / 性能</th>
+<th style="text-align: left;">适合场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">极致性价比</td>
+<td style="text-align: left;">单张 RTX 4090（24GB）</td>
+<td style="text-align: left;">≈ 0.5–0.8 万</td>
+<td style="text-align: left;">AWQ 等极低比特量化；个人体验 / 轻量开发</td>
+<td style="text-align: left;">个人开发者、预算有限</td>
+</tr>
+<tr>
+<td style="text-align: left;">消费级甜点</td>
+<td style="text-align: left;">单张 RTX 5090（32GB）</td>
+<td style="text-align: left;">≈ 2–3 万</td>
+<td style="text-align: left;">4-bit 量化流畅运行，可处理 50 万 token 长上下文</td>
+<td style="text-align: left;">个人 / 独立开发者</td>
+</tr>
+<tr>
+<td style="text-align: left;">均衡之选</td>
+<td style="text-align: left;">4× RTX 6000 Ada（48GB）</td>
+<td style="text-align: left;">≈ 21 万（<a href="https://m.diy52.com/vga/202607159692.html">5.3 万/张</a>）</td>
+<td style="text-align: left;">TP=4 张量并行，总显存 192GB，W4A16 ≈159GB，实测 115–133 tokens/s</td>
+<td style="text-align: left;">小型团队、中等并发</td>
+</tr>
+<tr>
+<td style="text-align: left;">企业级入门</td>
+<td style="text-align: left;">单张 AMD MI300X（192GB）</td>
+<td style="text-align: left;">≈ 10 万（<a href="https://post.smzdm.com/p/aqr0ndrv/">八卡模组 79.8 万</a>）</td>
+<td style="text-align: left;">未量化全量加载，实测 ≈2699 tokens/s；注意 ROCm 生态</td>
+<td style="text-align: left;">追求吞吐的企业</td>
+</tr>
+<tr>
+<td style="text-align: left;">国产化</td>
+<td style="text-align: left;">华为 Atlas 800 服务器</td>
+<td style="text-align: left;">≈ 120–140 万（<a href="https://www.cnblogs.com/skyseraph/p/21109151">硬件选型指南</a>）</td>
+<td style="text-align: left;">昇腾软硬协同，百万级成本替代集群</td>
+<td style="text-align: left;">数据合规 / 国产化政企</td>
+</tr>
+</tbody>
+</table>
+<p><strong>价格核算（2026-09 口径，示意估算，落地以官方定价与自身核算为准）。</strong> 以 V4 Flash 官方报价（2026-09-01：输入缓存命中 0.05–0.10 / 未命中 1.5–3.0 / 输出 4.5–9.0 元每百万 tokens）为 API 基准，混合单价（70% 输入 + 30% 输出，缓存命中约 50%）≈ 空闲 ¥1.9 / 高峰 ¥3.8：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">档位</th>
+<th style="text-align: left;">本地月成本</th>
+<th style="text-align: left;">打平点（空闲 / 高峰）</th>
+<th style="text-align: left;">吞吐上限</th>
+<th style="text-align: left;">结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>均衡（4×6000 Ada）</strong></td>
+<td style="text-align: left;">≈ 1.3 万/月</td>
+<td style="text-align: left;">≈ 23 万次/日 / 11.4 万次/日</td>
+<td style="text-align: left;">≈ 3300–3800 万 tokens/日</td>
+<td style="text-align: left;"><strong>吞吐是瓶颈</strong>：打平需 1–2.3 亿 tokens/日，4 卡产能差一个数量级——适合中低频本地 / 私有化（合规诉求），不适合"省钱替代 API"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>企业级（MI300X）</strong></td>
+<td style="text-align: left;">≈ 0.6 万/月</td>
+<td style="text-align: left;">≈ 10.6 万次/日 / 5.3 万次/日</td>
+<td style="text-align: left;">≈ 2.33 亿 tokens/日</td>
+<td style="text-align: left;"><strong>吞吐足够</strong>：高峰价下每天约 5 万次调用即打平——"省钱替代 API"的相对可行档（前提：ROCm 适配、未量化全量加载）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>结论（2026 年口径）：</strong> 1. V4 Flash 报价比预期便宜 → 打平点整体上移，本地更难凭"省钱"胜出；2. 均衡档的瓶颈<strong>不是成本而是吞吐</strong>——多卡组合产能服务不了打平所需调用量；3. "省钱替代 API"的现实档位是 <strong>MI300X 这类高吞吐 + 大显存单卡</strong>，而非多卡组合或 B300 整机；4. 个人档（4090 / 5090）吞吐更低，仅开发 / 体验用；5. <strong>国产 Atlas 800 走合规路线而非省钱路线</strong>（呼应 13.1.1）。</p>
+</blockquote>
+<p><strong>算成本别只算一个静态打平点：</strong>
+- <strong>算力利用率</strong>：能否始终满负荷？利用率 50% → 同样固定成本只服务一半调用量，打平点翻倍；低频任务本地反而更贵；
+- <strong>分摊模式</strong>：多业务 / 多客户共享底座（算力池 / 统一部署）摊薄固定成本；需求波动大时云 GPU 按小时租更灵活（弹性但单价高）；
+- <strong>软硬件维护</strong>：模型每季度更新要重新部署、GPU 故障 / 驱动 / 安全补丁 / 备份高可用——运维成本常被低估；
+- <strong>折旧与残值</strong>：GPU 36 个月残值约 30–40%，可回收部分投入（真实折旧低于账面）。</p>
+<blockquote>
+<p><strong>真实案例：</strong> "烧不起 API → 转本地"在企业知识工作、路由降本中有真实实践（<a href="https://c3.unu.edu/blog/do-we-need-premium-ai-for-every-question">免推理 token 费</a>、<a href="https://kronaxis.co.uk/blog/llm-routing-cost-savings">路由降本：简单任务走本地</a>、<a href="https://cloud.tencent.com.cn/developer/article/2697477?policyId=1004">GLM 部署真实账单拆解</a>）。具体 API 定价与 GPU 成本属动态数据，以官方定价页为准（信息截至 2026-09）。</p>
+</blockquote>
+<hr />
+<h2 id="133">13.3 微调：判断、方法与成本<a class="headerlink" href="#133" title="Permanent link">&para;</a></h2>
+<h3 id="1331">13.3.1 什么时候才轮到微调<a class="headerlink" href="#1331" title="Permanent link">&para;</a></h3>
+<p><strong>为什么微调在"从最简单开始"里靠后。</strong> 回到第 7 章的四层级金字塔（图 7-2）和使用纪律"<strong>从第一层开始</strong>"：提示词 → RAG → 微调 → 智能体。微调排在第 3 层，意味着它<strong>不该是第一个想到的手段</strong>。原因不只是成本，而是它是一次<strong>系统性改动</strong>：</p>
+<ul>
+<li><strong>RAG</strong> 只动"检索哪段知识喂给模型"，模型权重不变，改知识标库即可、可回滚、可溯源；</li>
+<li><strong>微调</strong> 会<strong>改变模型的输出行为</strong>——全参 SFT 直接修改基座权重，LoRA 则冻结基座、只训练独立增量参数（行为同样改变，但权重结构不同）；改完要重新评测，走合并路径还需重新量化编译，有模型退化风险，回滚成本高。</li>
+</ul>
+<p>因为改动面大，所以它天然排在"最后一公里"——只有更简单的层（提示词 / RAG）确实覆盖不了时，才轮到微调。</p>
+<p><strong>RAG 与微调的分工：事实性 vs 行为性。</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">RAG</th>
+<th style="text-align: left;">微调（LoRA 级）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">擅长解决</td>
+<td style="text-align: left;"><strong>事实 / 知识</strong>：答案可溯源、内容更新只需重建索引</td>
+<td style="text-align: left;"><strong>行为 / 格式 / 风格 / 私有协议</strong>：固定输出格式、行业话术、工具调用习惯</td>
+</tr>
+<tr>
+<td style="text-align: left;">不擅长</td>
+<td style="text-align: left;">改变模型的表达行为或固定格式</td>
+<td style="text-align: left;">注入"新事实"（微调不擅长让模型记住你没提供的数据）</td>
+</tr>
+<tr>
+<td style="text-align: left;">改动</td>
+<td style="text-align: left;">只改知识库，不碰权重</td>
+<td style="text-align: left;">改权重，需评测量化回滚</td>
+</tr>
+<tr>
+<td style="text-align: left;">定位</td>
+<td style="text-align: left;">骨架，先做</td>
+<td style="text-align: left;">收尾，最后一公里</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>两者是<strong>互补</strong>，不是替代。绝大多数"知识问答"需求用 RAG 就够（这也是第 10 章选 RAG、不选微调的原因）；只有 RAG 覆盖不了的<strong>行为类</strong>问题（比如"输出必须是固定的工单三段式""必须用某行业的约定话术"），才轮到微调。</p>
+<p><strong>注意：这只是默认分工，不是绝对规律。</strong> 微调也能部分注入"行为化的事实"（把固定话术和少量事实一起固化），RAG 也能通过提示词约束输出模板。判断标准始终是<strong>"改哪一层代价最小、最可回滚"</strong>，而不是机械套用"事实归 RAG、行为归微调"。</p>
+</blockquote>
+<p><strong>判断入口。</strong> 以一个政企场景为例：政策问答里"答案对"靠 RAG（事实）；而"回答必须按固定模板，且每份报告都要带文号引用格式"这种<strong>格式与行为</strong>要求，如果关 RAG 怎么做都做不到位，才会考虑用 LoRA 让模型"学会"这个输出习惯。判断的最短路径是：<strong>先用提示词 + RAG 试；评测卡在"行为/格式"这类模型权重要改才能解决的节点上，再谈微调。</strong></p>
+<p><strong>判断清单（落地勾选）。</strong> 拿到一个"要不要微调"的问题，按清单逐条核对：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>先试过更简单的层吗？</strong> 提示词调优、RAG 都试过且评测过？（没有就回去，别直接上微调）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>问题是不是"行为/格式/风格"类？</strong> 是事实/知识类问题 → 该用 RAG，不是微调；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>数据治理 Gate 过关了吗？</strong> 授权、脱敏、版权、去重、血缘、删除、泄漏检查（评测集没进训练）都过了？（见 13.3.4）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>数据够不够好？</strong> LoRA 也需几百~几千条高质量领域数据；数据质量差，微调效果很差；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>有没有固定评测集？</strong> 没有评测集就微调 = 无法判断是否退化；</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>能不能接受回滚成本？</strong> 微调是系统性改动，需量化编译 + 灰度 + 可回滚预案。</li>
+</ul>
+<blockquote>
+<p><strong>反例（最容易犯）：</strong> "感觉领域问题就该微调"直接上 LoRA——RAG 明明能解决的事实性问题也去微调，既违背"从最简单开始"（7.2），又凭空多承担评测/编译/回滚成本。微调不是"显得专业"的手段。</p>
+</blockquote>
+<h3 id="1332-loraqlora-sft">13.3.2 三种微调方法：LoRA、QLoRA 与全参 SFT<a class="headerlink" href="#1332-loraqlora-sft" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">原理</th>
+<th style="text-align: left;">关键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>LoRA</strong>（低秩适配）</td>
+<td style="text-align: left;">冻结原权重，只训练注入的低秩增量矩阵</td>
+<td style="text-align: left;">显存明显低于全参（仍高于推理，见 13.3.3）；几百~几千条领域数据即可见效</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QLoRA</strong></td>
+<td style="text-align: left;">4-bit 量化基座 + LoRA</td>
+<td style="text-align: left;">显存再降，单卡可跑更大模型；代价是训练慢、极端量化有质量损失</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全参 SFT</strong></td>
+<td style="text-align: left;">更新全部权重</td>
+<td style="text-align: left;">需同时存权重+梯度+优化器状态，显存≈权重 4~6 倍（下界）；通常数万~百万条数据才值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>标准术语规范（教材标注）：</strong> LoRA（Low-Rank Adaptation，低秩适配）、QLoRA（4-bit 量化基座 + LoRA）、全参 SFT（Full-parameter Supervised Fine-Tuning）。这是把"微调"讲清楚的三把尺子。</p>
+</blockquote>
+<h3 id="1333">13.3.3 硬件与成本量级：在售配置怎么选<a class="headerlink" href="#1333" title="Permanent link">&para;</a></h3>
+<p><strong>为什么微调比推理吃显存（原理前置）。</strong> 同一个模型，服务推理花钱少、做微调花钱多，关键在显存（"显存≈权重体积"只是粗略下界）：</p>
+<ul>
+<li><strong>推理</strong>：需放<strong>权重 + KV cache + 激活 + 运行时缓冲 + 并发余量</strong>——并发上去后显存明显高于权重体积；</li>
+<li><strong>全参微调</strong>：还要同时存<strong>梯度 + 优化器状态</strong>（Adam 约 3–4× 权重开销），显存≈权重的 4~6 倍（下界，实际更高）；</li>
+<li><strong>LoRA 级微调</strong>：原权重冻结，但训练时仍有激活、梯度和低秩增量的优化器状态——显存<strong>低于全参、明显高于纯推理</strong>，并非"接近推理"。</li>
+</ul>
+<blockquote>
+<p>这也是"能用同一台 8 卡服务器微调"和"要上集群"的物理分界所在：<strong>推理可单节点，全参微调常常要跨多机</strong>；大显存单卡（如 192–288GB 级）会把分界抬高——很多 LoRA / QLoRA 微调单节点甚至单卡就能做。</p>
+</blockquote>
+<p><strong>在售配置怎么选。</strong> 具体到"要买什么、微调一次花多少"，下表落到 <strong>13.2.6 同一批在售硬件</strong>上（信息截至 2026-08，价格口径一致，来源见 13.2.6；动态数据以官方核价为准，见 13.5 速查）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">在售配置</th>
+<th style="text-align: left;">参考购置成本</th>
+<th style="text-align: left;">能跑的微调（模型量级 × 方法）</th>
+<th style="text-align: left;">单次微调成本量级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">单张 RTX 4090（24GB）</td>
+<td style="text-align: left;">≈ 0.5–0.8 万</td>
+<td style="text-align: left;">7B 级 QLoRA（小时~天级）</td>
+<td style="text-align: left;">千元级</td>
+</tr>
+<tr>
+<td style="text-align: left;">单张 RTX 5090（32GB）</td>
+<td style="text-align: left;">≈ 2–3 万</td>
+<td style="text-align: left;">7B 级 LoRA / 更大模型 QLoRA</td>
+<td style="text-align: left;">千元级 ~ 数千元级</td>
+</tr>
+<tr>
+<td style="text-align: left;">4× RTX 6000 Ada（192GB）</td>
+<td style="text-align: left;">≈ 21 万</td>
+<td style="text-align: left;">70B 级 QLoRA / LoRA（单节点，天级）</td>
+<td style="text-align: left;">数千元级</td>
+</tr>
+<tr>
+<td style="text-align: left;">单张 AMD MI300X（192GB）</td>
+<td style="text-align: left;">≈ 10 万</td>
+<td style="text-align: left;">70B 级 LoRA（未量化全量加载）</td>
+<td style="text-align: left;">数千元级</td>
+</tr>
+<tr>
+<td style="text-align: left;">华为 Atlas 800（昇腾 910C）</td>
+<td style="text-align: left;">≈ 120–140 万</td>
+<td style="text-align: left;">信创训推一体；政企合规微调</td>
+<td style="text-align: left;">数千元 ~ 数万元</td>
+</tr>
+<tr>
+<td style="text-align: left;">B300 8 卡整机（仅参照，禁运不可得）</td>
+<td style="text-align: left;">≈ 700 万起</td>
+<td style="text-align: left;">全参 SFT</td>
+<td style="text-align: left;">数万元 ~ 数十万元</td>
+</tr>
+</tbody>
+</table>
+<p><strong>单次微调成本怎么算（示意演算，非报价）。</strong> 费用 = <strong>人力 + 折旧 + 电费</strong>，大头在人力：</p>
+<ul>
+<li><strong>人力</strong>：数据准备 + 训练盯守 + 评测对照，1–2 人天起——这是"千元级"的主因；</li>
+<li><strong>折旧</strong>：购置成本 ÷ 36 个月 × 占用天数——如 21 万的 4×6000 Ada 跑一次 2 天 ≈ 400 元；</li>
+<li><strong>电费</strong>：单卡约 300W × 时长 × 电价——2 天 4 卡约几十元，可忽略。</li>
+</ul>
+<blockquote>
+<p><strong>示例：</strong> 4× RTX 6000 Ada 微调 70B（LoRA，单节点 2 天）≈ 人力数千元 + 折旧约 400 元 + 电费几十元 ≈ <strong>数千元级</strong>。同一台机平时跑推理（13.2.6 均衡档）、需要时切微调，是政企常见做法——<strong>硬件是买来"既跑推理也跑微调"的，不是为一次微调单买的</strong>。</p>
+<p><strong>教材落点与决策口诀（教材提炼，信息截至 2026-08，价格动态、容量规划示例，非无条件默认）：</strong> 企业微调的默认路径是 <strong>"量化基座 + LoRA/QLoRA"</strong>：7B 级用单卡（4090 / 5090），70B 级用 4×6000 Ada 或 MI300X 单节点即可；<strong>全参 SFT 主要出现在上游厂商/专项后训练，企业交付一般不采用</strong>。决策先问 <strong>"LoRA 够不够"</strong>、再问"要不要全参"——LoRA 是"千元~数千元级"的事，全参 SFT 是"数万~数十万元级"的事，差一个数量级；<strong>硬件采购额（如 4×6000 Ada ≈21 万）远高于一次 LoRA 微调（数千元），所以不是"为微调买硬件"，而是"买来既跑推理也跑微调"</strong>。任何容量结论都必须<strong>列全条件再下判断</strong>：模型规模 + 精度/量化 + 上下文长度 + 并发/QPS + 延迟 SLA + KV cache + 冗余 + 推理引擎 + 任务质量门槛；落地前以 LLaMA-Factory/框架的显存实测与官方模型卡为准。</p>
+</blockquote>
+<hr />
+<h3 id="1334">13.3.4 一次微调的典型流程<a class="headerlink" href="#1334" title="Permanent link">&para;</a></h3>
+<p>企业微调通常走一条标准流程（教材提炼，各环节工具与事实有官方来源）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">步骤</th>
+<th style="text-align: left;">做法</th>
+<th style="text-align: left;">工具/框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>0. 数据治理 Gate</strong></td>
+<td style="text-align: left;">进微调前的第一关：授权 / 隐私脱敏 / 版权 / 去重 / 血缘与版本 / 删除可达 / 泄漏检查（见下文"数据治理 Gate"）</td>
+<td style="text-align: left;">内部数据管道</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1. 数据准备</strong></td>
+<td style="text-align: left;">领域语料清洗、构造"指令-回答"、划分训练/验证/留出集；企业常从 RAG 阶段沉淀的问答对直接复用</td>
+<td style="text-align: left;">内部数据管道 / LLaMA-Factory 数据格式</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. LoRA 训练</strong></td>
+<td style="text-align: left;">加载量化基座 + LoRA 增量，按量级单节点或单卡跑；MoE 注意 expert 路由与 LoRA 作用层</td>
+<td style="text-align: left;"><strong>LLaMA-Factory</strong>（统一微调框架，<a href="https://docs.vllm.ai/projects/ascend/en/v0.11.0/community/user_stories/llamafactory.html">昇腾生态已有社区验证</a>）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. 合并 / 导出</strong></td>
+<td style="text-align: left;">两条路径二选一：<strong>（a）合并回基座 → 重新量化编译</strong>（经典路径，推理引擎统一）；<strong>（b）adapter 独立部署</strong>（推理引擎原生支持多 adapter 动态挂载，无需合并与重量化，切换/回滚更快）</td>
+<td style="text-align: left;">LLaMA-Factory 合并导出；vLLM LoRA 模块等</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. 量化编译</strong></td>
+<td style="text-align: left;">若走合并路径，自训权重转 FP8/NVFP4 再上生产；注意 FP8 KV Cache 精度验证</td>
+<td style="text-align: left;">NVIDIA ModelOpt 等</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. 评测</strong></td>
+<td style="text-align: left;"><strong>基准对照</strong>：固定评测集（业务指标 + 通用能力）——<strong>微调前后、量化前后、与基线 RAG/提示词方案</strong>三组对比，确认没有整体退化</td>
+<td style="text-align: left;">内部评测框架</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>6. 灰度替换</strong></td>
+<td style="text-align: left;">新模型先灰度替换旧模型，守卫 SLA 与回滚预案（回滚 = 切回旧权重 / 旧 adapter）</td>
+<td style="text-align: left;">vLLM / SGLang + 网关灰度</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>微调的工程纪律（呼应第 7 章四条工程纪律）：</strong> 1. 走<strong>合并路径</strong>时，LoRA 合并后权重变了，推理引擎侧需<strong>重新量化/编译再上生产</strong>；走 <strong>adapter 独立部署路径</strong>则无需合并重量化，但需确认引擎对多 adapter 的支持；2. 上线前必须做<strong>基准对比评测</strong>（微调后模型不能整体退化）；3. <strong>保留可回滚的旧版本</strong>（权重或 adapter）。微调是系统性改动，做错一次代价高于 RAG。</p>
+<p><strong>衔接 13.4：</strong> 微调完把新模型放进生产，就是"模型切换"——这里的灰度与回滚纪律，到 13.4 的"公网 → 本地"切换时原样沿用（再加上接口与行为层面的适配回归）。</p>
+</div>
+<p><pre class="mermaid"><code>flowchart TB
+    G["0. 数据治理 Gate&lt;br/&gt;授权 / 脱敏 / 版权 / 去重 / 泄漏检查"]
+    D["1. 数据准备&lt;br/&gt;训练 / 验证 / 留出"]
+    T["2. LoRA 训练&lt;br/&gt;量化基座 + 低秩增量"]
+    M{"3. 合并 or adapter？"}
+    MG["合并回基座&lt;br/&gt;→ 重新量化编译"]
+    AD["adapter 独立部署&lt;br/&gt;引擎动态挂载，切换 / 回滚更快"]
+    EV["4. 评测对照&lt;br/&gt;微调前后 + 量化前后 + 基线"]
+    GR["5. 灰度替换&lt;br/&gt;回滚 = 切回旧权重 / 旧 adapter"]
+    G --&gt; D --&gt; T --&gt; M
+    M -- 合并 --&gt; MG --&gt; EV
+    M -- 独立 --&gt; AD --&gt; EV
+    EV --&gt; GR
+    style G fill:#fdecea,stroke:#a34a3a
+    style T fill:#dbe4f0,stroke:#3949ab
+    style M fill:#3949ab,color:#fff,stroke:#1a237e
+    style MG fill:#f5ece0,stroke:#a8895f
+    style AD fill:#e4efe4,stroke:#5b7a5b
+    style EV fill:#e4efe4,stroke:#5b7a5b
+    style GR fill:#dbe4f0,stroke:#3949ab</code></pre>
+<em>图 13-3：一次微调的七步流程——第 3 步在"合并回基座"与"adapter 独立部署"间分叉</em></p>
+<p><strong>数据治理 Gate：进微调前的第一关。</strong> 微调会<strong>把数据烙进模型权重</strong>——因此训练数据比评测数据更要用治理 Gate 把关（呼应第 7 章纪律四"数据与评测证据独立、可追溯、可复现"）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">检查项</th>
+<th style="text-align: left;">要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>授权</strong></td>
+<td style="text-align: left;">数据来源有授权记录（客户数据用于训练是否在合同/制度范围内）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>隐私与脱敏</strong></td>
+<td style="text-align: left;">个人信息、敏感信息先脱敏/去标识，训练样本不得带真实个人信息</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>版权</strong></td>
+<td style="text-align: left;">不直接用未授权的第三方内容（书籍、竞品文档）充当训练语料</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>去重</strong></td>
+<td style="text-align: left;">重复样本去重，避免某类样本被过度加权</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>血缘与版本</strong></td>
+<td style="text-align: left;">数据集带来源、版本号、生成脚本与改动记录</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>删除可达</strong></td>
+<td style="text-align: left;">数据应可删除/可剔除（客户撤回授权时能重新训练替换）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>泄漏检查</strong></td>
+<td style="text-align: left;"><strong>评测集 / 盲测集不得进入训练语料</strong>——否则评测是"开卷考试的答案被背过"，数字全部失真</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>反模式：</strong> 把验证集顺手加进训练集"提升效果"——这是微调项目最常见的自我欺骗，等于自己出题自己考（呼应第 7 章纪律一/四）。</p>
+</blockquote>
+<h3 id="1335">13.3.5 红线呼应：数据不出域<a class="headerlink" href="#1335" title="Permanent link">&para;</a></h3>
+<p>私有化部署 + 微调，本质上就是"数据不出域"红线的正向落地：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">红线</th>
+<th style="text-align: left;">本处落地</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>数据不出域</strong></td>
+<td style="text-align: left;">敏感/合规数据只能放在合规域内（本地机房 / 专属云 / 离线一体机 / 混合，见 13.2.1）——模型权重与微调数据不出政务/企业边界，走信创昇腾或合规可得的算力私有化</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>人能判断、AI 能执行</strong></td>
+<td style="text-align: left;">"值不值得微调、评测是否达标、要不要回滚"由人拍板；微调工具（LLaMA-Factory）只是执行的"后手"</td>
+</tr>
+<tr>
+<td style="text-align: left;">（关联）<strong>答案可追溯</strong></td>
+<td style="text-align: left;">若微调后仍需溯源，注意微调不擅长"给出可溯源的新事实"——事实类仍靠 RAG</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>第 16 章实操五收口时，"模拟数据边界 + 本地回填"的工程决策，其背后的"本地回填怎么做"，落到本章就是"私有化形态选型 + 如需再微调 + 切换适配（13.4）"。<strong>数据不出域不是口号，在这里变成"选哪种部署形态、买什么档位的硬件、走不走私有化微调"的具体选择。</strong></p>
+</blockquote>
+<h3 id="1336-qlora-24gb">13.3.6 小模型 QLoRA 实验：24GB 单卡可选动手<a class="headerlink" href="#1336-qlora-24gb" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>目的不是"微调出多强的旗舰模型"，而是<strong>把 13.3.4 的流程在常见硬件上完整走一遍</strong>——重点练训练数据、评测对照、回滚三个动作（呼应 13.3.4 数据治理 Gate）。<strong>不追旗舰。</strong></p>
+</blockquote>
+<ul>
+<li><strong>硬件要求</strong>：24GB 单卡即够（RTX 4090 级；无卡可用托管 GPU 或云端实例）。</li>
+<li><strong>模型与数据</strong>：任选 7B 级开源模型（如 Qwen 系 / GLM 系小档，见 13.5 速查）；用自己构造的 <strong>200–500 条"指令-回答"</strong>（如"把政策问题改写成标准三段式答复"），按 8:1:1 划训练/验证/留出。</li>
+<li><strong>执行</strong>：用 LLaMA-Factory 跑 QLoRA（4-bit 基座 + LoRA），训练 1–2 个 epoch，记录显存占用与训练时长——<strong>观察"显存 &gt; 纯推理、远小于全参"（对照 13.3.3）</strong>。</li>
+<li><strong>评测对照</strong>：同一份固定评测集，对比<strong>微调前 / 微调后</strong>的输出（格式是否符合预期、通用能力是否退化）——这是 13.3.4 步骤 5 的最小版。</li>
+<li><strong>回滚</strong>：训练前保留原权重（或只保留 adapter 增量），证明"删掉 adapter 就能回到原模型"——体会"微调可回滚"的安全线。</li>
+<li><strong>进阶衔接（可选）</strong>：把微调后的模型当作"本地回填"候选，按 13.4 跑一次切换基准回归（同 Prompt 双模型对比），体会"换了模型要重新验收"。</li>
+<li><strong>自检（DoD）</strong>：1. 训练数据过了数据治理 Gate（至少隐私与泄漏检查）；2. 有微调前后对比记录；3. 能演示回滚；4. 能说出"这次微调对了什么、没对什么、值不值得上生产"。</li>
+</ul>
+<hr />
+<h2 id="134">13.4 模型切换适配：从公网验证到本地回填<a class="headerlink" href="#134" title="Permanent link">&para;</a></h2>
+<p>第 8、10、12 章的三个 Demo（以及<strong>实操四B</strong> 的多工具协同 Agent）都是基于<strong>公网模型 API</strong>（课堂完全虚构 / 脱敏教学数据）验证成立的。当真实数据不能出域时，模型切到<strong>本地部署 / 微调后的模型</strong>（13.2 形态与算力、13.3 微调方法）；实操四B 真实部署时，<strong>每个工具的数据源、对话状态与人工审核记录都必须留在批准安全域内</strong>，不因"工具多"而放松数据域。问题是：<strong>之前验证过的功能，切换之后是否还成立？</strong></p>
+<p>答案是：<strong>功能会漂移，切换必须做适配与回归，而不是换一个 base_url 就完事。</strong> 三个 Demo 的验收口径——A 分类准确率 + 转人工率、B 双指标（答案准确率 + 来源可追溯） + 库外拒答、C 路由正确率 + 敏感件零漏判——在切换后必须<strong>重新验证成立</strong>，才允许宣告"本地回填完成"（这个结论会成为 14.5 切换 Gate 与 15/16 章"公网验证 → 本地回填"证据的核心）。</p>
+<h3 id="1341">13.4.1 为什么必须适配：三个层面<a class="headerlink" href="#1341" title="Permanent link">&para;</a></h3>
+<p><strong>接口层。</strong> 本地推理引擎（vLLM、MindIE 等）通常提供 OpenAI 兼容端点（<a href="https://docs.vllm.ai/en/v0.22.0/serving/online_serving/">vLLM 官方文档</a>），应用层可以只改 <code>base_url</code> 就"看起来能跑"——但隐藏的差异常在别处：
+- <strong>请求超时与重试</strong>：本地并发池有限，429 / 超时行为不同于公网 API；
+- <strong>参数通道</strong>：temperature / max_tokens / top_p 的语义与上限；
+- <strong>并发与限流</strong>：本地服务的 RPM / TPM 由部署容量决定（<a href="https://github.com/XidaoApi/llm-provider-migration-checklist">社区实践：供应商切换检查清单</a>）。</p>
+<blockquote>
+<p>如果引擎不提供兼容层、或走的是自定义协议（如昇腾 MindIE 的某些原生接口），就要<strong>自建 provider 适配层</strong>——统一"模型无关"的调用接口，这本身是 14.9 的工程回注候选（一次适配，换模型不再改业务代码）。</p>
+<p><strong>西岭例：</strong> 课堂里 Streamlit + DeepSeek SDK 切到本地 vLLM 端点，通常改 base_url 即可跑通，但"跑通"只是起点——真正的适配在下面两层。</p>
+</blockquote>
+<p><strong>行为层。</strong> 不同模型对同样的 Prompt、同样的输出要求，表现出不同的行为：
+- <strong>指令遵循与 Prompt 兼容性</strong>：长 system prompt、few-shot 示例在不同模型上的效果不一样；公网模型上"压得住"的提示词，本地或微调模型可能纪律变弱；
+- <strong>输出格式稳定性</strong>：JSON / 结构化输出是 AI 落地的硬依赖——不同模型的 JSON schema 遵循能力差异很大，解析失败率要单独测，而不是只看"内容对不对"；
+- <strong>工具调用（function calling）</strong>：schema 兼容性、<code>thinking</code> 内容是否要回传（11.6.2 的 DeepSeek reasoning_content 案例）、多轮工具调用的消息历史格式——这些在换模型后最容易悄悄坏掉；
+- <strong>采样与上下文</strong>：temperature 的作用范围、tokenizer 不同导致的 max_tokens 换算与上下文长度预算变化（也会影响 9 章分块参数）。</p>
+<p><strong>质量层。</strong> 行为之外还有质量漂移：
+- <strong>量化漂移</strong>：本地模型常走 FP8 / NVFP4 / INT4（13.3.4 第 4 步量化编译）。FP8 通常损失很小，NVFP4 更明显，INT4 必须按评测定档——量化后的输出质量必须与公网基线在同一基准上对照；
+- <strong>embedding 更换（场景 B）</strong>：公网 embedding 换成本地 BGE-M3，向量维度、相似度分布、top-K 阈值都变了——<strong>必须重建索引</strong>，并重新回归"检索命中 + 库外拒答"；
+- <strong>微调模型的行为漂移</strong>：微调（即使只是 LoRA）会改变输出风格与话术，甚至轻微改变分类边界；合并部署 vs adapter 独立部署（13.3.4）在推理时表现也可能有差异。</p>
+<h3 id="1342">13.4.2 适配五步：从接口抽象到灰度回滚<a class="headerlink" href="#1342" title="Permanent link">&para;</a></h3>
+<p><pre class="mermaid"><code>flowchart TB
+    S1["1. 接口抽象与参数基线"]
+    S2["2. 行为回归（冻结切换基准集）"]
+    S3["3. 检索重建与 embedding 回归（场景 B）"]
+    S4["4. 量化与精度对照"]
+    S5["5. 灰度双轨 → 正式切换"]
+    RO["回滚&lt;br/&gt;切回旧权重 / adapter / 索引"]
+    S1 --&gt; S2 --&gt; S3 --&gt; S4 --&gt; S5
+    S5 -. 观察期退化 .-&gt; RO
+    RO -. 修复后重走 2–5 .-&gt; S2
+    style S1 fill:#dbe4f0,stroke:#3949ab
+    style S2 fill:#dbe4f0,stroke:#3949ab
+    style S3 fill:#e4efe4,stroke:#5b7a5b
+    style S4 fill:#f5ece0,stroke:#a8895f
+    style S5 fill:#3949ab,color:#fff,stroke:#1a237e
+    style RO fill:#fdecea,stroke:#a34a3a</code></pre>
+<em>图 13-4：模型切换适配五步——顺序不跳、退化可回退（虚线为失败回退路径）</em></p>
+<p><strong>第 1 步 · 接口抽象与参数基线。</strong> 用 OpenAI 兼容 API 作切换抽象层（或自建 provider 适配层）；记录两套参数基线（temperature / max_tokens / 超时 / 重试）的差异并统一到业务配置。为什么：接口通了只是"能调通"，参数语义不同会让同一套业务配置在新模型上行为漂移。西岭例：本地端点的重试与退避策略应沿用 7 章纪律，避免"切了模型后开始无限重试"。验收证据：同一请求在两套端点上的参数对照表。</p>
+<p><strong>第 2 步 · 行为回归（冻结"切换基准集"）。</strong> 切换前冻结一份<strong>切换基准集</strong>（与第 7 章纪律四一致：评测证据独立、可追溯、可复现），切换后同一批样本重测：先测<strong>格式与工具</strong>（输出格式符合率、JSON 解析成功率、工具调用成功率），再测<strong>业务指标</strong>（分类准确率、RAG 双指标与拒答、路由正确率与零漏判）。为什么先测格式后测业务：格式坏了，业务指标无从谈起。西岭例：A 场景 25 条盲测样本 + 6/6 全对口径在切换后重跑。验收证据：同一基准集 × 两个模型的对比表（含样本环境标注）。</p>
+<p><strong>第 3 步 · 检索重建与 embedding 回归（场景 B）。</strong> 换 embedding 后<strong>重建索引</strong>（解析→分块→向量化→入库全链路重跑，9 章），并回归：检索命中率、双指标、<strong>库外拒答</strong>——库外问题是最容易在"换模型/换 embedding"时退化的（旧阈值在新向量空间里可能放行）。西岭例：B 场景政策库重建后，抽查 3 条库内 + 2 条库外。验收证据：重建记录 + 检索/拒答回归报告。</p>
+<p><strong>第 4 步 · 量化与精度对照。</strong> FP8 / NVFP4 / INT4 在同一基准集上对照公网基线；<strong>低于验收线时按顺序调整</strong>：先调 Prompt → 再调阈值 / top-K → 换更高量化档 → 换更大底座 → 最后才考虑微调（13.3.1 判断清单）。为什么量化对照单独列一步：量化是"看不见的精度损失"，不对照等于赌。西岭例：A 场景 NVFP4 下准确率跌破 95% → 升 FP8 复测。验收证据：量化档 × 指标对照表。</p>
+<p><strong>第 5 步 · 灰度双轨 → 正式切换 → 回滚。</strong> 新旧并行或<strong>影子流量</strong>对比线上指标（<a href="https://futureagi.com/blog/llm-eval-shadow-traffic-canary-2026/">社区实践：影子流量与金丝雀评估</a>），观察转人工率、拒答率、类别分布、延迟、成本；观察期通过后正式切换；<strong>回滚 = 切回旧权重 / 旧 adapter / 旧索引</strong>。为什么必须双轨：基准集回归覆盖不了线上分布，线上观察是最后一关。西岭例：C 场景敏感件转人工率在观察期不变，才切全量。验收证据：观察期指标记录 + 回滚预案演练记录。</p>
+<h3 id="1343">13.4.3 三场景适配对照<a class="headerlink" href="#1343" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>切换前已验证（公网）</th>
+<th>切换后必验（本地/微调）</th>
+<th>适配动作</th>
+<th>常见坑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A 诉求分类</strong></td>
+<td>分类准确率、转人工率、演示级声明</td>
+<td>同口径重跑（同一盲测集）</td>
+<td>Prompt 重写、温度/阈值参数基线、量化档选择</td>
+<td>只改 base_url 不看格式漂移；量化后不对照</td>
+</tr>
+<tr>
+<td><strong>B 政策问答 RAG</strong></td>
+<td>双指标、库外拒答、建索引抽查</td>
+<td>双指标 + 库外拒答 + 检索命中</td>
+<td><strong>换 embedding → 重建索引</strong>、top-K/阈值回归、分块长度（tokenizer 不同）</td>
+<td>只换 embedding 不重建索引；拒答回归漏测</td>
+</tr>
+<tr>
+<td><strong>C 工单分级路由</strong></td>
+<td>路由正确率、敏感件零漏判、HITL</td>
+<td>路由正确率 + 零漏判 + 工具调用</td>
+<td>function calling schema、thinking 回传、HITL 恢复路径</td>
+<td>工具调用 schema 不兼容；多轮消息历史格式变化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1344-gate">13.4.4 决策依据与切换 Gate<a class="headerlink" href="#1344-gate" title="Permanent link">&para;</a></h3>
+<p><strong>何时必须切 / 何时可缓：</strong> 数据不能出域的政务红线场景 → <strong>必切</strong>（红线无豁免）；数据已脱敏且经审批可在公网使用的模拟/公开场景 → 可暂缓切换（对应课内模拟数据的边界，见 13.2 六类口径与 8.1 实操侧说明）。</p>
+<p><strong>三种切换路径的适配深度（决定"怎么切"）：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">切法</th>
+<th style="text-align: left;">适配工作量</th>
+<th style="text-align: left;">行为差异</th>
+<th style="text-align: left;">适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">换基座模型（不经微调）</td>
+<td style="text-align: left;">最轻</td>
+<td style="text-align: left;">最大（指令遵循、格式、工具调用都要重验）</td>
+<td style="text-align: left;">本地有更合适的底座时</td>
+</tr>
+<tr>
+<td style="text-align: left;">同基座只量化</td>
+<td style="text-align: left;">轻</td>
+<td style="text-align: left;">主要是质量差异（量化漂移）</td>
+<td style="text-align: left;">同底座换量化档</td>
+</tr>
+<tr>
+<td style="text-align: left;">同基座微调（LoRA）</td>
+<td style="text-align: left;">较重</td>
+<td style="text-align: left;">最可控（行为按需固化）</td>
+<td style="text-align: left;">需固定格式/话术，但要过 Data Gate 与回归（13.3.4 / 13.3.1）</td>
+</tr>
+</tbody>
+</table>
+<p>决策顺序：<strong>先试最轻的切法，不过验收再升级。</strong></p>
+<p><strong>权衡维度（决策时逐项打分，而不是只看"合规"一票）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>公网 API</th>
+<th>本地部署/微调</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据安全</td>
+<td>出域（需审批/脱敏）</td>
+<td>不出域（合规默认）</td>
+</tr>
+<tr>
+<td>成本结构</td>
+<td>按量付费，无首期硬件投入</td>
+<td>硬件/折旧 + 电费，长期边际低</td>
+</tr>
+<tr>
+<td>延迟</td>
+<td>网络往返，受供应商波动</td>
+<td>内网低延迟，但受本地容量限制</td>
+</tr>
+<tr>
+<td>功能</td>
+<td>模型能力强、更新快</td>
+<td>依赖所选底座与量化/微调质量</td>
+</tr>
+<tr>
+<td>运维</td>
+<td>供应商承担</td>
+<td>客户/FDE 自运维（14.8 交接）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>切换 Gate 五项（全部通过才"本地回填完成"）：</strong>
+- [ ] 切换基准集回归全过（格式 + 业务指标，含输出格式/工具调用专项）；
+- [ ] B 场景检索重建 + 库外拒答回归通过；
+- [ ] 量化对照达标（不低于公网基线且满足验收线）；
+- [ ] 灰度双轨观察期关键指标无回退（转人工率、拒答率、类别分布、延迟、成本）；
+- [ ] 回滚预案就绪（旧权重 / adapter / 索引版本可一键恢复）。</p>
+<p><strong>联动纪律：</strong> 切换即"六类版本"中的<strong>模型版本变更</strong>——代码、模型/权重、adapter、Prompt、配置、数据/索引全部记录版本（14.7 联动回滚）；<strong>切换必须通知 Echo</strong> 同步价值口径与成本（15.2.2），并纳入 14.5 Gate 与 16 章的"公网验证 → 本地回填"证据链。</p>
+<hr />
+<h2 id="135">13.5 动态速查：模型与硬件<a class="headerlink" href="#135" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>本节是<strong>动态速查</strong>，不是主线必学——正文需要时知道"去哪查"即可。所有条目信息截至 <strong>2026 年 8 月</strong>，均标注来源；<strong>型号、价格、配置会持续变化，落地前请以各厂商官方资料复核。</strong> 本表由编写组随版本维护。</p>
+<p><strong>来源纪律（教材要求）：</strong> 速查条目的型号、参数与许可证<strong>必须</strong>以厂商官方页（模型卡 / 官方文档 / 开源仓库）为准，媒体与聚合站只作线索。本表来源已全部换为官方页；"信息截至 2026-08"标注不替代发布前对官方最新页的复核。</p>
+</blockquote>
+<h3 id="1351">13.5.1 模型速查<a class="headerlink" href="#1351" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>系列</th>
+<th>代表型号</th>
+<th>规格（官方口径）</th>
+<th>许可证 / 本地化</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DeepSeek</strong></td>
+<td>V4</td>
+<td>1.6T MoE、1M 上下文（V4 系列其他分档以官方发布为准）</td>
+<td>开源、可本地</td>
+<td><a href="https://api-docs.deepseek.com/news/news260424/">DeepSeek API Docs（官方 · V4 Preview Release）</a></td>
+</tr>
+<tr>
+<td>（同上）</td>
+<td><strong>V4 Flash</strong></td>
+<td>V4 系列分档；量化（INT4 / FP8 / W4A16）后消费级到专业卡可本地跑（13.2.6 核算口径）</td>
+<td>开源、可本地</td>
+<td>官方 API 报价 2026-09：输入命中 0.05–0.10 / 未命中 1.5–3.0 / 输出 4.5–9.0 元每百万 tokens</td>
+</tr>
+<tr>
+<td><strong>Kimi</strong></td>
+<td>K3</td>
+<td>2.8T MoE（首个该规模开源）</td>
+<td>开源（协议以官方发布为准）</td>
+<td><a href="https://github.com/MoonshotAI/Kimi-K3">GitHub · MoonshotAI/Kimi-K3（官方开源仓库）</a></td>
+</tr>
+<tr>
+<td><strong>GLM</strong></td>
+<td>GLM-4.7 / GLM-5.2</td>
+<td>参数以官方发布为准</td>
+<td>开源 + API</td>
+<td><a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-4.7">智谱官方文档</a></td>
+</tr>
+<tr>
+<td><strong>Qwen</strong></td>
+<td>Qwen3.8-2.4T-A95B</td>
+<td>2.4T MoE、激活 95B、原生 256K</td>
+<td>27B 档 Apache 2.0；<strong>旗舰 Max 有许可限制</strong></td>
+<td><a href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B">HuggingFace 官方模型卡 Qwen3.8-2.4T-A95B</a></td>
+</tr>
+<tr>
+<td><strong>BAAI</strong></td>
+<td>BGE-M3</td>
+<td>多语言 embedding（第 9/10 章本地向量库默认）</td>
+<td>开源（MIT）、可自建</td>
+<td><a href="https://huggingface.co/BAAI/bge-m3">HuggingFace 官方模型卡 BAAI/bge-m3</a></td>
+</tr>
+<tr>
+<td><strong>Claude</strong></td>
+<td>Opus 5 / Sonnet 5</td>
+<td>闭源前沿档位</td>
+<td>仅 API，不可本地（Fable/Haiku 档未见可靠公开来源，未列）</td>
+<td><a href="https://support.claude.com/en/articles/12138966-release-notes">Anthropic 官方 Release Notes</a></td>
+</tr>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>GPT-5.6 系列</td>
+<td>闭源前沿档位</td>
+<td>仅 API</td>
+<td><a href="https://help.openai.com/en/articles/9624314-model-release-notes">OpenAI 官方 Model Release Notes</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1352">13.5.2 硬件速查<a class="headerlink" href="#1352" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>关键规格（以官方为准）</th>
+<th>用途</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NVIDIA RTX 4090</strong></td>
+<td>24GB GDDR6X，消费旗舰</td>
+<td>7B 级 QLoRA 实验 / 轻量本地推理（13.2.6 极致性价比档、13.3.3）</td>
+<td><a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/">NVIDIA 官方 40 系列页</a></td>
+</tr>
+<tr>
+<td><strong>NVIDIA RTX 5090</strong></td>
+<td>32GB GDDR7，消费旗舰</td>
+<td>4-bit 量化流畅跑大模型 / 7B 级 LoRA（13.2.6 消费甜点档、13.3.3）</td>
+<td><a href="https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/">NVIDIA 官方 50 系列页</a></td>
+</tr>
+<tr>
+<td><strong>NVIDIA RTX 6000 Ada</strong></td>
+<td>单卡 48GB GDDR6，专业卡</td>
+<td>4 卡张量并行（TP=4）共 192GB；70B 级 LoRA/QLoRA 与中频推理（13.2.6 均衡档、13.3.3）</td>
+<td><a href="https://www.nvidia.com/en-us/products/workstations/rtx-6000/">NVIDIA 官方产品页</a></td>
+</tr>
+<tr>
+<td><strong>AMD Instinct MI300X</strong></td>
+<td>单卡 192GB HBM3</td>
+<td>未量化全量加载大模型；高吞吐"省钱替代 API"（13.2.6 企业档、13.3.3）</td>
+<td><a href="https://instinct.docs.amd.com/projects/system-acceptance/en/latest/_sources/gpus/mi300x.md">AMD 官方文档</a></td>
+</tr>
+<tr>
+<td><strong>华为 Atlas 800</strong>（昇腾 910C）</td>
+<td>昇腾 910C 训推一体服务器</td>
+<td>信创 / 数据不出域默认，训推一体（13.2.2、13.2.6 国产化档）</td>
+<td><a href="https://www.hiascend.com/">华为昇腾官网</a></td>
+</tr>
+<tr>
+<td><strong>NVIDIA B300</strong>（Blackwell Ultra）</td>
+<td>单卡 <strong>288GB HBM3e</strong>；其余规格（带宽、CUDA 版本等）以 NVIDIA 官方页为准</td>
+<td>大规模/多卡集群（仅参照，禁运不可得）</td>
+<td><a href="https://docs.nvidia.com/dgx/dgxb300-user-guide/introduction-to-dgxb300.html">NVIDIA 官方 DGX B300 文档</a></td>
+</tr>
+<tr>
+<td><strong>昇腾 910C</strong></td>
+<td>当前国产算力主力；大湾区万卡集群 <strong>11,520 张</strong>已上线</td>
+<td>信创 / 数据不出域默认</td>
+<td><a href="http://gdstc.gd.gov.cn/kjzx_n/gdkj_n/content/mpost_4924300.html">广东省科技厅</a>、<a href="http://m.chinaaet.com/article/3000178874">中国电子报</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1353">13.5.3 部署配置示例<a class="headerlink" href="#1353" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>说明：</strong> 🔶教材提炼——容量规划示例，非在售报价；具体在售配置与价格见 13.2.6，落地以厂商部署文档核验。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>模型档位</th>
+<th>权重体积估算（NVFP4 约每 1T 参数 0.5TB）</th>
+<th>示例配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.8T 级（对标 Kimi K3）</td>
+<td>≈1.4TB</td>
+<td>单节点 8 卡（288GB 级）参考</td>
+</tr>
+<tr>
+<td>1.6T 级（对标 DeepSeek V4）</td>
+<td>≈0.8TB</td>
+<td>单节点 8 卡参考；生产级吞吐再评估多节点</td>
+</tr>
+<tr>
+<td>百 B 级</td>
+<td>≈0.1–0.3TB</td>
+<td>单卡或双卡即可起实验</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">反模式与红线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>事实类问题也去微调。</strong> RAG 能解决的知识/事实问题，微调不擅长也不该上——违背"从最简单开始"（对照 13.3.1）。</li>
+<li><strong>私有化只想到"本地机房"。</strong> 专属云（隔离 VPC）、离线一体机、混合部署都是合法形态，选型看监管、网络与运维（对照 13.2.1）。</li>
+<li><strong>显存只算权重。</strong> 推理还有 KV cache/激活/缓冲/并发余量，微调还有梯度与优化器——"显存≈权重"只是粗略下界（对照 13.3.3）。</li>
+<li><strong>"LoRA 显存接近推理"的错觉。</strong> LoRA 训练仍有激活、梯度与优化器开销，显存介于推理与全参之间（对照 13.3.3）。</li>
+<li><strong>adapter 一律合并重量化。</strong> adapter 可独立部署（引擎动态挂载），合并只是其中一条路径（对照 13.3.4 第 3 步）。</li>
+<li><strong>没有评测集就微调。</strong> 无法判断是否退化，属系统性盲改（对照 13.3.4 纪律、数据治理 Gate 泄漏检查）。</li>
+<li><strong>拿消费级显卡当企业交付。</strong> 4090 只够 7B 级 QLoRA 实验，不是政企交付形态（对照 13.2.3）。</li>
+<li><strong>全参 SFT 当作默认。</strong> 绝大多数政企微调 = LoRA/QLoRA；全参是少数，成本量级差一个数量级（对照 13.3.2/13.3.3）。</li>
+<li><strong>忽略量化与回滚。</strong> 合并路径必须重新量化编译、留可回滚旧版本（对照 13.3.4）。</li>
+<li><strong>绕开数据治理 Gate。</strong> 训练数据授权不清、含隐私或评测集——微调会把这些问题烙进权重（对照 13.3.4）。</li>
+<li><strong>绕开数据不出域。</strong> 敏感数据必须私有化部署，微调数据也不出域（对照 13.3.5）。</li>
+<li><strong>把"切模型"当"换 base_url"。</strong> 公网 → 本地切换要做接口 / 行为 / 质量三层适配与回归，三个 Demo 原验收口径必须重验（对照 13.4）。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>红线本处落地：数据不出域。</strong> 本章把"私有化部署（形态选型）+ 是否微调（Data Gate）"讲成具体工程决策，正是导读页第一条红线在"能训练/能改造模型"层面的兑现——敏感场景下，连"微调"也要在不违反合规边界的环境内完成。</p>
+</div>
+<hr />
+<h2 id="_3">本章小结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>最后一公里</strong>：先提示词 + RAG，评测卡在行为/格式类节点才谈微调；RAG 管事实、微调管行为是<strong>默认分工、非绝对规律</strong>，互补非替代。</li>
+<li><strong>私有化形态</strong>：本地机房 / 一体机、专属云（隔离 VPC）、离线一体机、混合部署；算力路线按合规可得性分层——信创昇腾（默认）、性价比 NVIDIA、吞吐 MI300X，B300 仅参照（禁运）。</li>
+<li><strong>显存口径</strong>：推理 = 权重 + KV cache + 激活 + 缓冲 + 并发余量；全参再加梯度与优化器（≈4~6× 权重）；<strong>LoRA 介于两者之间，不是"接近推理"</strong>。</li>
+<li><strong>三种方法</strong>：LoRA（千元~数千元级）/ QLoRA（4-bit+LoRA）/ 全参 SFT（数万~数十万元级，少数）；企业默认 LoRA。</li>
+<li><strong>一次流程</strong>：数据治理 Gate → 数据 → LoRA → 合并或 adapter 独立部署 → 量化编译 → 评测对照 → 灰度替换，配基准对比与回滚。</li>
+<li><strong>数据治理 Gate</strong>：授权 / 脱敏 / 版权 / 去重 / 血缘版本 / 删除 / 泄漏检查（评测集不得进训练）。</li>
+<li><strong>判断清单</strong>：先简单层 / 行为类才微调 / Data Gate / 数据质量 / 固定评测 / 可回滚。</li>
+<li><strong>切换适配（13.4）</strong>：公网 → 本地/微调切换必须过接口 / 行为 / 质量三层适配；冻结切换基准集、量化对照、灰度双轨与回滚，三场景验收口径不变。</li>
+<li><strong>小模型实验（13.3.6）</strong>：7B 级 QLoRA 在 24GB 单卡可跑，重点练数据、评测对照、回滚，不追旗舰。</li>
+<li><strong>红线</strong>：数据不出域 → 私有化部署 + 微调在合规边界内完成；人能判断 AI 能执行 → 拍板在人在。</li>
+</ul>
+<p><strong>动手自检：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清"先 RAG 后微调、微调是最后一公里"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出私有化四种形态并判断"为什么不是只能本地机房"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能区分 LoRA / QLoRA / 全参 SFT，并说出企业默认路径吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出"显存≈权重只是粗略下界、LoRA 不等于接近推理"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能复述一次微调的流程（含数据治理 Gate、adapter 双路径、基准对比）与工程纪律吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用成本量级 + 判断清单回答"要不要微调"吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出公网 → 本地切换的三个适配层面与切换基准集，并知道三场景原验收口径不变吗（13.4）？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> （可选）我能在一个 7B 模型上完成 QLoRA 实验并演示回滚吗？</li>
+</ul>
+<hr />
+<h2 id="_4">练习与思考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 默写 RAG vs 微调的分工（事实性 vs 行为性，并说明"为什么只是默认分工"）；列出三种微调方法及各自硬件/成本量级；默写数据治理 Gate 七项检查；说出公网 → 本地切换的三个适配层面（13.4）。</li>
+<li><strong>进阶：</strong> 某客户要求"报告必须按固定模板输出、每份带文号引用格式"，且数据不能出域——按本章流程说明：先用什么、评测卡在哪、怎样用 LoRA 私有化落地、合并路径与 adapter 路径各适合什么场景、如何量化与回滚；若这是从公网模型切回本地，按 13.4 说明切换基准集怎么准备、先测什么。</li>
+<li><strong>挑战（迁移练习）：</strong> 为一个"本地政务问答 + 强格式要求"的场景做一次技术决策：给出私有化形态选型（本地机房 / 专属云 / 混合）、算力栈（按合规可得性分层选择，见 13.2.2）、是否需要微调（过一遍 13.3.1 判断清单，含 Data Gate）、成本量级，以及如何服务第 16 章收口的"本地回填"；若有条件，用 13.3.6 的小模型实验验证一次"格式行为"是否真的只能靠微调解决。</li>
+</ul>
+<h2 id="_5">延伸阅读<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 16 章 AI FDE 落地：Delta 技术与场景）——本地部署、私有化选型与信创落地扩展。</li>
+<li>见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 13 章 中国云服务商的 FDE 实践图谱）——中国云厂商私有化算力与落地图谱。</li>
+<li>下一章：<strong>本书第 14 章 Delta 生产化 · 工程 Scale：生产落地与客户接管</strong>（把 Demo 接入客户真实环境，完成生产准入、客户接管与工程回注）。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>

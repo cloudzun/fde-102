@@ -1,0 +1,1851 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/">
+      
+      
+        <link rel="prev" href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第1章 FDE 是什么 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-fde" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第1章 FDE 是什么
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 一个结构性矛盾：FDE 为谁而生
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-palantir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 定义与起源：Palantir 怎么回答
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 定义与起源：Palantir 怎么回答">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 一个激进的决定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-palantir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 时间线：从 Palantir 到行业共识
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 三层含义：岗位 · 团队 · 方法论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 三重角色融合：全栈工程师 × 业务顾问 × 产品经理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 FDE ≠ 外包 ≠ 咨询：核心分野是"从卖人力到卖能力"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-ai-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 AI 时代的 FDE 复兴：大模型落地的五大鸿沟
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 经典案例：FDE 到底做了什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.7 经典案例：FDE 到底做了什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例一：一个批次零件被卡住，受影响飞机如何瞬间浮出来？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airbus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例二：Airbus（空中客车）——一个客户的问题，变成一个行业的平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章导学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 一个结构性矛盾：FDE 为谁而生
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-palantir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 定义与起源：Palantir 怎么回答
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 定义与起源：Palantir 怎么回答">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 一个激进的决定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-palantir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 时间线：从 Palantir 到行业共识
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 三层含义：岗位 · 团队 · 方法论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 三重角色融合：全栈工程师 × 业务顾问 × 产品经理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 FDE ≠ 外包 ≠ 咨询：核心分野是"从卖人力到卖能力"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-ai-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 AI 时代的 FDE 复兴：大模型落地的五大鸿沟
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-fde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 经典案例：FDE 到底做了什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.7 经典案例：FDE 到底做了什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例一：一个批次零件被卡住，受影响飞机如何瞬间浮出来？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airbus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例二：Airbus（空中客车）——一个客户的问题，变成一个行业的平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反模式与红线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习与思考
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        延伸阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-fde">第 1 章  FDE 是什么<a class="headerlink" href="#1-fde" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本章定位：</strong> 全书认知第一课——先立住"FDE 到底是谁、为什么它会产生"</p>
+<p><strong>本章产出：</strong> 你能讲清 FDE 是<strong>为哪三重结构性矛盾而生</strong>；说出 FDE 的定义与三层含义（岗位/团队/方法论）；区分 FDE 的三重角色；用"卖人力 vs 卖能力"标准区分 FDE 与外包/咨询；说出 AI 落地五大鸿沟为何指向 FDE。</p>
+<p><strong>建议读者：</strong> 零基础起步者必读。本章不假设任何前置知识。</p>
+<p><strong>本章在全书中的位置：</strong> 第 1 讲"是什么"（what），第 2 讲"为什么成立"（why），第 3 讲"怎么工作"（how）。读完前三章，你将握住全书的认知骨架；从第 4 章 Echo/Delta 与第 6 章实操起，你会亲自动手实践这套方法论。</p>
+</blockquote>
+<hr />
+<h2 id="_1">本章导学<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>学习目标：</strong><ol>
+<li>讲清 FDE 产生于哪三重结构性矛盾；</li>
+<li>说出 FDE 的定义、一句箴言与三层含义（岗位 / 团队 / 方法论）；</li>
+<li>讲清 FDE"三重角色"为何必须融合，并守住"工程师身份是内核"；</li>
+<li>用"从卖人力到卖能力"标准区分 FDE 与外包 / 咨询；</li>
+<li>说出 AI 时代大模型落地的五大鸿沟，并解释它们为什么指向 FDE。</li>
+</ol>
+</li>
+<li><strong>前置知识：</strong> 无。</li>
+<li><strong>章节地图：</strong> 本书教你"怎么练 FDE"。本章是<strong>认知起点（what）</strong>：第 2 章回答"为什么需要它"（why），第 3 章给出"它怎么工作"（how），第 4 章讲由谁（Echo/Delta）执行，第 6 章起动手做。</li>
+</ul>
+<blockquote>
+<p><strong>一句话记住本章：</strong> FDE 是把公司核心平台深度定制部署到客户现场、再把通用能力反哺回平台的角色——它为"标准化够不到、定制做不大、数据出不了域"这三重矛盾而生，本质是从"卖人力"到"卖能力"。</p>
+</blockquote>
+<hr />
+<h2 id="11-fde">1.1 一个结构性矛盾：FDE 为谁而生<a class="headerlink" href="#11-fde" title="Permanent link">&para;</a></h2>
+<p>企业最难得啃的痛点，从来不是"缺个现成软件"，而是——<strong>现成软件永远差那么一点</strong>。更麻烦的是，越是核心业务，这个"差一点"越是绕不开。FDE 就是为了这个普遍困境而生的。它来自三重彼此缠绕的矛盾：</p>
+<p><pre class="mermaid"><code>flowchart LR
+    A["标准化产物（SaaS 病）&lt;br/&gt;高复用 · 低适配&lt;br/&gt;够不到复杂痛点"]
+    B["纯定制开发（外包病）&lt;br/&gt;高适配 · 低复用&lt;br/&gt;无法规模化盈利"]
+    C["核心数据不能出域&lt;br/&gt;现场才是最安全的&lt;br/&gt;处理场所"]
+    D["FDE&lt;br/&gt;平台能力 × 现场定制&lt;br/&gt;× 能力回注"]
+    A --&gt; D
+    B --&gt; D
+    C --&gt; D
+    style A fill:#f5ece0,stroke:#a8895f
+    style B fill:#fdecea,stroke:#d94f4f
+    style C fill:#dbe4f0,stroke:#3949ab
+    style D fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 1-1：FDE 为三重结构性矛盾而生</em></p>
+<ol>
+<li><strong>标准化产物（SaaS 病）</strong>：一套标准软件服务所有客户，复用率 100%，但客户的复杂痛点它够不到——客户必须削足适履去适应软件。<strong>高复用、低适配。</strong></li>
+<li><strong>纯定制开发（外包病）</strong>：完全按客户需求定制，适配度极高，但每个项目从头造轮子、几乎零复用，无法规模化盈利。<strong>高适配、低复用。</strong></li>
+<li><strong>核心数据不能出域</strong>：越是 To B / To G 的核心业务，数据越敏感，往往"不能出政务外网/企业内网"，系统必须私有化部署在客户现场——而现场，正是最需要专业能力、却最没人管的地方。</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>FDE 是这三重矛盾的"同时解法"，不是三选一。</strong> 它既要"标准平台的复用"（保盈利），又要"现场定制的适配"（保效果），还要"就地处理数据"（保合规）。这正是 FDE 与"驻场外包/实施/售后"最本质的区别——<strong>它解决的是一道商业模式与合规的结构性难题，不是"产品没装好"的交付问题。</strong> 搞错了这个起点，后面所有关于 FDE 的理解都会跑偏。</p>
+</div>
+<hr />
+<h2 id="12-palantir">1.2 定义与起源：Palantir 怎么回答<a class="headerlink" href="#12-palantir" title="Permanent link">&para;</a></h2>
+<h3 id="121">1.2.1 一个激进的决定<a class="headerlink" href="#121" title="Permanent link">&para;</a></h3>
+<p>面对上面的结构性矛盾，<strong>Palantir</strong> 做了一个激进的决定：<strong>不是造一个更通用的标准产品，也不是陷入纯定制，而是把工程师——带着公司的核心平台能力——直接派驻到客户现场，做着深度的定制部署。</strong></p>
+<p>这个角色被命名为 <strong>Forward Deployed Engineer</strong>（前沿部署工程师，简称 <strong>FDE</strong>）。</p>
+<blockquote>
+<p>与常见的"驻场开发"不同，FDE 是<strong>带着核心平台去现场</strong>的：在产品底座（数据引擎、通用组件）之上，针对客户特定的业务场景做深度定制、快速拉通、证明价值，再把其中反复出现的通用需求<strong>抽象、反哺回平台</strong>。这套"现场定制 → 平台回注"的闭环，是整个 FDE 模式的命脉。</p>
+<p><strong>一句箴言（Palantir 业界常见概括）：</strong></p>
+<blockquote>
+<p><strong>"FDEs are the glue between our products and our customers."</strong>
+（FDE 是连接"我们的产品"与"我们的客户"之间的胶水。）</p>
+</blockquote>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>归属说明：</strong> 这句话是业界对 Palantir FDE 角色的<strong>概括性描述</strong>，非官方逐字引文。Palantir 官方 FDSE 招聘 JD 的可溯源表述是：<em>"embedding talented engineers directly with our customers to tackle their most pressing challenges head-on"</em>（把有才华的工程师直接派驻到客户身边，正面解决他们最紧迫的挑战）。引用请以官方 JD 口径为准。</p>
+</div>
+<p><strong>"胶水"比喻的关键：</strong> 产品是标准化的，客户需求是按各自现场环境生长的——中间的缝隙、错位、接口，就是 FDE 的战场。FDE 不是坐在办公室写代码的人，也不是站在台上做演示的人，而是出现在客户现场、面对真实混乱的数据、和真实用户一起把系统做到能用的人。</p>
+<blockquote>
+<p><strong>身边的理解——"水电工"比喻：</strong> 装修时设计图有了、材料（产品/模型）也买了，但没有水电工把线路接通、让水流到每个龙头，装修就永远停在图纸上。FDE 做的事情，就是把"AI 的水电"接通到客户真实现场。</p>
+</blockquote>
+<h3 id="122-palantir">1.2.2 时间线：从 Palantir 到行业共识<a class="headerlink" href="#122-palantir" title="Permanent link">&para;</a></h3>
+<p>FDE 不是 Palantir 一家的冷门模式，而是正在成为整个 AI 行业的共识：</p>
+<p><pre class="mermaid"><code>timeline
+    title FDE 的演进
+    2003–2005 : Palantir 早期实践：带核心平台驻场、做深度定制（FDE 模式的业界通常归因）
+    2015 : Airbus 事件 一个客户的问题 → 行业平台 Skywise
+    2020s : 行业验证 航空制造、医疗等验证 FDE 模式
+    2025 : OpenAI 成立 DeployCo 向客户派驻工程师
+    2025 : Anthropic 组建企业服务团队Applied AI / 客户现场工程师</code></pre>
+<em>图 1-2：FDE 从 Palantir 走向 AI 行业共识</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>来源与时效性：</strong> 本图为行业演进示意。Airbus 案例与 Skywise 平台见 <a href="https://www.palantir.com/impact/airbus/">Palantir 官网案例页</a> 与 <a href="https://www.palantir.com/assets/xrfr7uokpv1b/7uEHPTEM0MkKtBFcx2zh63/9d75da5b76439717ac95135b5012479e/Palantir-Airbus-Partnership_Overview.pdf">Palantir–Airbus 合作概述 PDF</a>；OpenAI DeployCo（约 40 亿美元部署单元）、Anthropic 企业服务等属行业快讯级事件（<a href="https://www.36kr.com/p/3806126900191491">36氪报道</a>、<a href="https://tech.yahoo.com/ai/articles/why-big-ai-companies-embedding-153431936.html">行业综述</a>），信息截至 2026 年，引用前请以最新官方新闻为准。本书对 Palantir 财务数据的引用另有专门声明（见第 2 章 2.4）。</p>
+</div>
+<blockquote>
+<p><strong>延伸阅读：</strong> 想读 FDE 完整历史脉络、其三重角色与"工程师是内核"的更充分论证，见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 1 章 FDE 是什么）。Palantir 平台体系（Gotham/Foundry/AIP）与本章关联较弱，见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 3 章 Palantir 的平台与 FDE 体系）。</p>
+</blockquote>
+<hr />
+<h2 id="13">1.3 三层含义：岗位 · 团队 · 方法论<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>FDE 这个词在不同语境下指三种不同层级。理解这三层，是避免误解的前提——它类似 <strong>DevOps</strong>，既是一种岗位，也是一种协作文化，还是一种方法论。</p>
+<p><pre class="mermaid"><code>flowchart TD
+    SUB["FDE 的三层含义"] --&gt; L1["岗位（角色）&lt;br/&gt;一个具体的人驻扎客户现场"]
+    SUB --&gt; L2["团队（组织模式）&lt;br/&gt;一组 FDE 组成作战单元&lt;br/&gt;Echo / Delta / Engineering"]
+    SUB --&gt; L3["方法论（交付范式）&lt;br/&gt;平台+现场定制+能力回注&lt;br/&gt;一套交付方法"]
+    style SUB fill:#3949ab,color:#fff,stroke:#1a237e
+    style L1 fill:#f5ece0,stroke:#a8895f
+    style L2 fill:#dbe4f0,stroke:#3949ab
+    style L3 fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 1-3：FDE 的三层含义——岗位 / 团队 / 方法论</em></p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>是什么</th>
+<th>一句话</th>
+<th>回答的关键问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>岗位</strong></td>
+<td>一种角色定位</td>
+<td>一个具体的人，驻扎客户现场，串联产品与客户</td>
+<td>我做的是不是 FDE 的活？</td>
+</tr>
+<tr>
+<td><strong>团队</strong></td>
+<td>一种组织模式</td>
+<td>一组 FDE 组成"特种作战单元"（Echo / Delta / Engineering 分工）</td>
+<td>我们团队怎么搭？</td>
+</tr>
+<tr>
+<td><strong>方法论</strong></td>
+<td>一种交付范式</td>
+<td>一整套"把非标痛点变成平台能力"的做事方法</td>
+<td>项目该怎么推进？</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>本书的主线安排：</strong> 第 4 章专门展开"团队"这一层——Echo（业务策略）主责判断、Delta（技术执行）主责施工。而"方法论"这一层是全书正文的核心：从第 3 章的交付四阶段，到各章的 SOP 与实操，都是方法论的具体落地。所以"三层含义"不是停留在概念，而是贯穿全书的骨架。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>先分清两个概念再往下：</strong> <strong>1.3 的三层含义，讲的是"FDE 这个词"的三种组织层次</strong>（岗位 / 团队 / 方法论）；<strong>1.4 的三重角色，讲的是"FDE 这个人"要融合的三种专业角色</strong>（工程师 / 业务顾问 / 产品经理）。一个是词的层级，一个是人的能力，别混成一件事。</p>
+</div>
+<hr />
+<h2 id="14">1.4 三重角色融合：全栈工程师 × 业务顾问 × 产品经理<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<p>FDE 不是单一技能的工程师，而是把三种角色"三位一体"地压在一个岗位上，形成最短闭环：</p>
+<p><pre class="mermaid"><code>flowchart LR
+    E["全栈工程师&lt;br/&gt;会写代码、接数据、搭系统"]
+    B["业务顾问&lt;br/&gt;读懂业务、挖出真痛点"]
+    P["产品经理&lt;br/&gt;定义边界、抽象可复用"]
+    FDE["FDE&lt;br/&gt;三位一体 · 最短闭环"]
+    E --&gt; FDE
+    B --&gt; FDE
+    P --&gt; FDE
+    style FDE fill:#3949ab,color:#fff,stroke:#1a237e
+    style E fill:#dbe4f0,stroke:#3949ab
+    style B fill:#f5ece0,stroke:#a8895f
+    style P fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 1-4：FDE 三重角色融合——工程师 × 业务顾问 × 产品经理</em></p>
+<table>
+<thead>
+<tr>
+<th>角色成分</th>
+<th>对应能力</th>
+<th>为什么 FDE 必须有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>全栈工程师</strong></td>
+<td>写代码、接数据、搭系统</td>
+<td>要在客户现场真正"做出来"，而不是只写方案</td>
+</tr>
+<tr>
+<td><strong>业务顾问</strong></td>
+<td>读懂客户业务、挖出真痛点</td>
+<td>客户真实需求往往藏在模糊表达背后</td>
+</tr>
+<tr>
+<td><strong>产品经理</strong></td>
+<td>定义问题边界、把非标抽象成可复用</td>
+<td>让"现场定制"能反哺回平台，驱动飞轮</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>三者的结合带来"最短闭环"。</strong> FDE 一个人/一个小队就能走完"发现问题 → 定义问题 → 做出方案 → 落地验证"的完整闭环，<strong>不需要在售前、实施、交付之间反复交接、反复翻译</strong>——翻译损耗最小。这也是第 2 章"为何 FDE＋平台比传统外包更省"的组织学基础。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>"方法论是形，工程师是神"——三重角色融合 ≠ 让 FDE 变咨询顾问。</strong>
+FDE 能成立，正因为它是一群能写生产级代码的<strong>真工程师</strong>，而不是只会画方案、讲道理的顾问。如果把 FDE 方法论交给不会写代码的角色去落地，它就会退化成 PPT 咨询。FDECore 用一个词点透了 FDE 的引擎：<strong>"人肉反向传播"</strong>——平台的通用能力，像训练模型一样靠一个个种子项目反复喂反馈、逐轮收敛。这套机制能运转的前提，恰恰是现场有一群真刀真枪写代码的工程师。</p>
+<p><strong>需要澄清的一点：</strong> 三位一体是"FDE 团队"的整体能力画像，而非要求每个 FDE 个人都是全能选手。本书按<strong>教材口径</strong>将其落地为前线作战单元的分工：Echo（业务策略）+ Delta（技术执行）+ Engineering（平台保障）——Echo 负责业务顾问维度、Delta 负责工程师执行、Engineering 负责产品抽象与平台保障。详见第 4 章分工。</p>
+</div>
+<hr />
+<h2 id="15-fde">1.5 FDE ≠ 外包 ≠ 咨询：核心分野是"从卖人力到卖能力"<a class="headerlink" href="#15-fde" title="Permanent link">&para;</a></h2>
+<p>这是全章最重要的判断标准。外包、咨询、FDE 都在"帮助客户"，但本质不同：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>驻场外包</th>
+<th>传统咨询</th>
+<th><strong>FDE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>交付物</strong></td>
+<td>客户定制的孤立系统</td>
+<td>建议方案 / 报告</td>
+<td>运行在生产环境的定制化系统集成</td>
+</tr>
+<tr>
+<td><strong>能力/IP 最终归属</strong></td>
+<td>归客户，公司无法复用</td>
+<td>归咨询公司的方法论</td>
+<td><strong>回注到己方平台，越做越强</strong></td>
+</tr>
+<tr>
+<td><strong>对己方意义</strong></td>
+<td>赚人天差价（卖人力）</td>
+<td>赚洞察费（卖洞见）</td>
+<td><strong>完善平台、驱动规模化（卖能力）</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>一句话判断标准：</strong> 判断一个团队干的是不是真 FDE——<strong>问自己：这个项目做完，你们公司是只赚了这一次人天费，还是公司整体能力（可复用平台）增长了？</strong>
+- <strong>卖人力</strong>：每单按人天计价，做完就散，能力不沉淀，边际成本不下降。
+- <strong>卖能力</strong>：前线把经验、通用模块回注进平台，一次投入、长期复用，越做越省。</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>两类读者的落点。</strong> "卖人力 → 卖能力"的判断，对两类团队同样适用：</p>
+<ul>
+<li><strong>乙方 / 独立服务商</strong>：靠能力沉淀向外部客户卖出更高价值、驱动跨客户复用与规模化——"卖能力"即平台资产化、更高毛利。</li>
+<li><strong>甲方内部服务交付团队（如银行总行科技部）</strong>：不做"给业务部门的写码外包"，而是把方法、组件沉淀成<strong>内部可复用的能力中台</strong>，让一次交付复用到多个分行 / 多条业务线、缩短交付周期、证明自身价值（避免被外部采购或收编替代）。</li>
+</ul>
+<p>本书后续章节中的"客户"一词，可相应理解为"外部客户"或"内部被服务的业务部门"。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p><strong>FDE 最危险的地方，是它极易"退化"回外包。</strong> 二者在真实现场几乎肉眼难辨——都是派工程师驻场、都在写贴合客户的代码。差异不在"当下做什么"，而在"<strong>做完之后往哪走</strong>"：是把通用经验抽象、沉淀回平台（FDE），还是写完就留在客户那里（外包）。销售与交付压力（工期紧、急着签单）最容易让 FDE 悄悄退化成外包——<strong>如果连续几个项目下来平台毫无增长、每个新项目仍重复造轮子，那它已经不是 FDE，而是一支昂贵的驻场外包队。</strong> 第 2 章 2.5 会给一份"教材诊断量表"，用 8 条可勾选项帮你辨清。</p>
+</div>
+<blockquote>
+<p><strong>延伸阅读：</strong> "卖人力→卖能力"的经济学模型、能力回注飞轮，见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 2 章 为什么需要 FDE；第 13 章 中国云服务商的 FDE 实践图谱）。</p>
+</blockquote>
+<hr />
+<h2 id="16-ai-fde">1.6 AI 时代的 FDE 复兴：大模型落地的五大鸿沟<a class="headerlink" href="#16-ai-fde" title="Permanent link">&para;</a></h2>
+<p>过去十年，AI 的主要销售方式是"API / 模型授权"——把模型当原材料卖出去。但企业客户真正缺的不是"有没有 AI"，而是"AI 落不落地"。从"有模型"到"业务真正变好"，中间隔着五道鸿沟：</p>
+<p><pre class="mermaid"><code>flowchart TB
+    A["1. 模型 ≠ 产品&lt;br/&gt;有模型 ≠ 有解决业务问题的产品"]
+    B["2. 数据合规&lt;br/&gt;企业核心数据不能出域"]
+    C["3. 微调与工程&lt;br/&gt;RAG/Prompt 需深度结合专有知识"]
+    D["4. 系统集成&lt;br/&gt;需嵌入已有 CRM/ERP 才有闭环"]
+    E["5. 搁板软件&lt;br/&gt;没人推动变革，好系统也被束之高阁"]
+    M["有模型能力"] --&gt; A --&gt; B --&gt; C --&gt; D --&gt; E --&gt; R["业务真正变好"]
+    style M fill:#f5ece0,stroke:#a8895f
+    style A fill:#dbe4f0,stroke:#3949ab
+    style B fill:#dbe4f0,stroke:#3949ab
+    style C fill:#dbe4f0,stroke:#3949ab
+    style D fill:#dbe4f0,stroke:#3949ab
+    style E fill:#fdecea,stroke:#d94f4f
+    style R fill:#e4efe4,stroke:#5b7a5b</code></pre>
+<em>图 1-5：从"有模型"到"业务变好"要跨过的五道鸿沟（自上而下逐层跨越）</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>鸿沟</th>
+<th>是什么</th>
+<th>典型症状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>模型 ≠ 产品</strong></td>
+<td>有模型能力 ≠ 有解决业务问题的产品</td>
+<td>模型很聪明，但不知为客户解决什么</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>数据合规</strong></td>
+<td>客户数据不能随便给公有云/外部模型</td>
+<td>政企"数据不出域"，公有云大模型免谈</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>微调与工程</strong></td>
+<td>想把模型调成"懂领域/懂客户"</td>
+<td>RAG/需检索增强、Prompt 需结合专有知识</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>系统集成</strong></td>
+<td>要嵌入客户已有 CRM/ERP/业务流</td>
+<td>装个断点软件没用，要融进真实流程</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>搁板软件（Shelfware）</strong></td>
+<td>系统做出来却没人用 / 用不起来——指购买/上线后被长期闲置、从未真正产生价值的软件资产</td>
+<td>"演示惊艳、生产翻车""上线即搁板"</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Important</p>
+<p><strong>这五道鸿沟没有一道是"再多几层模型能力"能解决的——它们全是落地、连接、变革问题。</strong> 这正是 FDE 为什么在 AI 时代反而更稀缺：<strong>模型负责"写得快"，FDE 负责"知道该写什么、写了有没有人用、用起来有没有价值"。</strong> AI 没有让 FDE 过时，反而放大了它最不可替代的价值——判断力与业务理解。</p>
+</div>
+<blockquote>
+<p><strong>延伸阅读：</strong> AI 如何重塑 FDE、甲方共识与业务对齐，见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 15 章 AI FDE 落地：Echo 共识与对齐）。</p>
+</blockquote>
+<hr />
+<h2 id="17-fde">1.7 经典案例：FDE 到底做了什么<a class="headerlink" href="#17-fde" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>下面用两个案例，把"FDE 做了什么"从抽象定义落到真实场景。完整案例集（含 BP、财富 500 强、美国陆军等）见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 4 章 Palantir 经典案例集）。</p>
+</blockquote>
+<h3 id="_2">案例一：一个批次零件被卡住，受影响飞机如何瞬间浮出来？<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>场景：</strong> 制造/供应链里，一个批次紧固件在海关被卡住了。问题是——这批零件用在哪些飞机上？哪些飞机总装会被拖累？</p>
+</blockquote>
+<p>传统方式想回答这个问题非常吃力：要跨零件表、工位表、机身表、订单表做多次 JOIN，写极复杂的数据查询才能回溯血缘关系。<strong>等算清楚，总装线往往已经停了。</strong></p>
+<p>FDE 在现场做的事，不是去写更多、更复杂的查询脚本，而是<strong>先把客户"业务实体之间的关系"建成一张可操作的网</strong>：飞机、机尾号、紧固件、装配工位、质检员，以及它们之间的连线——"这个紧固件装配于这个工位""这个工位属于这架飞机""这个质检员检验这个工位"。一旦这张"业务对象关系网"建成，当"某批次紧固件被卡住"这个事件发生时，系统就能像触电一样<strong>瞬间联动</strong>，直接把受影响的飞机全部标红——因为它清楚"这批零件 → 装配的工位 → 归属的飞机"里每一段关系，无需临时联表查询。</p>
+<p><strong>与 FDE 的关联：</strong> 这个案例展示了 FDE 最核心的价值——<strong>把客户"看不见的业务连带关系"，变成"一秒钟就能决策"的现场能力。</strong> 它贵不在"算得快"，而在"把业务的真实结构（对象与关系）翻译成了可操作的数字结构"。<strong>FDE 交付的不是一个报表，而是一种"遇到突发，组织当场就能反应"的能力。</strong>（这也是"业务对象关系建模 / 本体层"这类平台能力最终要落到现场去建、去用的原因——它必须贴近真实业务才建得出来。）</p>
+<blockquote>
+<p><strong>业务语义的起点：</strong> FDE 的价值不仅是连接数据，还要把客户的<strong>业务对象、关系和可执行动作</strong>建成统一模型——这正是能力回注中"业务语义层"的雏形（第 3 章 3.5 总览、第 15 章 15.4 展开）。</p>
+</blockquote>
+<h3 id="airbus">案例二：Airbus（空中客车）——一个客户的问题，变成一个行业的平台<a class="headerlink" href="#airbus" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>关键数字：</strong> A350 客机增产 33%；后续演化为 Skywise 行业平台</p>
+</blockquote>
+<p>2015 年，Airbus 需要紧急将 A350 增产 33%，但生产过程涉及 500 万个零件、数百个团队、分布在多国生产线，排产/零件/工单/质检数据散落各系统。</p>
+<p>Palantir 的 FDE 驻场后接入数据，建立制造全生命周期统一视图，最终实现 33% 增产。<strong>但故事没有结束</strong>——FDE 在驻场中发现：Airbus 的数据碎片化、供应链不透明、排产靠经验，不是一家的痛点，是<strong>航空制造业的通用痛点</strong>。他们把发现反馈给产品团队，产品团队基于前线洞察，把内部部署升级为面向全行业的 <strong>Skywise</strong> 平台。</p>
+<p><strong>与 FDE 的关联：</strong> 这是 FDE"反馈闭环"（能力回注）的终极展示——<strong>先在一个客户解决具体问题，识别可复用模式，反馈成行业平台。</strong> FDE 不是做完项目就收工——他们在前线发现的模式，可以催生一个行业标准。<strong>这正是"从卖人力到卖能力"的活例子。</strong></p>
+<blockquote>
+<p><strong>案例来源：</strong> 本案例关键数字（A350 增产 33% 等）引自 <a href="https://www.palantir.com/impact/airbus/">Palantir 官网 "Impact | Airbus and Skywise"</a> 及 <a href="https://www.palantir.com/assets/xrfr7uokpv1b/7uEHPTEM0MkKtBFcx2zh63/9d75da5b76439717ac95135b5012479e/Palantir-Airbus-Partnership_Overview.pdf">Palantir–Airbus 合作概述 PDF</a>，信息截至 2026 年；官网页面数字可能更新，引用前请以原文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_3">反模式与红线<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>每章都设"反模式"一节——告诉你这件事<strong>最容易被做错成什么样</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>把 FDE 当成"能写代码的驻场售前 / 实施 / 售后"。</strong> FDE 不是解决"软件装不好、没人教"的交付问题，而是解决"平台×现场×回注"的结构性难题。只看"把产品装起来、用起来"，就不是 FDE。</li>
+<li><strong>把 FDE 当"驻场程序员"。</strong> 派个人去客户那写代码，但公司能力一点不长——这是披着 FDE 皮的外包（呼应 1.5）。</li>
+<li><strong>以为 FDE = 项目经理 / 协调者。</strong> 协调加中间层是"加成本"，FDE 是"扛事并落地"——两者本质不同。</li>
+<li><strong>以为 FDE 是咨询顾问。</strong> 方法论是形、工程师是神（呼应 1.4）：FDE 内核是能写生产级代码的真工程师，只会画方案的"FDE"是咨询。</li>
+<li><strong>以为 AI 让 FDE 过时。</strong> 恰恰相反，AI 吃掉的是 FDE 里最可标准化、最重复的部分，反而放大了判断力与业务理解的稀缺价值（呼应 1.6）。</li>
+</ul>
+<blockquote>
+<p>🔺 <strong>本书红线（第一次出现）：能力必须回注、平台必须增长。</strong> 这是判断"真 FDE vs 外包"的最后一条底线——它既是战略，也是第 2 章"能力回注飞轮"的伦理内核。</p>
+</blockquote>
+<hr />
+<h2 id="_4">本章小结<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>FDE <strong>为三重结构性矛盾而生</strong>：标准化够不到（SaaS 病）、定制做不大（外包病）、数据不能出域——这是商业模式与合规的结构性难题，而非单纯的产品交付问题。</li>
+<li>FDE 模式的早期实践通常归因于 Palantir：<strong>把工程师带核心平台驻场、做深度定制部署、再把通用能力反哺回平台</strong>，是连接产品与客户的"胶水"（教材表述，"首创"缺乏官方定名依据）。</li>
+<li>它有<strong>三层含义</strong>：岗位 / 团队 / 方法论。</li>
+<li>它融合<strong>三种角色</strong>：全栈工程师 × 业务顾问 × 产品经理，实现最短闭环；<strong>方法论是形、工程师是神</strong>。</li>
+<li>区分 FDE 与外包/咨询的<strong>核心标准</strong>：从"卖人力"到"卖能力"——做完项目，公司平台能力有没有增长。</li>
+<li>AI 时代 FDE 因<strong>五大鸿沟</strong>（模型≠产品 / 合规 / 微调工程 / 集成 / 搁板）而复兴。</li>
+</ul>
+<p><strong>动手自检（对本节，问自己）：</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说清 FDE 是为哪三重矛盾而生的吗？为什么它不是"售后/实施"？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出 FDE 的定义、胶水箴言与三层含义吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能讲清"方法论是形、工程师是神"，并区分三重角色吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能用"卖人力 vs 卖能力"标准，判断一个岗位是不是真 FDE 吗？</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 我能说出 AI 落地的五大鸿沟，并解释为什么每个都不是纯模型问题吗？</li>
+</ul>
+<hr />
+<h2 id="_5">练习与思考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>基础：</strong> 用自己的话复述 FDE 是为哪三重矛盾而生；列出三层含义。</li>
+<li><strong>进阶：</strong> 从招聘网站找一个"实施工程师 / 解决方案工程师 / 驻场开发"岗位 JD，分析它属于 FDE 还是外包/咨询，写明判断依据。</li>
+<li><strong>挑战（迁移练习）：</strong> 结合你自己所在（或熟悉的）企业，指出一个"可能正在卖人力而非卖能力"的真实场景，写一段 3 句建议，说明它该怎么做才算真 FDE 交付。</li>
+</ul>
+<hr />
+<h2 id="_6">延伸阅读<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>若想系统了解 FDE 的方法论全貌（四阶段 SOP、角色体系、中国落地），见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 1 章 FDE 是什么、第 3 章 Palantir 平台与 FDE 体系、第 4 章 Palantir 经典案例集、第 15 章 AI FDE 落地：Echo 共识与对齐），本书不再重复展开。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+        <script src="../../javascripts/mermaid-contrast.js"></script>
+      
+    
+  </body>
+</html>
