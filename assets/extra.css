@@ -132,3 +132,14 @@ h1 {
   color: #fff !important;
   fill: #fff !important;
 }
+
+/* ============================================================
+   字体：对齐 xiling 参考站（cloudzun/xiling）的系统字体栈
+   ——只改字体，不动布局/颜色/任何其它规则。
+   原理：Material 的 :root 里 --md-text-font-family = var(--md-text-font, _),…，
+   覆盖 --md-text-font / --md-code-font 两个变量即全局换字体（正文+代码）。
+   ============================================================ */
+:root {
+  --md-text-font: "Roboto", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --md-code-font: "Cascadia Mono", "Consolas", monospace;
+}
