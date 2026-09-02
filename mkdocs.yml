@@ -87,8 +87,8 @@ nav:
       - 第3章 FDE 交付四阶段与能力回注: textbook/第03章_FDE交付四阶段与能力回注.md
       - 第4章 Echo 与 Delta 作战单元: textbook/第04章_Echo与Delta_作战单元的分工与协作.md
       - 第5章 Echo 工作法·定义问题: textbook/第05章_Echo工作法_定义问题.md
-  - 第二篇 · 实战演练:
       - 第6章 实操一：需求调研与解决方案框架: textbook/第06章_实操一_西岭需求调研与解决方案框架.md
+  - 第二篇 · 实战演练:
       - 第7章 Delta 工作法·AI Coding 与工程纪律: textbook/第07章_Delta工作法_AI_Coding与工程纪律.md
       - 第8章 实操二：诉求智能分类器: textbook/第08章_实操二_诉求智能分类器.md
       - 第9章 RAG 方法·答案可追溯: textbook/第09章_RAG方法_答案可追溯.md
