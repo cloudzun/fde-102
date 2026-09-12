@@ -22,9 +22,15 @@ Thumbs.db
 # ---- 内部资料：不随公开仓库分发（本地保留，仅从 Git 排除）----
 # ppt/ 课件源码、misc/ 过程文档（评审/修订/交接）、references/ 参考资料库、experiments/ 实验杂项
 ppt/
+ppt-scripts/
 misc/
 references/
 experiments/
+
+# 根目录内部 Office 文档（PPT 范例/模板、选题排期表等）与 Office 临时文件
+*.pptx
+*.xlsx
+~$*
 
 # MkDocs 构建产物
 docs/
