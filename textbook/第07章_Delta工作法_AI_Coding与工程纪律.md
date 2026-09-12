@@ -145,7 +145,7 @@ flowchart TB
 ```mermaid
 flowchart TB
     ac["AI Coding<br/>Delta 释放 AI 潜力的完整手段"]
-    drive["驱动层 · Vibe Coding<br/>怎么让 coding agent 听话地写<br/>（7.3.2 五原则）"]
+    drive["驱动层 · Vibe Coding<br/>怎么让 coding agent 听话地写<br/>（Vibe Coding 五原则）"]
     constraint["约束层 · harness<br/>（本书以 gstack 演示）<br/>怎么不翻车、可验收、可追溯"]
     ac --> drive
     ac --> constraint
