@@ -295,3 +295,4 @@ Palantir 的 FDE 驻场后接入数据，建立制造全生命周期统一视图
 ## 延伸阅读
 
 - 若想系统了解 FDE 的方法论全貌（四阶段 SOP、角色体系、中国落地），见 **FDE-101** https://www.cloudzun.com/fde-course/（第 1 章 FDE 是什么、第 3 章 Palantir 平台与 FDE 体系、第 4 章 Palantir 经典案例集、第 15 章 AI FDE 落地：Echo 共识与对齐），本书不再重复展开。
+- **下一章：** 为什么需要 FDE（用经济学证明这套模式为什么成立）。

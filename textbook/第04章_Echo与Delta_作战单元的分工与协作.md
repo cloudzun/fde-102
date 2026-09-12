@@ -326,3 +326,4 @@ flowchart LR
 ## 延伸阅读
 
 - 想读五角色完整编制、四阶段中的角色漂移、人才培养与 HR 落地（面试题、职级双轨、Playbook 沉淀），见 **FDE-101** https://www.cloudzun.com/fde-course/（第 10 章 FDE 角色体系、第 11 章四阶段中的角色协作、第 12 章 FDE 人才培养与知识管理、第 15 章 AI FDE 落地：Echo 共识与对齐）。
+- **下一章：** Echo 工作法 · 定义问题（Echo 在 Discovery 阶段具体怎么干活）。

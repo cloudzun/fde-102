@@ -454,3 +454,4 @@ flowchart TB
 ## 延伸阅读
 
 - 想读四阶段全部 SOP 0–9、每阶段完整模板、Gate"未通过/回滚/止损"运行规则，见 **FDE-101** https://www.cloudzun.com/fde-course/（第 5–9 章：Phase 1 Discovery 至能力回注方法论）。
+- **下一章：** Echo 与 Delta：作战单元的分工与协作（确立你在这套方法里扮演谁）。
