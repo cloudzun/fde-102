@@ -24,11 +24,14 @@ theme:
         name: 切换浅色模式
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.top
+    - navigation.footer
     - navigation.expand
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
     - content.code.annotate
     - toc.follow
@@ -78,8 +81,18 @@ extra:
 copyright: Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
 
 plugins:
-  - search
+  # 中文分词检索：lang 指定 zh 后 MkDocs 会用 jieba 切词（依赖见 .github/workflows/pages.yml）
+  - search:
+      lang: [zh]
   - callouts
+  # 打印/离线：生成"整本单页"页面（不生成 PDF，避免引入 weasyprint 系统依赖）
+  - print-site:
+      add_to_navigation: true
+      print_page_title: 打印与离线阅读
+      add_print_site_banner: false
+      enumerate_headings: true
+      add_table_of_contents: true
+      toc_title: 本页目录
 
 nav:
   - 首页: index.md

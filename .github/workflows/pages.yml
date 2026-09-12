@@ -19,7 +19,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install mkdocs-material mkdocs-callouts
+        # jieba：search 插件 lang=zh 的中文分词依赖（缺它会退化为整段不切词）
+        run: pip install mkdocs-material mkdocs-callouts mkdocs-print-site-plugin jieba
+
+      - name: Style lint（体例检查，不过则中止部署）
+        run: python scripts/style-lint.py
 
       - name: Sync docs from textbook
         run: python scripts/build_docs.py
