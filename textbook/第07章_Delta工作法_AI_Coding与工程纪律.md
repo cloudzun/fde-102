@@ -135,7 +135,7 @@ flowchart TB
 
 ## 7.3 AI Coding：Vibe Coding 驱动 × harness 工程约束
 
-执行要靠 coding agent 承载。把"AI Coding"拆成两半：
+把"AI Coding"拆成两半：
 
 - **驱动层 · Vibe Coding**：怎么跟 coding agent 说话——从"手写每一行"转向"描述意图 + 审查判断"（vibe coding 一词由 **Karpathy 于 2025 年 2 月提出**，[IBM 主题介绍](https://www.ibm.com/cn-zh/think/topics/vibe-coding)）。它解决"**怎么让 coding agent 听话地写**"。
 - **约束层 · harness**：把 AI 开发焊进工程流水线——受控执行、八环节、SPEC、四条纪律。它解决"**写了之后怎么不翻车、可验收、可追溯**"。
@@ -219,8 +219,6 @@ coding agent（AI 编码代理）是驱动层的载体——**你把意图描述
 ---
 
 ## 7.4 harness：从理念到 gstack 实现
-
-coding agent 解决"怎么写"，harness 解决"怎么不翻车"。
 
 ### 7.4.1 harness 理念：把 AI 执行约束进工程流程
 
