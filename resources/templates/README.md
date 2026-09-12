@@ -10,5 +10,5 @@
 | `two-layer-acceptance.md` | 两层验收表（需求满足度 + 生产差距 + 实操四B 六维） | 第 16 章（实操五）评审一 |
 | `capability-reinjection.md` | 能力回注四步法（碎石路/能铺路 + 三块拼图 + 本体候选 + 优先级） | 第 16 章（实操五）评审二 |
 | `decision-sheet.md` | 下一阶段决策单（Go / Conditional Go / Continue Pilot / No-Go） | 第 16 章（实操五）评审三 |
-| `client-report-outline.md` | 客户汇报稿十页骨架（金字塔+双线话术） | 第 16 章（实操五）脑暴三 / 15.5 |
-| `roi-calculator.md` | ROI 计算表（三类价值公式 + 保守/基准/乐观三场景 + 锁口径） | 第 15 章 15.3 / 第 16 章汇报 |
+| `client-report-outline.md` | 客户汇报稿十页骨架（金字塔+双线话术） | 第 16 章（实操五）脑暴三 / 第 15 章 15.3.2 |
+| `roi-calculator.md` | ROI 计算表（四类价值公式 + 保守/基准/乐观三场景 + 锁口径） | 第 15 章 15.2.3 / 第 16 章汇报 |
