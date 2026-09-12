@@ -177,6 +177,12 @@ def main():
             if re.match(r'^  \d+\.\s', l) and not re.match(r'^    ', l):
                 warn(f, i, '疑似嵌套子列表只缩进 2 空格（应 4 空格）')
 
+        # 16. 引号口径（硬约束）：一律半角 "，mermaid 内用 &quot;
+        #     原因：正文要复用进课件 PPT，全角引号在 PPT 文本框与生成链路里会出问题
+        for i, l in enumerate(lines, 1):
+            if re.search(r'[“”‘’「」]', l):
+                err(f, i, '全角/弯引号——引号一律半角 "（mermaid 内用 &quot;）：%s' % l.strip()[:36])
+
     # ---- 报告 ----
     def show(title, items):
         print('=' * 72)
