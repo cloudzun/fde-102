@@ -193,6 +193,7 @@ coding agent（AI 编码代理）是驱动层的载体——**你把意图描述
 | **harness（方法/产品类）** | 把 coding agent 的产出约束进受控工程流程（流水线、护栏） | gstack（本书演示）、OpenSpec、LangGraph |
 
 **coding agent 怎么分类：**
+
 - **按归属**：厂商绑定（Claude Code 属 Anthropic、Codex 属 OpenAI）vs **独立开源**（opencode：模型无关、不绑定大模型厂商）；
 - **按能力侧重**：纯 coding（Codex、CodeGeeX）vs **全能型**（编程 + 办公双线：Trae、WorkBuddy、千问办公）；
 - **按形态**：CLI agent（Claude Code、opencode）／ IDE 助手（Trae、Qoder）／ 平台智能体（WorkBuddy、千问办公）。
@@ -254,11 +255,13 @@ coding agent 解决"怎么写"，harness 解决"怎么不翻车"。
 harness（AI 开发工程化流水线 / 护栏）是把 coding agent 的产出约束进受控工程流程的方法与产品——它规定 AI 写出来的东西**怎么被验证、怎么被记录、怎么被人把关**。没有 harness，coding agent 只是"写代码很快"（裸 vibe）；有了 harness，才谈得上可验收、可追溯、可交接。
 
 **为什么需要它（三个翻车点，对应 7.5 四条纪律）：**
+
 - coding agent 可能**自己出题自己考**（自己造测试数据）→ 需要外部给定测试集；
 - coding agent 可能**自由发挥**（脑补场景、发明验收口径）→ 需要 SPEC 写死边界；
 - coding agent 可能**一把梭**（一口气跑完才汇报）→ 需要一环一停、人拍板。
 
 **通用原则（产品无关，任何 harness 都应满足）：**
+
 - **受控执行**：环节化推进，每环节停下给人审查；
 - **外部验证**：测试与评测数据外部给定，不让 AI 自己定义成功；
 - **可追溯**：每环节产出落盘（文件、版本、决策记录）；
@@ -271,6 +274,7 @@ harness 是当前 AI 工程的主流方向，不是本书自造的概念——An
 任何 harness 的第一条通用规范：**动手 build 之前，先写死一份规格（SPEC）**，build 阶段不再重复讨论技术参数，只严格按 SPEC 实现。SPEC 是"代码的压缩表示"——把意图写死，AI 才不会自由发挥（Spec-Driven Development，SDD；OpenSpec 等工具即此思路，与具体产品无关）。
 
 一份好 SPEC 要死磕清楚：
+
 - **边界（No-Go）**：明确"本阶段刻意不做的事"——防止 coding agent 自由发挥；
 - **数据模型**：输入/输出的形状、字段、类型；
 - **验收口径**：什么样算成功（如"准确率 ≥85%"可量化指标）——防止 coding agent 自己发明验收。
@@ -315,6 +319,7 @@ flowchart TB
 | **8 复盘** | 复盘：做得好/摩擦/未覆盖测试/改进行动项 | 复盘者 |
 
 **三个关键原则：**
+
 - **人的角色每环节不同**，但任何环节人的判断都不可替代。
 - **每环节产出都是文件**（需求记录 / SPEC.md / 决策记录 / 代码 / review.md / qa-report.md / 版本与 CHANGELOG / retro.md）——可追溯、可复用（也是第 8/10/12 章"逐轮复用上一轮 AGENTS.md/retro.md"的基础）。
 - **不必所有改动都走全流程**——判断标准：**做错代价大不大、会不会被别人用、会不会长期存在**。会被坐席长期使用的系统 → 走完整流程。
