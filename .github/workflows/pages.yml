@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Python dependencies
         # jieba：search 插件 lang=zh 的中文分词依赖（缺它会退化为整段不切词）
-        run: pip install mkdocs-material mkdocs-callouts mkdocs-print-site-plugin jieba
+        run: pip install mkdocs-material mkdocs-callouts jieba
 
       - name: Style lint（体例检查，不过则中止部署）
         run: python scripts/style-lint.py

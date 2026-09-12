@@ -85,14 +85,6 @@ plugins:
   - search:
       lang: [zh]
   - callouts
-  # 打印/离线：生成"整本单页"页面（不生成 PDF，避免引入 weasyprint 系统依赖）
-  - print-site:
-      add_to_navigation: true
-      print_page_title: 打印与离线阅读
-      add_print_site_banner: false
-      enumerate_headings: true
-      add_table_of_contents: true
-      toc_title: 本页目录
 
 nav:
   - 首页: index.md
