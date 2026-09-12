@@ -24,6 +24,7 @@
 | `resources/` | 随书资源包（模板/工具速查） | 按需补充 |
 | `labs/` | 实验手册正式册（英文路径，与 `textbook/` 同级）：实操一~五学员版 + 实操四B + 复盘真实项目 + 客户需求/政策素材/gstack 流程 | 自 2026-08 起**本册为实验手册权威来源**（陕西移动专题综合实操为历史参考，不回写）；与教科书实操章**错位分工**：手册承载执行细节（步骤/参考答案/模板/素材），教科书承载方法与验收；正文引用本册统一用"见《实验手册》`labs/<文件名>`" |
 | `misc/` | 中间过程文档（交接/大纲/技术规格） | 非最终交付物，归档备查 |
+| `scripts/` | 构建与校验脚本：`build_docs.py`（`textbook/` → `docs/`）、`mermaid-dark-node-check.js`（mermaid 深底深字回归检查，Node + jsdom，依赖见 `scripts/package.json`） | 站点构建与自动检查入口；改渲染相关资源后按 9.2 跑校验 |
 | `AGENTS.md`（本文件） | 编写与迭代约定 | 规范有变化时同步更新 |
 
 **文件命名**：章节文件固定 `第NN章_<主题>.md`（两位数字序号）；导读为 `00_导读与体例说明.md`。**文件名一旦确定不要随意改名**（会破坏交叉引用）。
@@ -76,6 +77,7 @@
 - 循环图（如飞轮）即便元素多也按垂直成环处理。
 - 图下必须带图题：`*图 N-x：标题*`。
 - 配色沿用 FDECore 风格：`#3949ab`（靛蓝主色）、`#f5ece0`（琥珀/米色）、`#e4efe4`（绿色）、`#fdecea`（红色警示）、`#dbe4f0`（浅蓝）。
+- **深色填充节点必须白字**：Material 把 mermaid 放进 closed shadow DOM 并注入 `.nodeLabel p{color:深色}`，源码里的 `color:#fff` 到不了内层 `<p>`，因此由 `javascripts/mermaid-themefix.js` 追加 `themeCSS` 覆盖。该文件按**节点形状**写选择器（`SHAPES`），**新增形状必须同步补上**——曾因只列 `rect` 导致 `<polygon>` 决策节点深底深字。改完跑 `node scripts/mermaid-dark-node-check.js` 回归（见 9.2）。
 
 ### 3.5 表格
 - 必须带表头分隔行；
@@ -192,6 +194,7 @@
    - 全文 grep `N\.[0-9]` 交叉引用全部有效；
    - 旧表述/内部解释性文字零残留（按 5.1 搜索）；
    - mermaid 图均满足 3.4 布局规则（>4 元素为垂直）；
+   - **mermaid 深底深字回归通过**：`node scripts/mermaid-dark-node-check.js`（需先 `mkdocs build` 生成 `site/`，并在 `scripts/` 下 `npm install` 装 jsdom）；退出码 0 才算过；
    - 链接均按 4 节的统一格式；
    - 新增内容的引用目标小节确实存在；
    - 更新 `00_导读与体例说明.md` 修订记录。

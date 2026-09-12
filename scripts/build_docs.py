@@ -47,7 +47,7 @@ shutil.copy2(os.path.join(ROOT, "index.md"), os.path.join(DOCS, "index.md"))
 _extra = os.path.join(ROOT, "assets", "extra.css")
 if os.path.isfile(_extra):
     shutil.copy2(_extra, os.path.join(DOCS, "assets", "extra.css"))
-# 3.1 复制 javascripts/ 下所有脚本（katex.js、mermaid-contrast.js 等）
+# 3.1 复制 javascripts/ 下所有脚本（katex.js、mermaid-themefix.js）
 _jsdir = os.path.join(ROOT, "javascripts")
 if os.path.isdir(_jsdir):
     for _f in os.listdir(_jsdir):

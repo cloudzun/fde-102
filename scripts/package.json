@@ -1,0 +1,12 @@
+{
+  "name": "fde-102-scripts",
+  "version": "0.0.0",
+  "private": true,
+  "description": "《FDE 实战：Echo 与 Delta 的交付之道》构建与校验脚本的 Node 依赖（不随站点发布）",
+  "scripts": {
+    "check:mermaid": "node mermaid-dark-node-check.js"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3"
+  }
+}
