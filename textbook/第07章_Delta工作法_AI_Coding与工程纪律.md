@@ -1,48 +1,22 @@
 # 第 7 章  Delta 工作法 · AI Coding 与工程纪律
 
-> **本章定位：** 知识 + 工具单元 · Delta 侧方法，同时是后续 Delta 施工各章的**认知与工具公共底座**。**本章主线：Delta 用 AI Coding（coding agent × harness，本书以 gstack 演示）把 Echo 选定的技术层落地为可交付系统。**
->
-> **本章产出：** 你能说出 FDE 为什么需要 AI、Delta 如何用 AI 加速并驾驭 AI；用 LLM 四层级金字塔给客户场景选对技术层；掌握 **AI Coding 的两半**——Vibe Coding 五原则（驱动层）与 harness 约束层（本书以 gstack 演示）——及 AI Coding 工具选型；会用 gstack 八环节 + SPEC 驱动 + **四条工程纪律**推进一次开发迭代；知道 15 分钟最小 gstack 演练怎么走；知道动态信息（模型 / 硬件、工具 / 价格、harness 生态与环境）统一去哪里查。
+> **本章定位：** 知识 + 工具单元 · Delta 侧方法，同时是后续 Delta 施工各章的**认知与工具公共底座**。**本章主线：Delta 用 AI Coding（coding agent × harness，本书以 gstack 演示）把 Echo 选定的技术层落地为可交付系统。** 位置上：Echo 出《解决方案框架》（施工图）→ 本章（工具底座）→ 后续三个施工实操逐章展开。
 >
 > **建议读者：** Delta（施工主力必读）与 Echo（选型需双角色共识）均适用。
 >
-> **前置：** 第 4 章（Echo/Delta 分工哲学）。
+> **前置：** 第 4 章（人能判断、AI 能执行）。
 
 ---
 
-## 本章导学
+**本章学习目标：**
 
-- **学习目标：**
-    1. 说出 FDE 为什么需要 AI（三个产能瓶颈），以及 Delta／Echo 为何都要具备"获得 AI 赋能 + 驾驭 AI"的视野；
-    2. 用 Delta 视角的金字塔看懂"**选定之后每一层要建什么、代价多大**"（选层主导在 Echo）；
-    3. 说出 **AI Coding 的两半**（Vibe Coding 驱动 × harness 约束，本书以 gstack 演示）与 AI Coding 工具选型逻辑；
-    4. 按 gstack 八环节 + SPEC 驱动 + **四条工程纪律**推进一次迭代，说出每环节人的职责；
-    5. 完成 15 分钟最小 gstack 演练，并说出"数据与评测证据独立、可追溯、可复现"（纪律四）的要求。
-- **前置知识：** 第 4 章（人能判断、AI 能执行）。
-- **章节地图：** Echo 出《解决方案框架》(施工图) → **本章（工具底座）** → 后续 Delta 施工实操逐章展开。本章是后续三个施工实操共享的方法论。
-
-```mermaid
-flowchart TB
-    echo["第 6 章 Echo 产出<br/>《解决方案框架》（施工图）"]
-    ch7["第 7 章 Delta 工具底座<br/>用 AI 加速 · 驾驭 AI"]
-    op2["第 8 章 实操二·分类器"]
-    op3["第 10 章 实操三·RAG"]
-    op4["第 12 章 实操四·路由工作流"]
-    echo --> ch7
-    ch7 --> op2
-    ch7 --> op3
-    ch7 --> op4
-    style echo fill:#f5ece0,stroke:#a8895f
-    style ch7 fill:#3949ab,color:#fff,stroke:#1a237e
-    style op2 fill:#dbe4f0,stroke:#3949ab
-    style op3 fill:#dbe4f0,stroke:#3949ab
-    style op4 fill:#dbe4f0,stroke:#3949ab
-```
-*图 7-1：本章是后续三个施工实操共享的工具底座*
+1. 说出 FDE 为什么需要 AI（三个产能瓶颈），以及 Delta／Echo 为何都要具备"获得 AI 赋能 + 驾驭 AI"的视野；
+2. 用 Delta 视角的金字塔看懂"**选定之后每一层要建什么、代价多大**"（选层主导在 Echo）；
+3. 说出 **AI Coding 的两半**（Vibe Coding 驱动 × harness 约束，本书以 gstack 演示）与 AI Coding 工具选型逻辑；
+4. 按 gstack 八环节 + SPEC 驱动 + **四条工程纪律**推进一次迭代，说出每环节人的职责；
+5. 完成 15 分钟最小 gstack 演练，并说出"数据与评测证据独立、可追溯、可复现"（纪律四）的要求。
 
 > **阅读路线提示：** 主线必学 = 为什么 FDE 需要 AI → LLM 能力四层级金字塔 → AI Coding → harness 与 gstack → 四条工程纪律（含最小 gstack 演练）；**动态速查** = 本章末的动态速查与环境（随官方资料更新，不是考点，知道去哪查即可）。
-
----
 
 ## 7.1 为什么 FDE 需要 AI：主动拥抱、更要会驾驭
 
@@ -105,7 +79,7 @@ Delta（对标 Palantir Delta / FDSE，技术执行工程师）是驻扎客户�
 
 ## 7.2 LLM 能力四层级金字塔：Echo 选层、Delta 建层
 
-Echo 已用金字塔为每个场景"**选层**"（该用哪一层 AI，方向已定）；Delta 的"**建层**"从这里开始——把选定的那一层实现出来。本节的 **Delta 视角金字塔**回答两件事：每一层要建什么、代价多大（图 7-2），以及"从最简单开始"对施工的含义。
+Echo 已用金字塔为每个场景"**选层**"（该用哪一层 AI，方向已定）；Delta 的"**建层**"从这里开始——把选定的那一层实现出来。本节的 **Delta 视角金字塔**回答两件事：每一层要建什么、代价多大（图 7-1），以及"从最简单开始"对施工的含义。
 
 ### 7.2.1 Delta 视角的四层级金字塔
 
@@ -121,7 +95,7 @@ flowchart TB
     style rag fill:#dbe4f0,stroke:#3949ab
     style prompt fill:#e4efe4,stroke:#5b7a5b
 ```
-*图 7-2：LLM 四层级能力金字塔——Delta 视角：每一层要建什么、代价多大*
+*图 7-1：LLM 四层级能力金字塔——Delta 视角：每一层要建什么、代价多大*
 （本图与 Echo 视角的金字塔互补：**Echo 用业务判据回答"该不该用这层"**，本图回答"**选定之后 Delta 要建什么、付出什么代价**"；使用优先级永远是"从第 1 层开始"。）
 
 ### 7.2.2 逐层：工程形态与代价
@@ -155,7 +129,7 @@ flowchart TB
     style delta fill:#dbe4f0,stroke:#3949ab
     style ship fill:#e4efe4,stroke:#5b7a5b
 ```
-*图 7-3：接力——Echo 选层定方向，Delta 建层定落地，金字塔是交接接口*
+*图 7-2：接力——Echo 选层定方向，Delta 建层定落地，金字塔是交接接口*
 
 ---
 
@@ -179,7 +153,7 @@ flowchart TB
     style drive fill:#f5ece0,stroke:#a8895f
     style constraint fill:#e4efe4,stroke:#5b7a5b
 ```
-*图 7-4：AI Coding 的两半——驱动层（Vibe Coding）× 约束层（harness，本书以 gstack 演示）*
+*图 7-3：AI Coding 的两半——驱动层（Vibe Coding）× 约束层（harness，本书以 gstack 演示）*
 
 ### 7.3.1 coding agent：定义、分类与共性
 
@@ -303,7 +277,7 @@ flowchart TB
     style sh fill:#e4efe4,stroke:#5b7a5b
     style re fill:#f5ece0,stroke:#a8895f
 ```
-*图 7-5：工程流水线的通用骨架——八环节，一环一停，人在每环节把关*
+*图 7-4：工程流水线的通用骨架——八环节，一环一停，人在每环节把关*
 
 | 环节 | 干什么 | 你的角色（人的判断不可替代） |
 |------|--------|--------------------------|
@@ -496,6 +470,3 @@ AI Coding（coding agent × harness，本书以 gstack 演示）是 Delta 释放
 - **下一章：** 实操二 · 诉求智能分类器（把本章方法第一次施工到西岭场景 A）。
 
 ---
-
-
-
