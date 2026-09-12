@@ -183,6 +183,24 @@ def main():
             if re.search(r'[“”‘’「」]', l):
                 err(f, i, '全角/弯引号——引号一律半角 "（mermaid 内用 &quot;）：%s' % l.strip()[:36])
 
+        # 17. mermaid 图与图题一一配对（§5.4：图题要能独立说明图意）
+        n_mermaid = len(re.findall(r'(?m)^```mermaid', raw))
+        n_caption = len(re.findall(r'(?m)^\*图\s*%d-\d+' % ch, raw))
+        if n_mermaid != n_caption:
+            err(f, 0, 'mermaid 图 %d 张，图题 %d 条——每张图都要带 `*图 N-x：标题*`'
+                % (n_mermaid, n_caption))
+
+        # 18. 引用块内的"依赖版面指代"（§5.4：Alert/引用块常被整块摘走，
+        #     块内写"见下表"到了 PPT 就失指；正文段落里的"见下表"是正常写法，不报）
+        for i, l in enumerate(lines, 1):
+            if l.startswith('>') and re.search(r'见上表|见下表|见上图|见下图|如上图|如上表|如下图所示|见右图|见左图', l):
+                warn(f, i, '引用块内依赖版面的指代（§5.4）：%s' % l.strip()[:40])
+
+        # 19. 嵌套 Alert（会带出两套标记且渲染异常）
+        for i, l in enumerate(lines, 1):
+            if re.match(r'^> > \[!\w+\]', l):
+                err(f, i, '嵌套 Alert（§5.4）：%s' % l.strip()[:36])
+
     # ---- 报告 ----
     def show(title, items):
         print('=' * 72)

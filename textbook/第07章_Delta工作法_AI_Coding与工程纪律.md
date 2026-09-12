@@ -192,7 +192,7 @@ coding agent（AI 编码代理）是驱动层的载体——**你把意图描述
 | **Codex / Codex CLI** | OpenAI coding agent 产品族 | 云沙箱改码跑测提 PR、Automations、Subagents | Free / $8 / $20 / $100 档位 |
 | **opencode** | **独立开源终端 agent**（sst 团队） | **模型无关**：可接任意模型提供商；本地运行；支持 Skills；可叠 gstack | 免费开源 |
 
-> **绑定 vs 中立：** Claude Code / Codex 绑定各自厂商模型生态（Anthropic / OpenAI）；**opencode 独立开源、与大模型厂商不绑定（模型无关）**——本书默认演示选 opencode，正是看中它的中立性 + 可接国产 / 本地模型（呼应"数据不出域"红线）。订阅价格以官网为准（[Claude Code Pricing](https://www.morphllm.com/claude-code-pricing)、[Codex Pricing](https://www.morphllm.com/codex-pricing)），订阅结构会变，落地前以官方页为准。**工具清单与最新定价以官网为准（海外见本表，国内见下表）。**
+> **绑定 vs 中立：** Claude Code / Codex 绑定各自厂商模型生态（Anthropic / OpenAI）；**opencode 独立开源、与大模型厂商不绑定（模型无关）**——本书默认演示选 opencode，正是看中它的中立性 + 可接国产 / 本地模型（呼应"数据不出域"红线）。订阅价格以官网为准（[Claude Code Pricing](https://www.morphllm.com/claude-code-pricing)、[Codex Pricing](https://www.morphllm.com/codex-pricing)），订阅结构会变，落地前以官方页为准。**工具清单与最新定价以官网为准。**
 
 ### 7.3.4 国内 AI Coding 工具生态
 
