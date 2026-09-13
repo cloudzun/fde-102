@@ -53,7 +53,45 @@
 - **行动**：调用工具、查数据、生成处置意见。
 - **再看结果**：决定直接交付、继续处理，还是升级人工。
 
+```mermaid
+flowchart TB
+    input["输入：一个工单 / 一笔交易 / 一个任务"]
+    obs["观察：拿到输入与工具返回"]
+    think["思考：判断属于哪类、下一步做什么"]
+    act["行动：调用工具、查数据、生成处置意见"]
+    judge{"再看结果"}
+    done["直接交付"]
+    again["继续处理"]
+    esc["升级人工"]
+    input --> obs
+    obs --> think
+    think --> act
+    act --> judge
+    judge --> done
+    judge --> again
+    judge --> esc
+    again --> obs
+    style obs fill:#dbe4f0,stroke:#3949ab
+    style think fill:#dbe4f0,stroke:#3949ab
+    style act fill:#dbe4f0,stroke:#3949ab
+    style judge fill:#f5ece0,stroke:#8a6d3b
+    style done fill:#e4efe4,stroke:#5b7a5b
+    style again fill:#dbe4f0,stroke:#3949ab
+    style esc fill:#fdecea,stroke:#a34a3a
+```
+*图 11-1：决策循环——观察 → 思考 → 行动 → 再看结果，三条出口：交付、继续、升级人工*
+
 以工单分级为例：智能体判断"这是跨部门诉求"后不会停下，而是继续——查部门职责库 → 生成深度处理意见 → 决定要不要转人工。这就是"决策循环"。
+
+**这个循环不是智能体的发明。** 它和军事上著名的 **OODA 循环**（Observe → Orient → Decide → Act，[由美国空军上校约翰·博伊德在 1970 年代初提出](https://en.wikipedia.org/wiki/OODA_loop)）讲的是同一件事：**观察**对应 Observe，**思考**对应 Orient 与 Decide（判断局面 + 定下一步），**行动**对应 Act，而**再看结果**就是下一轮 Observe——反馈决定交付、继续还是转人工。可以说，**智能体是 OODA 式闭环在软件系统里的工程化落地**。
+
+两者的差别在关注点：
+
+- **OODA 面向对抗，比的是循环速度**：博伊德的原意是在不确定的对抗中比对手更快转完一轮，从而拿到决策优势——敏捷可以战胜绝对的强。智能体不一定要胜过谁，但同样靠"多转几圈"把不确定收敛掉。
+- **智能体多出一整套工程约束**：上下文窗口、记忆检索、工具权限、幂等与审计、成本与超时、人工升级——这些在 OODA 里没有位置，却恰是 FDE 落地时真正要设计的东西。
+- **OODA 的关键在"定向"（Orient）而不是"决策"（Decide）**：Orient 指经验、假设与模式识别——它决定你怎么看这个局面。对应到智能体，就是**上下文工程、记忆与路由**：给模型喂什么上下文、让它记得什么、怎么分流，往往比"选哪个动作"更决定成败。
+
+同类循环还有很多——ReAct（Reason + Act）、感知 → 规划 → 行动、PDCA、控制论里的反馈回路——它们共用一个内核：**不是输入直接到输出，而是感知 → 推理 → 行动 → 反馈 → 再调整。**
 
 | 维度 | 单次 LLM 调用 | 工作流（预编排） | 智能体（自主循环） |
 | :--- | :--- | :--- | :--- |
@@ -143,7 +181,7 @@ flowchart TB
     style ag fill:#f5ece0,stroke:#a8895f
     style note fill:#e4efe4,stroke:#5b7a5b
 ```
-*图 11-1：六种模式按厂商原始框架分两类；本书教学在此基础上增加 Agentic Workflow 中间层*
+*图 11-2：六种模式按厂商原始框架分两类；本书教学在此基础上增加 Agentic Workflow 中间层*
 
 ### 11.3.5 工单分级为什么用 Routing 就够
 
@@ -204,7 +242,7 @@ flowchart TB
     style high fill:#dbe4f0,stroke:#3949ab
     style unk fill:#fdecea,stroke:#a34a3a
 ```
-*图 11-2：Router 三路分流——简单走快路径、复杂走深度路径、不确定升级人工*
+*图 11-3：Router 三路分流——简单走快路径、复杂走深度路径、不确定升级人工*
 
 > **一句话定位：** 上图主体流程是**预编排路由工作流（Agentic Workflow）**——`输入 → LLM 判档 → 条件边 → 固定分支动作`，模型只在判档节点做决策。
 
@@ -262,7 +300,7 @@ flowchart TB
     style srv1 fill:#e4efe4,stroke:#5b7a5b
     style srv2 fill:#e4efe4,stroke:#5b7a5b
 ```
-*图 11-3：MCP 架构——Agent 通过 Host 里的 MCP Client 统一接入多个工具 Server*
+*图 11-4：MCP 架构——Agent 通过 Host 里的 MCP Client 统一接入多个工具 Server*
 
 - **Host（宿主）**：运行 agent 的应用（opencode / Claude Code / 自建程序），内置 MCP Client，负责把工具暴露给 agent；
 - **MCP Server（工具提供方）**：把工具按协议暴露出来，一个 Server 可以管一组相关工具；
@@ -478,7 +516,7 @@ flowchart TB
     style ag fill:#3949ab,color:#fff,stroke:#1a237e
     style hm fill:#fdecea,stroke:#a34a3a
 ```
-*图 11-4：银行反洗钱可疑交易监测智能体——初筛走确定性工作流，分级处置用智能体，高风险转人复核*
+*图 11-5：银行反洗钱可疑交易监测智能体——初筛走确定性工作流，分级处置用智能体，高风险转人复核*
 
 ### 11.10.3 为什么它是"工作流 + 智能体"的混合
 
