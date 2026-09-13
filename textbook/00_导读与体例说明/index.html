@@ -1,0 +1,1507 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FDE（前沿部署工程师）实战教科书 —— Echo/Delta 双角色分工 + 西岭市民服务平台单案例贯穿，五个实操形成总分总闭环">
+      
+      
+      
+        <link rel="canonical" href="https://www.cloudzun.com/fde-102/textbook/00_%E5%AF%BC%E8%AF%BB%E4%B8%8E%E4%BD%93%E4%BE%8B%E8%AF%B4%E6%98%8E/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>导读与体例 - FDE 实战：Echo 与 Delta 的交付之道</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fde-echo-delta" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-header__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FDE 实战：Echo 与 Delta 的交付之道
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              导读与体例
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FDE 实战：Echo 与 Delta 的交付之道" class="md-nav__button md-logo" aria-label="FDE 实战：Echo 与 Delta 的交付之道" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FDE 实战：Echo 与 Delta 的交付之道
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cloudzun/fde-102" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cloudzun/fde-102
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    导读与体例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引言与使用指南
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引言与使用指南">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于本书内容性质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fde-101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你想清楚的问题 → 读本书还是 FDE-101
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四条交付红线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读者画像与使用方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全书 16 章结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        修订记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一篇 · 方法与认知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一篇 · 方法与认知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 FDE 是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC02%E7%AB%A0_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81FDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 为什么需要 FDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC03%E7%AB%A0_FDE%E4%BA%A4%E4%BB%98%E5%9B%9B%E9%98%B6%E6%AE%B5%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 FDE 交付四阶段与能力回注
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC04%E7%AB%A0_Echo%E4%B8%8EDelta_%E4%BD%9C%E6%88%98%E5%8D%95%E5%85%83%E7%9A%84%E5%88%86%E5%B7%A5%E4%B8%8E%E5%8D%8F%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 Echo 与 Delta 作战单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC05%E7%AB%A0_Echo%E5%B7%A5%E4%BD%9C%E6%B3%95_%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Echo 工作法·定义问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC06%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%80_%E8%A5%BF%E5%B2%AD%E9%9C%80%E6%B1%82%E8%B0%83%E7%A0%94%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 实操一：需求调研与解决方案框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二篇 · 实战演练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二篇 · 实战演练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC07%E7%AB%A0_Delta%E5%B7%A5%E4%BD%9C%E6%B3%95_AI_Coding%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%BA%AA%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 Delta 工作法·AI Coding 与工程纪律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC08%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%8C_%E8%AF%89%E6%B1%82%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 实操二：诉求智能分类器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC09%E7%AB%A0_RAG%E6%96%B9%E6%B3%95_%E7%AD%94%E6%A1%88%E5%8F%AF%E8%BF%BD%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 RAG 方法·答案可追溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC10%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%B8%89_%E6%94%BF%E7%AD%96%E6%B3%95%E8%A7%84RAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 实操三：政策法规 RAG 问答系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC11%E7%AB%A0_Agent%E6%96%B9%E6%B3%95_%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BE%B9%E7%95%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 Agent 方法·自动化边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC12%E7%AB%A0_%E5%AE%9E%E6%93%8D%E5%9B%9B_%E5%B7%A5%E5%8D%95%E6%99%BA%E8%83%BD%E5%88%86%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 实操四：工单智能分级路由工作流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三篇 · 生产与价值化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三篇 · 生产与价值化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC13%E7%AB%A0_%E4%BB%8E%E5%85%AC%E7%BD%91%E5%88%B0%E6%9C%AC%E5%9C%B0_%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 从公网到本地·私有化部署与模型微调
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC14%E7%AB%A0_Delta%E7%94%9F%E4%BA%A7%E5%8C%96_%E5%B7%A5%E7%A8%8BScale_%E7%94%9F%E4%BA%A7%E8%90%BD%E5%9C%B0%E4%B8%8E%E5%AE%A2%E6%88%B7%E6%8E%A5%E7%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 Delta 生产化·工程 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC15%E7%AB%A0_Echo%E4%BB%B7%E5%80%BC%E5%8C%96_%E4%B8%9A%E5%8A%A1Scale_%E4%BB%B7%E5%80%BC%E8%90%BD%E5%9C%B0_%E7%BB%84%E7%BB%87%E9%87%87%E7%BA%B3%E4%B8%8E%E8%83%BD%E5%8A%9B%E5%9B%9E%E6%B3%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 Echo 价值化·业务 Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC16%E7%AB%A0_%E5%AE%9E%E6%93%8D%E4%BA%94_%E7%BB%BC%E5%90%88%E8%AF%81%E6%8D%AE%E8%AF%84%E5%AE%A1%E4%B8%8E%E5%86%B3%E7%AD%96%E5%B1%82%E6%B1%87%E6%8A%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 实操五：综合证据评审与决策层汇报
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引言与使用指南
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引言与使用指南">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于本书内容性质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fde-101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你想清楚的问题 → 读本书还是 FDE-101
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四条交付红线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读者画像与使用方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全书 16 章结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        修订记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="fde-echo-delta">FDE 实战：Echo 与 Delta 的交付之道<a class="headerlink" href="#fde-echo-delta" title="Permanent link">&para;</a></h1>
+<h2 id="_1">引言与使用指南<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>本书定位：</strong> FDE（Forward Deployed Engineer，前沿部署工程师）能力培养的<strong>实战训练教科书</strong>。它教你"怎么练、怎么交付"——角色分工、实验闭环、成果验收，并把与课程主体紧密相关的方法论直接讲透，<strong>独立可读</strong>。
+<strong>FDE-101（方法论大全）：</strong> 《AI 时代的 FDE》见 <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a> ——它讲"为什么、体系是什么"的完整方法论。本书与它是<strong>同源不同书</strong>：课程紧密相关的内容直接写入本书，相关性不紧密的、或想往深读的，只以"<strong>FDE-101</strong> + 章节名称"形式给一个链接，<strong>不作为本书正文</strong>。</p>
+</blockquote>
+<h3 id="_2">关于本书内容性质<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>本书正文中的交付方法论框架（四阶段与 Stage Gate、Echo/Delta 分工、能力回注四步法、本体建模等）为<strong>教材提炼</strong>，用于教学与实战训练，<strong>不代表任何厂商的官方术语或官方流程</strong>；Palantir 等厂商的实践仅作参照。凡给出外部链接的内容，以链接所指的官方页面为准；涉及型号、价格、许可证等易变数据，正文给出查阅位置，落地前请自行核对官方最新发布。</p>
+<h3 id="fde-101">你想清楚的问题 → 读本书还是 <strong>FDE-101</strong><a class="headerlink" href="#fde-101" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>想清楚的问题</th>
+<th>读哪</th>
+<th>到哪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FDE 本质、价值、最佳实践、Echo/Delta 分工、Echo 怎么干活</td>
+<td><strong>本书</strong></td>
+<td>第 1–6 章（图表配套）</td>
+</tr>
+<tr>
+<td>FDE 完整方法论 SOP、团队管理、中国落地、财务全数据</td>
+<td><strong>FDE-101</strong></td>
+<td><code>https://www.cloudzun.com/fde-course/</code></td>
+</tr>
+<tr>
+<td>怎么把需求做出来、把 Demo 跑通</td>
+<td>本书</td>
+<td>全部实操章</td>
+</tr>
+<tr>
+<td>政务/企业私有化落地的红线清单</td>
+<td>本书 + <strong>FDE-101</strong> 交叉</td>
+<td>本书红线条 + <strong>FDE-101</strong>相关章节</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">四条交付红线<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>数据不出域</strong>——政务红线，决定私有化选型；</li>
+<li><strong>答案可追溯</strong>——RAG / 政务 AI 准入门槛；</li>
+<li><strong>敏感件零漏判</strong>——Agent 验收的硬指标（宁可多升级，不可漏）；</li>
+<li><strong>人做判断，AI 负责执行</strong>——Echo/Delta 分工哲学，不是"AI 越强人越省事"。</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>课堂模拟数据与真实客户数据
+本书全部实操使用<strong>课堂模拟数据</strong>——完全虚构、脱敏、无真实个人信息，可按教学要求使用公网 API。<strong>真实客户数据</strong>必须按数据分类分级、组织制度和监管要求在获批安全域内处理，不得先进入公网服务再事后补救。</p>
+</div>
+<blockquote>
+<p>后续各实操章的验收口径、反模式、能力回注决策，都围绕这四条红线展开。</p>
+</blockquote>
+<hr />
+<h2 id="_4">读者画像与使用方式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>本书同时面向两类读者：<strong>服务提供方（乙方 / 独立服务商）</strong> 与 <strong>甲方内部服务交付团队</strong>（如银行总行科技部、政务信息中心）。</p>
+<table>
+<thead>
+<tr>
+<th>读者</th>
+<th>本书怎么用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乙方 / 独立服务商</td>
+<td>第 1–5 章建立交付方法论与角色共识；第 6、8、10、12、16 章以五个项目实操训练可交付能力；第 13–14 章支撑私有化选型与生产化，第 15 章价值论证</td>
+</tr>
+<tr>
+<td>甲方内部交付团队</td>
+<td>第 2–5 章对齐"为什么引入 FDE 式打法"；第 6 章形成内部需求框架；第 8、10、12 章训练内部交付小组；第 14 章做生产化纵切、第 15–16 章用于设计验收口径、运营承接与能力回注</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>后续章节的"客户"可理解为"外部客户"或"内部被服务的业务部门"。</p>
+</blockquote>
+<hr />
+<h2 id="16">全书 16 章结构<a class="headerlink" href="#16" title="Permanent link">&para;</a></h2>
+<p><strong>板块一 · 认知打底（图表齐全、独立成书）</strong></p>
+<ul>
+<li>第 1 章 FDE 是什么 —— 角色、三层含义、≠外包/咨询</li>
+<li>第 2 章 FDE 为什么有效 —— 死亡螺旋、四模式、能力回注飞轮、财务证据</li>
+<li>第 3 章 FDE 交付方法论：四阶段与能力回注 —— PPT×四阶段矩阵、能力回注、Gate、碎石路→铺装公路</li>
+</ul>
+<p><strong>板块二 · 角色主线</strong></p>
+<ul>
+<li>第 4 章 Echo 与 Delta：作战单元的分工与协作（含角色定位游戏 · 形成性练习）</li>
+</ul>
+<p><strong>板块三 · Echo 侧</strong></p>
+<ul>
+<li>第 5 章 Echo 工作法 · 定义问题（Discovery）（三脚手架 + 三 SOP + 选型 + Gate）</li>
+<li>第 6 章 实操一 · 西岭需求调研 →《解决方案框架》</li>
+</ul>
+<p><strong>板块四 · Delta 侧（三个单点 MVP + 一个无编号附加高级实验）</strong></p>
+<ul>
+<li>第 7 章 Delta 工作法 · AI Coding 与工程纪律（知识）</li>
+<li>第 8 章 实操二 · 诉求智能分类器（一次 LLM 调用）</li>
+<li>第 9 章 RAG 方法 · 答案可追溯（知识）</li>
+<li>第 10 章 实操三 · 政策法规 RAG 问答系统</li>
+<li>第 11 章 Agent 方法 · 自动化边界（知识）</li>
+<li>第 12 章 实操四 · 工单智能分级路由工作流（Routing Workflow）</li>
+<li>第 13 章 从公网到本地：私有化部署与模型微调（知识 · 进阶选读）</li>
+<li><strong>实操四B（无编号 Lab4B）· 西岭市民服务协同 Agent</strong>（附加高级实验，不占章号；将政策检索、部门查询、主动追问、工单草稿和人工审核组织为受控 Agent）</li>
+</ul>
+<p><strong>板块五 · 交付整合与收口</strong></p>
+<ul>
+<li>第 14 章 Delta 生产化 · 工程 Scale：生产落地与客户接管（知识 · 贯穿证据任务 · 客户现场最后一公里）</li>
+<li>第 15 章 Echo 价值化 · 业务 Scale：价值落地、组织采纳与能力回注（知识 · 贯穿证据任务 · 含业务语义回注与本体）</li>
+<li>第 16 章 实操五 · 综合证据评审与决策层汇报（综合认证与成果展示）</li>
+</ul>
+<p><strong>单案例贯穿：</strong> 西岭市民服务平台。第 6 章 Echo 拆解 A/B/C 三个业务场景 → 第 8/10/12 章 Delta 完成三个单点 MVP（分类 / RAG / 固定路由工作流）→ 实操四B（Lab4B）综合为受控协同 Agent → 第 14 章进入客户环境并完成接管 → 第 15 章证明价值、推动采用并判断语义回注 → 第 16 章综合证据评审与决策层汇报。</p>
+<hr />
+<h2 id="_5">修订记录<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>v0.1（2026）：确立实战训练版结构，完成第 1 章样稿与导读总纲。</li>
+<li>v0.2（2026）：全书 13 章第一版完成。</li>
+<li>v0.3（2026）：前六章按"独立成书、图表齐全、颗粒度对齐方法论层级"重写；确立"紧密内容直接写入、扩展内容只给在线链接"的内容归属原则。</li>
+<li>v0.4（2026-08）：第 9–13 章续写/改造完成，新增第 13 章"企业私有化部署与模型微调"，实操五顺延第 14 章。</li>
+<li>v0.5（2026-08）：新增第 14 章"全程总览 · 价值落地与能力回注"（收束整合章，置于最后一个实操之前）；实操五顺延为第 15 章并对齐交叉引用。</li>
+<li>v0.6（2026-08）：专项修订（细化章，不含第 6/8/10/12 实操章）：P0 硬伤——第 2 章 Mermaid Y 轴负值截断、第 5 章选型决策树 q3 死分支、第 4 章 Ch6/13→Ch6/15、第 13 章"下一章"跳转 15→14；P1——第 3 章标题统一、3.2 Echo/Delta 骨架化、图 3-6 金字塔视角定位，第 5 章 Gate 清单去重，第 7 章 7.3–7.4 进阶选读标注、Trae/豆包拆分；P2——第 1 章时间线精确化与 Shelfware、第 2 章 NRR 口径提示、第 7 章日期标签与 Karpathy 时间、第 9 章 jieba 强调、第 11 章 LangGraph 版本小贴士；导读勾选体例与"交付红线"表述统一。联动更新：修订记录、章节标题引用。</li>
+<li>v0.7（2026-08）：按专家评审意见启动逐章修订。本版本已完成导读修订：统一章节列表的读者视角表述，板块命名替换序号记号；区分五个项目实操（第 6/8/10/12/16 章）与第 4 章形成性角色练习；新增读者画像与双读者使用方式、先修要求与预计学时、环境准备、全书能力地图、认证评价蓝图；明确课堂模拟数据与真实客户数据的红线边界；第 1–2 章修订——为 Palantir/Airbus 案例、财务数据与行业事件补可溯源来源并做时效与口径标注，"指数级"改为"非线性（幂律式）"，70/30 平台定制比例与毛利区间标注为教学假设，财务表述降级为"与平台复用假说一致"（相关≠因果），2.5"真伪 FDE 鉴别清单"更名"教材诊断量表"并加"教材提炼"标识，8 条鉴别项改普通编号。第 3–5 章修订——第 3 章新增 "3.3.2 四阶段 Stage Gate 总纲"（四阶段各一张六要素表 + 止损规则）、金字塔加"正交可组合"提示；第 4 章新增 "4.2.1 战位职责 vs 个人能力"、角色定位游戏升级（战位判断非人格测验、《战位声明》两栏化），文件名对齐章节名称（<code>第04章_Echo与Delta_作战单元的分工与协作.md</code>）；第 5 章 5.1 改口径为"Discovery 初期不以功能开发为目标"并允许时间盒技术验证，三个 SOP 统一"输入—步骤—输出—完成判据—异常—示例"六段式，快赢筛选升级为 1–5 分评分量表并以坐标图画影响力×可行性矩阵（图 5-5），5.7.2 新增技术决策矩阵，5.8.1 Discovery Gate 升级为六要素核验；成品样例不随正文公布（避免剧透第 6 章实操一答案）。第 7 章修订——动态数据（模型/硬件/工具/订阅）集中到新增"7.8 动态速查"（每条标注来源与信息截至 2026-08，随官方资料维护），正文保留稳定结论（选型三要素、显存公式、量化取舍、工具选型三问），删两处动态型号表与部署示例表；新增 7.6.4"15 分钟最小 gstack 演练"；7.7 新增第四条工程纪律"数据与评测证据必须独立、可追溯、可复现"；删除章末"待核验"表述；按联网核查删除未获可靠来源的具名数字（910C 出货 60 万片、集群 9000P、Claude Fable 5 等），并在 7.8 为保留条目补来源链接。第 9 章修订——新增 9.9.5"评估落地三件事"（检索/生成/引用分开定位、固定 evaluator 配置与人工抽检、外部给定库外问题与库外拒答）、新增 9.10"最小 RAG 预实验（20–30 分钟，自拟片段不剧透实操三）"。第 11 章修订——11.3.4 术语三分（Workflow / Agentic Workflow / Agent，第 12 章路由按教材口径归为 Agentic Workflow）、新增 11.3.6 六种模式二维判断矩阵（预定义/动态 × 单轮/闭环）、11.7.1 LangGraph 校正（thread_id 隔离、interrupt 断点恢复、幂等需自建）、新增 11.8.3 工具调用工程化（超时/重试/幂等/审计/降级）、"零漏判"改为"给定验证集召回率 100%，生产目标为零漏判"口径（4 处 + 红线句）。第 13 章修订——13.2.1 私有化四形态（本地机房/专属云 VPC/离线一体机/混合）、显存降绝对化（粗略下界、LoRA 非"接近推理"）、13.3.2 具体卡数表删改为量级表、13.4 合并路径与 adapter 独立部署双路径、新增 13.4.1 数据治理 Gate（授权/脱敏/版权/去重/血缘/删除/泄漏检查）、新增 13.7 小模型 QLoRA 实验（24GB 单卡可跑）、13.5 成本表补实据（B300 整机约 700 万/台）并删未核验数字；各章动态版本号一律"以官方发布为准"。<strong>结构重构（第 13–16 章）</strong>——按《第13-15章重构施工建议》执行：新增<strong>第 14 章"Delta 工作法：Build、Scale 与工程化交付"</strong>（Delta 生产化纵切：三阶段证据边界、Build Readiness Gate 九维度、配置与密钥、日志/审计/指标、超时重试熔断降级、权限与最小权限、版本灰度回滚、监控告警、运行手册与跨组接管、工程回注；默认实验对象第 8 章分类器，精确命令待实验环境复核后以随书资源包为准）；原第 14 章"全程总览"顺延为<strong>第 15 章</strong>、原第 15 章实操五顺延为<strong>第 16 章</strong>（两章内容未动，仅章号/节号/图号与自指引用顺延）；全书五实操更新为第 6/8/10/12/16 章；导读结构列表、学时表、认证段及第 3/4/5/7/12/13 章交叉引用、"下一章"指引、AGENTS.md（正文 17 个文件、核心主线）同步更新。第 15、16 章的专业化升级（Echo 工作法重构、Go/No-Go 升维）按约定留待后续轮次执行。<strong>本体建模融入能力回注（按《Palantir本体建模融入能力回注_编写施工指南》）</strong>——能力回注明确两条路径（工程能力回注 vs 业务语义回注）；第 15 章新增 15.4"从项目资产到业务本体"（原编号 15.5，随后将承上启下节顺延为 15.5 并移至章末正文）（六类元素、西岭最小业务本体含图 15-2、四层回注模型、回注优先级、平台无关练习与第二场景验证）、第 14 章新增 14.10.1"业务本体的工程验证"（九项验证 + 概念/可执行/已验证三级区分）并使 Build Readiness Gate 升为九维度；第 1/2/3/5 章补业务语义总览与 Discovery 观察要求，第 6/8/10/12 章补"本体贡献"一行；Palantir Ontology 明确为代表实现而非唯一标准（附官方文档链接）；<strong>第 16 章未动</strong>。<strong>第 15 章重写（消除"全程总览"式拼凑，按《第13-15章重构施工建议》）</strong>——改名"Echo 工作法：价值落地、组织采纳与能力回注"，单一主线（14 章系统接得住 → 本章组织愿意接 → 16 章综合决策）：15.1 两个"不等于"、15.2 价值证据链（图 15-1 重画）、15.3 五口径分开（年度价值/净收益/TCO/ROI/回收期）、15.4 门槛·动机·信任（合并原两套框架）、15.5 四类干系人表达、15.6 业务 Scale（试点→扩大范围 Gate→停止条件，新增）、15.7 能力回注联合决策（含<strong>本体论三层次地基</strong>、两条路径、业务语义本体与图 15-2）、15.8 业务证据包；删除"主线速览"独立节与"把散装拼成地图"类元叙述；文件名更名（<code>第15章_Echo工作法_价值落地_组织采纳与能力回注.md</code>）；各章本体引用 15.4→15.7、第 16 章知识背景引用更新。<strong>第 14 章 FDE 化重构</strong>——按《第14章FDE化重构建议》转正方向：不教通用 SRE，改教"客户现场最后一公里"（五个转换、原型假设核验、语义对齐先于接口、业务动作闭环、八项 FDE 生产准入 Gate、现场变化分级、客户自运营与撤出、两类回注与本体工程验证、模拟客户环境贯穿实操）；层级上 14.1 保留三级目录、其余合并为二级并写厚；通用运维深水区（熔断实现/Trace/SLO/K8s 等）压为生产准入证据并移附录；新增知识点经 deep research 锚定（事实来源 / RACI / 数据分类分级）；文件名更名（<code>第14章_Delta工作法_生产落地_客户接管与能力回注.md</code>），第 3/5/15 章引用同步（14.10.1→14.9）。<strong>第 13 章补"模型切换适配"</strong>——新增 13.7"从公网验证到本地回填"（作者关切：西岭 ABC 三场景公网模型验证后合规切本地/微调模型，功能需适配回归）：三个适配层面（接口/行为/质量）、适配五步（接口抽象 → 行为回归〔冻结切换基准集〕→ 检索重建 → 量化对照 → 灰度双轨与回滚）、三场景适配对照、决策依据与切换 Gate 五项、反模式 8 条、练手任务与迁移；<strong>原 13.7 QLoRA 实验顺延为 13.8（动手实验置于章末）</strong>，13.6.2/小结/练习引用同步；新增知识点经 deep research 锚定（vLLM OpenAI 兼容端点、LLM 切换检查清单、影子流量/金丝雀）。<strong>实操四B 与复盘真实项目纳入教科书（执行《Lab4B…施工指南》，角色体系修订建议除外）</strong>——实验命名统一为"实操四B（Lab4B）"与"复盘真实项目"；<strong>三角色编制按作者决定保留原编写</strong>（指南的角色修订建议不采纳）；导读更新为 16 章结构、板块四"三个单点 MVP + 一个无编号附加高级实验"、第 12 章更名、学时与认证（三类评价出口）拆分；<strong>第 15 章编写要求具备通用性</strong>（方法兼用于 16 章对西岭项目的总结回顾，也用于对"复盘真实项目"的拆解总结）；建立 experiments/ 学员版工作副本并完成指向校正（ch06→第 9 章、ch07→第 11 章）；后续各章（11/12/14/15/16 等）桥接与重构陆续登记于本条之下。<strong>第 12 章更名与第 11 章桥接（执行《Lab4B…施工指南》第 11/12 项）</strong>——第 12 章统一为"工单智能分级路由工作流"：标题、文件名、定位/产出/延伸阅读、学习目标（1–5 条）、"路由工作流正确率"验收口径、启动提示词参考答案、章末桥接实操四B（Lab4B）全部同步，明确其为"预定义路径 × 单轮"的 Agentic Workflow、不是动态自主 Agent；第 11 章新增 <strong>11.3.7 从 Routing Workflow 到受控 Agentic Loop（实操四B）</strong>（六维对照表），图 11-1 节点更新，interrupt 归属修正（第 12 章用固定转人工分支，真"暂停—恢复"在实操四B）；第 7 章图 7-1 节点同步；实操四B 独立构建、不复制 12 章代码、复用 LangGraph/工具/HITL 概念。<strong>第 16 章重构（执行《Lab4B…施工指南》第 15 项）</strong>——改"综合证据评审、能力回注与决策层汇报"：两层验收（第一层三场景双视角 + 第二层实操四B 六维）、下一阶段决策（Go / Conditional Go / Continue Pilot / No-Go + 依据/风险/责任人/Gate，允许 No-Go）、十页汇报骨架（含第 9 页支持申请）、AI 使用边界（判断归人、AI 仅整理/润色/红队）、课后可选"复盘真实项目"出口；演练流程与 DoD、反模式、小结、练习、收口话全部同步；交付物新增下一阶段决策单与实操四B 验收表。<strong>P1 桥接与数据出域口径校准（《Lab4B…施工指南》8/9/10/13/14/17 项 + G2）</strong>——第 8 章加 <code>classify_request</code> 最小工具契约（输入/输出 + 迁移问题：实操四B 何时调用/跳过）；第 10 章加 <code>search_policy</code> 契约与来源元数据（source_file / normalized_file / article / excerpt）；第 7 章加实操四B 工程纪律五条预告；第 13 章加多工具数据域提醒并把"公网验证 → 本地回填"口径改为"模拟数据边界 + 本地回填"（3 处）；第 14 章 14.4 表扩为四行（含实操四B）并给"一次动作 vs 一条动态轨迹"闭环递进注；第 15 章新增 <strong>15.9 通用性：从西岭总结回顾到"复盘真实项目"</strong>（八问，含证据四状态）；第 3 章合规句口径同步；AGENTS.md 术语表补"实操四B / 复盘真实项目"。<strong>实验手册正式入库 <code>labs/</code>（与 textbook 同级、英文路径）</strong>——收录实操一~五学员版 + 实操四B + 复盘真实项目 + 客户需求/政策素材/gstack 流程（中英对照见 <code>labs/README.md</code>）；<code>experiments/</code> 降级为草稿；确定教科书实操章与手册的<strong>错位分工</strong>（教科书=方法/任务/验收，手册=执行细节/参考答案/模板/素材），正文引用统一"见《实验手册》<code>labs/&lt;文件名&gt;</code>"；后续按批对 8/10/12 章做 A/B 分层瘦身，并核对第 16 章六维验收与手册 Lab4B 口径。<strong>实操章轻量化试点：第 6 章（按推荐档 A/B 分界）</strong>——客户需求材料全文下沉《实验手册》<code>labs/source-client-requirements.md</code>，附录 A/B/C 与参考话术下沉 <code>labs/lab1-requirements-brainstorm.md</code>，环节步骤精简为"要点+决策点+检查点"，保留任务书三问/三脚手架判据表/DoD/反模式红线/练习；正文引用统一"见《实验手册》<code>labs/&lt;文件名&gt;</code>"；419 行 → 261 行；"关键判断不用 AI"口径与全章一致。后续按同一分界对 8/10/12 章逐章瘦身。<strong>实操章轻量化：Ch8（320 行 → 223 行）</strong>——启动提示词参考答案与 25 条测试样本下沉 <code>labs/lab2-classifier.md</code> 附录 D、gstack 安装速查下沉附录 A、驱动指令全文下沉环节 2、灵魂追问与讲师要点指向手册；保留 7 项信息块表/7 自查/八环节把关表/关键决策点/DoD/反模式红线/练习；contract 与验收口径不变。后续按同分界继续 Ch10 → Ch12。<strong>实操章轻量化：Ch10（286 → 251 行）与 Ch12（280 → 235 行）</strong>——Q&amp;A 验证集/启动提示词参考答案/安装速查下沉 <code>labs/lab3</code>、工单样本/部门职责库/参考答案下沉 <code>labs/lab4</code>；保留双指标验收表、RAG 五决策点与图 10-1、三档判定与档位例子反向核对、八环节把关表、DoD、反模式红线、search_policy 契约；<strong>Ch16 补引用</strong>（optional-labs → <code>labs/lab5</code>、<code>labs/lab4b</code>、<code>labs/migration-review-real-project.md</code>）。至此五个实操章全部完成轻量化并统一 labs 引用协议；验收口径、契约、红线表述均不变。<strong>随书模板包 <code>resources/templates/</code> 正式建立</strong>——六份模板（solution-framework / two-layer-acceptance / capability-reinjection / decision-sheet / client-report-outline / roi-calculator）+ README（模板唯一权威、与 labs 手册同源同步规则）；第 6 章《解决方案框架》模板引用由 labs 改指 <code>resources/templates/solution-framework.md</code>（5 处），第 16 章模板文案兑现（决策单/十页骨架/ROI/能力回注四步法）。<strong>权威源转移（本仓为权威，不回写）</strong>——<code>labs/</code> 与 <code>resources/templates/</code> 自 2026-08 起为实验手册与模板的权威来源；陕西移动专题综合实操与 fde-bootcamp-site 降为历史参考（labs/README 与 AGENTS.md 声明同步）；labs 手册内嵌模板加"同源提示"5 处（lab1 附录 A、lab5 输出物 1/附录 A/B/C）。<strong>术语统一：在线全书 → FDE-101</strong>——<a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a> 自此统一称 <strong>FDE-101</strong>：全文“见在线全书”→“见 <strong>FDE-101</strong>”、章末标题统一“## 延伸阅读”、“在线全书（延伸阅读）”→“延伸阅读”，导读“与 <strong>FDE-101</strong> 的层次区分”；AGENTS.md 术语表新增 <strong>FDE-101</strong> 行、引用格式统一“见 <strong>FDE-101</strong> https://…”；misc 过程文档与 experiments 草稿不涉及。 <strong>子代理全文 review 修复批</strong>——裁决术语标准为 <strong>FDE-101</strong>（含短横线，正文已全局统一）；修复：与 FDE-101 的层次区分缺空格、“FDE-101 见文末”残留两处（Ch12/Ch16）、Ch5「全程禁用 AI」→「关键判断不用 AI」、Ch8 标题统一「延伸阅读」且 FDECore 依赖式引用改 FDE-101 链接、「6/8/10/12/15 章」→16、「FDE-101 章节 / 还是 FDE-101 / FDE-101 交叉」缺空格、Ch1 嵌套 [!NOTE] 解嵌套、Ch11 [!WARNING]→[!CAUTION]、「（不用 AI）」→「（关键判断不用 AI）」4 处；<strong>lab3-policy-docs 补齐 5 份</strong>（新增户籍迁移政策.docx、就业创业补贴政策.pdf，源＝陕西移动专题 Lab3-policy-docs），labs/README 素材计数同步。 联动更新：AGENTS.md（版本号说明）。后续各章修订陆续登记于本条之下。</li>
+<li>v0.7（2026-08 · 整改轮 1）：按《misc/FDE教科书全书Review整改操作手册_v0.7.md》执行。<strong>去厂商组织归因</strong>——第 4 章"Palantir 前线编制是三角色"改为"教材口径"；第 1 章"Palantir 实际组织通过 Delta+Echo+后方平台工程分工实现三合一"改为本书分工框架（维持三角色口径，AGENTS.md 无需改动）；<strong>导读学时表拆分</strong>第 14/15 章贯穿证据任务学时（原"生产化与收口 10 学时"拆为 13 章 4 + 14 章 3 + 15 章 3，合计不变）；导读结构段补充"<strong>编号实操 vs 贯穿证据任务</strong>"区别；第 13 章导学新增"主线必读 / 进阶选读"标注；第 15 章章首新增"必做贯穿任务 + 知识支持"属性句。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 整改轮 2–7）：<strong>轮 2 内容整改</strong>——第 2 章财务改按 SEC 一手来源（S-1/10-K）并去因果归因（驱动因素列改"教材解释假说"）、经验曲线标"教材提炼"；第 1 章"首创"降级为"早期实践通常归因"、去"Palantir 实际组织"归因；第 9 章 RAGAS 表按评价对象重写、加"引用存在≠引用正确"反例、准入门槛条件化；第 11 章 Agent 分类对齐 Anthropic 原始框架（OW/EO 属 Workflows）、interrupt() 恢复四点语义 + 重复发消息反例；第 13 章 LoRA 表述区分全参/增量参数、容量结论条件化、学习目标标进阶选读；第 15 章 ROI 改回报率口径、另定义收益成本比、年度价值公式补年运行天数；第 7 章新增"出域"六类口径、数据不出域条件化（非普遍法定义务）、速查来源纪律；第 5 章新增 5.8.3"成功标准八字段"并升级解决方案框架模板；第 3 章"三条红线"改四条、部署约束条件化。<strong>轮 3 格式</strong>——实操章补齐 N.x/N.x.y 编号（6.1–6.6、8.1–8.5、10.1–10.5、12.1–12.5、16.1–16.5 及环节/检查单编号）、带圈数字清零、FDE-101 链接去 URL 加粗并合并章节名、模糊指代改明确编号（如"按上文"→"按 12.4.1"）、5 实操章加学习目标追踪表、Ch8 Python 版本统一为 3.11+。<strong>轮 4 资源</strong>——新建 <code>resources/environment/</code>（环境自检 / 依赖锁定 / 排障）、<code>resources/certification/</code>（八项能力量规 + lab1–5 量规 + 个人评价 + 陌生平行案例）、<code>resources/index/</code>（术语 / 图表 / 五实操产出物索引）。<strong>轮 5 实验章内容</strong>——Ch6 八字段落地（6.4.5 + DoD）、Ch8/10/12 新增《Echo Prototype 检查单》（8.6/10.6/12.6）、Ch10 小样本 6/6 口径修正与教学数据边界、Ch12 红线表述补第四线、Ch14 章首属性句 + 去"待环境复核"残留。<strong>轮 6 labs 同步</strong>——lab3 统计口径修正（可追溯率 6/6）、lab1 八字段同步。<strong>轮 7 回归</strong>——G-1 自动检查通过（17 文件、H1/标题跳级/图题/LR 节点数/带圈数字/待核验残留/Python 版本一致）；G-2 事实核验台账建立。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>、<code>misc/FDE教科书事实核验台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · labs 母本更新轮）：按"<strong>labs 为执行细节母本 → 教科书提炼要点</strong>"方向更新实验手册正式册——<code>lab2</code>：Python 3.11+、自查表与防翻车信息带圈数字清零、DoD 加《Echo Prototype 检查单》（教科书 8.6）；<code>lab3</code>：两处"实操二已确认数据可出域"改教学数据边界口径、"政务 AI 的准入门槛"条件化、自查表/附录带圈清零、DoD 加检查单（教科书 10.6）；<code>lab4</code>：自查表与附录 E 带圈清零、DoD 加检查单（教科书 12.6）；<code>lab4b</code>：Python 3.11+；<code>migration-review</code>：角色措辞微调为"不新增第三学员角色（Engineering 仅作保障方）"。教科书回填核对：八字段 / Echo 检查单 / 6/6 口径 / 教学初始值 / Python 3.11 已全部覆盖。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · F-01/F-13 落笔）：<strong>财务复算落笔</strong>——第 2 章 2.4 第一阶段表扩为 2018–2022 五行并更新数字（2018 约 51%、2019 约 60%、2020 约 67%、2021 78.0%、2022 78.5%），表注注明"2021–2025 已按财报数据复算（2022=1,497/1,906）"；学习目标/正文/小结的 50% 同步改约 51%。<strong>速查官方来源落笔</strong>——第 7 章 7.8 速查表来源列换官方页（DeepSeek API Docs、Kimi GitHub、智谱文档、Anthropic Release Notes），Qwen 旗舰 / OpenAI / B300 标注"待官方核验"，来源纪律 NOTE 同步更新。联动更新：<code>misc/FDE教科书事实核验台账_v0.7.md</code>（F-01/F-13 行）。<strong>后续修正：</strong> 回 SEC S-1/A 原文复算后，2018 毛利率确定为 <strong>72.2%</strong>（430,008/595,409，推翻第三方"约 50%/51%"口径）、2019 为 67.4%；第一阶段表、正文（约 67%→82.4% 叙事）、小结同步更新；第二阶段表 2022 行与图 2-5 同步改 78.5%（详见下方"F-01 落笔补记"条目）。</li>
+<li>v0.7（2026-08 · Reader Testing 修订轮）：AI 代理预演（三类读者无上下文测试，7 题通过）后按 8 条可读性信号修订——S3 学时口径统一（导读=核心必做 3 学时 + 章内注明含进阶 5–6 小时）；S5 交叉引用修正（"第 8 章开头"→"7.4 六类口径与 8.1"）；S6 gstack 仓库统一为 <code>garrytan/gstack</code>（GitHub API 实测 130k stars 权威，<code>garnet-labs</code> 为 0-star 同名仓库）；S1 导读补两类读者最低技术线（Echo 不需动手安装）；S4 Ch14/15 章首补评价量规位置；S7 Ch3 Build 口径补第 14 章模拟演练；S2 Ch6 标题改"六个环节 + 可选红队环节"；S8 Ch15 章首补决策单落点 16.4.4。联动更新：<code>misc/FDE教科书事实核验台账_v0.7.md</code>（G-4 行）。</li>
+<li>v0.7（2026-08 · 收尾定版）：发布 Gate（G-5）12 条逐条核验完成，主编授权签字定版——收尾清单见 <code>misc/FDE教科书v0.7整改收尾清单.md</code>；Reader Testing 按主编拍板以"往期课程实践 + AI 预演 + S1–S8 修订"放宽通过；F-2（FDE-101 目录核对）与 F-3/F-4（格式抽查）标注为"签字接受现状，发布前可再核"，不阻塞定版。联动更新：<code>misc/FDE教科书事实核验台账_v0.7.md</code>（G-5 行）。</li>
+<li>v0.7（2026-08 · F-2 章节名核对）：按 FDE-101 实际目录（本地 repo <code>D:\vibecoding\dsh\fde-course</code>，16 章 + 附录）核对全部 FDE-101 链接——修正 7 处（Ch1 补第二链接 URL；Ch7/Ch14/Ch15 六处补章号：第 8 章 Phase 4 Scale、第 9 章能力回注方法论、第 15/16 章 AI FDE 落地），8 处分隔符统一为"："；"第 5–9 章"范围表述核对无误。全书 FDE-101 链接现已统一为"见 <strong>FDE-101</strong> <a href="https://www.cloudzun.com/fde-course/">https://www.cloudzun.com/fde-course/</a>（第 X 章 &lt;名称&gt;）"格式。联动更新：<code>misc/FDE教科书事实核验台账_v0.7.md</code>（F-2 行）。</li>
+<li>v0.7（2026-08 · 角色表述去口语化）：按主编意见，全书清理"Echo 靠想 / Delta 靠做"类口语化表述（15 处：Ch1/Ch3/Ch4/Ch5/Ch6 的定义句、一句话记住、章节地图、承接句、图 3-2 节点与图题）统一为"<strong>Echo 主责判断、Delta 主责施工</strong>"；"不写代码"作 Echo 定义词处（Ch3/Ch4/Ch6/导读共 4 处）改为"以业务与价值判断为主、不直接负责工程实现"，消解"只动脑/只动手"的割裂感；战场比喻（尖刀/政委/保阵地、手上沾泥、脏活累活）保留。grep <code>靠想|靠做|不写代码</code> 零残留。</li>
+<li>v0.7（2026-08 · 章节命名重构）：按主编意见重构 8 章命名并重命名文件——Ch5「Echo 工作法 · 定义问题（Discovery）」、Ch7「Delta 工作法 · AI Coding 与工程纪律」（Vibe Coding→AI Coding，体现 gstack 规范）、Ch9「RAG 方法 · 答案可追溯」（去"知识问答"）、Ch11「Agent 方法 · 自动化边界」（去"系统设计"）、Ch13「从公网到本地：私有化部署与模型微调」、Ch14「Delta 生产化 · 工程 Scale：生产落地与客户接管」、Ch15「Echo 价值化 · 业务 Scale：价值落地、组织采纳与能力回注」、Ch16「实操五 · 综合证据评审与决策层汇报」；"能力回注"去重（仅 Ch3 定义 + Ch15 主体）；文件名同步重命名 8 个，导读结构表、正文全名引用（Ch8/9/10/12/13/14/15）、AGENTS.md 核心主线、lab5、figures 索引同步；正式交付物旧标题零残留（misc/experiments/references 归档不动）。</li>
+<li>v0.7（2026-08 · F-01 落笔补记）：2.4 数字同步回归——第二阶段表 2022 行 78.6%→<strong>78.5%</strong>、图 2-5 毛利率线 [78.6,…]→<strong>[78.5,…]</strong>；至此 2.4 全部配套（第一阶段表、第二阶段表、图 2-5、正文 L211/L221/L263/L265、学习目标 L15、小结 L330）与 S-1 复算数字一致，grep <code>78.6|50%→82|51%→82|约 50%|约 51%|约 68%</code> 零残留。联动更新：<code>misc/FDE教科书事实核验台账_v0.7.md</code>（F-01 行）。</li>
+<li>v0.7（2026-08 · 脚本事故恢复补记）：修复引用脚本（PowerShell 嵌套数组展平 bug）曾把 6 个文件全文件字符替换破坏（Ch3「（」→「类」、导读「（」→「六」、Ch8「本」→「书」、Ch9「第」→空格、Ch11「第」→空格 +「（」→「应」、Ch14「进」→「阶」）。经主编确认按 git 恢复方案处理：逐行以"当前行 == HEAD 行.Replace(破坏对)"判据恢复 HEAD 行（Ch3 117 行 + 11 混合行人工、导读 188 行 + 25 处残留修复、Ch8 162 行、Ch9 417 行、Ch11 368 行 + 1 处残留、Ch14 422 行 + 2 处残留），v0.7 全部预期改动（Alert 独占行、角色表述、章节重命名、Ch7/Ch13 重构、F-01 财务、Echo 检查单等）均保留；全库破坏特征 grep 零残留。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>（恢复记录）。</li>
+<li>v0.7（2026-08 · AI Coding 叙事统一轮）：按主编意见统一第 4/5/7 章叙事——确立"<strong>Echo 定方向（选层）→ Delta 定落地（建层）</strong>"接力主线，金字塔为分界线与契合点：Ch4 4.5 末尾加"连续统一的团队 + 金字塔分界线/契合点"段；Ch5 5.7 加"选层→建层交接接口"句；Ch7 重构 7.2（图 7-2 改 Delta 工程视角——各层实现形态与工程代价，去与 Ch5 决策矩阵的重复；7.2.2 改"逐层工程形态与代价"表；7.2.3 改施工含义 + 分界线/契合点）、7.3 改"AI Coding：Vibe Coding 驱动 × harness 工程约束"（<strong>Vibe Coding 升级为 AI Coding = 驱动层 + harness 约束层</strong>）、7.5 改"驾驭 AI Coding 防止翻车"（<strong>翻车主体 = 驾驭方式失当，非工具本身</strong>；"Agent"统一为 coding agent，并与第 11 章"智能体系统"区分）、7.1 加接力叙事段、章首/小结/反模式同步；Ch3 图 3-6 分工 NOTE 同步措辞；Ch4 "AI 施工"处 Agent→coding agent；新增 <strong>图 7-3（Echo 选层→Delta 建层接力）、图 7-4（AI Coding 两半：Vibe Coding 驱动 × harness 约束）、图 7-5（gstack 八环节流水线，替换原 text 块）</strong>。grep <code>防 Agent 翻车|何时用、何时不要用</code> 零残留。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 图 2-5 加 0 线）：按主编意见，图 2-5（利润率趋势）加第三条水平 0 参考线并更新图解说明——"0 线以下为亏损（2022 净利率 -19.5%），2023 起站上 0 线"。注：mermaid xychart-beta 不支持自定义颜色/虚线，采用 0 值数据线方案（实线、自动配色），红色虚线需外部 CSS 环境方可实现。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch15 对齐 Ch3 框架 + 本体线增强轮）：按主编意见打通第 3/15 章对应关系——<strong>四阶段/Scale Gate 线</strong>：Ch15 15.1 加"本章 = Scale 阶段业务侧落地"定位 NOTE、15.8 加"6 问 = Scale Gate 评审（四档决策 = Gate 动作，业务证据包 = 必交付物 + 通过证据）"、小结加定位条目；Ch3 3.3.2 Scale Gate 表后加互指（业务证据见 15 章、工程证据见 14.9、综合评审见 16 章）。<strong>本体线</strong>：Ch15 15.7 开头加"承接 Ch3 3.5 + 全书本体线索引"（3.5 总览 → 5/6 收集 → 8/10/12 贡献 → 14.9 工程验证 → 15.7 建模 → 16 评审），15.7.3 末尾加"与 Palantir 生态的对接定位"（方法论是标准、Palantir 是参照系；Foundry Ontology 为代表性实现，平台无关可迁移）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · harness 与 gstack 关系澄清）：按主编意见，Ch7 讲清"<strong>harness 是方法/产品类别，gstack 只是其一个具体开源实现——如同 opencode 只是 coding agent 类里的一个工具，gstack 不代表整个 harness 类别</strong>"：7.3 导语加"两个'类'要分清"段、7.3 标题与图 7-4 改"harness（本书以 gstack 演示）"、7.4.1 补"非唯一实现（自有脚本/CI/商业平台均可）"、7.5 导语与章首/学习目标/小结同步；教学以 opencode + gstack 演示"一套能跑通"，实践选型（甚至自建流水线）灵活、纪律（7.5）比工具更重要。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · harness 生态落笔）：按调研结论，Ch7 7.3 导语加"<strong>harness 是当前 AI 工程主流方向</strong>"共识锚点（Anthropic《Effective Harnesses for Long-Running Agents》2025-11、OpenAI/微软 Magentic-One/DeepSeek Agent Harness 押注，附中英文综述链接）；7.6.1 速查加"<strong>harness 工具生态</strong>"段（gstack / OpenSpec / LangGraph / Magentic-One / DeepSeek Agent Harness / Harness.io，标注信息截至 2026-08 与来源纪律）；全库"gstack 工程约束 / × gstack 约束"表述统一为"harness 工程约束"（含修订记录历史文字）。应主编意见<strong>精简重复表述</strong>："harness 是一类方法/产品，gstack 只是其中一个实现"的完整定义仅保留 7.3 一处，7.4.1 / 7.6.1 / 小结改为简短提法"本书以 gstack 演示（7.3）"且不加粗。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · coding agent 生态补全）：按调研结论补全 Ch7 7.3 工具生态——<strong>共性</strong>：海内外 coding agent 都通过"技能/插件（Skills/Plugins）"获得增强能力（Anthropic 2025-10 Agent Skills 开放标准，SKILL.md 按需加载）；<strong>opencode 定位</strong>：7.3.2 表格新增 opencode（独立开源终端 agent、模型无关、不绑定大模型厂商——本书默认演示选它的中立性理由）；7.3.3 国内工具改 7.3.2 同款表格（Trae/Qoder/WorkBuddy/Comate/CodeGeeX/办公线，含技能生态共性）；7.3.4 选型三问与 NOTE 补 opencode；7.4.1 补"gstack 支持跨 agent 运行（官方 host 接入机制，Claude Code/Codex/opencode 均可）"。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 7.3.3 价格落笔）：按主编意见，7.3.3 国内工具表格补价格列（各档位代表值：Trae 免费版 0元/月/速通 Pro 99元/月/速通 Ultra 699元/月；Qoder 社区免费/专业 59/旗舰 559；WorkBuddy 体验免费/标准 99/旗舰 999；CodeGeeX 个人免费/Coding Plan Pro 149 起；千问办公 19 起、豆包标准版 68），删除百度 Comate 行，表注标注"信息截至 2026-08、以官网实时为准"；Trae 大小写统一。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · coding agent 专节）：按主编意见，Ch7 新增正式小节 <strong>7.3.1 coding agent：定义、分类与共性</strong>（从"引文"提升为专节）——定义 + "coding agent（工具类）vs harness（方法/产品类）"对照表 + 三维分类（按归属：厂商绑定 vs 独立开源 opencode；按能力侧重：纯 coding vs 全能型；按形态：CLI/IDE/平台）+ skill 共性（Agent Skills 开放标准）；harness 主流方向与 gstack 定位两条引文移入该节；原 7.3.1–7.3.4 顺延为 <strong>7.3.2 Vibe Coding 五原则 / 7.3.3 海外 / 7.3.4 国内 / 7.3.5 选型三问</strong>，引用同步（阅读路线 7.3.1→7.3.2、7.3.3 表注互指、7.6.1 "正文 7.3.5"、图 7-4 节点）。grep <code>7.3.4 / 7.4|见 7.3.2）|本节 7.3.1–7.3.4</code> 零残留。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 7.3/7.4 分工理顺）：按主编意见——<strong>7.3 主讲 coding agent、7.4 主讲 harness</strong>：7.3.1 移除 harness 主流方向与 gstack 定位两条引文（改由 7.4 承接）；<strong>7.4 改名"harness：gstack 工作流与 SPEC 驱动开发"</strong>，导语将 harness 定义、主流方向综述、gstack 定位（"gstack 只是 harness 类里的一个实现，就像 opencode 只是 coding agent 类里的一个工具"）转为正文承接 7.3；<strong>skill 共性去重</strong>：仅保留 7.3.1 一处（Agent Skills 开放标准），7.3.3 海外表注删共性段、7.3.4 国内表注删"国产工具同样通过技能/插件生态"句，保留价格时效声明；7.4.1 定义引用改 7.3.1。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 7.4 三层递进重构）：按主编意见，7.4 改为"<strong>理念 → 通用规范 → 具体实现</strong>"三层递进，开篇词精简为两句承接（不再大段解释）：<strong>7.4.1 harness 理念</strong>（专节：定义 + 三个翻车点 + 四条通用原则〔受控执行/外部验证/可追溯/人机回环〕+ 主流方向综述）；<strong>7.4.2 SPEC 驱动：harness 的通用规范</strong>（产品无关，标注 SDD/OpenSpec）；<strong>7.4.3 工程流水线：harness 的通用骨架</strong>（图 7-5 通用化——环节改中文"1 要不要做…8 复盘"，表格去命令列）；<strong>7.4.4 gstack：harness 的一个开源实现</strong>（gstack 定位 + 八环节命令映射表 + 跨 agent）；<strong>7.4.5 最小 gstack 演练</strong>（原 7.4.4 顺延）。引用同步：阅读路线/7.6.2/小结/练习的"7.4.4 演练"→7.4.5。7.4.3 加<strong>来源声明（教材提炼）</strong>：八环节骨架系训练营基于 gstack 提炼、实践磨合，符合 harness 通用规范但非 Palantir 或其他大厂官方流程，落地可裁剪。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch7 全章 review 整改轮）：按主编意见完成第七章整体 review 整改——<strong>历史残留清理</strong>（模型/选型内容已移 Ch13 但 Ch7 未同步）：删学习目标 3、学习目标 2 去"选型三要素"并重排编号（6→5）、小结"选模型/部署"条改指向 Ch13、自检/基础练习去"选型三要素/双栈/显存"（改"Delta 视角金字塔"与"速查在哪"）；<strong>图 7-3 接力图从 7.1.5 移至 7.2.3</strong>（图号恢复连续 7-1→7-5）；<strong>删解释性文字 4 处</strong>（"论证根基/对齐 AI FDE/三层递进/理念讲完落到"）；<strong>7.6.1 重构</strong>：删与 7.3.3/7.3.4 重复且冲突的工具订阅表（含已删百度的残留），改名"工具与 harness 生态速查"，保留 harness 生态段 + 指向行，全章"7.6.1 速查/工具价格在 7.6"类引用同步至 7.3.3/7.3.4/13.10。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch9 开场架构化）：按主编意见，Ch9 新增 <strong>9.1.2 三步工作原理与组件总览（全章地图）</strong>——检索→增强→生成三步（图 9-3）+ <strong>组件→章节地图表</strong>（数据准备与索引→9.3-9.6、查询与检索→9.7、增强与生成→9.8、评估与监控→9.9）+ 典型场景一句（指向 9.1.5），解决"后面内容堆叠拼凑感"（先给总览架构，9.2–9.9 逐块展开）；原 9.1.2–9.1.4 顺延为 9.1.3–9.1.5，正文引用同步（9.1.2→9.1.3 两处、9.1.3→9.1.4 一处、9.1.4→9.1.5 三处）；图号顺延（核心链路 9-3→9-4、检索增强 9-4→9-5、生成提示词 9-5→9-6）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch9 RAG 概念重构）：按主编意见修正 9.1.1"开卷考试"类比不当——原"开卷 vs 闭卷"对比暗示微调=闭卷=差，与第 13 章微调叙事冲突。重构为<strong>概念先行</strong>：RAG 定义（给大模型补上"它不知道的信息"）+ <strong>RAG vs 微调两条互补路径表</strong>（补信息方式/适用/更新/成本，明确"没有优劣，只有适用场景不同"）+ 图 9-2 改为"开卷式检索 vs 背书式内化，各有所长"并列对比（不再贬低闭卷）；<strong>"开卷考试"比喻降级为概念之后的附加 NOTE</strong>（帮助记忆、非严格定义）；同步学习目标 1、9.1.2/9.1.3 承接句、反模式（"把书背进脑子"→"凭模型训练记忆硬答"）、小结、自检。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch9 圈数字与指针清理）：按主编意见——9.1.2 三步工作原理<strong>圈数字 ①②③ 改为 1/2/3</strong>（全书"带圈数字清零"纪律）；<strong>删除三步正文的预告式指针</strong>（"检索（9.7）/增强（9.8）/生成（9.8）"），组件→章节地图表保留（集中一处的架构地图，非零散指针）；典型场景句"见 9.1.5"改"判断方法见下文选型边界"。grep <code>[①-⑳]</code> 零残留。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch9 合并 9.1.4 进选型边界）：按主编意见，<strong>删除 9.1.4（为什么超长上下文取代不了 RAG）</strong>——其与 9.1.5 选型边界表重叠（超长上下文已有行）；核心内容（Lost in the Middle / 按 token 成本 / 溯源不透明 + "能读多少 vs 读哪几段、答得有依据"结论 + "引用存在≠引用正确"见 9.9）压缩为 9.1.4 选型边界表后的展开 NOTE；原 9.1.5 顺延为 <strong>9.1.4</strong>，正文 6 处引用同步（对照/印证/反模式 ×2/小结）；9.1 标题改"RAG 是什么：检索外部资料补足模型语料"，学习目标 1 与章首产出同步去"为什么超长上下文取代不了它"。应主编意见，进一步<strong>删除选型表后的"超长上下文展开 NOTE"</strong>（表格行已含结论，避免变相塞回已删内容且"引用存在≠引用正确"与 9.9 重复），9.1.4 保留"选型表 + 判读 TIP"。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch9 9.8 加厚）：按主编意见补厚"生成 + 来源引用"节——<strong>9.8.1</strong> 加组装提示词模板（代码块示例）+ 两条组装纪律（只给片段不给全文、片段排序与数量 top-K 3–8 段）+ 常见坑 NOTE；<strong>9.8.2</strong> 引用格式细化（标准写法 / 多来源并列 / 无文号降级）+ "检索不到不能编"三条判据（检索为空 / 命中不相关 / 片段冲突）+ 引用三类失败预告（错引 / 漏引 / 引而不符，承接 9.9 双指标）+ <strong>完整示例会话</strong>（西岭社保问答：提问→检索片段→组装提示词→带引用作答 + 对照拒答输出，标注"示意内容非真实政策文本"）。9.8.3 保持。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch7 过渡精简）：按主编意见学 Ch9"开门见山"风格精简第七章小节过渡——去掉 8 处机械"承接 7.x"句式与"本节将/本节给出/本节先讲"元描述、解释腔（7.1.1"回顾第 3 章/本章讲的"、7.1.3"翻译成……根源破法"、7.2"承接 7.1 的接力叙事/本节给出"、7.3"承接 7.1/本节把……讲清楚/本节先讲驱动层"、7.4"承接 7.3"、7.5"承接 7.1/手段驾驭"），各节改为一句定义/场景直接切入。grep <code>承接|本节将|本节先讲|本节给出|回顾第</code> 零残留（实操四B"承接知识"术语除外）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch11 泛化去实操绑定）：按主编意见（"教科书不是实验手册说明书，讲通用场景和方法"）泛化 Ch11 的章节/实操绑定表述——<strong>11.3.5</strong> 工单分级改为"Routing 的典型应用场景（业界运用普遍）"，去掉"第 12 章实操四的工单分级…为 6 类工单搭…"的为实操找补腔，改为"这类场景会在实操四中演练"；<strong>11.3.7</strong> 标题去"（实操四B）"，开篇改为"两种常见模式"对比（路由工作流 vs 受控 Agentic Loop），表格头去"第 12 章/实操四B"，说明段改为二维判断 + 演练指引；<strong>同类表述一并泛化 8 处</strong>（L59/L146/L155/L238/L373/L424/L471/L494："第 12 章/实操四"→"路由工作流/工单分级/受控 Agent"）；保留章定位、章节地图、下一章导航、红线落地、Lab4B 演练要求等正常语境。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch11 11.7.2 MCP 讲透）：按主编意见重写 MCP 小节（原来只有定义+三原语+规范更新，突兀）——<strong>概念</strong>（解决"每个工具一种接入方式"、USB-C 类比）、<strong>组件与架构</strong>（Agent → Host/MCP Client → MCP Server 调用链 + 图 11-5 + Host/Server/三原语）、<strong>适用场景</strong>（多工具多 agent 共享 / 接入方式杂 / 团队共享工具库 / 简单场景不上）、<strong>与 agent 解决方案的关联</strong>（工具层与决策层解耦、与 LangGraph 配合、承接 11.8 工具设计、能力回注落点）、规范时效声明保留。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch11 11.9/11.10 扩充）：按主编意见——<strong>11.9.3 HITL 讲透</strong>：标题改"让'人能判断、AI 能执行'可落地"，新增<strong>三种环的层次</strong>（Human-in-the-Loop 人在环内 / Human-on-the-Loop 人在环上 / Human-out-of-the-Loop 人在环外，含机制与适用）、<strong>三个工程要点</strong>（暂停点选在哪——敏感路径设 interrupt、确认界面给人看上下文+候选+风险、人工超时策略——超时默认拒绝绝不自动通过）、注意（HITL 非免死金牌，双人复核+审计）、与 agent 方案关系（interrupt/固定转人工分支/request_human_review，HITL 写死而非模型自觉）；<strong>11.10.2 三问加判定细则</strong>（每问的"可自动/留人"判据 + 用法：任何一问指向留人就设暂停点，全可自动也留审计）；<strong>11.10.3 改名"边界写进 SPEC，并落到工单分级"</strong>，新增 SPEC 落地清单（自动化范围/转人工触发条件/兜底动作/人工超时策略 = DoD 检查点）+ 边界随阶段演进（Prototype 保守、生产扩大，敏感路径 in-the-loop 不动）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch11 章节重排）：按主编意见消除堆砌感，重排为"<strong>概念 → 模式 → 工具底座 → 权衡/安全 → 边界决策 → 案例收尾</strong>"：11.5 工程底座（原 11.7 LangGraph/MCP）、11.6 工具设计（原 11.8）、11.7 假阳性 vs 假阴性（原 11.6，<strong>改名去"自动化边界"</strong>）、11.8 安全与三层护栏（原 11.9）、11.9 自动化边界（原 11.10）、<strong>11.10 企业案例（原 11.5 反洗钱，放最后综合演示）</strong>；改名 11.2"适用边界"→"什么时候用智能体"、11.10"企业案例"（全章"边界"字眼仅剩 11.9 核心节）；全章 30+ 处子节编号与正文引用同步（11.5.x–11.10.x 映射）、图号重排（MCP 图 11-5→11-4、反洗钱图 11-4→11-5）、跨章引用同步（Ch12 三处：11.10→11.9/11.9→11.8/11.7.1→11.5.1；Ch13 一处：11.8.2→11.6.2）；修复重排脚本切块遗漏导致导学块丢失（从 HEAD 重建导学块、前置行用当前版）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 部署/微调顺序理顺）：按主编意见改"先本地部署、后微调"——<strong>新写 13.1 为什么需要本地</strong>（数据不出域 → 公网 API 三条边界表 → 本地两件事：部署=第一层、微调=第二层 → 本地回填主线）；<strong>原 13.1（该不该微调）移到 13.4</strong>，标题改"部署之后：什么时候才轮到微调"并加承接句（"模型本地跑起来了，还有一类需求 RAG 覆盖不了——行为类，这才轮到微调"）；新顺序：13.1 部署引入 → 13.2 选型 → 13.3 私有化部署 → 13.4 微调判断 → 13.5 方法 → 13.6 流程 → 13.7 成本 → 13.8 回填 → 13.9 判断清单 → 13.10 实验 → 13.11 速查；全章编号与引用映射（13.10→13.11、13.9→13.10、13.7→13.9、13.6→13.7、13.5→13.6、13.4→13.5、13.1→13.4 及子节）、导学主线必读/学习目标/章节地图同步（学习目标按部署→微调→回填→决策重排）；跨章引用同步（Ch7 十处 13.10→13.11、Ch16 13.7 模型切换适配→13.8，原引用错误顺带修正）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 合并 13.1+13.2 合规重写）：按主编意见——<strong>合并 13.1（为什么本地）+ 13.2（选型）为新 13.1「为什么在本地部署 + 怎么选型：合规与能力双驱动」</strong>：<strong>13.1.1 合规要求</strong>（数据不出境〔《数据安全法》《个保法》〕/ 算法备案与安全评估〔《生成式 AI 服务管理暂行办法》〕/ 自主可控〔信创〕表）；<strong>13.1.2 选型三问</strong>（能否本地部署 / 算法可否解释 / 权重是否公开，从合规推导的能力维度判据）+ 原选型三要素并入（复杂度定档 / 敏感度定本地 / 约束定规格）；<strong>删原"国内开源 vs 海外闭源"地域二分与"地域不是判据"澄清节</strong>（按主编意见不多讲地域、直接从合规说明）；全章顺延 -1（13.3→13.2 部署…13.11→13.10 速查），子节/引用/图号全同步；导学主线必读与学习目标 1 更新；跨章同步（Ch7 10 处 13.11→13.10 回改 + 2 处 13.2/13.3→13.1/13.2；Ch16 13.8→13.7）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.1 再重写·规范依据）：按主编意见——<strong>修掉选型三问的回环</strong>（原问 1"能否本地部署=权重是否公开"与问 3"权重是否公开"重复），并<strong>改用公开规范作依据</strong>（不再自编）：<strong>13.1.1 提出问题</strong>——三条合规红线（数据不出域〔《数据安全法》《个保法》〕/ 算法备案与安全评估〔暂行办法 + TC260-003 语料/模型/服务安全〕/ 自主可控〔信创 + 政采安全采购指南〕，均附官方链接）+ 必要性小结；<strong>13.1.2 解决问题</strong>——选型三问（第一问数据能不能出域〔决定要不要本地〕/ 第二问能不能本地部署〔权重可得+算力许可+自主可控，三者合起来，权重公开只是子条件〕/ 第三问选哪个档位〔复杂度定档+评测验证+约束定规格〕）+ 可行性小结（合规红线内本地部署的完整链路）。规范链接标注"教材引用，落地以官方最新文本为准"。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.1.3 成本动因）：按主编意见新增 <strong>13.1.3 经济性动因：烧不起公网 API，转而在本地运行</strong>（合规之外纯成本考量）——成本形态对比表（API 随调用量线性增长 vs 本地固定投入+低边际成本；低调用量 API 划算、高调用量/长上下文/批量本地摊薄后可低一个量级）、盈亏平衡逻辑（达到规模后显著更省，标注"教材分析非精确报价"）、案例链接（免推理 token 费 / 路由降本 / GLM 真实账单）、两点提醒（① 本地不总是更便宜，先算调用量；② "省钱"与"合规"是两个独立动因，不可用成本论证替代合规论证）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.1.3 盈亏平衡计算扩充）：按主编意见给 13.1.3 补<strong>理论计算模型</strong>——本地月成本构成表（8×H100 单台：折旧含 30% 残值 / 电费 / 机房 / 运维 / 维护 ≈ 10 万/月）+ 打平公式（本地月成本 ÷ API 混合单价）+ 两个场景（国产低价 API ≈¥3.8/百万 → 打平需 2.6 亿 tokens/日极大规模；海外前沿/涨价后 ≈¥135/百万 → 打平需 740 万 tokens/日，每天几千上万次高频场景即可）+ 一句话画像（高频调用 × 单价高 × 算力满载）；<strong>还需考虑的因素 4 条</strong>（算力利用率 50% 打平点翻倍 / 分摊模式〔算力池、云 GPU 按小时〕/ 软硬件维护常被低估 / 折旧与残值 30–40%）；全部标注"教材理论分析、示意口径，落地以官方定价与自身核算为准"。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.1.3 换 2026 口径重算）：按主编意见，盈亏平衡计算改用<strong>当前算力与模型</strong>（B300 跑 DeepSeek V4 Flash）与<strong>2026 年最新价格</strong>——硬件：B300 服务器公开市场约 700 万/台，<strong>受美国禁运与中国合规限制走非正规渠道（黑市）翻倍至约 1400 万/台</strong>（<a href="https://www.chinatimes.com/realtimenews/20260625001978-260410?chdtv">中时</a>、<a href="http://app001.ftchinese.com/interactive/284670">FT 中文网</a>、<a href="https://m.163.com/dy/article/L0A40JNM0511BLFD.html">网易</a>），月成本合计 ≈ 26 万/月（折旧 20.4+电费+机房+运维+维护）；API：DeepSeek V4 系 2026-08-17 峰谷定价生效（涨幅最高 1100%），高峰 output ≈ ¥27/百万（<a href="http://www.hunantoday.cn/news/xhn/202608/33482290.html">湖南日报</a>）；打平点：平峰 ≈ 520 亿 tokens/月、高峰 ≈ 236 亿 tokens/月——<strong>2026 年自建 B300 整机打不平且非正规渠道有合规风险</strong>，现实路径改为"单卡小规模 / 云 GPU 租赁 / 国产昇腾 / 高峰走 API 混合"；考虑因素新增"采购渠道与可得性"（禁运型号非正规渠道翻倍+合规风险，替代=昇腾/租赁）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 成本分析归位）：按主编意见——<strong>13.1.3 精简为"成本形态对比表 + 两点提醒"</strong>（删 B300 盈亏平衡计算与考虑因素，避免 13.1 过长；提醒指向 13.2.8）；<strong>13.2 新增 13.2.8 高性价比档位与价格核算（以 V4 Flash 为例）</strong>——5 档硬件表（RTX 4090/5090/4×6000 Ada〔≈21 万〕/AMD MI300X〔≈10 万〕/华为 Atlas 800〔120–140 万〕+ 量化配置与吞吐）+ <strong>均衡/企业级两档价格核算</strong>（V4 Flash 官方报价 2026-09-01：输入命中 0.05–0.10/未命中 1.5–3.0/输出 4.5–9.0 元每百万 tokens；混合 ≈ 空闲 1.9/高峰 3.8；均衡档打平 11–23 万次/日但吞吐瓶颈差一个数量级、企业级 MI300X 打平 5–11 万次/日且吞吐足够）+ 结论（V4 Flash 便宜→打平点上移；省钱替代的现实档=MI300X 高吞吐大显存单卡；Atlas 800 走合规路线）+ 考虑因素（利用率/分摊/维护/残值）+ 真实案例链接；全部标注"2026-09 口径、示意估算，以官方定价与实测为准"。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.2.7 量化讲透）：按主编意见扩充量化取舍（原来只有三行结论）——<strong>概念</strong>（量化=权重/激活压到低位宽，FP16 2 字节→FP8 1 字节→INT4 0.5 字节，显存按比例降、精度损失，权重冗余与分布集中使其可行，GPTQ/AWQ/GGUF 思路）；<strong>档位谱系表</strong>（FP16/BF16 基线 100% → FP8/INT8 50% 生产默认 → INT4/FP4 25% 慎用；W4A16 混合量化注释）；<strong>选型三步</strong>（① 显存够不够→不够才量化；② 精度敏不敏感→政务/RAG 保守 FP8 起步；③ 必须评测定档→低于验收线升一档，呼应 13.7 量化对照）；<strong>示例</strong>（V4 Flash 各档位与量化档一一对应：4090 AWQ/5090 4-bit/6000 Ada W4A16，呼应 13.2.8）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.2.5 显存规划去教材提炼）：按主编意见重写显存规划——<strong>去掉"🔶教材提炼"标注</strong>，改用公开权威口径：显存三部分（权重 + KV cache + 激活/运行时），<strong>权重每 10 亿参数 ≈ FP16 2GB / FP8 1GB / INT4 0.5GB</strong>（每参数 2/1/0.5 字节），KV cache 随上下文/并发/层数增长；估算步骤（总显存 ≈ 权重 + KV cache + 余量；卡数 = 总显存 ÷ 单卡显存，700 亿参数 FP16 ≈140GB 在 80GB 卡需 ≥2 卡示例）；来源标注 <strong>HuggingFace 显存估算器 / vLLM 官方显存文档 / 阿里云 PAI 估算指南</strong>；判读要点改为"按公式计算"（2.8T 总参 NVFP4 ≈1.4TB）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 合并 13.2.5+13.2.7）：按主编意见<strong>合并"显存规划"与"量化取舍"为新 13.2.5「显存规划与量化取舍：从模型反推要几卡」</strong>——逻辑闭环（量化决定显存需求）：量化概念 → 档位谱系表（FP16 2GB/FP8 1GB/INT4 0.5GB 每 10 亿参数）→ 显存三部分（权重/KV cache/激活，HF/vLLM/阿里云来源）→ 估算步骤 → 选型三步（显存够不够/精度敏不敏感/评测定档）→ 判读要点 → V4 Flash 档位示例；原 13.2.7 量化小节删除，<strong>原 13.2.8 档位核算顺延为 13.2.7</strong>，引用同步（13.1.3 提醒、W4A16 注、示例）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.2.5 卡数示例表）：按主编意见把"700 亿参数模型卡数估算"改为<strong>与量化档位表逐行对齐的示例表</strong>（FP16 ≈140GB→80GB 卡 ≥2/48GB 卡 ≥3；FP8 ≈70GB→≥1/≥2；INT4 ≈35GB→≥1/≥1，未含 KV cache 余量），并加一句"量化一档卡数大致减半、再降一档单卡可装"。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.2.2 算力路线重写）：按主编意见——<strong>"两条算力路线（B300 vs 昇腾）"改为"合规可得性优先的分层选择"</strong>：4 档表（国产信创〔昇腾 910C/Atlas 800，合规默认〕/ 性价比〔RTX 4090/5090/4×6000 Ada，正规渠道，留意出口管制〕/ 吞吐〔AMD MI300X，非禁运可采购〕/ <strong>旗舰仅参照〔B300：禁运、官方不可得、非正规渠道翻倍+合规风险，本书不推荐〕</strong>）；新增"为什么 B300 不推荐"说明（呼应 13.1.1 红线三与 13.2.7 价格核算）；决策树图 13-2 的"算力栈选择"改为"按合规与预算选档（13.2.2 表 / 13.2.7）"；昇腾 910C 中流砥柱说明保留；读法更新。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.2.3 移入微调章节）：按主编意见——<strong>删除 13.2.3"推理 vs 微调硬件差异"</strong>（部署章节不插微调内容），内容<strong>并入 13.4.2 微调硬件量级开头</strong>（"为什么微调比推理吃显存"原理前置：推理=权重+KV+激活+并发；全参=梯度+优化器 4~6×；LoRA=介于两者之间 + "推理可单节点、全参常跨多机"分界说明）；<strong>13.2 编号顺延</strong>：三档选型→13.2.3、显存量化→13.2.4、服务化→13.2.5、档位核算→13.2.6；引用全同步（导学 13.2.4–13.2.6、提醒/算力路线表/图/读法/W4A16/示例→13.2.6、推理微调引用 4 处→13.4.2、三档选型引用→13.2.3；L110"决策三要素同 13.2.3"顺带修正为"同 13.1.2"）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.2.5 服务化写厚）：按主编意见扩充模型服务化与推理引擎（原来只有引擎表 + 一段口诀）——<strong>服务化是什么</strong>（把模型包装成可并发服务的 OpenAI 兼容 API）；<strong>引擎选型表</strong>（vLLM 生产默认 / TensorRT-LLM 极致优化 / Triton 多模型网关 / MindIE 昇腾）；<strong>三个关键机制</strong>（Continuous batching / PagedAttention-KV 分页 / Prefix Caching，解释"同卡多并发"与 RAG 前缀命中降本）；<strong>多卡并行策略</strong>（TP 单机 / PP 跨节点 / DP 多副本 / EP MoE 专家并行）；<strong>生产部署要点</strong>（K8s+GPU Operator / 网关限流鉴权灰度〔呼应 11.8.3〕/ 监控 / 多副本灰度〔呼应 13.7〕）；呼应句（引擎决定 13.2.6 吞吐上限、服务化是 13.7 回填承载）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 微调四节合一）：按主编意见——<strong>13.3（微调判断）+13.4（方法）+13.5（流程）+13.6（成本）四节合为一节新 13.3「微调：判断、方法与成本（进阶选读）」</strong>：<strong>13.3.1 什么时候才轮到微调</strong>（原 13.3 三子节压平为加粗小标题）；<strong>13.3.2 三种微调方法</strong>（原 13.4.1）；<strong>13.3.3 硬件与成本量级</strong>（原 13.4.2 + 原 13.6 合并——<strong>消除雷同</strong>：两张"模型量级 × 方法"坐标表合一〔卡数表 + 费用量表并列〕、"教材落点"与"决策口诀"合成一条、B300 采购行删除〔13.2.6 价格核算已覆盖〕）；<strong>13.3.4 一次微调的典型流程</strong>（原 13.5 + 数据治理 Gate 改加粗子块）；后续顺延：回填 13.7→<strong>13.4</strong>、判断清单 13.8→<strong>13.5</strong>、实验 13.9→<strong>13.6</strong>、速查 13.10→<strong>13.7</strong>（子节 13.7.x/13.8.x/13.10.x 同步）；导学主线必读/学习目标/章节地图同步；跨章引用同步（Ch7 10 处 13.10→13.7 + 1 处"13.3 私有化"→13.2；Ch16 13.7 模型切换适配→13.4；Ch3/Ch8/Ch9/Ch10/Ch11/导读"13.3 私有化/出域"错位引用顺带修正为 13.2 系；Ch13 内 13.5.1/13.6/13.8/13.9/13.10 引用约 20 处全同步）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 微调节继续收拢）：按主编意见——<strong>13.5（判断清单 + 红线呼应）与 13.6（实验）并入 13.3</strong>：判断清单并入 13.3.1 末尾（"判断清单（落地勾选）"六项 + 反例，消除与判断逻辑的重复）；红线呼应成为 <strong>13.3.5</strong>；实验成为 <strong>13.3.6</strong>（两块移至 13.3.4 与 13.4 之间）；速查 13.7→<strong>13.5</strong>（子节 13.5.1–13.5.3）；引用全同步（Ch13 内 13.5/13.6/13.7 系引用约 10 处、Ch7 10 处 13.7→13.5）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 13.3.3 在售配置重写）：按主编意见——<strong>13.3.3 去掉"示例口径，非在售配置"标签，改用在售配置计算</strong>：原理前置（推理 vs 微调显存差异）保留；<strong>抽象"模型量级 × 方法 → 卡数"表与费用量表合并重写为"在售配置怎么选"表</strong>（与 13.2.6 同一批在售硬件：RTX 4090 0.5–0.8 万 / 5090 2–3 万 / 4×6000 Ada ≈21 万 / MI300X ≈10 万 / Atlas 800 120–140 万 / B300 仅参照）——每行给出<strong>购置成本 + 能跑的微调（模型量级×方法）+ 单次微调成本量级</strong>；新增<strong>单次微调成本演算</strong>（人力=大头 + 折旧 + 电费，示例：4×6000 Ada 跑 70B LoRA 2 天 ≈ 数千元级）；教材落点改"不是为微调买硬件，而是买来既跑推理也跑微调"；13.5.3 标题同步改"容量规划示例"、小结费用口径对齐（LoRA 千元~数千元级 / 全参数万~数十万元级）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 速查同步 + 标题去括号）：按主编意见——<strong>13.5 速查同步课程最新模型与硬件</strong>：模型速查补 <strong>DeepSeek V4 Flash 档</strong>（13.2.6 核算主角，附官方报价 2026-09）与 <strong>BGE-M3</strong>（第 9/10 章本地 embedding）；硬件速查从 2 行扩为 <strong>7 行</strong>，补齐正文全部在售硬件（RTX 4090 / 5090 / 6000 Ada / MI300X / Atlas 800，均给官方来源；B300 / 910C 保留）；<strong>Ch13 章节标题全部去括号（10 处）</strong>：13.1.1/13.1.2（提出问题/解决问题）、13.2.5（企业做法）、13.2.6（以 V4 Flash 为例）、13.3（进阶选读）、13.3.3（信息截至 2026-08，时效移正文）、13.3.6（可选动手）、13.5（附录式）、13.5.1（截至 2026-08）、13.5.3（说明移正文 NOTE）。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 全库标题去括号）：按主编意见"章节标题尽量不用括号"，<strong>全库 16 个正文文件 + 导读约 60 处说明性括号标题去除</strong>——删除或改冒号（如"8.1 知识背景（呼应第 7 章）"→"8.1 知识背景"、"6.4.7 环节 7 ·（可选）用 AI 当红队…"→"环节 7 · 可选：用 AI 当红队…"、"9.10 最小 RAG 预实验（可选动手，20–30 分钟）"→"：可选动手 20–30 分钟"）；<strong>保留类约 24 处</strong>（术语注释〔Airbus（空中客车）、（Deployment Strategist）、（Embedding）、（HITL）、（Lab4B）〕、时间范围〔（2018–2022）〕、环节时长〔（约 X 分钟）〕、DoD 术语、导读体例模板示例）；速查类标题的时效标注移入正文。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 全局格式 review 修复）：按《FDE教科书全局格式检查规范_v0.7》全局扫描，修复<strong>正文带圈数字残留</strong>（Ch13 13.1.3 提醒、13.2.6/13.2.7 结论、Ch14 导学 Delta 三项职责、Ch15 小结四节结构，<code>①②…</code>→<code>1. 2. …</code>，全书带圈数字清零）、<strong>Ch2 图号断档</strong>（折线图 图 2-5→图 2-4，恢复 2-1→2-4 连续）、<strong>Ch10 失效引用</strong>（9.7.3→9.7.2，Ch9 §9.7 仅 9.7.1/9.7.2）、<strong>11 处裸代码块补语言标注</strong>（导读骨架、Ch4/5/6/7/8/10/12/16 输出示例 <code>```</code>→<code>```text</code>）。正文式开篇词（D2 系统性补写）留待后续轮次。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · Ch13 小节开头精简）：按主编意见——<strong>删除 13.2、13.3 的承接过渡段</strong>（"承接 13.1 选型，当数据敏感度判出不能上云……"与"承接 13.2——……本节按……讲四件事"，口吻像讲稿而非教科书正文；所承载的信息〔条件化声明、行为类入口、四件事导航〕正文各处已覆盖）；<strong>13.4 开场由引用块 + IMPORTANT 改为正文段落</strong>（"第 8、10、12 章的三个 Demo……"场景段与"答案是：功能会漂移……"结论段均为普通正文）；<strong>13.4.1 接口层一段改无序列表</strong>（超时重试 / 参数通道 / 并发限流三项拆为 bullet，与行为层、质量层的列表格式统一），<strong>"自建 provider 适配层"与"西岭例"两段改引用块</strong>；<strong>13.4.7「迁移问题」归位</strong>——标题词不达意（"迁移"既指切换又指经验迁移），改为：<strong>"三种切换路径的适配深度"并入 13.4.4 决策依据</strong>（做成"切法 × 适配工作量 × 行为差异 × 适用"小表，决策顺序"先试最轻的切法"）；<strong>13.4.7 改名「经验沉淀：切换资产的可复用性」</strong>并加厚（provider 适配层进 14.9 回注、切换基准集进第 7 章纪律四案例、适配清单沉淀为团队检查清单）；<strong>删除 13.4.5 反模式 / 13.4.6 练手 / 13.4.7 经验沉淀三节</strong>（按主编意见——反模式与章末"反模式与红线"的"把切模型当换 base_url（对照 13.4）"重叠、练手与 13.6 实验的切换衔接重叠、经验沉淀信息已散见 13.4.1/13.4.2 正文；13.4 精简为 13.4.1–13.4.4）。<strong>Ch13 全文通读适配</strong>：删除 L3"（原第 7 章 7.3/7.4/7.8.1 的模型内容并入本章）"内部解释表述；"两条算力路线（B300 / 昇腾）"旧表述全清（产出/学习目标 1/图 13-1/小结/挑战/13.3.5 红线表改"合规可得性分层"口径）；"选型三要素"→"选型三问"（产出/13.2.1 落地判读/13.2.2 政企默认做法）；学习目标 1 的"推理 vs 微调硬件差异（13.1–13.2）"改指 13.3.3；13.2.3"原型一卷点一句"笔误修正；13.5.1 V4 Flash 行"系列"列补"（同上）"。<strong>全库跨章残留扫描</strong>：Ch8 延伸阅读与知识背景"选型三要素（13.2）"→"选型三问（13.1.2）"（任务复杂度/数据敏感度/部署约束三点并入三问口径）；Ch9 章节地图 mermaid"选型三要素"→"技术选型"；Ch13 前置知识"已并入本章"内部表述改为直接列小节；Ch7 挑战题"双栈"旧表述→"算力路线分层"。<strong>Ch14 四阶段口径同步与 Delta Scale 职责优化</strong>（按主编意见"结合全书修改同步 + 按四段交付优化 Delta 在 Scale 的职责"）：章首定位加四阶段坐标（Build 收口 + Scale，坐标第 3 章 3.3、角色第 4 章 4.6）；导学新增"Delta 在 Scale 阶段的三项职责"（生产评估 14.2/14.5、自运营交接 14.8、能力回注 14.9，Echo 管业务侧、Engineering 管运维深水区）；14.1 五转换标注 Build（转换 1–3）/ Scale（转换 4–5）归属；14.5 八项 Gate 对照第 3 章 3.3.2（Build Gate 工程侧展开，14.8 撤出喂给 Scale Gate）；14.7 生产保障深水区明确由 Engineering（3.2.3）或客户平台团队承接；14.7 灰度回滚与 14.9 provider 适配补第 13 章最新引用（13.4.2 / 13.4.4 / 13.4.1）；小结开头加"Delta 在 Scale 三项职责"条。<strong>Ch15 三块结构重组 + 删 15.8/15.9</strong>（按主编意见"15.1 做开口、15.2–15.3 用 ROI 说服领导/项目负责人、15.4–15.6 让用户采纳推广、后面讲能力回注、15.8/15.9 偏实操介绍可不要"）：15.2/15.4/15.7 开头分别加"第一部分 · 对决策层证明价值 / 第二部分 · 推动用户采纳与推广 / 第三部分 · 能力回注"定位句；导学章节地图、小结改为三块结构；<strong>删除 15.8「承上启下：为第 16 章准备业务证据包」与 15.9「通用性：复盘真实项目」</strong>（15.8 的准备清单由 16.4.4 决策单承载、15.9 由 labs/migration-review-real-project.md 与 16.4.6 出口承载），15.7.7 末尾补一句"三块证据合成第 16 章业务证据（16.4.4）"衔接；引用同步（Ch16 两处 15.8 引用改 15.2–15.3 / 15.2–15.7；小结 15.1/15.8 改三块；"业务证据包"统一改"业务证据"）。<strong>Ch15 改为四节结构</strong>（按主编意见"一共就四节：开场 / 对决策层证明价值 / 推动用户采纳与推广 / 能力回注"）：<strong>15.1 开场（原 15.1）→ 15.2 对决策层证明价值（15.2.1 价值证据链 = 原 15.2、15.2.2 价值口径 = 原 15.3）→ 15.3 推动用户采纳与推广（15.3.1 组织采用 = 原 15.4、15.3.2 干系人表达 = 原 15.5、15.3.3 业务 Scale = 原 15.6）→ 15.4 能力回注（15.4.1–15.4.7 = 原 15.7.1–15.7.7）</strong>；大节标题下加定位句（原"第一/二/三部分"NOTE 并入）；内容与图表不变、编号层级重排；全库引用同步约 25 处（Ch1/2/3/5/6/8/10/12/13/14/16 的 15.7→15.4、15.3→15.2.2、15.4/15.6→15.3.1/15.3.3 等）。<strong>Ch15 15.1 开场加厚</strong>（按主编意见"开场太薄、三话题只提了两个、必须说能力回注；作为收束章要结合第 3 章内容营造最后一幕"）：开场重写为"前三幕（Discovery 6 / Prototype 8-10-12 / Build 14）→ 最后一幕 Scale"叙事，回扣第 3 章 3.3.2 Scale Gate 三份证据；新增<strong>三话题表</strong>（对决策层证明价值 15.2 / 推动用户采纳与推广 15.3 / <strong>能力回注 15.4</strong>，各自对应 Scale Gate 与"卖人力→卖能力"主线）；"两个不等于"升级为<strong>三个不等于</strong>（价值成立 / 组织愿意采用 / <strong>能力回注平台</strong>，呼应第 2 章飞轮与 14.10 工程侧三个不等于）；Scale Gate 位置 NOTE 改为三证据 × 三话题对应（客户自运营←15.3+14.8、回注复用←15.4+14.9、飞轮指标←15.2+15.3.3）；学习目标 1、一句话主线、小结同步三话题。<strong>Ch15 开场去指针</strong>（按主编意见"不要对本章内容做过多的指针，尤其是在表格里"）：15.1 三话题表的"对应"列去掉全部子节编号（15.2.1/15.3.1/14.8 等）改纯概念（Scale Gate 通过证据 / 客户能自运营 / 第 3 章四步法）；话题名去掉（15.x）括号；位置 NOTE 的编号箭头简化（每项只保留一个大节编号 + 第 14 章）；15.3.3 扩大范围 Gate 表内的子节编号也文字化（"回'组织采用'一节"、"价值证据链"）；开场首段"第 3 章 3.3.2"简化为"第 3 章"。<strong>Ch15 15.2 重构</strong>（按主编意见"15.2 开场像目录要改；开场要说明为什么决策层更关注业务价值成立（在工程验收之上）+ 怎么把核心业务价值说清楚 + 放流程图不做细节；15.2.2 公式不要堆一起、每公式单独解释、拆成两节——ROI 与口径精确定义一节、估算方法与话术一节"）：<strong>15.2 开场改正文式</strong>——讲"决策层在工程验收之外更关心业务价值"（工程验收通过 = 能用，业务价值成立 = 该投入）+ "把核心价值说清楚 = 一条证据链"，价值证据链流程图（图 15-1）上移到开场（F 节点去编号"五类口径"）；<strong>15.2.1 改标题「证据链怎么走：以诉求分类器填实六环」</strong>（去掉重复引言）；<strong>15.2.2 拆两节</strong>：<strong>15.2.2「价值口径：五类口径的精确定义」</strong>（年度价值/年净收益/TCO/ROI/回收期，公式不再堆一个代码块，每个公式加粗成行 + 单独解释）；<strong>15.2.3「估算方法与汇报话术」</strong>（三类价值公式表、年运行天数来源、口径第一、给区间不给单点、对决策层话术、标来源、书面锁口径）；引用同步（16 章 2 处 15.2.2→15.2.3、反模式锁口径→15.2.3、小结拆 15.2.2/15.2.3）。<strong>Ch15 删目录式概述引文</strong>（按主编意见"15.3 这种目录式的概述引文一律不要"）：删除 15.3 大节标题下"三节讲透这块：门槛·动机·信任（15.3.1）…试点→推广 Gate（15.3.3）"的罗列引文；删除 15.2 开场末尾"下面把这条链的每一环展开…"的概述句；删除 15.4 大节标题下"把跨客户的价值带回平台…"的主题概述引文（保留"回注不是单方职责"实质引文）。<strong>Ch15 15.3/15.4 补章节开篇词</strong>（按主编意见"15.3、15.4 也需要像 15.2 那样的章节开篇词"）：15.3 加正文式开篇（讲"决策层点头 ≠ 系统被真正用起来，操作层/技术层/监管层在意好用/添麻烦/找谁 → 门槛·动机·信任"）；15.4 加正文式开篇（讲"项目交付不是终点，能不能把能力带走才是——卖人力→卖能力分野，回注是 Scale Gate 回注候选"），均非目录/引文式。联动更新：<code>misc/FDE教科书整改问题台账_v0.7.md</code>。</li>
+<li>v0.7（2026-08 · 教学站点上线）：<code>fde-102</code> 教科书 GitHub Pages 阅读站建成——MkDocs Material（Python 3.11；插件 <code>search</code> / <code>callouts</code>；扩展含 <code>pymdownx.superfences</code> 的 mermaid 自定义围栏、<code>arithmatex</code> + KaTeX、<code>tasklist</code>、<code>magiclink</code>、<code>admonition</code>），站点 URL <code>https://www.cloudzun.com/fde-102/</code>；新增 <code>scripts/build_docs.py</code>（由 <code>textbook/</code> 单一底稿重建 <code>docs/</code>，<code>docs/</code>/<code>site/</code> 不入库）、<code>index.md</code> 首页、<code>.github/workflows/pages.yml</code>（push main 自动构建并部署 <code>gh-pages</code>，<code>peaceiris/actions-gh-pages@v4</code>）、本地 vendor（katex / mermaid）+ <code>assets/extra.css</code> 主题与字体栈；nav 覆盖 00 导读 + 第 1–16 章（三篇分组）。<strong>mermaid 深底深字修复</strong>：Material 将 mermaid SVG 置于 closed shadow DOM，页面 CSS 无法触及，改用 <code>javascripts/mermaid-themefix.js</code> 包装 <code>mermaid.initialize</code> 注入 <code>themeCSS</code> 强制深色节点标签为白字（<code>mermaid-contrast.js</code> 为 DOM 兜底）。联动更新：<code>AGENTS.md</code>（仓库概况、目录规范）、<code>.gitignore</code>。</li>
+<li>v0.7（2026-08 · 导读精简）：<code>00_导读与体例说明.md</code> 收敛为"引言与使用指南 / 读者画像与使用方式 / 全书 16 章结构"三块（含单案例贯穿），去掉五个项目实操的综合介绍及先修、环境、能力地图、认证、体例等章节。联动更新：<code>AGENTS.md</code>（结构与目录说明）。</li>
+<li>v0.7（2026-08 · 书名统一）：全书书名统一为《FDE 实战：Echo 与 Delta 的交付之道》——导读第 1 行 H1 与 <code>AGENTS.md</code> 仓库概况同步；<code>ppt/</code>、<code>misc/</code>、<code>references/</code> 保留旧名（非交付正文）。</li>
+<li>v0.7（2026-08 · 渲染修复批）：按 MkDocs 实际渲染逐项修复 markdown 排版——1）16 章章首引用块按字段分行（字段行之间插入空引用行 <code>&gt;</code>，消除字段挤成一团）；2）「学习目标」嵌套列表缩进 2→4 空格（渲染为嵌套 <code>&lt;ol&gt;</code> 而非散开的并列项）；3）15 章「动手自检」的 <code>- [ ]</code> 列表前补空行（否则被并入上一段落、checkbox 渲染为纯文本）；4）14 个文件共 43 处"段落行紧邻列表无空行"补空行（含第 2 章 8 条鉴别量表、各章 DoD / 关键决策点 / 分类 / 原则等列表）；5）5 个文件共 25 处嵌套子列表缩进 2→4 空格（第 5 章 SOP1/SOP2/SOP3 步骤、第 7 章压缩走查、第 8 章追加项、第 9 章三条判据与预实验步骤、第 13 章三个子条件）；6）<code>mkdocs.yml</code> 启用 <code>pymdownx.magiclink</code> 使裸 URL（FDE-101 链接）自动可点击。以上仅改空行与缩进，正文文字零改动。联动更新：<code>AGENTS.md</code> 3.6 增补"列表前必须空行""嵌套子列表缩进 4 空格"两条排版纪律。</li>
+<li>v0.7（2026-08 · 第 13/14/15 章审校整改）：按三路评审整改第 13/14/15 章逻辑、准确性与格式问题（含跨文件联动）——第 13 章：型号与报价更新为现行官方数据（V4.1-Flash，旧名已退役）、价格核算整段重写为可复算三表（汇率 / 混合比例 / 折算公式齐备，打平点含"月→日"换算链）、全章时间口径改 2026-09、验收口径对齐第 8 章（自信区 ≥85%）、B300 移出交付主力档、折旧口径与 13.3.3 同源；第 14 章：删除内部编辑指令泄漏（"九维 Build Readiness Gate"，红线级）、"移入附录"改真实落点、五转换与三项职责对齐、本体三级命名对齐第 15 章、案例补锚点并新增案例索引表；第 15 章：质量型 / 收入型公式修正（量纲错、缺转化率因子）、三场景数值重算为可复算、三块拼图口径对齐第 16 章、失效指标出处修正、收益分类统一为效率 + 质量 + 收入增益 + 风险避免、ROI / 净收益 / TCO 口径与成本边界澄清。跨文件：<code>resources/</code> 章节号错位修正（15.5~15.7→15.2.3 / 15.3.2 / 15.4）、ROI 模板公式与正文同步、图表索引补图 15-2 并顺延。联动更新：<code>resources/</code> 六份模板与索引文件。</li>
+<li>v0.8（2026-09 · 引用克制与章首体例轮）：按主编意见清理影响阅读的引用、冗余标注与章首重复，全库执行——1）<strong>引用克制纪律</strong>：删除本章内小节号引用（"见 N.x"式），跨章引用收敛到核心概念与基本流程（Echo/Delta 分工、四阶段交付、四条红线、能力回注、"卖人力→卖能力"主线、五实操总分总收口），保留图 N-x / 表 N-x 就近指引与"下一章"导航（不带章号）；2）<strong>溯源克制</strong>：不再在正文逐处插入"教材提炼 / 教学假设 / 待核验 / 信息截至 YYYY-MM"等来源性质标注，改由导读「关于本书内容性质」一次性总声明交代（外部来源 URL 一律保留）；3）<strong>章首体例统一</strong>：16 章统一为"引用块（本章定位 / 建议读者 / 前置）+ 本章学习目标编号列表"，删除 <code>## 本章导学</code> 容器及「本章产出」「前置知识」「章节地图」三个与引用块内容重叠的字段，删除第 7/9/11/13 章章首 mermaid 导航图（该四章正文图号顺延，跨章图号引用同步）；保留各章「一句话记住」与实操章「学习目标追踪」表；4）<strong>残留节号清理</strong>：正文、表格与 mermaid 节点中残留的 <code>N.x</code> 引用全部去号（4.1 / 7.3.2 / 9.3–9.9 / 9.9.5-2 / 10.2 / 11.3.5 / 11.6.3 / 12.2 / 13.2.2 / 13.2.6 / Ch3 3.3.2 / Ch3 3.5 等），实操三 / 四「学习目标追踪」表活动列改用"环节 N &lt;名称&gt;"表达；5）<strong>第 13/14 章章首瘦身</strong>：向其他章节体量靠拢（13 章 1188→631 字、14 章 1344→807 字，全书章首字数中位数 761 字）——13 章「定位说明 / 主线必读与进阶选读」并为「阅读方式」、学习目标去枚举；14 章「实验设置 + 本章属性」并为「实验设置」、删除与定位重复的"三项职责"段、原章首"三个问题"下移为 14.1 正文开篇。联动更新：<code>AGENTS.md</code> 3.2（章首模板 + 章首纪律）、3.6、7（引用克制纪律）、8（溯源纪律）、9.1（版本号 v0.8）。</li>
+<li>v0.8（2026-09 · mermaid 深底深字修复轮）：作者发现第 13 章「3. 合并 or adapter？」深底菱形文字仍是深色。<strong>根因</strong>：<code>javascripts/mermaid-themefix.js</code> 追加的 <code>themeCSS</code> 只按 <code>rect</code> 写选择器，而决策节点是 <code>&lt;polygon&gt;</code>（另有 <code>circle</code> / <code>ellipse</code> / <code>path</code>），未命中覆盖规则，文字仍被 Material 的 <code>.nodeLabel p{color:var(--md-mermaid-label-fg-color)}</code> 染成深色。<strong>修法</strong>：形状列表扩为 <code>rect / polygon / circle / ellipse / path</code>，兄弟选择器为主，另加 <code>:has()</code> 兜底并<strong>单独成规则</strong>（不支持 <code>:has()</code> 的浏览器只丢弃该条）。<strong>验证</strong>：jsdom + 本仓 vendored mermaid 11.16.1 + Material 真实 <code>themeCSS</code> 逐图复算——全库 55 个 mermaid 图块、30 个深色填充节点（<code>rect</code> 27 / <code>polygon</code> 3）；修复前 30/30 文字计算色为 <code>var(--md-mermaid-label-fg-color)</code>，修复后 0/30、全部 <code>rgb(255,255,255)</code>；受影响的 3 个深色菱形为第 13 章 图 13-1（<code>q0 数据能否出域？</code>）、图 13-2（<code>M 3. 合并 or adapter？</code>）与第 15 章 图 15-2（<code>G 扩大范围 Gate</code>）。<strong>删除 <code>javascripts/mermaid-contrast.js</code></strong>：v0.7「教学站点上线」条目所称的 DOM 兜底——经证实用 <code>document.querySelectorAll</code> 无法穿透 Material 的 closed shadow DOM，从未生效。<strong>新增回归检查</strong> <code>scripts/mermaid-dark-node-check.js</code>（+ <code>scripts/package.json</code> 声明 jsdom 依赖），并入 9.2 核验清单；支持 <code>--nofix</code> 基线自检与 <code>--verbose</code> 明细。联动更新：<code>AGENTS.md</code> 2（目录规范加 <code>scripts/</code>、3.4 mermaid 纪律、9.2 核验清单）、<code>mkdocs.yml</code>（移除 contrast.js）、<code>scripts/build_docs.py</code>（注释同步）。</li>
+<li>v0.8（2026-09 · 小节口水句清理轮）：作者指出第 7 章 7.4 标题下"coding agent 解决'怎么写'，harness 解决'怎么不翻车'"这类<strong>标题后一句口号</strong>读感尴尬。遂逐节复核全书 115 个 <code>##</code> 小节的<strong>首个内容块</strong>，清理同类的"没话硬说"共 <strong>13 处 / 8 章</strong>：1）<strong>孤立口号</strong>——7.4 删句（7.4.1 首段已把同一件事讲全）、7.3 删空话首句"执行要靠 coding agent 承载"；2）<strong>自我评价式元叙述</strong>——1.5"这是全章最重要的判断标准"、4.5"这是全书最重要的分工观念，它回答…也回答…"；3）<strong>章内自我叙述</strong>——2.6"到这里，本章完成了它的任务——"改为"本章立住了…"、14.6"本节讲…"改为直陈；4）<strong>纯图表/列表引出句</strong>——2.2"要理解…最好把它放到…坐标系里对照"、4.6"下面这张矩阵告诉你…"、11.2"从最简单开始，选该用哪一层"、5.1"Echo 进驻客户后的第一原则"、5.9"AI 时代 Echo 也可以借力，但要守住一条铁律"；5）<strong>空话收尾</strong>——5.2 删"它们是 Echo 的核心知识"；6）<strong>跨章措辞重复</strong>——6.2 与 5.2 同用"不是'随便聊聊'"，6.2 改实操口吻。处理原则：<strong>只删空话、不编新内容</strong>；删除后标题直接接表格 / 引用块 / 子节，与全书主流形态一致（另有 44 个 <code>##</code> 小节本就无正文段，属正常体例）。净减 12 行，固定结构计数（标题 / 表格 / 图 / 复选框 / 链接）零变化；<code>mkdocs build --strict</code> 与 <code>scripts/mermaid-dark-node-check.js</code> 均通过。联动更新：8 个章节文件。</li>
+<li>v0.8（2026-09 · 格式与体例统一轮）：作者提出"在确保核心文本不变的前提下优化格式与体例"，遂先做全库审计（115 个 <code>##</code> 小节、55 张图、146 张表、16 章章首），再分四批落地。<strong>批次 A 体例统一（只换符号与包装）</strong>——1）并列分隔符统一为 <code>A / B</code>：修正 28 组"同一词对两种写法并存"（<code>Echo/Delta</code> 与 <code>Echo / Delta</code>、<code>超时/重试</code>、<code>行为/格式</code>、<code>分类/RAG</code> 等）共 54 处，并逐条显式修正 17 处因此产生的"混合链"（<code>性能 / 安全/合规</code> → <code>性能 / 安全 / 合规</code>）；单位型（<code>699元/月</code>）与复合词（<code>本地/微调</code>）按新规保持紧凑；2）语义引用块升格为 Alert 自定义标题 12 处（<code>&gt; **注意：** …</code> → <code>&gt; [!NOTE] 注意</code>），统一 RED 线块为 <code>[!IMPORTANT]</code>，并清理 2 处既有空标记叠加（原「口径说明 / 口径第一」块本就是 Alert，初次误改后已回滚）；<strong>批次 B 结构对齐</strong>——1）实操一章节名与其余实操章对齐（实操概述→演练背景，去「知识背景 / 任务书」副标题，「产出物清单」+「完成标准（DoD）」合并）；2）「下一章」导航统一为 <code>- **下一章：** &lt;章标题&gt;（&lt;说明&gt;）</code> 并补齐第 1–5 章（第 2 章删去与之重复的章内过渡句，末章不写）；3）§8 过程性标注清理 8 处（第 9 章 ×5、第 11 章 ×3，删「截至 2026-08」类时间标注、保留"以官方…为准"；第 13 章价格表报价时点属数据口径，按 §3.5 保留）；4）连接符定则落地——流程序列改 <code>→</code>（<code>输入 → 步骤 → 输出 → …</code>、<code>暂停 → 接收人工输入 → 从断点恢复</code>、<code>试点 → 推广流程</code>、<code>拆解 → 复盘</code>），数值区间 <code>4—6</code>/<code>3—5</code> 改 en dash <code>4–6</code>/<code>3–5</code>；<strong>批次 C 自动化</strong>——新增 <code>scripts/style-lint.py</code>（零依赖），机器化检查固定尾部节齐全与顺序、<code>N.x</code> 编号连续、裸代码块、连续 Alert、语义标签式裸引用块、混合分隔链、单位被拆、图号连续、<code>下一章</code> 覆盖、章首字段、文件尾换行、过程性标注、标题中英空格、复选框前空行、嵌套缩进；已做灵敏度自检（注入违规报出 7 个 ERROR，恢复后 0/0），并接入 <code>.github/workflows/pages.yml</code> 作为部署前阻断步骤；<strong>批次 D 站点侧（md 基本不动）</strong>——1）启用 <code>navigation.footer</code>（上一页 / 下一页）、<code>navigation.instant.progress</code>、<code>search.share</code>；2）搜索启用中文分词 <code>search: lang: [zh]</code>（构建期依赖 <code>jieba</code>，已加入 CI 安装项），索引已按词切分（原先整段不切词、中文检索几乎不可用）；3）新增 <code>mkdocs-print-site-plugin</code> 生成「打印与离线阅读」单页（整本 680KB，供打印 / 离线），<strong>不生成 PDF</strong> 以避免引入 weasyprint 系统依赖。联动更新：<code>AGENTS.md</code> 3.2（实操章节序 + 两处例外）、3.3（Alert 语义与"标签升格为标题"）、3.5（表不编号 + 表内时点标注）、新增 3.6 标点与符号体例（原 3.6/3.7 顺延）、7（「下一章」统一格式）、2（<code>scripts/</code> 加 <code>style-lint.py</code>）、9.2（核验清单加体例检查）、<code>.github/workflows/pages.yml</code>、<code>mkdocs.yml</code>。<strong>两项经评估后暂缓</strong>：① 第 13 章「进阶选读」折叠（章首列出的主线 / 进阶边界与小节并非一一对应，需作者确认要折叠哪几节）；② 宽表格窄屏横向滚动（<code>display:block</code> 两类写法对"窄表是否铺满"影响不同，需浏览器实拍确认后再定）。</li>
+<li>v0.8（2026-09 · 引号口径固化）：作者说明——<strong>本书正文会被复用进课件 PPT，全角引号在 PPT 文本框与生成链路里会出问题</strong>，故引号是刻意保留的<strong>半角标点例外</strong>（此前规范只写了"沿用既有口径"，未交代原因，容易被后人当疏漏"修正"）。据此：1）<code>AGENTS.md</code> 3.6 把引号从"沿用口径"改写为<strong>硬约束</strong>并写明 PPT 复用原因，3.8 标注"全角标点不含引号"；2）消除全书残留的 6 对全角/直角引号（第 7 章「AI 万能论」「AI 与己无关」及 mermaid 节点、第 9 章红线块、第 10 章"按条组织"、第 11 章 11.2 节标题的弯引号），全库现为 <strong>0 个</strong> <code>“ ” ‘ ’ 「 」</code>；3）mermaid 节点文本内不能用半角 <code>"</code>（与 <code>["…"]</code> 分隔符冲突），改用 HTML 实体 <code>&amp;quot;</code>——已用 jsdom + 本仓 vendored mermaid 11.16.1 实测：<code>&amp;quot;</code> 渲染为 <code>"</code>，而 <code>&amp;#34;</code> 会被渲染成字面量 <code>&amp;"</code>（不可用）；4）<code>scripts/style-lint.py</code> 增加第 16 项检查（正文出现全角/弯引号即 ERROR），该口径从此机器把关。联动更新：<code>AGENTS.md</code> 3.6/3.8、<code>scripts/style-lint.py</code>、第 7/9/10/11 章。</li>
+<li>v0.8（2026-09 · PPT 复用友好纪律）：作者补充关键背景——<strong>本书正文会被复用进课件 PPT</strong>（<code>ppt/</code> 为 pptxgenjs 生成），这是"引号刻意用半角"的根因，也牵出一条此前未成文的写作约束：站点专有语法（<code>&gt; [!NOTE] 注意</code>、<code>- [ ]</code>、表格分隔行、<code>```mermaid</code> 围栏、<code>&lt;br/&gt;</code>）在 md 源里是可见字符，摘进 PPT 会变成噪音；反过来若只按渲染页取文本，则"信息只存在于 Alert / 图内"同样会丢失。据此新增 <strong><code>AGENTS.md</code> 5.4「PPT 复用友好」写作纪律</strong>：总原则是"站点语法用于强调与装饰，不作为信息的唯一载体——去掉所有标记后同一句话仍要完整可读"，并落成 6 条可执行规则（结论放普通段落/列表项、Alert 块内不写依赖版面的指代、图表都要有"一句话结论"、复选框清单要有概述句、不嵌套 Alert、关键数字写进句子）。<strong>按此纪律清理</strong>：第 5 章两处「坐标轴的读法」块尾的"四象限策略对照见下表："、第 7 章工具节块尾的"（海外见本表，国内见下表）"——共 3 处引用块内版面指代已删除，块内文字可独立成立。<strong><code>scripts/style-lint.py</code> 扩到 19 项</strong>：新增 17）mermaid 图与图题一一配对（每张图必须带 <code>*图 N-x：标题*</code>，当前 55 图 / 55 题全配对）、18）引用块内版面指代（限 <code>&gt;</code> 块内——正文段落里紧跟表格的"见下表"是正常写法，不报）、19）嵌套 Alert（ERROR）。联动更新：<code>AGENTS.md</code> 3.6（引号硬约束写明 PPT 原因）、3.8、新增 5.4、9.2（核验清单）、<code>scripts/style-lint.py</code>、第 5/7 章。</li>
+<li>
+<p>v0.8（2026-09 · 撤下「全文阅读和打印」单页）：作者决定<strong>不要</strong>整本单页功能（原 <code>https://www.cloudzun.com/fde-102/print_page/</code>）。移除 <code>mkdocs.yml</code> 的 <code>print-site</code> 插件与 <code>.github/workflows/pages.yml</code> 的 <code>mkdocs-print-site-plugin</code> 依赖；构建不再生成 <code>print_page/</code>，导航项「打印与离线阅读」随之消失（上一条目所述的该功能已作废）。<strong>保留</strong>同一批次引入的中文分词检索（<code>search: lang: [zh]</code> + <code>jieba</code>）与 <code>navigation.footer</code> / <code>navigation.instant.progress</code> / <code>search.share</code>。联动更新：<code>mkdocs.yml</code>、<code>.github/workflows/pages.yml</code>。</p>
+</li>
+<li>
+<p>v0.8（2026-09 · 术语口径统一：第四条红线的表述）：作者指出"人能判断、AI 能执行"这个表达较粗糙，全书统一为 <strong>"人做判断，AI 负责执行"</strong>。改动覆盖 4 种既有写法（<code>人能判断、AI 能执行</code> 28 处、<code>人能判断·AI 能执行</code> 6 处、<code>人能判断 AI 能执行</code> 2 处、<code>人能判断，AI 能执行</code> 1 处），共 <strong>37 处 / 16 个文件</strong>：<code>AGENTS.md</code> 术语统一表、<code>index.md</code> 首页红线、<code>resources/certification/</code>（一票否决口径 ×2）、<code>resources/index/figures.md</code>（图 4-5 索引）、正文第 03/04/07/08/11/12/13/14/15/16 章（含 4.5 节标题、图 4-5 图题、11.8.3 节标题与四张红线对照表）。<strong>保留未改</strong>：本修订记录 v0.7 条目对旧标题的<strong>历史引用</strong>（9.2「只追加、不删改历史条目」）；第 11 章"让人能判断而不是盲批"是与红线<strong>不同的构造</strong>（讲确认界面要让人做得出判断），不在替换范围。<strong>写作口径</strong>：新表述按 3.6 中英文空格纪律写作 <code>AI 负责执行</code>（<code>AI</code> 与 <code>负责</code> 之间留半角空格），不是 <code>AI负责执行</code>。核验：全库 <code>人能判断</code> 残留 0（仅修订记录历史引用除外）；站内锚点链接 0 处，故 4.5 / 11.8.3 标题改名不影响任何跳转；<code>scripts/style-lint.py</code> 0 ERROR / 0 WARN；<code>mkdocs build --strict</code> 通过。联动更新：<code>AGENTS.md</code> 6（术语统一表）、<code>index.md</code>、<code>resources/</code>、第 03/04/07/08/11/12/13/14/15/16 章。</p>
+</li>
+<li>
+<p>v0.8（2026-09 · 第 11 章 11.1.3 补决策循环图 + OODA 溯源）：作者指出 11.1.3"决策循环"只有四条文字说明、建议配 mermaid 图，并要求补充与 OODA 循环的关系与区别。1）<strong>新增图 11-1「决策循环」</strong>——8 个节点 &gt; 4，按 3.4 规则用垂直布局 <code>flowchart TB</code>：观察 → 思考 → 行动 → 再看结果四步成环，"再看结果"（菱形判断）接三条出口：直接交付 / 继续处理（回到观察）/ 升级人工；全部浅色填充，不引入深底深字风险。原图 11-1~11-4 顺延为 11-2~11-5（本章图题与 <code>resources/index/figures.md</code> 同步），全章现 5 图 5 题。2）<strong>新增 OODA 对照段</strong>（置于"循环四条说明 + 图"与"单次调用 / 工作流 / 智能体三方案对比表"之间）——点明这四步与 OODA 循环（Observe → Orient → Decide → Act，美国空军上校约翰·博伊德在 1970 年代初提出，附概念链接）同源，给出逐步映射（观察 ↔ Observe、思考 ↔ Orient + Decide、行动 ↔ Act、再看结果 ↔ 下一轮 Observe），并列三条差别：① OODA 面向对抗、比的是循环速度；② 智能体多出上下文窗口 / 记忆 / 工具权限 / 幂等审计 / 成本超时 / 人工升级一整套工程约束；③ OODA 的关键在"定向"（Orient）而非"决策"（Decide），对应到智能体即上下文工程、记忆与路由。末句归纳同类循环（ReAct、感知 → 规划 → 行动、PDCA、控制论反馈回路）的共同内核：不是输入直接到输出，而是感知 → 推理 → 行动 → 反馈 → 再调整。<strong>溯源说明</strong>：OODA 的概念、提出者与年代以正文所附链接页为出处；"Orient 是重心"这一表述源自博伊德本人的论述与后续研究（正文该链接页未展开这一点），如需更严出处可另补 Boyd《The Essence of Winning and Losing》一类原始文献。3）<strong>修复 <code>resources/index/figures.md</code></strong>——该文件生成于 v0.7 之后未随正文维护，上一轮删除第 7/9/11/13 章章首导航图、并对 7/9/11/13 章图号顺延后未同步：现补第 7 章 7-1~7-4 条目、改正第 9 / 11 / 13 章条目、删除已不存在的"本章位置"图号；第 2 章的"图 2-4 经验曲线"实为<strong>未编号插图</strong>（<code>assets/experience_curve.png</code>，全书唯一一张非 mermaid 插图），改为单列说明，不再占用图号。对账后：索引 56 条 == 正文图题 56 条 == mermaid 块 56 个，逐章图号 1..n 一致。核验：<code>scripts/style-lint.py</code> 0 ERROR / 0 WARN；<code>mkdocs build --strict</code> 通过；<code>scripts/mermaid-dark-node-check.js</code> 通过（56 图块 / 30 个深色填充节点 / 文字非白色 0）；新增图另用 jsdom 单独渲染验证——8 个节点标签与 8 条连线全部完整。联动更新：第 11 章、<code>resources/index/figures.md</code>。</p>
+</li>
+<li>
+<p>v0.8（2026-09 · 语体纠正：11.1.3 通用化 + 新增 5.5「不写成实验手册的说明书」）：作者指出上一轮把 11.1.3"决策循环"写成了带具体场景的<strong>操作步骤</strong>（"观察：拿到一个工单、一笔交易、一个任务""行动：调用工具、查数据、生成处置意见"），犯了本书的忌讳——<strong>不要把教科书写成实验手册的说明书</strong>；这四个环节要<strong>通用化</strong>。1）<strong>11.1.3 四个环节通用化</strong>：改为"观察：接收输入，读取环境状态与上一轮动作的反馈 / 思考：理解局面——这是什么情况、要达成什么、下一步做什么 / 行动：调用工具或执行动作，改变环境、产出结果 / 再看结果：评估这次动作的效果，决定收尾、再来一轮，还是转人工"——去掉只在某个场景成立的对象名，只留结构性四环节。2）<strong>图 11-1 改为通用结构图</strong>：节点收敛为四个环节名（观察 / 思考 / 行动 / 再看结果）+ 入口"输入 / 事件 / 环境变化" + 三条出口（收尾结束 / 再来一轮 / 转人工），<strong>不再复制正文长句</strong>——图只承载拓扑（成环 + 三出口），语义由图题与正文承担。3）<strong>出口用词统一为"转人工"</strong>（全书主导词 112 处，不用"移交人工"）。4）<strong>新增 <code>AGENTS.md</code> 5.5「教科书语体：不写成'实验手册的说明书'」</strong>：总原则"<strong>正文写'类'，手册写'例'</strong>"，落成 5 条——概念段不写操作动作（判断标准/验收口径属"方法"可写，命令参数界面路径属"执行"不写）／抽象描述换任何场景都要成立／例子要标明"以 X 为例"且定义在前／序列语言分级（<code>第一步 → 第二步</code> 属实操章与手册，概念段用"环节/要素/阶段"）／改概念段先自问"删掉场景名词后还成立吗"；并同步进 11 红线与 9.2 核验清单。<strong>该条不设机检</strong>：试点审计（8 类操作动词关键词扫全书）命中 25 处，逐条核对<strong>全部合法</strong>——实操章的执行语言（第 6/8/10/12 章"打开《解决方案框架》"）、比喻用法（第 2 章"回到第 1 步"描述死亡螺旋、第 11 章"工具定义得好只是第一步"）、清单勾选（第 2/13/14 章）、修订记录（00 导读），关键词检查只会误报，故作为<strong>人判断项</strong>写入 9.2。核验：<code>scripts/style-lint.py</code> 0 ERROR / 0 WARN；<code>mkdocs build --strict</code> 通过；图 11-1 用 jsdom 单独渲染验证（8 节点 / 8 连线，标签全部完整）；<code>scripts/mermaid-dark-node-check.js</code> 通过（56 图块 / 30 深色填充节点 / 文字非白色 0）。联动更新：第 11 章、<code>AGENTS.md</code>（新增 5.5、9.2 核验清单、11 红线）。</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                首页
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%AC%AC01%E7%AB%A0_FDE%E6%98%AF%E4%BB%80%E4%B9%88/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第1章 FDE 是什么">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第1章 FDE 是什么
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 · CC BY-NC-ND 4.0 · 《FDE 实战：Echo 与 Delta 的交付之道》
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.expand", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/vendor/katex.min.js"></script>
+      
+        <script src="../../assets/vendor/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../assets/vendor/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-themefix.js"></script>
+      
+    
+  </body>
+</html>
